@@ -1,0 +1,20 @@
+<%=
+show_credits = order.respond_to?(:credit_applied?) && order.credit_applied?
+text = <<EOT
+Order Details:
+
+Order Date: #{date(order.created_at)}
+Listing Title: #{order.listing.title}
+EOT
+if show_credits
+  text << <<EOT
+Listing Total: #{number_to_currency order.listing.total_price}
+Credits Applied: (#{number_to_currency order.credit_amount})
+EOT
+end
+text << <<EOT
+Order Total: #{number_to_currency order.total_price}
+
+EOT
+text << mailer_order_details_tracking_number_text(order, tracking_number: tracking_number) if defined?(tracking_number)
+word_wrap text %>

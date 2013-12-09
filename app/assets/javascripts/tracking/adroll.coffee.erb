@@ -1,0 +1,11 @@
+<% if feature_enabled?(:client, :tracking) %>
+jQuery ->
+  __adroll_loaded=true
+  scr = document.createElement("script")
+  host = if ("https:" == document.location.protocol) then "https://s.adroll.com" else "http://a.adroll.com"
+  scr.setAttribute('async', 'true')
+  scr.type = "text/javascript"
+  scr.src = host + "/j/roundtrip.js"
+  ((document.getElementsByTagName('head') || [null])[0] ||
+   document.getElementsByTagName('script')[0].parentNode).appendChild(scr)
+<% end %>

@@ -1,0 +1,19 @@
+<%
+title t('.title')
+signup_buyer_flow_step 2
+javascript 'signup_buyer'
+hide_footer
+%>
+
+<%= content_tag(:div, class: 'message-container') do %>
+  <h1><%= t('.title') %></h1>
+  <p><%= t('.description') %></p>
+<% end %>
+
+<div class="like-suggestions row">
+  <%= signup_interests(@interest_cards) %>
+</div>
+
+<div class="message-container">
+  <%= signup_buyer_interest_like_control @interest_cards %>
+</div>

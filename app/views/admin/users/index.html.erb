@@ -1,0 +1,42 @@
+<% title "Admin: All users" %>
+
+<%= bootstrap_breadcrumb [['Admin', admin_dashboard_path], 'All users'] %>
+
+<% if can? :create, User %>
+  <p><%= bootstrap_button 'New user', new_admin_user_path, data: {action: 'new'} %></p>
+<% end %>
+
+<%= datagrid @users, id: 'users', pagination_theme: :bootstrap do |t| %>
+  <%= t.thead do |thead| %>
+    <%= thead.th :name %>
+    <%= thead.th :email, default: true %>
+    <%= thead.th :follower_count, title: '# Followers' %>
+    <%= thead.th :listing_count, title: '# Listings' %>
+    <%= thead.th :collection_count, title: '# Collections' %>
+    <%= thead.th :created_at, title: 'Created on' %>
+    <%= thead.th :updated_at, title: 'Last updated on' %>
+  <% end %>
+  <%= t.tbody do |tbody, user| %>
+    <%= tbody.td do %>
+      <%= link_to (user.name || '(guest)'), admin_user_path(user.id) %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= user.email ? truncate(user.email) : '' %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= user.followers.count %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= user.seller_listings.count %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= user.collections.count %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= date user.created_at %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= date user.updated_at %>
+    <% end %>
+  <% end %>
+<% end %>

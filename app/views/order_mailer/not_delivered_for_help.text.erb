@@ -1,0 +1,9 @@
+<%= word_wrap %Q/The buyer has indicated that this order has not been delivered. Please investigate.
+
+Order Details:
+
+1. Order #: #{@order.reference_number} - #{rewrite_mailer_url admin_order_url(@order)}
+2. Listing name: #{raw @order.listing.title} - #{rewrite_mailer_url listing_url(@order.listing)}
+3. Seller name: #{raw @order.listing.seller.name} - #{rewrite_mailer_url public_profile_url(@order.listing.seller)}/ %>
+
+<%= render '/shared_mailer/footer' %>

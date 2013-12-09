@@ -1,0 +1,91 @@
+expire_orders:
+  cron: 30 * * * *
+  class: ExpireOrders
+  args: 15
+  description: Cancel any expired orders
+
+complete_unreviewed_delivered_orders:
+  cron: 30 * * * *
+  class: CompleteUnreviewedDeliveredOrders
+  args:
+  description: Complete any orders whose review window has expired
+
+cancel_confirmed_unshipped_orders:
+  cron: 30 * * * *
+  class: CancelConfirmedUnshippedOrders
+  args:
+  description: Cancel any orders whose shipping window has expired
+
+reap_guests:
+  cron: 0 0 * * *
+  class: ReapGuests
+  args:
+  description: Delete guests users who have overstayed their welcome
+
+sync_listings:
+  # noon UTC = 4AM PST
+  cron: '0 12 * * *'
+  class: SyncListings
+  args:
+  description: Synchronize any externally sourced listings with their sources
+
+sync_profile_attrs:
+  cron: '0-59/12 * * * *'
+  class: Network::SyncStaleProfilesJob
+  args:
+  description: Sync network profiles for users not synced recently
+
+autoclear_viewed_notifications:
+  # 11AM UTC = 3AM PST
+  cron: '0 11 * * *'
+  class: Users::AutoclearViewedNotificationsJob
+  args:
+  description: Automatically clear notifications that were viewed a while ago
+
+expire_shipping_labels:
+  cron: '30 * * * *'
+  class: Shipments::ExpireShippingLabelsJob
+  args:
+  description: Expire any shipping labels past their expiration date
+
+check_delivery_status:
+  cron: 30 * * * *
+  class: Shipments::CheckDeliveryStatusJob
+  args:
+  description: Check with the shipping carrier service to see if shipped orders have been delivered or not
+
+check_prepaid_shipment_status:
+  cron: 30 * * * *
+  class: Shipments::CheckPrepaidShipmentStatusJob
+  args:
+  description: Check with the shipping label service to see if confirmed prepaid shipping orders have shipped or not
+
+request_order_delivery_confirmation:
+  cron: 0 * * * *
+  class: Orders::RequestDeliveryConfirmationJob
+  args:
+  description: Request delivery confirmation for shipped orders whose delivery confirmation period has elapsed
+
+follow_up_on_delivery_non_confirmation:
+  cron: 10 * * * *
+  class: Orders::FollowUpOnDeliveryNonConfirmationJob
+  args:
+  description: Request follow up for shipped orders that have had no response to the delivery confirmation request
+
+sync_bank_payment_state:
+  cron: 45 * * * *
+  class: BankPayments::SyncStateJob
+  args:
+  description: Synchronize bank payment state with that of the backing Balanced transaction
+
+create_feature_snapshots:
+  cron: '0-59/15 * * * *'
+  class: Scheduled::CreateFeatureSnapshots
+  args:
+  description: Build a new snapshot of all feature lists
+
+create_trending_snapshots:
+  cron: '0-59/15 * * * *'
+  class: Scheduled::CreateTrendingSnapshots
+  args:
+  description: Build a new snapshot of trending list

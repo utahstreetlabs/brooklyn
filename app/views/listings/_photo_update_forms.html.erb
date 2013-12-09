@@ -1,0 +1,8 @@
+<% photos.each do |photo| %>
+  <%= form_for photo, url: listing_photo_path(listing.slug, photo.id), remote: true , html: {class: 'update-photo-form', id: "replace-thumbnail-#{photo.id}"} do |f| %>
+    <%= hidden_field_tag :photo_id, photo.id %>
+    <%= hidden_field_tag :listing_id, listing.id  %>
+    <%= f.text_field :remote_file_url, class: 'remote-file-url' %>
+    <%= f.submit %>
+  <% end %>
+<% end %>

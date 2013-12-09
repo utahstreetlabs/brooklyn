@@ -1,0 +1,15 @@
+en:
+  admin:
+    feature_flags:
+      index:
+        enabled:
+          title: 'User'
+        admin_enabled:
+          title: 'Admin'
+        button:
+          disabled:
+            label: 'Off'
+            disabled_html: '&hellip;'
+          enabled:
+            label: 'On'
+            disabled_html: '&hellip;'

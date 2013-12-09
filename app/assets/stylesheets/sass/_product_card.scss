@@ -1,0 +1,302 @@
+.card-container {
+  float: left;
+  @extend .span4;
+  height: 375px;
+  position: relative;
+  margin-left: $cardGutter;
+  padding: 0;
+  margin-bottom: 50px;
+  text-align: center;
+  a:hover {
+    text-decoration: none;
+  }
+  &:hover {
+    .admin-area .btn {
+      @include opacity(1);
+    }
+  }
+  .carousel-inner .item & {
+    display: block; /* overriding carousel's display: list-item */
+  }
+  .carousel-inner .item &:first-child {
+    /* if carousel-inner's width is 960px + margin-left: -20px (.row effect) then when the user
+    carousels through it, the viewport window extends to the edge of the left arrow. */
+    margin-left: 0;
+  }
+}
+
+.product-image-container {
+  width: 300px;
+  height: 300px;
+  line-height: 0;
+  z-index: $zin-product-card-image;
+  .add-card-link & { /* add collection/listing cards */
+    margin: 0;
+    position: absolute;
+    top: 0;
+  }
+}
+.product-image {
+  width: 300px;
+  height: 300px;
+  line-height: 0;
+  border: 1px solid $border-color-light;
+  @include border-radius(3px);
+}
+.product-action-area {
+  position: absolute;
+  bottom: 85px;
+  left: 0;
+  right: 0;
+  .curatorial:first-child { /* .btn-overlay spacing */
+    margin-right: 8px;
+  }
+  .curatorial, .social { /* extend .btn-overlay for love, save & follow buttons */
+    @extend .btn-small;
+    @extend .btn-overlay;
+  }
+  /* for listing modal only */
+  .modal-large & {
+    text-align: center;
+    bottom: 20px;
+  }
+  &.admin-area {
+    bottom: auto;
+    top: 10px;
+    left: 0;
+    right: 0;
+    .btn {
+      @include opacity(0);
+      margin-right: 0;
+    }
+    .modal-footer .btn {
+      @include opacity(1);
+    }
+  }
+}
+
+.card-cta {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 27px;
+}
+.remove-btn-container {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+}
+.product-info {
+  height: 61px;
+}
+.product-title {
+  padding-top: 3px;
+  font-size: $bigFontSize;
+  line-height: 22px;
+  height: 30px;
+  width: 300px;
+  color: $text-dark;
+  display: block;
+  word-wrap: break-word;
+  word-break: break-word;
+  &:hover {
+    color: $linkColor;
+  }
+}
+.social-story-container {
+  height: $baseLineHeight;
+  overflow: hidden;
+  margin-top: -34px; /* to make 99% of the card area clickable */
+}
+.social-story {
+  font-size: $smallFontSize - 1; /* 11px */
+  line-height: $baseFontSize; /* 14px */
+  color: $text-light;
+  font-weight: 500;
+  span {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  a {
+    @extend .link-color-change;
+    font-weight: 500;
+  }
+}
+.price {
+  color: $transaction-color;
+  font-weight: 600;
+}
+.original-price {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  margin-right: 12px;
+  text-decoration: line-through;
+  color: $text-light;
+}
+.price-box, .actor-activities, .invite-credit-limit { /* digest card ## Recent Activities styling */
+  font-family: $styledFontFamily;
+  font-size: 15px;
+  color: $text-light;
+  font-weight: 500;
+}
+.product-removed {
+  display: none;
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  left: 1px;
+  height: 298px;
+  padding: 121px 9px;
+  background: rgba(255,255,255,0.88);
+  .product-title {
+    width: 100%;
+  }
+}
+
+// Unsave for listing cards on collection page
+/* removed state */
+/* XXX DELETE CONSOLIDATE  need to have same ix as the remove */
+.removed {
+  padding: 0px 6px;
+  display: inline-block;
+  background: rgba(255,255,255,0.88);
+  span {
+    font-size: $smallFontSize;
+    font-weight: 600;
+  }
+}
+
+
+// WAFFLE-FORMAT
+.waffle-format.thumbnails {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  float: left;
+  @include border-radius(3px);
+  @include box-shadow(0 0 0 1px $border-color-light);
+  li {
+    margin: 0 1px 1px 0;
+    overflow: hidden;
+    width: 74px; /* 74px for image + 1px white border (uses bgcolor) */
+    height: 74px;
+    background: $button-bg-color;
+    img {
+      border: none;
+      width: 75px;
+      height: 75px;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  .collection-card & { /* collection card styling */
+    li {
+      &:first-child {
+        width: 300px;
+        height: 225px;
+        margin-right: 0;
+        img {
+          width: 300px;
+          height: 300px;
+          margin-top: -37px;
+        }
+      }
+      &:nth-child(3) {
+        width: 75px;
+      }
+    }
+  }
+  .digest-card &, .invite-card &, .user-card & {
+    li:nth-child(4n) {
+      width: 75px;
+      margin-right: 0;
+    }
+    li:first-child, li:nth-child(2), li:nth-child(3), li:nth-child(4) {
+      height: 75px;
+    }
+  }
+  .invite-card &, .user-card & {
+    li:nth-child(4n) {
+      width: 75px;
+      margin-right: 0;
+    }
+    li:first-child, li:nth-child(2), li:nth-child(3), li:nth-child(4) {
+      height: 75px;
+    }
+  }
+  .user-card & {
+    li {
+      @include opacity(0.6);
+      &:hover {
+        @include transition(0.6s);
+        @include opacity(1);
+      }
+    }
+  }
+}
+
+.actor-profile, .user-card-profile {
+  position: absolute;
+  top: 76px;
+  left: 75px;
+  width: 149px;
+  height: 149px;
+  overflow: hidden;
+  img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.digest-story-count {
+  font-family: $sansserifFontFamily;
+  font-size: 10px;
+  line-height: 16px;
+  text-align: center;
+  display: block;
+  .strong {
+    font-family: inherit;
+    font-size: 10px;
+  }
+}
+
+
+// INVITE CARD
+.invite-card {
+
+}
+
+
+/* Hide these cards till they are ready, or simply turn them off */
+.tag-card-v4, .promotion-card {
+  @extend .hidden;
+}
+
+
+// ADD COLLECTION CARD
+#add-collection-card, #add-listing-card {
+  outline: dashed 2px $border-color;
+}
+.add-card-link {
+  float: left;
+  width: 100%;
+  height: 100%;
+}
+.add-placeholder {
+  width: 284px;
+  height: 292px;
+  background: $button-bg-color;
+  margin: 8px auto;
+  @include border-radius(3px);
+}
+
+
+// INTERACTION
+.search_browse_browse, .search_browse_new_arrivals { /* search page */
+  .search-results p {
+    margin-left: 20px;
+  }
+}

@@ -1,0 +1,171 @@
+// Typography
+$color-text:            #777777;
+$color-text-dark:       #555555;
+$color-text-light:      #999999;
+$color-text-lighter:    #AAAAAA;
+$color-title:           #041423;
+$color-header:          #41444c;
+$color-text-subtle:     #a0a0a0;
+
+// Grays
+$grayLight:             #777 !default;
+$grayLighter:           #AAA !default;
+$grayLightest:          #eee !default;
+
+
+// NEW Colors
+$purple:                #703D90;
+$purple-light:          #3D013D;
+$new-gray:              #D9D9D9;
+$new-gray-bg:           #ECECEC;
+$new-text-gray:         #6F6F6E;
+$new-header:            #1D1D1B;
+$new-button-bg:         #EEEEEE;
+$new-button-bg-disabled:#F9F9F9;
+$new-button-text:       #4E4E4D;
+$new-button-text-disabled: #B1B1B1;
+$new-button-bg-hover:   #9C9B9B;
+$black:                 #000000;
+$new-color-text-dark:   #3C3C3B;
+
+
+// Links
+$linkColor:             #4667f3;
+
+// Colors
+$new-color-header:          #353c46;
+
+// Buttons
+$primaryButtonBackground:  lighten($linkColor, 5%) !default;
+$FBSignupButtonBackground: #1E83FF;
+
+$color-hover-list:      #29BFD3;
+$color-hover-list-light: #54CCDC;
+$color-hover-list-border: #34ADAD;
+$color-alert:           #D12020;
+$color-success:         #0C890C;
+
+$border-light:          #DFDFDF;
+$border-lightest:       #E1E2E2;
+$border-darker:         #BBBBBB;
+$border-radius:         5px;
+
+$modal-backdrop:        #FCFCFC;
+
+
+// Copious 2.1
+// ------ new variables for new styling --------------------------------------------------------------------
+$text-lightest:               #BDBFC0;
+$text-light:                  #949596;
+$text-dark:                   #25282c;
+$text-color-dark:             #5e6268;
+$text:                        #47505d;
+$text-input:                  #7C7C7C;
+$linkColor:                   #6c85ec;
+
+$header-color:                #353C46;
+$header-color-dark:           #25282c;
+
+$border-color:                #DADADA;
+$border-color-light:          #EEEEEE;
+$border-color-dark:           #CACBCD;
+$transaction-color:           #FF9207;
+$curatorial-color:            #f7377b;
+$social-color:                #5dd0ef;
+$system-color:                #5271f4;
+
+$button-bg-color:             #EEEEEE;
+$button-bg-color-footer:      #FAFAFA;
+$primary-button-bg-color:     #5271f4; /* same as $system-color */
+$button-text-color:           #404041;
+$button-actioned-bg-color:    #F8F8F8;
+$new-button-bg-disabled:      #F9F9F9;
+$new-button-text-disabled:    #D2D3D4;
+$border:                      #CCCCCC !default;
+$input-border-disabled:       #E3E3E3;
+
+$charcoal-bg:                 #28282a;
+$charcoal-bg-light:           #3d3d3f;
+$alert-color:                 #ef3e3e;
+
+// Accent colors
+$green:                       #2BCC2B !default;
+
+$footer-bg:                   #EAEAEA;
+
+// Typography
+$baseFontSize:          14px !default;
+$smallFontSize:         $baseFontSize * .85714285714287; /* 12px */
+$xsmallFontSize:        $baseFontSize * .71428571; /* 10px */
+$bigFontSize:           $baseFontSize * 1.14285714; /* 16px */
+$textColor:             $color-text !default;
+$baseLineHeight:        20px;
+$baseFontFamily:        Helvetica Neue, Helvetica, "nimbus-sans", Arial, sans-serif;
+$serifFontFamily:       Georgia, "Times New Roman", Times, serif;
+$sansserifFontFamily:   Helvetica Neue, Helvetica, "nimbus-sans", Arial, sans-serif;
+$styledFontFamily:      "ff-din-web", $sansserifFontFamily !default;
+$styledHeaderFamily:    "din-condensed-web", $styledFontFamily !default;
+$codeFontFamily:        Menlo, Monaco, Consolas, "Andale Mono", "Lucida Console", "Courier New", monospace;
+
+
+// Grid
+$gridGutterWidth:       20px !default;
+$cardGutter:            20px;
+
+
+// --------------------------------------------------------------------------------------------------------
+
+
+
+// Grid
+$mobileWidth:           320px;
+$mobileContainerWidth:  310px;
+$mobileContentWidth:    300px;
+$mobileLandscapeWidth:  480px;
+$fluidGridColumnWidth:  4.7153148%;
+$fluidGridGutterWidth:  1.6393443%;
+
+$gridGutterWidthBig:    40px !default;
+$desktopBigWidth:       1024px;
+// --------------------------------------------------------------------------------------------------------------
+// NEW COPIOUS STYLING
+$color-text-subtle-new:   #A1A9A9;
+$link-color-new:          #29DAD9;
+
+
+// -------------------------------------------------
+// z-indices
+$zin-jq-slider-range: 1;
+$zin-jq-slider-handle: 2;
+$zin-photo-upload-computer: 2;
+$zin-floating-list: 5;
+$zin-reserved-time-bg: 5;
+$zin-tooltip-tip: 10;
+$zin-buyer-fees: 51;
+$zin-jq-selectable: 100;
+$zin-product-card-image: 100;
+$zin-user-card-image: 100;
+$zin-loading-spinner: 100;
+$zin-product-card-tab: 101;
+$zin-messages: 500;
+$zin-loh-modal: 1000;
+$zin-checkout-right-pane: 2000;
+$zin-tooltips: 3000;
+$zin-commentbox-menu: 3500;
+$zin-sticky-header: 3700;
+$zin-progress-bar: 3750;
+$zin-hamburger: 3800;
+$zin-signup-modal: 4000;
+$zin-navbar-links: 5000;
+$zin-dropdown: 5000;
+$zin-resizable: 5000;
+$zin-scroll-to-top: 5000;
+$zin-invite-text: 5000;
+$zin-modal-bg: 8000;
+$zin-coming-soon: 8000;
+$zin-modal-content: 9000;
+$zin-auto-login: 9500;
+$zin-fb-dialog: 10001; // set by facebook, we do not control this
+
+
+@import "bootstrap/variables";

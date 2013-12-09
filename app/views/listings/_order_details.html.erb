@@ -1,0 +1,98 @@
+<p>
+  <%= link_to '#order-details-content', id: 'details-show', data: {toggle: 'collapse'} do %>
+    Order details
+    <%= content_tag(:span, '', :class => 'caret') %>
+  <% end %>
+</p>
+
+<div class="content row collapse" id="order-details-content">
+  <div id="order-status" class="section-block span16">
+    <h3 class="pull-left">Order status: <span class="strong"><%= order_details_status listing.order %></span></h3>
+    <%= link_to 'Printable Invoice', invoice_listing_path(listing) , :class => 'button right-button' %>
+  </div>
+
+  <div id="order-summary" class="section-block span8">
+    <h5>Order #<%= listing.order.reference_number %></h5>
+    <% unless listing.photos.empty? %>
+      <%= listing_photo_tag(listing.photos.first, :medium) %>
+    <% end %>
+    <p>
+      Order Date: <%= date(listing.order.created_at) %><br />
+      Listing Title: <%= listing.title %><br />
+      Price: <%= number_to_currency listing.price %><br />
+      Shipping: <%= number_to_currency(listing.shipping? ? listing.shipping : 0) %><br />
+
+      <% if current_user == listing.buyer -%>
+        Marketplace Fees: <%= listing.buyer_fee?? number_to_currency(listing.buyer_fee) : 'Paid by seller' %><br />
+        <% if listing.order.credit_applied? %>
+          Credits: (<%= number_to_currency listing.order.credit_amount %>)<br/>
+        <% end %>
+        Order total: <%= number_to_currency listing.order.total_price %><br />
+      <% elsif current_user == listing.seller -%>
+        Copious Fees: (<%= number_to_currency listing.seller_fee %>)<br />
+        Order Total (you earn): <%= number_to_currency listing.proceeds %><br />
+      <% end -%>
+    </p>
+  </div>
+
+  <div id="order-payment" class="section-block span8">
+    <h5>Payment</h5>
+    <ul>
+      <li class="payment-container">
+        <h6>Payment method</h6>
+        <p><%= listing.order.payment_type %></p>
+      </li>
+      <li class="payment-status-container">
+        <h6>Status</h6>
+        <p>
+          <% if listing.order.confirmed_at.present? %>
+            Payment made on <br /><%= date(listing.order.confirmed_at) %>
+          <% else %>
+            Payment in process
+          <% end %>
+        </p>
+      </li>
+    </ul>
+  </div>
+
+  <div id="order-shipping" class="section-block span8 clearfix">
+    <h5>Shipping</h5>
+    <p class="address"><%= postal_address listing.order.shipping_address %></p>
+    <% if listing.order.shipping_address_changeable? %>
+      <%= link_to 'Change shipping address', '#change-shipping', class: 'edit', data: {role: 'change-shipping'} %>
+      <div id="change-shipping" class="change-shipping" style="display:none">
+        <%= form_tag change_shipping_listing_path(listing), id: 'ship-to' do %>
+          <%= fieldset :legend => 'Ship to the following address:' do %>
+            <% listing.buyer.sorted_shipping_addresses.each do |address| %>
+              <%= field :address_id do %>
+                <%= radio_button_tag :address_id, address.id, listing.order.shipping_address.equivalent?(address) %>
+                <%= label_tag "address_id_#{address.id}", address.name %>
+                <div class="address-block"><%= postal_address address %></div>
+              <% end %>
+            <% end %>
+          <% end %>
+          <%= buttons :save_text => 'Save' %>
+        <% end %>
+        <span class="manage-shipping-addresses">
+          <%= link_to 'Manage shipping addresses', settings_shipping_addresses_path, id: 'manage-address' %>
+        </span>
+      </div>
+    <% end %>
+  </div>
+
+  <div id="order-seller" class="section-block span8 clear">
+    <h5>Seller - <span class="strong"><%= listing.seller.name %></span></h5>
+    <p class="info">
+      <%= user_avatar_medium listing.seller, {:class => 'text-adjacent'} %>
+      Email: <%= mail_to listing.seller.email %><br />
+    </p>
+  </div>
+
+  <div id="order-buyer" class="section-block span8 clearfix">
+    <h5>Buyer - <span class="strong"><%= listing.buyer.name %></span></h5>
+    <p class="info">
+      <%= user_avatar_medium listing.buyer, {:class => 'text-adjacent'} %>
+      Email: <%= mail_to listing.buyer.email %><br />
+    </p>
+  </div>
+</div>

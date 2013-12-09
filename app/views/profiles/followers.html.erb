@@ -1,0 +1,7 @@
+<%
+title t('.title', user: profile_user.display_name)
+javascript 'profile_show'
+fb_head_prefix
+%>
+
+<%= render 'users', cards: @cards, empty_msg: t('.empty', user: profile_user.firstname) %>

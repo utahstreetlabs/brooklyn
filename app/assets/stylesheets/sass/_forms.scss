@@ -1,0 +1,1461 @@
+// NAVIGATIONAL ELEMENTS
+
+.nav {
+  .section & {
+    margin-bottom: 0px;
+  }
+}
+
+// contain it to listing page columns only
+#right-col section, #left-col section, #center-col section, #seller-box {
+  width: 100%;
+  padding-bottom: 36px;
+  margin-bottom: 36px;
+  border-bottom: 1px solid $new-gray;
+  &:last-child {
+    margin-bottom: 0px;
+    border-bottom: none;
+  };
+}
+
+#center-col section {
+  border-bottom: none;
+  padding: 0px;
+  float: left;
+}
+.nav-vertical-list > li > a {
+  display: inline;
+  line-height: 27px;
+  font-weight: 400;
+  margin-right: 10px;
+  &:hover {
+    text-decoration: none;
+    color: white;
+    background-color: transparent;
+  }
+}
+
+.nav-vertical-list > li.selected, .selected > a {
+  background-color: $linkColor;
+  font-weight: 500;
+  color: #ffffff;
+  @include border-radius(1px);
+  padding-left: 10px;
+  margin-left: -10px;
+  font-size: 15px;
+  line-height: 27px;
+  .search-facet & {
+    /* for horizontal browse */
+    margin-left: 0;
+  }
+}
+
+.nav-vertical-list > li:hover {
+  background-color: $linkColor;
+  padding-left: 10px;
+  margin-left: -10px;
+  color: white;
+  font-weight: 500;
+  a {
+    color: $white;
+    font-weight: 500;
+  }
+  .facet-count {
+    color: $white;
+  }
+}
+
+.nav-vertical-list > li {
+  display: block;
+  padding: 5px 0px;
+  margin-left: 0px;
+  font-weight: 400;
+  color: $color-text-light;
+  > a {
+    margin-right: 5px;
+  }
+}
+
+
+// FEED MENU
+.nav-container {
+  text-align: center;
+  border-bottom: 1px solid $border-color-dark;
+  height: 36px;
+  margin: 10px 0 40px 0;
+  #your-navigation & {
+    height: 32px;
+    float: left;
+    width: 100%;
+  }
+  &.nav-container-small { /* #invite-friends-modal */
+    text-align: left;
+    height: 34px;
+    margin: -10px 0 20px 0;
+    .nav-tabs {
+      width: 100%;
+    }
+    li {
+      font-size: 18px; /* h3 */
+      line-height: 24px;
+      font-weight: 500;
+    }
+  }
+}
+.nav-tabs, .nav-sort {
+  float: none;
+  width: auto;
+  height: 36px;
+  display: inline-block;
+  border: none;
+  margin: 0;
+  padding: 0;
+  li {
+    font-family: $styledFontFamily;
+    font-size: 24px; /* h2 */
+    font-weight: 400;
+    line-height: 26px;
+    color: $text;
+    display: inline-block;
+    position: relative;
+    float: left;
+    padding: 0;
+    span {
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+      color: inherit;
+    }
+    a:hover {
+      text-decoration: none;
+    }
+    &:hover {
+      border-bottom: 2px solid lighten($linkColor, 7%);
+    }
+    &.selected, &.active {
+      color: $linkColor;
+      border-bottom: 2px solid $linkColor;
+      &.dropdown {
+        color: $linkColor;
+      }
+    }
+  }
+  .hero & {
+    li {
+      font-size: 26px; /* for feed */
+    }
+  }
+  &#sort-container, #listings & { /* for search&browse page + profile page */
+    /* XXX CONSOLIDATE  this should be defined on a higher level, like .nav-tabs-small */
+    height: 32px;
+    li {
+      font-size: 20px;
+      a {
+        padding: 0 15px 2px;
+      }
+      &:hover {
+        padding-bottom: 4px;
+      }
+    }
+  }
+  #listings & {
+    li:hover {
+      padding-bottom: 6px;
+    }
+    .active:hover {
+      padding-bottom: 8px;
+    }
+    .dropdown:hover {
+      padding-bottom: 0;
+    }
+    .dropdown-menu li {
+      font-size: 18px;
+    }
+  }
+}
+.nav-sort li:hover {
+  padding-bottom: 8px;
+}
+
+// for logged in homepage only
+.homepage_logged_in .nav-tabs li:hover {
+  padding-bottom: 8px;
+}
+
+// for BROWSE MENU
+// also for user-stats
+.less-spacing > li {
+  padding: 0px;
+}
+
+
+// menu
+.menu > li > a {
+  display: block;
+}
+
+// USER STATS FOR PROFILE PAGE
+.nav-stats {
+  > li {
+    padding: 2px 0px 2px 30px;
+    &:hover {
+      padding-left: 40px;
+      > a > span, > div > a {
+        color: $white !important;
+        font-weight: 600 !important;
+      }
+    }
+    > a, > div > a {
+      display: block;
+      font-size: 14px;
+      line-height: 25px;
+    }
+    > div > a {
+      text-transform: uppercase;
+    }
+  }
+  // FOR USER STRIPS
+  .user-strip & {
+    width: 224px;
+    > li {
+      padding: 1px 0px 1px 26px;
+      &:hover {
+        padding-left: 36px;
+      };
+      > a {
+        font-size: 14px;
+        line-height: 23px;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.stats-feedback, .stats-sale, .stats-like, .stats-following, .stats-followers {
+  background-repeat: no-repeat;
+  background-image: image-url("layout/icons-sprites2.png");
+  a {
+    color: $color-text-subtle;
+  }
+  span {
+    color: $linkColor;
+    margin-right: 7px;
+  }
+}
+.stats-feedback {
+  background-position: -54px -610px;
+  &:hover {
+    background-position: -45px -663px;
+    a {
+      text-decoration: none !important;
+    }
+  }
+  a {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px !important;
+    text-transform: uppercase;
+    &:hover {
+      text-decoration: none !important;
+    };
+  }
+}
+.stats-sale {
+  background-position: -55px -189px;
+  .user-strip & {
+    background-position: -58px -462px;
+    &:hover {
+      background-position: -48px -491px;
+    };
+  }
+  &:hover {
+    background-position: -45px -221px;
+  }
+}
+.stats-like {
+  background-position: -56px 2px;
+  .user-strip & {
+    background-position: -58px -290px;
+    &:hover {
+      background-position: -48px -316px;
+    };
+  }
+  &:hover {
+    background-position: -45px -27px;
+  }
+}
+.stats-following {
+  background-position: -55px -61px;
+  .user-strip & {
+    background-position: -57px -346px;
+    &:hover {
+      background-position: -47px -377px;
+    };
+  }
+  &:hover {
+    background-position: -45px -95px;
+  }
+}
+.stats-followers {
+  background-position: -56px -126px;
+  .user-strip & {
+    background-position: -60px -405px;
+    &:hover {
+      background-position: -50px -433px;
+    };
+  }
+  &:hover {
+    background-position: -46px -157px;
+  }
+}
+
+// USER STRIP
+//=============
+.user-strip {
+  > li {
+    float: left;
+    margin-bottom: 40px;
+  }
+  li > .pull-left {
+    width: 282px;
+  }
+  li > .pull-right {
+    width: 446px;
+  }
+  .avatar {
+    img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+  .thumbnails {
+    margin-top: 5px;
+    width: 100%;
+    li {
+      margin: 0px 7px 0px 0px;
+      img {
+        width: 100px;
+        height: 100px;
+      }
+      &:last-child {
+        margin-right: 0px;
+      };
+    }
+  }
+  h4 {
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 37px;
+    color: $color-title;
+    padding-right: 10px;
+    margin: 4px 0px 13px 0px;
+    display: block;
+    float: none;
+    width: 224px;
+    height: 37px;
+    word-wrap: normal;
+  }
+  .follow-button {
+    margin: 6px 0px;
+  }
+  .close-button {
+    margin-top: 13px;
+    background-repeat: no-repeat;
+    background-image: image-url("layout/icons-sprites2.png");
+    background-position: 17px -552px;
+    width: 40px;
+    height: 20px;
+    float: right;
+    opacity: 0.2;
+    &:hover {
+      @include transition(1s);
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+}
+
+fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  > .legend {
+    font-family: $styledFontFamily;
+    font-size: 24px; /* h2 size */
+    line-height: $baseLineHeight * 1.5;
+    font-weight: 500;
+    margin-top: -10px;
+    margin-bottom: 20px;
+    padding: 0 0 10px 0;
+    color: $new-color-header;
+  }
+  .listings_purchase_payment & > .legend {
+    font-size: 19px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: 16px;
+    margin-bottom: 5px;
+  }
+}
+
+table {
+  td.right-align {
+    text-align: right; } }
+
+form ol, form ul {
+  list-style-type: none;
+}
+
+form li {
+  margin: 0px 0px 12px 0px;
+  padding: 0;
+  clear: left;
+}
+
+form li.inline {
+  width: 24%;
+  margin-right: 1%;
+  float: left;
+  clear: none; }
+
+
+// REQUIRED ASTERIX LABEL
+/*
+form label abbr, form table th abbr {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: normal;
+  vertical-align: bottom;
+  border-bottom: none; }
+*/
+/*
+input[type="password"] {
+  width: 23%; }
+*/
+
+.action-container input[type="text"], .action-container textarea {
+  width: 80%;
+  margin-bottom: 10px !important;
+  line-height: 21px;
+  padding: 5px;
+  float: left;
+  clear: both; }
+
+.inline input[type="text"], .inline input[type="password"] {
+  width: 96%; }
+
+.inline select {
+  width: 100%; }
+
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="file"],
+textarea,
+select {
+  &::-webkit-input-placeholder { color: $grayLighter; }
+  &:-moz-placeholder           { color: $grayLighter; }
+  &.hide-placeholder {
+    &::-webkit-input-placeholder { color: white; }
+    &:-moz-placeholder           { color: white; }
+  }
+}
+
+textarea,
+select {
+  @include transition("border-color");
+}
+
+input, textarea {
+  @include box-shadow(inset);
+  $transition: border linear .2s, box-shadow linear .2s;
+  @include transition($transition);
+}
+
+//   SELECT
+//--------------------------
+select {
+  background-image: none;
+  height: 33px;
+  width: inherit;
+  margin-top: 2px;
+  @include transition("border-color");
+}
+
+// Set the height of select and file controls to match text inputs
+select, input[type="file"] {
+  *margin-top: 4px; /* For IE7, add top margin to align select with labels */
+  line-height: 20px;
+}
+
+
+//   HELP TEXT
+//----------------
+
+form .help_text, .help_text {
+  font-size: $smallFontSize;
+  color: $color-text-light;
+  display: inline;
+  float: left;
+  margin: -10px 0px 15px;
+  > a {
+    opacity: 0.7;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  .listing_edit &, .new_listing_photo & {
+    display: block;
+    float: none;
+    margin: -9px 0px 10px;
+  }
+  .big-label &, .optional & {
+    font-family: $styledFontFamily;
+    display: inline;
+    font-size: 14px;
+    line-height: 18px;
+    float: none;
+    margin: 0px 0px 0px 5px;
+  }
+  .label &, label & {
+    font-family: $sansserifFontFamily;
+    font-weight: 400;
+    font-style: normal;
+    display: inline;
+    line-height: 20px;
+    float: none;
+    margin: 0px 0px 0px 5px;
+  }
+  &.checkbox-help, &.radio-help {
+    margin: 0px 0px 10px 21px;
+  }
+}
+
+.help_text.inline {
+  display: inline;
+}
+
+.help_text .tags {
+  margin: 0 !important; }
+
+.help_text .tags li {
+  @include inline-block;
+  margin: 0;
+  margin-right: 5px; }
+
+
+// CHECKBOXES & RADIOS
+// -------------------
+
+// Indent the labels to position radios/checkboxes as hanging
+.radio, .checkbox {
+  display: inline-block;
+  font-weight: 400;
+  margin-bottom: 0px;
+  text-transform: none;
+  .well & {
+    display: block;
+    margin-bottom: 5px;
+    padding-left: 20px;
+    /* XXX DELETE  up to here the bootstrap's default. let's go back to that soon */
+    word-wrap: break-word;
+    word-break: break-word;
+    color: $text-input;
+    line-height: 16px;
+  }
+}
+
+
+
+// FOR INVITE BY MAIL ONLY
+.checkbox-table-holder {
+  max-height: 400px;
+  min-height: 40px;
+  overflow: auto;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 3px solid $border; }
+
+.checkbox-table {
+  tr.hoverable:hover td,
+  tr.hoverable.hover td,
+  tr.hoverable:focus td,
+  tr.hoverable.focus td {
+    background-color: $grayLight; }
+  td {
+    vertical-align: middle;
+    padding: 0 !important; }
+  input[type="checkbox"] {
+    vertical-align: baseline; }
+  label {
+    font-size: $baseFontSize; }
+  tr.hoverable label {
+    width: 100%; } }
+
+.toggle-all-row {
+  input[type="checkbox"] {
+    vertical-align: baseline;
+    margin-right: 10px;
+    margin-left: 10px; }
+  label {
+    display: inline;
+    font-size: $baseFontSize; } }
+
+
+// FLOATING LIST
+// -------------------
+
+@mixin floating-list($bgcolor: $white) {
+  display: none;
+  position: absolute;
+  @include border-radius(1px);
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  background-color: $white;
+  border: 1px solid $border;
+  margin: 0;
+  top: 0;
+  z-index: $zin-floating-list;
+  text-align: left;
+  font-family: $styledFontFamily;
+  font-size: $baseFontSize;
+  li {
+    line-height: 33px;
+    display: block;
+    cursor: pointer;
+    border-bottom: 1px solid #efefef;
+    white-space: nowrap;
+    padding: 0px 10px;
+    @include border-radius(0px);
+    a {
+      display: block;
+      color: $linkColor;
+      -webkit-transition: none; }
+      .ui-state-hover, .ui-state-active {
+        color: white;
+        font-weight: 600;
+        text-decoration: none;
+        background: $color-hover-list-light;
+        padding: 0px 10px;
+        margin: 0px -10px;
+      }
+  }
+  li:hover,
+  li.hover,
+  li:focus,
+  li.focus {
+    background-color: $color-hover-list-light;
+    a {
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0px;
+      margin: 0px;
+    }
+  }
+  li:last-child {
+    border-bottom: none; }
+  div.loading_feedback {
+    height: 30px;
+    background: transparent image-url("layout/ajax_loader.gif") no-repeat scroll center center;
+  }
+}
+
+ul.ui-autocomplete {
+  @include floating-list; }
+
+
+// - Tags
+// -------
+.tag-interaction {
+  font-size: 14px;
+  font-weight: 400;
+  color: $text-color-dark;
+  display: block;
+  float: left;
+  height: 32px;
+  width: auto;
+  padding: 4px 12px;
+  @include border-radius(2px);
+  margin: 0px 15px;
+  background-color: $button-bg-color;
+  position: relative;
+  white-space: nowrap;
+  &:before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -18px;
+    width: 31px;
+    height: 35px;
+    float: right;
+    background-image: image-url("icons/icons-sprite/icons-sprite.png");
+    background-position: -100px -229px;
+    background-repeat: no-repeat;
+  }
+  .tag-remover {
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    position: absolute;
+    top: 4px;
+    right: -7px;
+    display: none;
+  }
+  span {
+    display: block;
+  }
+  &:hover {
+    background-color: darken($button-bg-color, 12%);
+    text-decoration: none;
+    &:before {
+      background-position: -138px -229px;
+      background-repeat: no-repeat;
+    };
+    .tag-remover {
+      display: block;
+    }
+  }
+  // FOR PRODUCT CARDS
+  .product-info & {
+    padding: 3px 4px 3px 8px;
+    margin: 0px 25px 0px 0px;
+    height: 23px;
+    color: $color-text;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0.3px;
+    &:before {
+      height: 23px;
+      margin-top: -3px;
+      margin-right: -20px;
+      background-position: 0px -59px;
+    }
+    &:hover {
+      // SIZE TAGS ON PRODUCT CARDS ARE NOT LINKS
+      cursor: default;
+      background-color: #F0F0F0;
+      color: $color-text;
+      &:before {
+        background-position: 0px -59px;
+      };
+    }
+  }
+  #selection-container & {
+    margin-bottom: 10px;
+  }
+}
+
+
+// PROGRESS BAR
+// --------------
+.progress-bar-container {
+  float: left;
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  width: 555px;
+  margin-left: -259px;
+  z-index: $zin-progress-bar;
+  .progress-bar {
+    float: left;
+    height: 30px;
+    border: none;
+    margin: 0px;
+    td {
+      float: left;
+      height: 30px !important;
+      border: none;
+      padding: 0px;
+      .progress-number, .progress-text {
+        float: left;
+        font-size: 22px;
+        line-height: 22px;
+        font-weight: 400;
+        padding: 0px 3px;
+        color: $color-text-light;
+        display: inline-block; }
+      .progress-number {
+        padding: 0px;
+        margin: 0px 6px;
+        font-size: 14px;
+        line-height: 27px;
+      }
+      .progress-text {
+        padding-right: 30px;
+        margin-right: 10px;
+        font-size: 14px;
+        line-height: 27px;
+      }
+    }
+    .current {
+      position: relative;
+      .progress-text {
+        font-weight: 600;
+        color: $white;
+      }
+      .progress-number {
+        color: $white;
+        font-weight: 600;
+      }
+      &:after {
+        content: '';
+        display: inline-block;
+        border-bottom: 9px solid $white;
+        border-left: 9px solid transparent;
+        border-right: 9px solid transparent;
+        border-top: 9px solid transparent;
+        position: absolute;
+        bottom: -12px;
+        left: 35%;
+      }
+    }
+    td:last-child {
+      .progress-text {
+        background: transparent !important;
+        padding-right: 0px;
+        margin-right: 5px;
+      }
+    }
+  }
+  &.order {
+    @extend .span12;
+    @extend .kill-margin-left;
+    margin: -2px 0px 10px;
+    border-bottom: 1px solid $border-darker;
+    padding-bottom: 7px;
+    position: relative;
+    top: 0px;
+    right: 0px;
+    td {
+      width: 25%;
+      text-align: center;
+      font-size: 18px;
+      line-height: 27px;
+      font-weight: 400;
+      &.selected {
+        font-weight: 600;
+        color: $color-title;
+        position: relative;
+        &:after {
+          content: '';
+          display: inline-block;
+          border-bottom: 9px solid $white;
+          border-left: 9px solid transparent;
+          border-right: 9px solid transparent;
+          border-top: 9px solid transparent;
+          position: absolute;
+          bottom: -9px;
+          left: 48%;
+        }
+        &:before {
+          content: '';
+          display: inline-block;
+          border-bottom: 9px solid $border-darker;
+          border-left: 9px solid transparent;
+          border-right: 9px solid transparent;
+          border-top: 9px solid transparent;
+          position: absolute;
+          bottom: -8px;
+          left: 48%;
+        }
+      }
+    }
+  }
+  .signup_buyer_profiles_new &, .signup_buyer_profiles_create &, .signup_buyer_interests_index &, .signup_buyer_people_index &, .signup_buyer_friends_index & {
+    right: 0px;
+    width: auto;
+    min-width: 300px;
+    z-index: $zin-sticky-header;
+  }
+}
+
+
+
+// USER CARD STATS  (listing page 2.0)
+// ----------------
+#listed-by-stats-container {
+  min-height: 47px;
+  margin-top: 19px;
+  margin-bottom: -16px;
+  display: block;
+  float: left;
+  li {
+    float: left;
+    width: 70px;
+    margin-right: 5px;
+    border: none;
+    &:last-child {
+      margin-right: 0px;
+    }
+  }
+  a {
+    float: left;
+    display: block;
+    width: 74px;
+    margin: 0px;
+    padding: 0px;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+.listed-by-stats {
+  font-family: $styledFontFamily;
+  font-size: 22px;
+  line-height: 24px;
+  float: left;
+  clear: both;
+}
+.listed-by-stats-header {
+  text-transform: uppercase;
+  font-family: $sansserifFontFamily;
+  font-size: 10px;
+  line-height: 13px;
+  font-weight: 400;
+  color: $new-text-gray;
+  margin: 6px 0px 4px;
+  float: left;
+  clear: both;
+  display: block;
+  &:hover {
+    text-decoration: none !important;
+  }
+}
+
+// RECEIPT DISPENSER
+// -------------------
+
+// CHECKOUT FLOW
+.right-pane {
+  float: left;
+  z-index: $zin-checkout-right-pane;
+  position: relative;
+  width: 100%;
+  label {
+    margin-left: 16px;
+    margin-bottom: 11px;
+  }
+  #buyer-price-details, #shipping-address-details, .credits-window {
+    label {
+      margin-left: 0px;
+    }
+    background: $white;
+    padding: 16px;
+    border: 1px solid #dfdfdf;
+    -webkit-box-shadow: 1px 1px 1px transparentize($black, .97);
+    -moz-box-shadow: 1px 1px 1px transparentize($black, .97);
+    box-shadow: 1px 1px 1px transparentize($black, .97);
+    width: 100%;
+    .edit {
+      float: right;
+      display: inline;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 19px;
+      opacity: 0.5;
+    }
+    .edit:hover {
+      opacity: 1;
+    }
+    hr {
+      margin: 7px auto;
+      width: 100%;
+    }
+    .remaining-credits {
+      font-size: 14px;
+      line-height: 15px;
+      color: $grayLight; }
+    .weak {
+      font-size: $baseFontSize * .95;
+      line-height: 17px;
+      display: inline-block;
+      color: #aaaaaa !important;
+      margin: 16px 0px 0px 0px;
+    }
+    .price-detail {
+      font-size: 16px;
+      margin-bottom: 5px;
+      font-weight: 400;
+      .price-detail-name {
+        text-align: left;
+      }
+      .price-detail-value {
+        @include number-input;
+        float: right;
+        span {
+          margin-left: 5px;
+        }
+      }
+      .primary {
+        font-weight: 600;
+      }
+    }
+    #total-price {
+      font-weight: 600;
+    }
+  .total-container {
+    border-top: 1px solid $border;
+    margin-top: 10px;
+    padding-top: 7px;
+    .price-detail-name {
+      font-weight: 600;
+    }
+  }
+  .credits-window {
+    .credits-applied-container {
+      .price-detail-value {
+        color: $green;
+        margin-left: 11px !important;
+      }
+    }
+  }
+  }
+  form, .buttons {
+    margin-bottom: 0px;
+    .loading-spinner {
+      top: 7px;
+      left: 65px;
+    }
+  }
+  // FOR CREATE A LISTING PAGE
+  .pricing-fieldset &, .pricing-fieldset-new & {
+    @extend .span4;
+    float: right;
+    top: 298px;
+    right: 16px;
+    position: absolute;
+    z-index: -1;
+  }
+  .pricing-fieldset-new & {
+    top: 67px;
+    right: 20px;
+  }
+}
+
+// CHECKOUT FLOW RIGHT SIDEBAR
+div.order-details-window {
+  .reserved-time-container {
+    width: 262px;
+    margin: -16px -16px 10px -16px;
+    border-bottom: 1px solid #dfdfdf;
+    padding: 8px 16px;
+    float: left;
+    font-size: 17px;
+    h4 {
+      float: left;
+      padding: 5px 0px;
+      margin-right: 17px; }
+    .reserved-time-bg {
+      font-size: 17px;
+      font-weight: bold;
+      @include text-shadow(0 1px 0 $white);
+      color: #38312f;
+      padding: 3px;
+      border: 1px solid;
+      float: left;
+      background: white;
+      border-radius: 3px;
+      position: relative;
+      z-index: $zin-reserved-time-bg;
+      border-style: solid;
+      border-width: 1px;
+      border-color: #cacaca;
+      &.left-border {
+        margin-right: 1px; }
+      .reserved-time-bg-extra {
+        position: absolute;
+        bottom: -3px;
+        top: -1px;
+        left: -1px;
+        right: -1px;
+        border: 1px solid #cacaca;
+        border-radius: 3px;
+        background: #fafafa;
+        z-index: -1; } }
+    .reserved-time-bg:before {
+      content: "";
+      position: absolute;
+      bottom: 1px;
+      top: -1px;
+      left: -1px;
+      right: -1px;
+      border: 1px solid #bcbcbc;
+      border-radius: 3px;
+      -webkit-box-shadow: 0px -1px 0px white, 0px 1px 0px white;
+      -moz-box-shadow: 0px -1px 0px white, 0px 1px 0px white;
+      box-shadow: 0px -1px 0px white, 0px 1px 0px white;
+      background: white;
+      background: -moz-linear-gradient(top, white 0%, #f2f2f2 50%, #444444 51%, #eaeaea 52%, #f8f8f8 100%);
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(50%, #f2f2f2), color-stop(51%, #444444), color-stop(52%, #eaeaea), color-stop(100%, #f8f8f8));
+      background: -webkit-linear-gradient(top, white 0%, #f2f2f2 50%, #444444 51%, #eaeaea 52%, #f8f8f8 100%);
+      background: -o-linear-gradient(top, white 0%, #f2f2f2 50%, #444444 51%, #eaeaea 52%, #f8f8f8 100%);
+      background: -ms-linear-gradient(top, white 0%, #f2f2f2 50%, #444444 51%, #eaeaea 52%, #f8f8f8 100%);
+      background: linear-gradient(top, white 0%, #f2f2f2 50%, #444444 51%, #eaeaea 52%, #f8f8f8 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f8f8f8',GradientType=0 );
+      z-index: -1; }
+    .reserved-time-separator {
+      float: left;
+      margin: 0px 3px;
+      line-height: 26px;
+      font-weight: bold; }
+    &.expired {
+      .reserved-time-bg {
+        color: red !important;
+      }
+    }
+  }
+}
+
+// CREATE A LISTING TITLE INPUT
+.char-limit-holder {
+  min-width: 50px;
+  display: inline-block;
+  text-align: right;
+  padding: 5px 0px;
+  .char-limit-number {
+    padding-right: 3px;
+  }
+  #field_bio & {
+    margin-left: 5px;
+  }
+}
+
+
+// Grid style input sizes
+/* XXX DELETE once we standardize all form elements */
+/* need to keep this for create a listing page, otherwise it'll blow up */
+input[class*="span"], select[class*="span"], textarea[class*="span"], label[class*="span"], .uneditable-input {
+  float: none;
+  margin-left: 0;
+}
+
+
+// FOCUS STATE
+// -----------
+
+input:focus, textarea:focus, input[type="text"]:focus, input[type="password"]:focus, textarea:focus, select:focus {
+  border-color: $linkColor;
+  outline: 1px auto $linkColor;
+  @include box-shadow(inset 0px 0px 3px 2px transparentize($linkColor, .95));
+  @include box-shadow(0px 0px 3px transparentize($linkColor, .4));
+}
+
+input[disabled]:focus, select[disabled]:focus, textarea[disabled]:focus, input[readonly]:focus, select[readonly]:focus, textarea[readonly]:focus, .uneditable-input:focus {
+  border-color: $input-border-disabled;
+  @include disable-box-shadow;
+  @include box-shadow(inset 0 1px 6px rgba(0,0,0,.1));
+}
+
+
+
+// needed for aviary photo update forms - hide them off the page
+.photo-update-forms {
+  position: absolute;
+  top: 0px;
+  left: -20px;
+  width: 10px;
+  overflow: hidden;
+}
+
+
+// INLINE VALIDATION
+// -----------------
+
+// ACCOUNT SETTINGS
+.errorlist, .error, .errors, .login-error {
+  color: $color-alert;
+}
+
+div.validlist {
+  color: $color-success;
+}
+
+label.errors, label.error {
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+
+input.error, input.errors {
+  border-color: transparentize($color-alert, 0.25);
+}
+
+#identity_new > div.error > input {
+  border: 1px solid transparentize($color-alert, 0.25);
+}
+
+#identity_postal_code, #identity_phone_number {
+  &.margin-right {
+    margin-right: 10px;
+  }
+}
+
+// CHECKOUT FLOW
+div.errorlist, div.valid {
+  line-height: 20px;
+  padding-left: 24px;
+  padding-top: 6px;
+  background-repeat: no-repeat;
+  background-image: image-url("layout/icons-sprites2.png") !important;
+  background-position: -2px -709px;
+}
+
+div.valid {
+  background-position: -1px -684px;
+}
+
+input.error, input.errors {
+  border-color: transparentize($color-alert, 0.25);
+}
+
+form ul.errorlist {
+  margin: 0; }
+
+form ul.errorlist li {
+  margin: 0; }
+
+.error.pull-right, .valid.pull-right {
+  float: right !important;
+}
+
+
+// CLOSE-BUTTON
+/*  all close buttons will have .close-button but depending on its parent class, the styling will vary  */
+.close-button {
+  .invite-banner-content & { /* invite banner */
+    float: right;
+    background-image: image-url("layout/icons-sprite-listingpage_v2_2.png");
+    background-position: 0px -511px;
+    width: 15px;
+    height: 15px;
+    margin: -10px -19px 0px 0px;
+    // styling to override the button
+    background-color: transparent;
+    @include disable-box-shadow;
+    padding: 0;
+  }
+}
+
+// Search & Browse Winnow
+.facet-name {
+  white-space: nowrap;
+}
+
+
+// COPIOUS CUSTOM INPUT ELEMENTS
+// ====================================================================
+
+// select input
+.copious-input-select {
+  width: 100%;
+  /* XXX CONSOLIDATE same styling as input textfiled elements */
+  border: 1px solid $border;
+  padding: 0;
+  @include border-radius(3px);
+  background: $white;
+  margin-bottom: 16px;
+  height: 42px;
+  .listings_external_new &, .listings_external_new_bookmarklet & {
+    /* XXX DELETE once default width for all form elements are chosen */
+    @extend .span8;
+    /* XXX DELETE once we standardize all form elements */
+    @extend .kill-margin-left;
+    float: none;
+  }
+  [data-role='dropdown-title'] {
+    overflow: hidden;
+    width: 90%; /* save listing modal, create external/internal listings */
+    height: 24px;
+  }
+  .listings_setup & {
+    /* for create internal/external listings pages */
+    /* XXX DELETE once default width for all form elements are chosen */
+    @extend .span6;
+    /* XXX DELETE once we standardize all form elements */
+    @extend .kill-margin-left;
+  }
+  .dropdown-toggle {
+    display: block;
+    padding: 8px 6px;
+    color: $text-color-dark;
+    line-height: 24px; /* cuz .copious-input-select's height is 40px */
+  }
+  .caret {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    /* XXX DELETE all carets should be in this size anyways. update later*/
+    border-top: 6px solid $text-color-dark;
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+  }
+  .dropdown-menu {
+    margin-top: 0;
+    padding-top: 6px;
+    top: -1px;
+    right: -1px;
+    left: -1px;
+    height: 172px;
+    width: auto;
+    border: 1px solid $border;
+    overflow: scroll;
+    overflow-x: hidden;
+    @include border-radius(3px);
+    li {
+      margin: 0;
+      padding: 0;
+      a {
+        padding: 4px 6px;
+        color: $text-color-dark;
+        /* overriding bootstrap's default */
+        &:hover, &:focus {
+          background-image: none;
+          background-color: lighten($primary-button-bg-color, 40%);
+        }
+      }
+    }
+    .divider {
+      margin: 9px 0;
+      border-bottom: 1px solid $border;
+    }
+  }
+  /* add new collection input */
+  .input-append {
+    padding: 0 6px;
+    margin-bottom: 0;
+    input {
+      @include border-radius(3px 0 0 3px);
+      margin-bottom: 10px;
+    }
+    .btn:last-child {
+      @include border-radius(0 3px 3px 0);
+    }
+    .btn-regular-submit {
+      @include border-radius(0 3px 3px 0);
+      display: inline-block;
+      font-weight: 500;
+      padding: 8px 10px; /* same as .xsmall.btn */
+      &:hover, &:focus { /* need to override .dropdown-menu li a:hover */
+        /* XXX CONSOLIDATE  use the mixin link-hover-active() */
+        color: $text-color-dark;
+        @include transition(all);
+        text-decoration: none;
+        @include gradient-vertical-three-colors($startColor: #F2F2F2, $midColor: darken(#F2F2F2, 3%), $colorStop: 70%, $endColor: darken(#F2F2F2, 8%)); /* $midColor: #EAEAEA, $endColor: #E0E0E0 */
+        // gradient mixin's output for IE is not working properly
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F2F2F2', endColorstr='#E0E0E0', GradientType=0);
+        border-color: darken(#F2F2F2, 12%);
+      }
+    }
+    .help-inline {
+      display: block;
+      margin-top: -7px;
+      font-size: 12px;
+      width: 200px;
+    }
+  }
+  .add-new-collection-input {
+    width: 160px;
+    margin-bottom: 0;
+  }
+}
+
+
+
+// HR
+hr {
+  width: 100%;
+  border-top-color: $border-color;
+  margin: 3px 0;
+  &.more-space {
+    margin: 16px 0 10px;
+  }
+}
+
+// Well
+.well-header, .well-footer {
+  width: inherit;
+  padding: 20px;
+  margin: -20px -20px 0px;
+}
+.well-header {
+  border-bottom: 1px solid $white;
+  &.well-header-small { /* same structure as bootstrap's well and well-small */
+    padding: 14px 20px;
+  }
+  .listing-modal-body-content & {
+    float: left;
+    border-bottom: none;
+    padding: 0;
+    margin: 0 0 10px;
+  }
+}
+.well-body {
+  /* listing modal comment box only for now */
+  height: auto;
+}
+.well-footer {
+  height: 60px;
+  margin-top: 0;
+  margin-bottom: 0px;
+  &.well-footer-small {
+    padding: 14px 20px 0;
+    height: 46px;
+  }
+}
+.vertical-center-container {
+  display: table-cell;
+  vertical-align: middle;
+  height: 50px;
+  .listing-modal & {
+    margin-top: 3px;
+  }
+}
+
+// SLIDER
+// --------------------------------------------------------------
+.slider-selection {
+  background-color: $linkColor;
+  background-image: none;
+  border: 1px solid $linkColor;
+  @include box-shadow(inset 0 1px 1px rgba($white, 0.3));
+}
+.slider-handle {
+  position: absolute;
+  width: 26px;
+  height: 28px;
+  background-repeat: no-repeat;
+  background-image: image-url("icons/icons-sprite/icons-sprite.png");
+  background-position: -154px -735px;
+  background-color: transparent;
+  @include opacity(1);
+}
+.slider-track {
+  position: absolute;
+  cursor: pointer;
+}
+.slider.slider-horizontal {
+  height: 26px;
+  margin-top: 3px;
+  background-color: #EAEAEA;
+  border: 1px solid #E0E0E0;
+  @include border-radius(15px);
+  .slider-track {
+    height: 8px;
+    width: 280px;
+    top: 50%;
+    left: 10px;
+    margin-top: -4px;
+    background-color: $white;
+    background-image: none;
+    @include disable-box-shadow;
+    @include box-shadow(inset 0 1px 3px rgba(0,0,0,0.45));
+  }
+  .slider-handle {
+    margin-left: -13px;
+    margin-top: -8px;
+  }
+}

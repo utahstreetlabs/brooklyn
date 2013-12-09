@@ -1,0 +1,55 @@
+// -------------------------------------------------
+// COLORS
+// -------------------------------------------------
+// Copious pallete: Just a nice abrastration so you can work by color name.
+// Generally, if you want to tweak colors, this is where you'll do it.
+// -------------------------------------------------
+
+$green:  #1db76e;
+$orange: #ff8400;
+
+$grayLight: #aaaaaa;
+
+$border:        #cccccc;
+$grayLighter:  #EEEEEE;
+
+$border-input:           #cecece;
+$color-background-input:       #fdfdfc;
+$color-background-input-focus: #fbfaf7;
+
+$linkColor:            #009aaf;
+$linkColor-background: #f6fbff;
+
+$red: #ff002a;
+$white: white;
+$section_bg: $white;
+
+// base_color: a base color (generally black) that other colors are generated from.
+$base_color: $grayDark;
+
+// color1: main body text
+$color1: lighten($base_color, 20%);
+
+// color2: link color
+$linkColor: $linkColor;
+
+// color4: headers
+$color4: lighten($base_color, 40%);
+
+// color5: weaker text
+$color5: lighten($base_color, 60%);
+
+// color6: stronger text
+$color6: $base_color;
+
+// color7: errors
+$color7: $red;
+
+// color8: subtle rules and such
+$color8: lighten($base_color, 75%);
+
+// color9: extremely subtle screens and rules
+$color9: $color-text-subtle;
+
+// body_background_color: The main background color of the site
+$white: white;

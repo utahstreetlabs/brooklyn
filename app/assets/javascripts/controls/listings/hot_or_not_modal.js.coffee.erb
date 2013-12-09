@@ -1,0 +1,26 @@
+#= require 'copious/plugin'
+#= require 'copious/jsend'
+
+class HotOrNotModal
+  @LIKES_NEEDED_TO_CLOSE = <%= Brooklyn::Application.config.hot_or_not.likes_needed_for_completion %>
+
+  constructor: (@element) ->
+    @element.on 'click', '[data-action=listing-not],[data-action=listing-hot]', (event) =>
+      $button = $(event.currentTarget)
+      $.jsend.ajax($button.attr('href'), {}, $button.data('method')).then (data) =>
+        if data.likes_count? && (data.likes_count >= HotOrNotModal.LIKES_NEEDED_TO_CLOSE)
+          @element.modal('hide')
+          location.reload()
+        else
+          this.updateSuggestion(data.suggestions[0]) if data.suggestions? && data.suggestions[0]
+      false
+
+  updateSuggestion: (suggestion) =>
+    $('[data-action=listing-hot]').replaceWith(suggestion.hotButton) if suggestion.hotButton?
+    $('[data-action=listing-not]').replaceWith(suggestion.notButton) if suggestion.notButton?
+    $('img').replaceWith(suggestion.photo) if suggestion.photo?
+
+window.HotOrNotModal = HotOrNotModal
+jQuery ->
+  $.fn.hotOrNotModal = copious.plugin.componentPlugin(HotOrNotModal, 'hotOrNotModal')
+  $('#hot-or-not-modal').hotOrNotModal()

@@ -1,0 +1,13 @@
+<% without_trailing_link = false unless defined? without_trailing_link %>
+
+<% if listing.photos.first %>
+  <%= mailer_graf do %>
+    <%= mailer_link_to mailer_image_tag(listing.photos.first.version_url(:small)), listing_url(listing) %>
+  <% end %>
+<% end %>
+
+<% unless without_trailing_link %>
+  <%= mailer_graf do %>
+    <%= mailer_link_to listing.title, listing_url(listing) %>
+  <% end %>
+<% end %>

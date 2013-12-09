@@ -1,0 +1,12 @@
+<%# submission is handled by javascript - should there be a default action here? %>
+<%= form_tag '', :method => 'post', id: 'invite-form' do %>
+  <div class="toggle-all-row">
+    <%= check_box_tag 'select-all', 'select-all', true, { :id => 'email-toggle', :class => 'toggle-all-checkboxes' } %>
+    <%= label_tag 'email-toggle', 'Select All / None' %>
+  </div>
+  <%= content_tag :div, '', id: 'contacts-container', class: 'checkbox-table-holder',
+        :'data-contacts-path' => @contacts_path %>
+  <div class="buttons bigger_buttons right-buttons">
+    <%= save_button_tag 'Next' %>
+  </div>
+<% end %>

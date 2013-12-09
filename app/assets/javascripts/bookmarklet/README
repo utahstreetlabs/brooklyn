@@ -1,0 +1,10 @@
+The ender.js distribution in this directory is the default "jeesh"
+distribution.  Information on jeesh can be found here:
+https://github.com/ender-js/jeesh
+
+This distribution includes the following packages:
+domReady - a cross-browser domReady (https://github.com/ded/domready)
+Qwery - a fast light-weight selector engine (https://github.com/ded/qwery)
+Bonzo - a bullet-proof DOM utility (https://github.com/ded/bonzo)
+Bean - a multi-platform Event provider (https://github.com/fat/bean)
+

@@ -1,0 +1,116 @@
+<%
+title "Admin: #{@user.name}"
+%>
+
+<%= bootstrap_breadcrumb [['Admin', admin_dashboard_path], ['Users', admin_users_path], @user.name] %>
+
+<%= render partial: '/admin/users/user_info', locals: {user: @user} %>
+
+<% if can?(:update, @user) %>
+  <% if @user.registered? %>
+    <%= bootstrap_toolbar do %>
+      <%= bootstrap_button_group do %>
+        <% if can?(:grant, Credit) %>
+          <%= bootstrap_button '#', toggle_modal: :grant_credit, icon: 'gift', rel: :tooltip,
+                title: 'Grant credit' %>
+        <% end %>
+        <% if can?(:manage, UserSuggestion) %>
+          <%= bootstrap_button '#', toggle_modal: :manage_suggestions, icon: 'star', rel: :tooltip,
+                title: 'Manage interest suggestions' %>
+        <% end %>
+        <% if can?(:manage, UserAutofollow) %>
+          <%= admin_toggle_button :autofollow, @user.autofollowed?,
+                {url: add_admin_user_autofollows_path(user_id: @user.id), method: :post,
+                  title: 'Add to autofollow list'},
+                {url: remove_admin_user_autofollows_path(user_id: @user.id), method: :post,
+                  title: 'Remove from autofollow list'},
+                icon: 'heart' %>
+        <% end %>
+        <%= bootstrap_button '#', toggle_modal: :hot_or_not_suggestions, icon: 'ok', rel: :tooltip,
+              title: 'View hot or not suggestions' %>
+        <% unless @user == current_user %>
+          <% if can?(:grant_superuser, @user) %>
+            <%= admin_toggle_button :superuser, @user.superuser?,
+                  {url: admin_user_superuser_path(@user.id), method: :put, title: 'Grant superuser access'},
+                  {url: admin_user_superuser_path(@user.id), method: :delete, title: 'Revoke superuser access'},
+                  icon: 'volume-up' %>
+          <% end %>
+          <% if can?(:grant_admin, @user) && !@user.superuser? %>
+            <%= admin_toggle_button :admin, @user.admin?,
+                  {url: admin_user_admin_path(@user.id), title: 'Grant admin access'},
+                  {url: admin_user_admin_path(@user.id), title: 'Revoke admin access'},
+                  icon: 'volume-down' %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <%= bootstrap_modal :grant_credit, "Grant credit to #{@user.firstname}", mode: :admin,
+          refresh: '[data-role=user-info]' do %>
+      <%= render '/admin/users/credits/new_modal', user: @user, credit: Credit.new(amount: 0.00) %>
+    <% end %>
+    <%= bootstrap_modal :manage_suggestions, "Manage interest suggestions for #{@user.firstname}", mode: :admin,
+          refresh: '[data-role=user-info]' do %>
+      <%= render '/admin/users/suggestions/show_modal', user: @user %>
+    <% end %>
+    <%= bootstrap_modal :hot_or_not_suggestions, "Hot or Not suggestions for #{@user.firstname}", mode: :admin,
+          show_save: false, data: {loaded_modal: true, url: admin_user_hot_or_not_index_path(@user.id)} do %>
+    <% end %>
+  <% end %>
+
+  <%= bootstrap_button_group do %>
+    <% if can? :update, @user %>
+      <%= bootstrap_button 'Edit', edit_admin_user_path(@user.id), icon: 'edit' %>
+      <% if current_user.following?(@user) %>
+        <%= bootstrap_button 'Resend follow email', admin_user_follow_email_index_path(@user.id), method: :post,
+                             data: {action: 'resend-follow-email'} %>
+      <% end %>
+    <% end %>
+    <% if can?(:deactivate, @user) && @user.can_deactivate? && ! @user.has_unfinalized_orders? %>
+      <%= bootstrap_button 'Deactivate', deactivate_admin_user_path(@user.id), method: :post, condition: :danger,
+            data: {action: 'deactivate', confirm: "Are you sure you want to deactivate #{@user.name}?"},
+            icon: 'remove-sign', inverted_icon: true %>
+    <% end %>
+    <% if can?(:reactivate, @user) && @user.can_reactivate? %>
+      <%= bootstrap_button 'Reactivate', reactivate_admin_user_path(@user.id), method: :post, condition: :warning,
+                           data: {action: 'reactivate', confirm: "Are you sure you want to reactivate #{@user.name}?"},
+                           icon: 'plus-sign', inverted_icon: true %>
+    <% end %>
+    <% if can?(:destroy, @user) %>
+      <%= bootstrap_button 'Delete', admin_user_path(@user.id), method: :delete, danger: true,
+                           data: {action: :delete, confirm: "Are you sure you want to completely obliterate #{@user.name}?"},
+                           icon: :remove, inverted_icon: true %>
+    <% end %>
+  <% end %>
+
+  <h4>Deposit accounts</h4>
+  <% if @user.deposit_accounts.any? %>
+    <ul>
+      <% @user.deposit_accounts.each do |account| %>
+        <li>
+          <% if account.is_a?(BankAccount) %>
+            <%= account.name %>
+            <% if account.default? %>(default)<% end %><br>
+            <%= bank_account_number(account.last_four) %>
+          <% else %>
+            <%= account.email %>
+            <% if account.default? %>(default)<% end %><br>
+            PayPal
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>None</p>
+  <% end %>
+
+  <%= render partial: '/admin/annotatable', locals: {annotatable: @user} %>
+
+  <% if can?(:deactivate, @user) && @user.can_deactivate? && @user.has_unfinalized_orders? %>
+    <p>This user has unfinalized orders and cannot be deactivated.</p>
+    <ul>
+      <% @user.unfinalized_orders.each do |order| %>
+        <li><%= link_to "Order #{order.reference_number}", admin_order_path(order) %></li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>

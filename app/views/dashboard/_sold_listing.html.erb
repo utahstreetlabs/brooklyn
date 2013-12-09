@@ -1,0 +1,15 @@
+<tr data-listing="<%= listing.id %>">
+  <td>
+    <% if listing.photos.any? %>
+      <%= link_to listing_photo_tag(listing.photos.first, :small), listing_path(listing),
+            class: 'thumbnail text-adjacent'%>
+    <% end %>
+    <%= link_to listing.title, listing_path(listing) %>
+  </td>
+  <td class="numeric">
+    <strong><%= number_to_currency listing.total_price %></strong>
+  </td>
+  <td><%= date(listing.order.confirmed_at || listing.order.created_at) %></td>
+  <td class="name"><%= link_to_user_profile listing.buyer %></td>
+  <td class="status"><%= dash_order_status listing.order %><%= seller_order_next_steps listing.order %></td>
+</tr>

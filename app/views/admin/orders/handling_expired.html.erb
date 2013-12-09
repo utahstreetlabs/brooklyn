@@ -1,0 +1,42 @@
+<% title "Admin: Handling expired orders" %>
+
+<%= bootstrap_breadcrumb [['Admin', admin_dashboard_path], 'Handling expired orders'] %>
+
+<p>The handling period for these orders have expired without the items being shipped.</p>
+
+<h5>search by reference number, listing title, buyer name, or seller name</h5>
+
+<%= datagrid @orders, id: 'orders', pagination_theme: :bootstrap do |t| %>
+  <%= t.thead do |thead| %>
+    <%= thead.th :reference_number, title: 'Ref #' %>
+    <%= thead.th :listing %>
+    <%= thead.th :seller %>
+    <%= thead.th :buyer %>
+    <%= thead.th :created_at, title: 'Created at' %>
+    <%= thead.th :updated_at, title: 'Last updated at' %>
+    <%= thead.th :handling_expires, title: 'Handling expired', default: true, default_direction: :desc  %>
+  <% end %>
+  <%= t.tbody do |tbody, order| %>
+    <%= tbody.td class: 'refnum' do %>
+      <%= link_to order.reference_number, admin_order_path(order) %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= order.listing.title %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= order.listing.seller.name %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= order.buyer.name %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= date order.created_at %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= date order.updated_at %>
+    <% end %>
+    <%= tbody.td style: order.handling_expires < Time.now - 2.days ? 'color: red' : '' do %>
+      <%= date order.handling_expires %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -1,0 +1,11 @@
+<%
+title t(".title")
+signup_buyer_flow_step 1
+javascript 'signup_buyer' # XXX: add profile_new stuff
+hide_footer
+%>
+
+<%= adwords_tracking_pixel(:signup) %>
+
+<%= render partial: 'shared/profile_form', locals: { user: current_user,
+      path: signup_buyer_profile_path(secure: true) } %>

@@ -1,0 +1,36 @@
+<% title "Admin: Onboarding interests" %>
+
+<%= bootstrap_breadcrumb [
+  ['Admin', admin_dashboard_path],
+  'Onboarding interests'
+] %>
+
+<% if @interests.any? %>
+  <p>Reorder by dragging and dropping in the list.</p>
+
+  <%= bootstrap_table condensed: true, data: {role: 'sortable-table'} do %>
+    <tbody>
+      <% @interests.each do |interest| %>
+        <%= content_tag :tr, data: {interest: interest.id, role: 'interest',
+              :'reorder-url' => reorder_admin_onboarding_interest_path(interest)} do %>
+          <td class="span2">
+            <%= image_tag(interest.cover_photo? ? interest.cover_photo.px_30x30.url :
+                          'icons/profile_photo/px_30x30___default__.png', height: 30, width: 30) %>
+          </td>
+          <td><%= link_to interest.name, admin_interest_path(interest) %></td>
+          <td class="span1">
+            <%= bootstrap_button_group do %>
+              <%= bootstrap_button nil, admin_onboarding_interest_path(interest),
+                    condition: :danger, size: :mini, icon: :remove, inverted_icon: true, rel: :tooltip,
+                    title: "Remove #{interest.name}",
+                    data: {method: :delete, action: :delete,
+                           confirm: 'Are you sure you want to remove this interest?'} %>
+            <% end %>
+          </td>
+        <% end %>
+      <% end %>
+    </tbody>
+  <% end %>
+<% else %>
+  <p>No interests have been added to the list yet. <%= link_to 'Find one to add', admin_interests_path %>.</p>
+<% end %>

@@ -1,0 +1,29 @@
+<%
+hide_masthead
+@body_class = 'full-signup'
+hide_footer
+%>
+<div class="signup-modal-container clear">
+  <div class="signup-modal">
+    <%= image_tag 'layout/copious_logo_big.png', class: 'main-logo centered' %>
+    <div class="divider"></div>
+    <span class="main-copy">The marketplace where everything tells a story.</span>
+    <div class="connect-container">
+      <div class="incentives-container">
+        Join now and get <span class="dollar-sign">$</span><span class="strong">5</span> free.
+      </div>
+      <%= link_to_facebook_connect %><br/>
+      <span class="left-line">&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+      <%= link_to 'or Connect with Twitter', auth_path(:twitter, buyer_signup: true), class: 'twitter signup'%>
+      <span class="right-line">&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+    </div>
+
+    <div class="incentives-container" style="display: none;">
+      Connect now and earn <span class="dollar-sign">$</span><span class="strong">5</span> instantly.
+    </div>
+    <div class="divider" style="margin: 0px;float:left;">
+    <div class="login-container">
+      <span class="already-registered">Already registered? <%= link_to 'Log in', login_path %></span>
+    </div>
+  </div>
+</div>

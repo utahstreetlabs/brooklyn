@@ -1,0 +1,11 @@
+<%= word_wrap %Q[Hi #{raw @user.firstname},
+
+It's easier than ever to list items on Copious. In under a minute, you can get your listing out to millions of buyers.
+
+For a limited time, you'll earn $10 in Copious Credit when your listing is published.
+
+Create a listing & Grab $10. #{rewrite_mailer_url new_listing_url}.
+
+Happy publishing,] %>
+
+<%= render '/shared_mailer/footer' %>

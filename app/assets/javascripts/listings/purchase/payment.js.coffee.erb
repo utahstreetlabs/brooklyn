@@ -1,0 +1,175 @@
+<%
+def t(attribute, reason)
+  I18n.t "#{attribute}.#{reason}", scope: 'activemodel.errors.models.purchase.attributes'
+end
+%>
+
+class PurchaseForm
+  constructor: ->
+    @form   = $('#new_purchase')
+    @button = $('button', @form)
+    @textFields = $('input', @form)
+    @line1  = $('meta[property="copious:shipping:line1"]').attr('content')
+    @line2  = $('meta[property="copious:shipping:line2"]').attr('content')
+    @city   = $('meta[property="copious:shipping:city"]').attr('content')
+    @state  = $('meta[property="copious:shipping:state"]').attr('content')
+    @zip    = $('meta[property="copious:shipping:zip"]').attr('content')
+    @phone  = $('meta[property="copious:shipping:phone"]').attr('content')
+
+    @billToShippingToggle = $('#purchase_bill_to_shipping')
+    @billToShippingToggle.on 'change', (e) =>
+      if @billToShippingToggle.is(':checked')
+        this.billToShipping()
+      else
+        this.clearShipping()
+      if @form.valid()
+        this.enableButton()
+      else
+        this.disableButton()
+
+    $form = this # needed to be able to refer to the form in validation callbacks
+    @form.validate({
+      # http://www.alistapart.com/articles/inline-validation-in-web-forms says not to provide feedback while the user
+      # is typing. however, this limits validation to when a field loses focus. some (many?) users won't tab out of a
+      # field when they have finished typing in it, so we still need to check validation on every keystroke in order
+      # to determine whether to enable or disable the button.
+      onkeyup: ((element,event) ->
+        return if event.which == 9
+        if this.checkForm()
+          $form.enableButton()
+        else
+          $form.disableButton()
+      ),
+      rules: {
+        'purchase[cardholder_name]': {
+          required: true
+        },
+        'purchase[card_number]': {
+          required: true,
+          minlength: 13,
+          maxlength: 19,
+          creditcard: true
+        },
+        'purchase[security_code]': {
+          required: true,
+          digits: true,
+          minlength: 3,
+          maxlength: 4
+        },
+        'purchase[line1]': {
+          required: true
+        },
+        'purchase[city]': {
+          required: true
+        },
+        'purchase[zip]': {
+          required: true,
+          zipcodeUS: true
+        },
+        'purchase[phone]': {
+          required: true
+          phoneUS: true
+        }
+      },
+      messages: {
+        'purchase[cardholder_name]': {
+          required: "<%= t :cardholder_name, :blank %>"
+        },
+        'purchase[card_number]': {
+          required: "<%= t :card_number, :blank %>",
+          creditcard: "<%= t :card_number, :invalid %>"
+          minlength: "<%= t :card_number, :invalid %>"
+          maxlength: "<%= t :card_number, :invalid %>"
+        },
+        'purchase[security_code]': {
+          required: "<%= t :security_code, :blank %>",
+          digits: "<%= t :security_code, :invalid %>",
+          minlength: "<%= t :security_code, :invalid %>",
+          maxlength: "<%= t :security_code, :invalid %>"
+        },
+        'purchase[line1]': {
+          required: "<%= t :line1, :blank %>"
+        },
+        'purchase[city]': {
+          required: "<%= t :city, :blank %>"
+        },
+        'purchase[zip]': {
+          required: "<%= t :zip, :blank %>",
+          zipcodeUS: "<%= t :zip, :invalid %>"
+        },
+        'purchase[phone]': {
+          required: "<%= t :phone, :blank %>"
+          phoneUS: "<%= t :phone, :invalid %>"
+        }
+      },
+      showErrors: (errorMap, errorList) ->
+        for error in errorList
+          $element = $(error.element)
+          $parent = $element.parent()
+          $('.errorlist, .validlist', $parent).remove()
+          $msgElement = $('<div/>').
+            addClass('errorlist error span5 kill-margin-left inline-block-element pull-right').
+            html(error.message)
+          $msgElement.insertAfter($element)
+        for element in this.successList
+          $element = $(element)
+          $parent = $element.parent()
+          $('.errorlist, .validlist', $parent).remove()
+          $msgElement = $('<div/>').
+            addClass('validlist valid span5 kill-margin-left inline-block-element pull-right').
+            html('Great')
+          $msgElement.insertAfter($element)
+    })
+
+    this.disableButton()
+    this.validateShipping() if @billToShippingToggle.is(':checked')
+
+    @textFields.each ->
+      $(this).on 'change focusout', (e) ->
+        # Validate all the form elements when one of them changes.
+        # Fix for a Chrome issue where autofill doesn't trigger a
+        # change event (and thus fields aren't validated).
+        # Safari doesn't trigger a change on autofill, so we trigger
+        # off of focusout as well.
+        $form.validateTextFields()
+
+  billToShipping: () ->
+    $('#purchase_line1').val(@line1)
+    $('#purchase_line2').val(@line2)
+    $('#purchase_city').val(@city)
+    $('#purchase_state').val(@state)
+    $('#purchase_zip').val(@zip)
+    $('#purchase_phone').val(@phone)
+    this.validateShipping()
+
+  validateTextFields: () ->
+    $('input', '#new_purchase').each ->
+      textField = $(this)
+      textField.valid() if textField.val() != ''
+
+  validateShipping: () ->
+    for field in ['line1', 'city', 'zip', 'phone']
+      $("#purchase_#{field}").valid()
+
+  clearShipping: () ->
+    $('#purchase_line1').val('')
+    $('#purchase_line2').val('')
+    $('#purchase_city').val('')
+    $('#purchase_state').val('')
+    $('#purchase_zip').val('')
+    $('#purchase_phone').val('')
+    this.validateShipping()
+
+  enableButton: () ->
+    @button.removeAttr('disabled')
+    @button.removeClass('disabled')
+
+  disableButton: () ->
+    @button.attr('disabled', true)
+    @button.addClass('disabled')
+
+jQuery ->
+  $('#security-code-popover').popover()
+  $('#security-code-popover').on 'click', (e) -> e.preventDefault()
+
+  form = new PurchaseForm

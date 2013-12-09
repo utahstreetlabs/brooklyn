@@ -1,0 +1,163 @@
+body.full-signup-2, body.full-signup {
+  height: 100%;
+  .bg {
+    width: 100%;
+    height: auto;
+    position: fixed;
+    top: 0px;
+    left: 0px; }
+  .signup-modal-container {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: transparentize($black, .5);
+    z-index: $zin-signup-modal;
+    .signup-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      padding: 20px;
+      width: 400px;
+      margin-left: -200px;
+      height: 425px;
+      margin-top: -300px;
+      background: $white;
+      border-color: $white #f8f8f8 #dadada;
+      border-width: 1px;
+      border-style: solid;
+      -webkit-box-shadow: transparentize($black, .5) 0px 0px 10px;
+      -moz-box-shadow: transparentize($black, .5) 0px 0px 10px;
+      box-shadow: transparentize($black, .5) 0px 0px 10px;
+      z-index: $zin-modal-content;
+      .main-logo.centered {
+        position: relative;
+        display: block;
+        width: 119px;
+        margin: 2px auto 18px; }
+      .logo-main {
+        width: 240px;
+        height: 60px; }
+      .divider {
+        width: 100%;
+        height: 1px;
+        border-bottom: 1px solid $white;
+        border-top: 1px solid #eaeaea;
+        margin: 0px 0px 14px; }
+      .main-copy {
+        text-align: center;
+        font-size: 28px;
+        line-height: 36px;
+        font-weight: 400;
+        color: $grayDark;
+        font-family: $styledFontFamily;
+        display: block;
+        padding-top: 5px;
+        margin-bottom: 2px; }
+      .main-copy2 {
+        text-align: center;
+        font-size: 17px;
+        line-height: 30px;
+        color: $grayLight;
+        font-family: $styledFontFamily;
+        font-weight: 600;
+        display: block;
+        margin-bottom: 2px; }
+      .sub-copy {
+        text-align: center;
+        font-size: 23px;
+        line-height: 33px;
+        color: #5a5a5a;
+        font-family: $styledFontFamily;
+        @include text-shadow(0 2px 0 $white);
+        display: block;
+        margin-bottom: 16px; }
+      .connect-container {
+        display: block;
+        width: 100%;
+        padding-bottom: 4px;
+        margin-bottom: 51px;
+        //incentive at top
+        background: transparentize($white, .4);
+        margin-top: 34px;
+        margin-bottom: 26px; }
+      a.button.primary {
+        margin: 3px 39px 6px;
+        padding: 8px 40px !important;
+        img {
+          height: 20px;
+          vertical-align: text-bottom; } }
+      a.twitter.signup {
+        font-weight: 400;
+        width: 100%;
+        padding-left: 2px;
+        text-align: center;
+        color: $gray;
+        opacity: 0.6;
+        display: inline-block;
+      }
+      a.twitter.signup:hover,
+      a.twitter.signup.hover,
+      a.twitter.signup:focus,
+      a.twitter.signup.focus {
+        opacity: 1;
+        color: $linkColor;
+      }
+      span.left-line {
+        display: none; }
+      span.right-line {
+        display: none; }
+      .incentives-container {
+        float: left;
+        font-family: $styledFontFamily;
+        font-size: 16px;
+        line-height: 30px;
+        display: block;
+        width: 100%;
+        text-align: center;
+        text-shadow: $white 0px 2px 0px;
+        color: $gray;
+        margin-top: -3px;
+        margin-bottom: 0px;
+        .dollar-sign, .strong {
+          font-weight: bold;
+          font-style: italic;
+          font-family: Georgia;
+          vertical-align: text-bottom;
+          color: #ff658f; }
+        .strong {
+          font-size: 22px;
+          line-height: 25px;
+          text-shadow: 1px 1px 0px transparentize($white, .8), 2px 2px 0px rgba(255, 217, 143, 1);
+          margin-right: 3px; }
+        .dollar-sign {
+          margin-left: 2px;
+          font-size: 17px;
+          line-height: 27px; } }
+      .login-container {
+        position: absolute;
+        bottom: 14px;
+        right: 25px;
+        opacity: 0.9;
+        .already-registered {
+          font-family: $styledFontFamily;
+          font-size: 14px;
+          color: $grayLight;
+          font-weight: 500;
+          text-align: right; } }
+      .login-container:hover,
+      .login-container.hover,
+      .login-container:focus,
+      .login-container.focus {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+#new-profile-modal .profile-form .buttons {
+  display: none;
+}

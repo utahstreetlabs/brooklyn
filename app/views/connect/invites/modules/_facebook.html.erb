@@ -1,0 +1,20 @@
+<%
+javascript 'invites_modules_facebook'
+friend_boxes = '' unless defined?(friend_boxes) and friend_boxes.present?
+%>
+
+<div id="fb-friend-search">
+  <%= form_tag search_action, method: :get, remote: true do |f| %>
+    <%= field :name, container: :div do %>
+      <%= label_tag :name, 'Find friends:' %>
+      <%= text_field_tag :name %>
+    <% end %>
+    <%= buttons save_text: 'Search', :disable_with => 'Searching ...', class: 'button clear', spinner: true %>
+  <% end %>
+
+  <span id="status-text" style="display:none">
+    <%= content_tag :span, 0, id: 'num-selected', class: 'number' %> of <%= FacebookInvite.max_recipients %> selected
+  </span>
+</div>
+
+<%= content_tag :div, friend_boxes.html_safe, id: 'friend-boxes', :'data-max' => FacebookInvite.max_recipients %>

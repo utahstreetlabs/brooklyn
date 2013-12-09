@@ -1,0 +1,100 @@
+MIN_HEIGHT = <%= Brooklyn::Application.config.listing_sources.image_minimum_height %>
+MIN_WIDTH = <%= Brooklyn::Application.config.listing_sources.image_minimum_width %>
+IMG_SCALE_HEIGHT = 200
+IMG_SCALE_WIDTH = 200
+
+class window.ImageFilter
+  DOMAIN_FILTER_PATTERN = ///
+    (googleads.g.doubleclick.net)|(doubleclick.net)|(ad.doubleclick.net)|(ads2.msads.net)|
+    (pubads.g.doubleclick.net)|(ads.specificmedia.com)|(a.ads1.msads.net)|(leadback.advertising.com)|
+    (ads-vrx.adbrite.com)|(advertising.counterpath.com)|(analytics.atdmt.com)|(analytics.msn.com)|(xlite.counterpath.com)
+    (kona.kontera.com)|(kontera.com)|(yui.yahooapis.com)|(www.google-analytics.com)|(www.tapatalk.com)|
+    (pagead2.googlesyndication.com)|(api.tweetmeme.com)|(ping.westley.crowdscience.com)|(c.statcounter.com)|
+    (b.scorecardresearch.com)|(statse.webtrendslive.com)|(www.res-x.com)|(res-x.com)|(test.coremetrics.com)|
+    (www.coremetrics.com)|(coremetrics.com)|(ad.wsod.com)|(wsod.com)|(adserver.adtechus.com)|(www.adtech.com)|
+    (adtechus.com)|(pixel.quantserve.com)|(quantserve.com)|(l.betrad.com)|(betrad.com)|(cm.g.doubleclick.net)|
+    (wtags.bluekai.com)|(ak1.abmr.net)|(d7.zedo.com)|(adserving.cpxinteractive.com)|(tags.bluekai.com)|
+    (stats.buysellads.com)|(ad.foxnetworks.com)|(pixel.rubiconproject.com)|(bstats.adbrite.com)|(sp.fastclick.net)|
+    (d1.zedo.com)|(d2.zedo.com)|(d3.zedo.com)|(d4.zedo.com)|(d5.zedo.com)|(d6.zedo.com)|(d8.zedo.com)|(d9.zedo.com)|
+    (www.apture.com)|(apture.com)|(static.chartbeat.com)|(www.veruta.com)|(google-analytics.com)|(googleadservices.com)|
+    (www.googleadservices.com)|(vs.dmtracker.com)|(admonkey.dapper.net)|(rd.rlcdn.com)|(s7.addthis.com)|
+    (reporting.eu-survey.com)|(adadvisor.net)|(l.addthiscdn.com)|(dmgt.grapeshot.co.uk)|(edge.quantserve.com)|
+    (cm.g.doubleclick.net)|(log10.doubleverify.com)|(load.tubemogul.com)|(neowin.us.intellitxt.com)|(us.intellitxt.com)|
+    (intellitxt.com)|(metrics.apple.com)|(lads.myspacecdn.com)|(sohh.us.intellitxt.com)|(images.intellitxt.com)|
+    (analytics.live.com)|(tag.admeld.com)|(ad.turn.com)|(ib.adnxs.com)|(ad.realmcdn.net)|(n4403ad.doubleclick.net)|
+    (a1.interclick.com)|(segment-pixel.invitemedia.com)|(pixel.facebook.com)|(pixel.intellitxt.com)|
+    (ad.yieldmanager.com)|(ads.yimg.com)|(view.atdmt.com)|(adserver.teracent.net)|(o.sa.aol.com)|(at.atwola.com)|
+    (s0.2mdn.net)|(www.surphace.com)|(engadget2.disqus.com)|(rcm.amazon.com)|(api.viglink.com)|(rover.ebay.com)|
+    (kona.kontera.com)|(stats.big-boards.com)|(partner.googleadservices.com)|(www.yceml.net)|(www.crowdgather.com)|
+    (www.dpbolvw.net)|(www.tkqlhce.com)|(www.kqzyfj.com)|(input.insights.gravity.com)|(server2.as5000.com)|
+    (an.tacoda.net)|(www.tacoda.net)|(tacoda.net)|(uac.advertising.com)|(t.mookie1.com)|(b3.mookie1.com)|(d.yimg.com)|
+    (us.js.yimg.com)|(static.pulse360.com)|(content.pulse360.com)|(pulse360.com)|(www.pulse360.com)|(tags.bluekai.com)|
+    (brightcove.vo.llnwd.net)|(ib.adnxs.com)|(cms.quantserve.com)|(secure-us.imrworldwide.com)|(js.admeld.com)|
+    (admeld.com)|(www.admeld.com)|(cdn.undertone.com)|(s.ytimg.com)|(lt.andomedia.com)|(secure.quantserve.com)|
+    (stats.pandora.com)|(service.optify.net)|(test.coremetrics.com)|(static.criteo.com)|(fls.doubleclick.net)|
+    (pn1.adserver.yahoo.com)|(sa.windows.com)|(log.go.com)|(i.blogads.com)|(s1\.wp\.com)|(ads1.msn.com)|
+    (complexmedianetwork\.com)
+///
+
+  SPRITE_FILTER_PATTERN = /sprite/i
+
+  constructor: ->
+    @domainRegex = new RegExp(DOMAIN_FILTER_PATTERN)
+    @spriteRegex = new RegExp(SPRITE_FILTER_PATTERN)
+
+  # We filter out images that meet the following criteria:
+  # - match a restricted set of domains (see DOMAIN_FILTER_PATTERN)
+  # - are a sprite
+  # - are too small (at least 90x90)
+  # - are not visible
+  #  Additionally, we then sort images by size, descending.
+  filteredImages: =>
+    allImages = document.getElementsByTagName("img");
+    results = []
+    for i in allImages
+      results.push(this.normalizeImage(i)) unless this.shouldFilterImage(i)
+    return results
+      .sort (a,b) ->
+        if (a.height * a.width) < (b.height * b.width) then 1 else -1
+
+  sizeOk: (image) ->
+    return image.height >= MIN_HEIGHT && image.width >= MIN_WIDTH
+
+  visibleOk: (image) ->
+    return image.style.display != 'none'
+
+  patternOk: (image) ->
+    return false if @domainRegex.test(image.src)
+    return false if @spriteRegex.test(image.src)
+    return true
+
+  shouldFilterImage: (image) =>
+    return true unless this.sizeOk(image)
+    return true unless this.visibleOk(image)
+    return true unless this.patternOk(image)
+    return false
+
+  scaleDimensions: (x, y) =>
+    if x > y
+      return [IMG_SCALE_HEIGHT, (IMG_SCALE_HEIGHT * y) / x]
+    else
+      return [(IMG_SCALE_WIDTH * x) / y, IMG_SCALE_WIDTH]
+
+  # left and top are used to determine the margins when positioning
+  # an image in the overlay.  See OVERLAY_TEMPLATE.
+  marginsForImage: (image) =>
+    dims = this.scaleDimensions(image.width, image.height)
+    return {
+      left: (IMG_SCALE_WIDTH - dims[0]) / 2,
+      top: (IMG_SCALE_HEIGHT - dims[1]) / 2
+    }
+
+  normalizeImage: (image) =>
+    topAndLeft = this.marginsForImage(image)
+    return {
+      src: image.src,
+      left: topAndLeft.left,
+      top: topAndLeft.top,
+      width: image.width,
+      height: image.height
+    }

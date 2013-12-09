@@ -1,0 +1,225 @@
+@import "includes";
+
+.logged_out_home {
+  overflow: hidden;
+  height: 100%;
+  background: image-url("landing/loh/loh.jpg") no-repeat 0 0 fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.copious-logo {
+  .logged_out_home & {
+    margin: 0px 0 20px;
+    height: 30px;
+  }
+}
+
+.sns-connect {
+  .logged_out_home & {
+    position: relative;
+    top: 64px;
+    .checkbox {
+      font-weight: 400;
+      color: $white;
+    }
+    > .signup {
+      @extend .full-width;
+    }
+  }
+  .login &, .login_bookmarklet & {
+    > .signup {
+      width: 300px;
+      padding: 10px 20px;
+    }
+  }
+  .login_bookmarklet & {
+    > .signup {
+      font-size: 15px;
+    }
+  }
+  .home_signup & {
+    text-align: center;
+  }
+}
+
+.loh-bg {
+	width: 100%;
+	min-width: 1307px;
+	height: auto;
+	position: fixed;
+	top: 0;
+	right: 0;
+	display: none;
+}
+.loh-modal-container {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: $zin-loh-modal;
+  .loh-modal {
+    position: absolute;
+    top: 200px;
+    left: 20px;
+    width: 761px;
+    background: lighten(#000000,35%);
+    background: rgba(0,0,0,0.65);
+    -webkit-box-shadow: transparentize($black, .5) 0px 0px 10px;
+    -moz-box-shadow: transparentize($black, .5) 0px 0px 10px;
+    box-shadow: transparentize($black, .5) 0px 0px 10px;
+    z-index: $zin-loh-modal;
+    .main-logo {
+      position: relative;
+      display: block;
+      width: 100px;
+    }
+    > .section {
+      @extend .span5; /* 380px */
+      @extend .kill-margin-left;
+      display: block;
+      padding: 30px;
+      margin-bottom: 0px;
+    }
+    .section:first-child {
+      background: image-url("landing/loh/loh-section-bg.png") repeat;
+      height: 350px;
+    }
+    .hero {
+      font-family: $styledHeaderFamily;
+      color: $white;
+      @extend .kill-margin;
+      font-size: 42px;
+      line-height: 58px;
+      text-align: left;
+    }
+    .quote-container {
+      float: left;
+      margin: 6px -21px 13px;
+      padding: 10px 0px 10px 21px;
+      position: relative;
+      .quote-source {
+        opacity: 0.6;
+        float: right;
+        margin: 5px 20px -2px -1px;
+      }
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0px;
+      bottom: -65px;
+      background: image-url("landing/loh/LOH-press.jpg") no-repeat $white;
+      background-position: 20px 1px;
+      width: 761px;
+      height: 56px;
+      @include box-shadow;
+    }
+  }
+  input[type="text"], input[type="password"], input[type="email"] {
+    width: 300px;
+  }
+  #reset-password-container {
+    display: inline-block;
+    margin-left: 62px;
+  }
+  button.primary {
+    margin-top: 8px;
+  }
+}
+
+.login-container {
+  float: left;
+  width: 100%;
+  position: relative;
+  top: 37px;
+  text-align: center;
+  .login & {
+    z-index: -1;
+  }
+  p {
+    color: $color-text-light;
+  }
+}
+
+.signup_credit_copy {
+  color: $color-text-light;
+  margin-top: 20px;
+  strong {
+    color: $color-text-lighter;
+  }
+}
+
+#footer-wrapper {
+  display: block;
+  position: fixed;
+  bottom: -5px;
+  left: 0px;
+  right: -5px;
+  width: 100%;
+  padding: 0px;
+  background: transparent;
+  #footer-content {
+    background: rgba(255,255,255,0.8);
+    width: 100%;
+    padding: 7px 16px;
+    float: left;
+    ul {
+      float: left;
+    }
+    .menu {
+      float: left;
+      li {
+        display: inline-block;
+        height: 20px;
+        line-height: 20px;
+      }
+      span {
+        font-weight: 400;
+      }
+    }
+    .copious-social {
+      margin-right: 32px;
+      li {
+        float: left;
+        margin: 0px 10px;
+        height: 20px;
+        line-height: 20px;
+        padding-left: 30px;
+        background-position: left 0px;
+        background-repeat: no-repeat;
+        .footer-social {
+          width: 20px;
+          height: 20px;
+          vertical-align: text-bottom;
+          margin-right: 5px;
+          background-position: 0px 0px;
+        }
+        &.footer-facebook {
+          background-image: image-url("social_networks/footer_facebook_32.png");
+        }
+        &.footer-pinterest {
+          background-image: image-url("social_networks/footer_pinterest_32.png");
+        }
+        &.footer-twitter {
+          background-image: image-url("social_networks/footer_twitter_32.png");
+        }
+        &:hover {
+          background-position: 0px -26px;
+        }
+        &:after {
+          content: "";
+        }
+        &:first-child {
+          margin-left: 0px;
+        }
+      }
+    }
+  }
+}

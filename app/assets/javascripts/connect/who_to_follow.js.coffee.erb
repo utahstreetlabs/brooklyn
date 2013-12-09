@@ -1,0 +1,30 @@
+class WhoToFollow
+  constructor: ->
+    @hide_button = $("a[data-action='remove']")
+    @hide_button.on 'click', (event) ->
+      target = $(this).data('target')
+      $("##{target}").fadeOut()
+
+jQuery ->      
+  whoToFollow = new WhoToFollow
+
+  $loadingContainer = $('#loading-container')
+  $container = $('.search-results')
+  $count = $('.user-strip').data('user-count')
+
+  manager = new Copious.InfiniteScrollManager('.search-results', '#scroll-top',
+    '<%= Brooklyn::Application.routes.url_helpers.connect_who_to_follow_index_path(page: 1, format: :json) %>' +
+    '&count=' +  parseInt($count))
+  manager.on 'scroller:loading:start', -> $loadingContainer.show()
+  manager.on 'scroller:loading:end', -> $loadingContainer.hide()
+  manager.on 'scroller:more', (data) ->
+    $elements = ($(c) for c in data.cards)
+    if $elements.length > 0
+      $container.append($elements...)
+      _.each $elements, ($element) ->
+        $element.userStrip()
+        $element.find('.ellipsis').dotdotdot()
+    else
+      $('[data-role=no-more-suggestions]').show()
+
+  manager.start()

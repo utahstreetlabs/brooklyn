@@ -1,0 +1,45 @@
+<% title "Admin: All orders for #{@user.name}" %>
+
+<%= bootstrap_breadcrumb [
+  ['Admin', admin_dashboard_path],
+  ['Users', admin_users_path],
+  [@user.name, admin_user_path(@user.id)],
+  'All orders'
+] %>
+
+<h5>search by reference number, listing title, buyer name, or seller name</h5>
+
+<%= datagrid @orders, id: 'orders', pagination_theme: :bootstrap do |t| %>
+  <%= t.thead do |thead| %>
+    <%= thead.th :reference_number, title: 'Ref #' %>
+    <%= thead.th :listing %>
+    <%= thead.th :seller %>
+    <%= thead.th :status %>
+    <%= thead.th :created_at, title: 'Created at' %>
+    <%= thead.th :updated_at, title: 'Last updated at', default: true, default_direction: :desc %>
+  <% end %>
+  <%= t.tbody do |tbody, order| %>
+    <%= tbody.td class: 'refnum', :'data-role' => "user-order-#{order.id}" do %>
+      <%= link_to order.reference_number, admin_user_order_path(@user.id, order) %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= link_to_listing order.listing %>
+      <% if order.listing.prepaid_shipping? %>
+        <br><%= admin_listing_prepaid_shipping_indicator %>
+      <% end %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= link_to_user_profile order.listing.seller %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= order.human_status_name.capitalize %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= date order.created_at %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= date order.updated_at %>
+    <% end %>
+  <% end %>
+<% end %>
+

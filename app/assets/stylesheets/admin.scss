@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+@import "bootstrap";
+@import "admin/jquery.ui";
+@import "admin/jquery_overrides.ui";
+@import "admin/custom_buttons";
+
+// styling here is for pages with datagrid tables, which are impossible to pass any classes.
+
+[class^="admin_"] {
+  table {
+    @extend .table;
+    @extend .table-striped;
+    margin: 25px 0px;
+    th, td {
+      padding: 12px 5px;
+    }
+  }
+  .pagination .current {
+    float: left;
+    color: #999999;
+    padding: 0px 14px;
+    line-height: 34px;
+    border: 1px solid #DDDDDD;
+    background-color: #F5F5F5;
+  }
+  .control-group {
+    float: left;
+    width: 100%;
+    input, textarea {
+      margin-bottom: 16px;
+    }
+  }
+  .controls .help-block {
+    color: #888888;
+    font-weight: 300;
+  }
+  .control-label {
+    font-weight: 600;
+  }
+  h2 + form {
+    margin-top: 10px;
+    float: left;
+  }
+  #landing-bg-preview {
+    width: 418px;
+    float: left;
+    margin-bottom: 20px;
+  }
+  #landing-bg-input {
+    margin-left: 20px;
+  }
+  .full-width {
+    width: 100%;
+    .btn-primary {
+      margin-right: 7px;
+    }
+  }
+  .row{
+    margin: 8px 0 0 -20px;
+  }
+}
+
+// modals triggered by buttons from .btn-group inherit font-size: 0px, thus causing some funkiness
+.btn-group {
+  form, label.checkbox {
+    font-size: 14px;
+  }
+  .control-group {
+    font-size: 14px;
+  }
+}

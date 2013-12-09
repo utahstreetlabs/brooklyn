@@ -1,0 +1,23 @@
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  Hi <%= @user.firstname %>,
+<% end %>
+
+<%= mailer_graf do %>
+  We noticed that your <%= mailer_link_to @order.listing.title, listing_url(@order.listing) %> purchase shipped <%= count_of_days_in_words(@order.shipped_at_ago) %> ago, but delivery has not been confirmed.
+<% end %>
+
+<%= mailer_graf do %>
+  Please update its delivery status to tell us if you've received this purchase.
+<% end %>
+
+<%= mailer_graf do %>
+  <%= mailer_button 'Update delivery', listing_url(@order.listing), styles: ' margin-top: 0px !important; margin-bottom: 25px !important;'  %>
+<% end %>
+
+<%= mailer_graf(styles: 'margin-bottom: 0px;') do %>
+  Thank you,
+<% end %>
+
+<%= render '/shared_mailer/footer' %>

@@ -1,0 +1,6 @@
+<%= word_wrap %Q[Hi #{@user[:firstname].html_safe}:
+
+#{@listing.seller.name.html_safe} just listed a new item: #{rewrite_mailer_url listing_url(@listing)}.
+
+Happy shopping,] %>
+<%= render '/shared_mailer/footer' %>

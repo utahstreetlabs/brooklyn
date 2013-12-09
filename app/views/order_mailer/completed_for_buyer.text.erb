@@ -1,0 +1,11 @@
+<%= word_wrap(%Q[Hi #{raw @user.firstname},
+
+Your #{raw @order.listing.title} purchase is now officially complete. Congratulations!
+
+Copious is always changing. Take a moment to browse more great finds just for you.
+
+#{rewrite_mailer_url root_url}
+
+Happy shopping,]) %>
+
+<%= render '/shared_mailer/footer' %>

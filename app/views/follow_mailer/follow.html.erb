@@ -1,0 +1,7 @@
+<%= render partial: '/shared_mailer/new_responsive_header', locals: {user: @followee, message: t('.header.message')} %>
+
+<%= mailer_user_info @follower, with_photo: true %>
+<%= mailer_user_stats_and_listings @follower, @follower_listing_infos %>
+<%= mailer_user_follow_action @followee, @follower %>
+
+<%= render '/shared_mailer/new_responsive_footer' %>

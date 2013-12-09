@@ -1,0 +1,2 @@
+jQuery ->
+  $('form#payments').datagrid()

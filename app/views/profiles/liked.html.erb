@@ -1,0 +1,7 @@
+<%
+title t('profile.loved.title', name: profile_user.display_name)
+javascript 'profile_show'
+fb_head_prefix
+%>
+
+<%= render 'listings', results: results, empty_msg: t('profile.loved.empty', name: profile_user.firstname) %>

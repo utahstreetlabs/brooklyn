@@ -1,0 +1,131 @@
+<%
+mediaforge_retargetting_js
+%>
+<div id="main-content">
+  <div class="full-wrapper">
+    <div class="middle-container">
+      <div class="section discovery-area designer">
+        <p class="main-copy">
+          Aspiring Designer?
+        </p>
+        <div class="subcopy-area">
+          <span class="copy-paragraph">
+            Use Copious to showcase your collection and <br />reach your audience on Facebook.
+          </span>
+          <span class="learn-more">
+            <a>Learn about selling on Copious</a>
+          </span>
+        </div>
+        <div class="join-now-container">
+          <h3 class="cta join-now">Join today. It's free.</h3>
+          <div class="connect-container">
+            <%= link_to_facebook_connect(seller_signup: true) %>
+            <div class="connect-twitter-container">
+              <span class="left-line">&mdash;&mdash;&mdash;&mdash;</span>
+              <a href="/auth/twitter" class="twitter signup">Connect with Twitter</a>
+              <span class="right-line">&mdash;&mdash;&mdash;&mdash;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slides-wrapper">
+        <div id="slides" class="slides" style="width: 436px;">
+          <div class="slides-shadow designer"></div>
+          <div class="slides_container" style="height: 440px;">
+            <div class="product-slide">
+              <img src="/assets/landing/seller/designer.jpg" class="product-slide-photo designer">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="press-wrapper">
+    <div class="nyt-quote">
+      <h5>
+        "For young designers eager to find customers, Copious can provide another platform - along with Facebook, Twitter"
+        <span class="writer">Cathryn Horyn, Fashion Critic, The New York Times</span>
+      </h5>
+    </div>
+  </div>
+
+  <div class="full-wrapper2" style="display: none;">
+    <div class="middle-container">
+      <div class="landing-list-container">
+        <ul class="landing-list">
+          <li class="seller-list">
+            <h3 class="cta join-now">Join today. It's free.</h3>
+            <div class="connect-container">
+              <%= link_to image_and_text("social_networks/facebook_32.png", "Connect with Facebook"), auth_path(:facebook, seller_signup: true), class: "button primary facebook signup" %>
+              <div class="connect-twitter-container">
+                <span class="left-line">&mdash;&mdash;</span>
+                <a href="/auth/twitter" class="twitter signup">or Connect with Twitter</a>
+                <span class="right-line">&mdash;&mdash;</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-container">
+    <ul class="about-list">
+      <li>
+        <div class="seller-landing-top">
+          <h3 class="seller-landing">Reach over 1 billion users</h3>
+          <div class="hr-line"></div>
+          <span class="bodyText">
+            Leverage Facebook and Twitter to tap new customers
+          </span>
+        </div>
+      </li>
+      <li>
+        <div class="seller-landing-top">
+          <h3 class="seller-landing">Sell to real people</h3>
+          <div class="hr-line"></div>
+          <span class="bodyText">
+            See who you are selling to and reduce fraud.
+          </span>
+        </div>
+      </li>
+      <li>
+        <div class="seller-landing-top">
+          <h3 class="seller-landing">Free to list</h3>
+          <div class="hr-line"></div>
+          <span class="bodyText">
+            Pay $0.35 + 3.5% only if and when your stuff sells.
+          </span>
+        </div>
+      </li>
+      <li>
+        <div class="seller-landing-top">
+          <h3 class="seller-landing">Get started</h3>
+          <div class="hr-line"></div>
+          <span class="bodyText">
+            Create your first, free listing.
+            <%= link_to 'List Your Stuff', listings_path, id: "sell_button", class: "button", method: :POST %>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="press-wrapper">
+    <div class="press-position-container">
+      <div class="title-container">
+        <h3 class="title">As seen on</h3>
+      </div>
+      <div class="press-container">
+        <ul class="press">
+          <li style="margin-right:62px; margin-left: 2px"><img src="/assets/landing/seller/nyt.png" style="height: 23px;"></li>
+          <li style="margin-right: 76px;"><img src="/assets/landing/seller/refinery29.png" style="height: 19px;"></li>
+          <li style="margin-right: 78px;"><img src="/assets/landing/seller/smashing.png" style="height: 28px; margin-top:-4px;"></li>
+          <li style="margin-right: 79px;"><img src="/assets/landing/seller/abc.png" style="height: 28px; margin-top: -3px;"></li>
+          <li><img src="/assets/landing/seller/wp.png" style="height: 23px; margin-top: -1px;"></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

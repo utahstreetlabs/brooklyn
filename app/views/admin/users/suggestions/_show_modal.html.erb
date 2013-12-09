@@ -1,0 +1,7 @@
+<%= bootstrap_form_tag set_admin_user_suggestions_path(user.id), remote: true do %>
+  <% Interest.by_name.each do |interest| %>
+    <%= bootstrap_check_box_tag :suggested_interest_ids, interest.name, interest.id,
+                                user.suggested_for_interest?(interest), name: 'user[suggested_interest_ids][]',
+                                id: "suggested_interest_ids_#{interest.id}" %>
+  <% end %>
+<% end %>

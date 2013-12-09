@@ -1,0 +1,28 @@
+#= require copious/plugin
+#= require controls/multi_selector
+#= require controls/modal_loader
+#= require controls/modal_alert
+
+# A component to manage featuring a listing
+#
+# The feature manager displays a list of featurable elements (tags,
+# categories, etc.).  The admin can select and deselect featurables
+# in the list and the listing will be added to the featurable set(s).
+#
+class FeatureManager
+  constructor: (@element) ->
+    @content = @element.find('[data-role=modal-content]')
+    @loader = new ModalLoader(@element)
+    @loader.load().then =>
+      this._initContent()
+
+  _initContent: () =>
+    $('[data-role=multi-selector]', @content).multiSelector()
+
+jQuery ->
+  $.fn.featureManager = copious.plugin.componentPlugin(FeatureManager, 'featureManager')
+
+  $(document).on 'show', '[data-role=feature-manager]', ->
+    $(this).featureManager()
+
+  window.Copious.FeatureManager = FeatureManager

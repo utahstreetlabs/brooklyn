@@ -1,0 +1,22 @@
+<h4>enter a user's id to see the interest scores we'd calculate for them</h4>
+<form action="" method="GET">
+  <input type="text" name="user_id">
+  <input type="submit">
+</form>
+
+<h4>Scores for <%= @user.name %></h4>
+<h5>Calculated in <%= @time.floor %>ms</h5>
+<ul class="media-list">
+  <% @interest_scores.each do |(interest, score)| %>
+    <li class="media">
+      <%= link_to image_tag(interest.cover_photo.px_220x220, class: 'media-object', width: 100),
+                  admin_interest_path(interest), class: 'pull-left' %>
+      <div class="media-body">
+        <h4 class="media-heading"><%= interest.name %></h4>
+        <div class="media">
+          <h1><%= score %></h1>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>

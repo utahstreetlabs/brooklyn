@@ -1,0 +1,17 @@
+<%= bootstrap_form_for shipment, url: admin_order_shipment_path(shipment.order), remote: true do |f| %>
+  <%= f.control_group :carrier_name do %>
+    <%= f.control_label :carrier_name, 'Carrier' %>
+    <% Brooklyn::Carrier.available.each do |carrier| %>
+      <%= f.radio_button :carrier_name, carrier.name, carrier.key %>
+    <% end %>
+  <% end %>
+  <%= f.text_field :tracking_number, 'Tracking number', maxlength: 22 do %>
+    <p class="help-block">e.g. 1Z12345E0205271688</p>
+  <% end %>
+  <div class="pull-left">
+    <%= bootstrap_check_box_tag :skip_tracking_validation, 'Skip tracking validation' %>
+    <hr>
+    Verify the tracking number before you change it:</br>
+    <%= link_to 'US Postal Service', usps_tracking_form_url, target: "_blank" %> | <%= link_to 'UPS', ups_tracking_form_url, target: "_blank" %>
+  </div>
+<% end %>

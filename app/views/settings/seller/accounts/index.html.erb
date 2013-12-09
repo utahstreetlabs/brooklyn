@@ -1,0 +1,45 @@
+<%
+title t('.title')
+javascript 'settings_seller'
+%>
+
+<h2><%= t('.header') %></h2>
+
+<div class="margin-bottom-half seller-account-settings">
+  <%= render 'funds_waiting', amount: @funds_waiting %>
+
+  <% @accounts.each do |account| %>
+    <%= content_tag :div, data: {deposit_account: account.id},
+                    class: 'span6 margin-bottom-double seller-accounts kill-margin-left' do %>
+      <% if account.is_a?(BankAccount) %>
+        <%= label_tag nil do %>
+          <%= account.name %>
+          <%= t('.account.default') if account.default? %>
+        <% end %>
+        <%= bank_account_number(account.last_four) %><br>
+      <% else %>
+        <%= label_tag nil do %>
+          <%= account.email %>
+          <%= t('.account.default') if account.default? %>
+        <% end %>
+        <%= t('.account.paypal') %><br>
+        <%= link_to t('.account.button.edit'), edit_settings_seller_accounts_paypal_path(account) %>
+        <% unless account.default? %>|<% end %>
+      <% end %>
+      <%#= link_to t('.account.button.delete'), settings_seller_account_path(account), method: :delete,
+                  data: {confirm: t('.account.confirm.delete')}, class: 'margin-top-quarter' %>
+      <% unless account.default? %>
+        <%= link_to t('.account.button.default'), settings_seller_account_default_path(account), method: :post %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%= content_tag :div, class: 'span12 kill-margin-left' do %>
+    <%= link_to t('.accounts.button.add_another_account'), nilhref, class: 'button large',
+                data: {role: 'add-account'} %>
+  <% end %>
+  </div>
+
+  <%= render 'new_account', bank_account: @bank_account, paypal_account: @paypal_account,
+             hidden: !(@bank_account.errors.any? || @paypal_account.errors.any?) %>
+</div>

@@ -1,0 +1,21 @@
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  Hi <%= raw @user.firstname %>,
+<% end %>
+
+<%= mailer_graf do %>
+  Kindly note that the tracking number for <%= mailer_link_to @shipment.order.listing.title, listing_url(@shipment.order.listing) %> has changed. Below is the updated lowdown.
+<% end %>
+
+<%= render '/order_mailer/buyer_order_details', order: @shipment.order, tracking_number: {updated: true} %>
+
+<%= mailer_graf do %>
+  Ready for another go? <%= mailer_link_to 'Find more', root_url %> items on Copious.
+<% end %>
+
+<%= mailer_graf(styles: 'margin-bottom: 0px;') do %>
+  Happy shopping,
+<% end %>
+
+<%= render '/shared_mailer/footer' %>

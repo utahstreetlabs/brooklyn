@@ -1,0 +1,13 @@
+<%
+empty_msg = 'No collections' unless defined? empty_msg
+%>
+<div id="collections">
+  <div class="nav-container">
+    <%= profile_tabs profile_user %>
+  </div>
+  <% if cards.any? %>
+    <%= collection_cards cards, profile_user %>
+  <% else %>
+    <p class="empty-msg"><%= empty_msg %></p>
+  <% end %>
+</div>

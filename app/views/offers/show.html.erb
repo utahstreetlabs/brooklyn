@@ -1,0 +1,41 @@
+<%
+hide_masthead
+hide_footer
+offer_body_class @offer
+offer_body_style @offer
+include_optimizely
+stylesheet 'responsive'
+%>
+
+<div id="main-content" class="span16">
+  <div class="invite-text-container">
+    <div class="invite-text">
+      <% if feature_enabled?(:boo) && @offer.uuid == 'festivus' %>
+        <div class="festivus-frame"></div>
+      <% end %>
+      <% if @offer.uuid == 'secret-seller' %>
+        <div class="secret-seller-frame"></div>
+      <% end %>
+      <div class="invite-top-section margin-bottom">
+        <%= image_tag 'layout/copious-logo-v2.png', class: 'copious-logo' %>
+        <h1><%= offer_headline @offer %></h1>
+        <% if @offer.sellers.any? %>
+          <h4><%= seller_name_list @offer.sellers %> want<%= 's' if @offer.sellers.count == 1 %> to share <br/> their Copious listings with you!</h4>
+        <% end %>
+        <div class="divider"></div>
+        <div class="body-copy"><%= offer_text @offer %></div>
+      </div>
+      <div class="sns-connect">
+        <%= render 'shared/login_social', scope: :signup, d: @offer.destination_url %>
+      </div>
+      <div class="offer-details full-width margin-top">
+        <span class="offer-details-label">Offer Details</span>
+        <div class="offer-detail-list">
+          <span class="offer-detail"><%= number_to_currency @offer.amount %> credit<% if @offer.seller_specific? %> for purchasing listings from <%= seller_name_list @offer.sellers %><% end %></span>
+          <span class="offer-detail">Good for <%= formatted_offer_duration @offer %></span>
+          <span class="offer-detail"><%= formatted_user_types @offer %></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

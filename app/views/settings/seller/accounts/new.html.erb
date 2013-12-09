@@ -1,0 +1,16 @@
+<%
+title t('.title')
+javascript 'settings_seller'
+%>
+
+<h2><%= t('.header') %></h2>
+
+<div class="margin-bottom-half seller-account-settings">
+  <%= seller_info_settings_progress_bar :step2 %>
+
+  <%= render 'funds_waiting', amount: @funds_waiting %>
+
+  <%= t('.instructions.text_html', fees_link: link_to(t('.instructions.fees_link'), Brooklyn::Application.config.urls.marketplace_fee)) %>
+
+  <%= render 'new_account', bank_account: @bank_account, paypal_account: @paypal_account, hidden: false %>
+</div>

@@ -1,0 +1,20 @@
+<%
+empty_msg = 'No listings' unless defined? empty_msg
+%>
+<div id="listings">
+  <div class="nav-container">
+    <%= profile_tabs profile_user %>
+  </div>
+  <% if results %>
+    <div class="search-results-container">
+      <% if results.any? %>
+        <%= content_tag :ul, { class: 'search-results row' }.merge(results_tag_params) do %>
+          <%= safe_join(feed_cards(results)) %>
+        <% end %>
+        <%= infinite_scroll_widgets %>
+      <% else %>
+        <p class="empty-msg"><%= empty_msg %></p>
+      <% end %>
+    </div>
+  <% end %>
+</div>

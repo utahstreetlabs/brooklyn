@@ -1,0 +1,8 @@
+<%= bootstrap_form_for (order.shipment || order.build_shipment), url: order_ship_path(order.id), remote: true,
+                       html: {method: :post} do |f| %>
+  <%= hidden_field_tag :source, source %>
+  <%= f.label :carrier_name, 'Carrier' %>
+  <%= carrier_selector %>
+  <%= f.text_field :tracking_number, 'Tracking Number', :size => 22  %>
+  <%= f.submit 'Submit', disable_with: 'Submitting ...', base_class: 'button primary clear large' %>
+<% end %>

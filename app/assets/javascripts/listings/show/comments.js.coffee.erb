@@ -1,0 +1,53 @@
+# requires jquery.urldecoder and copious/listing_feed
+
+commentInputSelector = '#comment_text'
+replySelector = '[data-role=comment-reply]'
+replyHelpSelector = '[data-role=comment-reply-help]'
+
+jQuery ->
+  $commentInput = $(commentInputSelector)
+
+  # show help text only when the comment box has focus
+  $commentInputHelp = $('#comment-help')
+  $commentInput.on 'focusin', () ->
+    $commentInputHelp.show()
+  $commentInput.on 'focusout', () ->
+    $commentInputHelp.hide()
+
+  # give the comment box focus when directed to by the url fragment
+  url = $.url.parse(window.location.href)
+  $commentInput.focus() if url.anchor is 'comment'
+
+  # give the comment box focus when the listing is loved
+  $(document).on 'loveButton:loved', (event, data) -> $commentInput.focus() if data.loved
+
+  # submit comment and reply on Enter
+  $(document).on 'keypress', commentInputSelector, (e) -> submitOnEnter(this, e)
+  $(document).on 'keypress', replySelector, (e) -> submitOnEnter(this, e)
+
+  # show reply help text only when the reply box has focus
+  $(document).on 'focusin', replySelector, () -> $(this).siblings(replyHelpSelector).show()
+  $(document).on 'focusout', replySelector, () -> $(this).siblings(replyHelpSelector).hide()
+
+  # initialize comment feed
+  # XXX: port comment feed code to cs in this file
+  $commentFeed = $('#feed')
+  $commentFeed.listing_feed()
+
+  copious.track_links(".hashtag-link", 'listing_hashtag click', (elem) ->
+    $elem = $(elem)
+    {
+      username: $elem.attr('data-user-slug'),
+      tag: $elem.attr('data-tag-slug'),
+      listing_title: $('#listing-title').text()
+    }
+  )
+  copious.track_links(".mention-link", 'listing_mention click', (elem) ->
+    $elem = $(elem)
+    {
+      username: $elem.attr('data-user-slug'),
+      mentionee: $elem.attr('data-mentionee-slug'),
+      mentioner: $(elem).attr('data-mentioner-slug'),
+      listing_title: $('#listing-title').text()
+    }
+  )

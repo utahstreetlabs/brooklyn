@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+
+ENV['RAILS_ENV'] ||= 'development' 
+require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
+
+require 'optparse'
+require 'ostruct'
+require 'resque'
+
+LOG_LEVELS = ['error', 'info', 'debug']
+
+options = OpenStruct.new
+options.verbosity = 0
+options.queues = []
+options.interval = 5
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: resque_worker.rb [options] queue [queue2] [queue3] ... [queueN]"
+
+  opts.on("-v", "--verbosity [LEVEL]", Integer, "Debug level (0, 1, 2)") { |v| options.verbosity = v }
+  opts.on("-i", "--interval [SECONDS]", Float, "Time to wait before checking queue (float)") do |i|
+    options.interval = i
+  end
+end.parse!
+
+begin
+  worker = Resque::Worker.new(*ARGV)
+  worker.verbose = (options.verbosity == 1)
+  worker.very_verbose = (options.verbosity == 2)
+rescue Resque::NoQueueError
+  abort "provide at least one queue"
+end
+
+worker.log "Starting worker #{worker}"
+worker.work(options.interval)

@@ -1,0 +1,2 @@
+class BuyerRating < OrderRating
+end

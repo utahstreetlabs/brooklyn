@@ -1,0 +1,23 @@
+en:
+  admin:
+    orders:
+      order_info:
+        shipping:
+          prepaid:
+            extra_small_box: 'Extra Small Package'
+            small_box: 'Priority Mail Small Flat Rate Box'
+            medium_box: 'Priority Mail Medium Flat Rate Box - Cube'
+            medium_flat: 'Priority Mail Medium Flat Rate Box - Flat'
+            large_box: 'Priority Mail Large Flat Rate Box'
+        complete:
+          button:
+            complete: 'Complete without settling'
+            complete_and_settle: 'Complete and settle'
+          tooltip:
+            no_merchant_account: "The seller does not have a merchant account"
+            no_default_deposit_account: "The seller does not have a default deposit account"
+        settle:
+          button: 'Settle'
+          tooltip:
+            no_merchant_account: "The seller does not have a merchant account"
+            no_default_deposit_account: "The seller does not have a default deposit account"

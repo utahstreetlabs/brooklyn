@@ -1,0 +1,37 @@
+//= require listings/form/photos
+//= require listings/form/category
+//= require listings/form/title
+//= require listings/form/description
+//= require listings/form/combos
+//= require listings/form/validation
+//= require listings/form/tags
+//= require listings/form/price
+//= require listings/form/pricing_box
+//= require listings/form/shipping
+
+jQuery(function($) {
+  // Focus entire input section effect
+  $('form.listing_edit').find('input,textarea').focus(function(){
+    $(this).closest('li').addClass('focus');
+  }).blur(function() {
+    $(this).closest('li').removeClass('focus');
+  });
+
+  // Listing creation.  Only set data-disable-with on form element that was actually selected.
+  $('#preview_listing').live('click', function() {
+    $(this).attr('data-disable-with', 'Submitting ...');
+  });
+  $('#save_draft').live('click', function() {
+    $(this).attr('data-disable-with', 'Submitting ...');
+  });
+
+  $('a.disabled').click(function(){return false;});
+
+  // Draft saving
+  $("#save_draft").click(function(){
+    var $form = $('form.listing_edit');
+    $form.attr('action', $(this).attr('data-action'));
+    // the route is a POST, so make sure we hack Rails' hack to ensure POST
+    $("input[name=_method]", $form).val('POST');
+  });
+});

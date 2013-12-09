@@ -1,0 +1,20 @@
+<% title "Admin: Edit #{@listing.title}" %>
+<% stylesheet 'jquery.wysiwyg.css' %>
+
+<%= bootstrap_breadcrumb [
+  ['Admin', admin_dashboard_path],
+  ['All listings', admin_listings_path],
+  [@listing.title, admin_listing_path(@listing.id)],
+  'Edit'
+] %>
+
+<%= bootstrap_form_for(@listing, as: :listing, url: admin_listing_path(@listing.id)) do |f| %>
+  <%= f.text_field :title, 'Title', maxlength: 100 %>
+  <%= f.select :category_id, 'Category', Category.order_by_name.map {|c| [c.name, c.id]},
+        include_blank: '*choose a category*' %>
+  <%= f.text_area :description, 'Description', rows: 5, :class => 'span6' %>
+  <%= bootstrap_text_field_tag 'listing[tags]', 'Tags', params[:listing][:tags], maxlength: 255, id: 'listing_tags' %>
+  <%= link_to '', autocomplete_tags_path, id: "autocomplete-tags-path", style: 'display: none' %>
+  <%= f.submit %>
+  <%= f.cancel admin_listing_path(@listing.id) %>
+<% end %>

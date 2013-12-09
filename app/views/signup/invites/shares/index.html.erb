@@ -1,0 +1,21 @@
+<%
+title 'Invite your friends'
+deactivate_masthead
+mp_view_event 'signup invite shares'
+javascript 'signup_invite_shares'
+%>
+
+<div class="share-your-invite invite-section headers">
+  <h3>
+    Share your invitation link and get credit <br/>
+    for everyone who joins!
+  </h3>
+  <div class="share-section">
+    <%= text_field_tag :invite_url, untargeted_invite_url(current_user), readonly: :readonly %>
+    <span id="share-buttons" class="share-buttons" data-create-url="<%= signup_invites_shares_path %>">Share on:</span>
+    <%= link_to_share_invite_facebook %>
+    <%= link_to_share_invite_twitter %>
+  </div>
+</div>
+
+<%= link_to 'Continue', signup_onboard_path, id: 'continue', :class => 'skip-this-step', style: 'display: none' %>

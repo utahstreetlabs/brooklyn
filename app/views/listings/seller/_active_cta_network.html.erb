@@ -1,0 +1,13 @@
+<% if network == :facebook %>
+  <% if current_user.person.eligible_for_facebook_timeline?(force_request: true) %>
+    <li>
+      <span class="message"><%= t(:timeline, scope: "listings.share.facebook") %></span>
+      <%= link_to_facebook_connect(label: 'Try Now', class: "button primary facebook span2") %>
+    </li>
+  <% end %>
+<% else %>
+  <li>
+    <span class="message"><%= t(network, scope: "listings.share.message") %></span>
+    <%= share_listing_to_network(listing, network, class: 'button span2 kill-margin-left', text: :active_cta) %>
+  </li>
+<% end %>

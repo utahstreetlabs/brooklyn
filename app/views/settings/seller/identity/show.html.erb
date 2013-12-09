@@ -1,0 +1,52 @@
+<%
+title t('.title')
+javascript 'settings_seller'
+%>
+
+<h2><%= t('.header') %></h2>
+
+<%= seller_info_settings_progress_bar :step1 %>
+
+<div class="section">
+  <%= t('.instructions_html',
+    help_link: link_to(t('.help_link'), Brooklyn::Application.config.urls.payout_account)) %>
+  <%= form_for @identity, as: :identity, url: settings_seller_identity_path, html: {method: :put} do |f| %>
+    <%= f.field :name, container: :div, class: 'pull-left full-width margin-top',
+                error: {class: 'span5'}, help: {text: t('.field.name.help'), class: 'full-width'} do %>
+      <%= f.label :name, t('.field.name.label'), class: 'full-width' %>
+      <%= f.text_field :name, maxlength: 80, class: 'margin-bottom pull-left' %>
+    <% end %>
+    <%= f.field :street_address, container: :div, class: 'pull-left full-width',
+                error: {class: 'span5'}, help: {text: t('.field.street_address.help'), class: 'full-width'} do %>
+      <%= f.label :street_address, t('.field.street_address.label'), class: 'full-width'  %>
+      <%= f.text_field :street_address, maxlength: 80, class: 'margin-bottom pull-left clear' %>
+    <% end %>
+    <%= f.field :postal_code, container: :div, class: 'pull-left full-width',
+                error: {class: 'offset2'} do %>
+      <%= f.label :postal_code, t('.field.postal_code.label'), class: 'full-width' %>
+      <%= f.text_field :postal_code, maxlength: 10, class: 'span2 margin-bottom pull-left-force margin-right' %>
+    <% end %>
+    <%= f.field :phone_number, container: :div, class: 'pull-left full-width',
+                error: {class: 'offset1'} do %>
+      <%= f.label :phone_number, t('.field.phone_number.label'), class: 'full-width' %>
+      <%= f.text_field :phone_number, maxlength: 14, class: 'span2 margin-bottom pull-left-force margin-right' %>
+    <% end %>
+    <%= f.field :born_on, container: :div, error: {class: 'span5 inline-block-element pull-left'} do %>
+      <%= f.label :born_on, t('.field.born_on.label'), class: 'full-width' %>
+      <%= f.date_select :born_on, {start_year: Date.current.year - 100, end_year: Date.current.year,
+                                   order: [:month, :day, :year]},
+                        class: 'margin-bottom pull-left' %>
+    <% end %>
+    <% if @identity.attempt > 2 %>
+      <%= f.field :tax_id, container: :div, class: 'pull-left full-width',
+                  error: true, help: {text: t('.field.tax_id.explanation'), class: 'full-width'} do %>
+        <%= f.label :tax_id, t('.field.tax_id.label'), maxlength: 11, class: 'full-width margin-bottom-half' %>
+        <%= f.text_field :tax_id, class: 'span2 margin-bottom pull-left-force margin-right' %>
+      <% end %>
+    <% end %>
+    <%= f.hidden_field :region %>
+    <%= f.hidden_field :attempt %>
+    <%= f.buttons save_text: t('.button.save'), class: 'span4 button primary clear large kill-margin-left',
+                  data: {button: 'identity-save'} %>
+  <% end %>
+</div>

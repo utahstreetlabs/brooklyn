@@ -1,0 +1,7 @@
+<%
+follower_count_selector = nil unless defined?(follower_count_selector)
+force_follow = false unless defined?(force_follow)
+%>
+<%= content_tag :span, :class => 'follow-wrap', 'data-follower-count' => follower_count_selector do %>
+  <%= render 'shared/follow_button.html', followee: user, follower: current_user, options: {force_follow: force_follow} %>
+<% end %>

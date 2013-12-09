@@ -1,0 +1,170 @@
+<%= bootstrap_table condensed: true do %>
+  <tr>
+    <td class="span4">Created at</td>
+    <td><%= datetime @listing.created_at %></td>
+  </tr>
+  <tr>
+    <td>Last updated at</td>
+    <td><%= datetime @listing.updated_at %></td>
+  </tr>
+  <tr>
+    <td>Category</td>
+    <td><%= @listing.category ? @listing.category.name : '-' %></td>
+  </tr>
+  <tr>
+    <td>Tags</td>
+    <td>
+      <% if @listing.tags.any? %>
+        <%= @listing.tags.map {|t| t.name}.sort.join(', ') %>
+      <% else %>
+        None
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>Public listing</td>
+    <td><%= link_to_listing @listing %></td>
+  </tr>
+  <tr>
+    <td>Seller</td>
+    <td>
+      <%= link_to (@listing.seller.guest?? '(guest)' : @listing.seller.name), admin_user_path(@listing.seller.id) %>
+    </td>
+  </tr>
+  <tr>
+    <td>List price</td>
+    <td><%= number_to_currency @listing.price %></td>
+  </tr>
+  <tr>
+    <td>Shipping price</td>
+    <td>
+      <%= number_to_currency @listing.shipping %>
+    </td>
+  </tr>
+  <tr>
+    <td>Marketplace fee</td>
+    <td>
+      <%= number_to_currency @listing.marketplace_fee %>
+      (<% if @listing.buyer_pays_marketplace_fee? %>buyer pays<% else %>seller pays<% end %>)
+    </td>
+  </tr>
+  <tr>
+    <td>Total price</td>
+    <td><%= number_to_currency @listing.total_price %></td>
+  </tr>
+  <tr>
+    <td>Seller proceeds</td>
+    <td><%= number_to_currency @listing.proceeds %></td>
+  </tr>
+  <tr>
+    <td>Return address</td>
+    <td>
+      <% if @listing.return_address %>
+        <%= postal_address @listing.return_address %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>Shipping option</td>
+    <td>
+      <% if @listing.shipping_option %>
+        Simple Ship - <%= t ".shipping.prepaid.#{@listing.shipping_option.code}" %>
+      <% else %>
+        Basic shipping
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>State</td>
+    <td><%= @listing.human_state_name.capitalize %></td>
+  </tr>
+  <tr>
+    <td>Approved?</td>
+    <td>
+      <% if @listing.approved? %>
+        Yes
+      <% elsif @listing.disapproved? %>
+        No
+      <% else %>
+        Not yet
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>Order</td>
+    <td>
+      <% if @listing.order %>
+        <%= link_to @listing.order.reference_number, admin_order_path(@listing.order) %>
+        - <%= @listing.order.human_status_name %>
+      <% else %>
+        None
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>Buyer</td>
+    <td>
+      <% if @listing.buyer %>
+        <%= link_to @listing.buyer.name, admin_user_path(@listing.buyer.id) %>
+      <% else %>
+        None
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+
+<% if can? :edit, @listing %>
+  <%= bootstrap_button_group style: 'margin-top: 5px; margin-bottom: 5px' do %>
+    <%= bootstrap_button 'Edit', edit_admin_listing_path(@listing.id) %>
+    <% if current_user.likes?(@listing) %>
+      <%= bootstrap_button 'Resend love email', admin_listing_love_email_index_path(@listing.id), method: :post,
+                           data: {action: 'resend-love-email'} %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if @listing.not_yet_approved? %>
+  <%= bootstrap_button_group style: 'margin-top: 5px; margin-bottom: 5px' do %>
+    <%= bootstrap_button 'Approve', approve_admin_listing_path(@listing.id), icon: 'plus-sign',
+      inverted_icon: true, condition: :green_light, data: {method: :post, action: :approve} %>
+    <%= bootstrap_button 'Disapprove', disapprove_admin_listing_path(@listing.id), icon: 'minus-sign',
+      inverted_icon: true, condition: :yellow_light, data: {method: :post, action: :disapprove} %>
+  <% end %>
+<% end %>
+
+<% if @listing.active? %>
+  <%= bootstrap_button_group style: 'margin-top: 5px; margin-bottom: 5px' do %>
+    <% if @listing.featured_for_category? %>
+      <%= bootstrap_button "Don't feature in #{@listing.category.name}",
+            feature_for_category_admin_listing_path(@listing.id, feature: '0'), condition: :danger,
+            data: {method: :post, action: 'dont-feature-in-category'} %>
+    <% else %>
+      <%= bootstrap_button "Feature in #{@listing.category.name}",
+            feature_for_category_admin_listing_path(@listing.id, feature: '1'), condition: :primary,
+            data: {method: :post, action: 'feature-in-category'} %>
+    <% end %>
+    <% if @listing.tags.any? %>
+      <%= bootstrap_button 'Feature in tag pages', '#', toggle_modal: :feature_tags %>
+    <% end %>
+    <% if @feature_lists.any? %>
+      <%= bootstrap_button 'Feature in lists', '#', toggle_modal: :feature_lists %>
+    <% end %>
+  <% end %>
+  <% if @listing.tags.any? %>
+    <%= bootstrap_modal :feature_tags, "Feature #{@listing.title} in tag pages", mode: :admin do %>
+      <%= render '/admin/listings/features/tags_modal', listing: @listing %>
+    <% end %>
+  <% end %>
+  <% if @feature_lists.any? %>
+    <%= bootstrap_modal :feature_lists, "Feature #{@listing.title} in lists", mode: :admin, remote: true,
+        data: {refresh: '[data-role=feature-list-modal]'} do %>
+      <%= admin_feature_lists_modal_content(@listing, @feature_lists) %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if @listing.state_events.any? %>
+  <% @listing.state_events.each do |event| %>
+    <%= render "/admin/listings/#{event}_form", listing: @listing %>
+   <% end %>
+<% end %>

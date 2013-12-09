@@ -1,0 +1,25 @@
+<%= render '/shared_mailer/header', user: @user %>
+
+<%= mailer_graf do %>
+  Your order has been delivered to the buyer.
+<% end %>
+
+<%= render 'seller_order_details', order: @order %>
+
+<%= mailer_graf do %>
+  The payment will be released to your Payout Account within 72 hours. If you have yet to create your Payout Account, click <%= mailer_link_to 'here', settings_seller_identity_url %> to get started and ensure you're paid on time.
+<% end %>
+
+<%= mailer_graf do %>
+  You can check the status of this order at any time from your <%= mailer_link_to 'orders dashboard', sold_dashboard_url %>.
+<% end %>
+
+<%= mailer_graf do %>
+  For more information, please refer to our <%= mailer_link_to 'Transaction Policy', Brooklyn::Application.config.urls.transaction_policy %> or our Support Center's <%= mailer_link_to 'payment page', Brooklyn::Application.config.urls.payment_details %>.
+<% end %>
+
+<%= mailer_graf do %>
+  Want to list more items? Click <%= mailer_link_to 'here', new_listing_url %>.
+<% end %>
+
+<%= render '/shared_mailer/footer' %>

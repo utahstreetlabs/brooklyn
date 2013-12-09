@@ -1,0 +1,171 @@
+<%
+def t(attribute, reason, options={})
+  scope = 'activerecord.errors.models.listing.attributes'
+  I18n.t("#{attribute}.#{reason}", { scope: scope }.merge(options))
+end
+%>
+
+class CreateListingForm
+  constructor: ->
+    @button = $('button', @element)
+    @element   = $('.listing_edit')
+    @listing_photo = $('.new_listing_photo')
+    @button = $('#preview_listing')
+    @inputFields = $('input, select', @element)
+    @freeShipping = $('#listing_free_shipping')
+    listingForm = this
+
+    # Hide the image immediately for better ux rather than waiting for the
+    # background request to complete
+    @listing_photo.on 'ajax:beforeSend', (button) =>
+      button = $(button)[0]
+      if button.target.className.match('delete')
+        $(button.target).parent().remove()
+        this.validateImageFields()
+
+    # Fire inline validator on successful ajax call
+    @listing_photo.on 'jsend:success', (event) =>
+      this.validateImageFields()
+      # ensure that a `false` returned from `.valid()` doesn't prevent other handlers from being called
+      true
+
+    @validator = @element.validate({
+      ignore: ["#listing_size_name", "#listing_brand_name", "#listing_tags_tag", ".combobox-container input"]
+      onkeyup: ((element, event) ->
+        return if event.which == 9 #Tab
+        if this.checkForm()
+          listingForm.enableButton()
+        else
+          listingForm.disableButton()
+      ),
+      rules: {
+        'listing[category_id]': {
+          required: true,
+          digits: true
+        },
+        'listing[dimensions][condition]': {
+          required: true,
+          digits: true
+        },
+        'listing[title]': {
+          required: true
+        },
+        'listing[description]': {
+          required: true
+        },
+        'listing[price]': {
+          required: true,
+          min: <%= Brooklyn::Application.config.pricing.minimum %>
+        },
+        'listing[shipping]': {
+          required: true,
+          min: => 0
+        }
+      },
+      messages: {
+        'listing[category_id]': {
+          required: "<%= t :category_id, :blank %>",
+          digits: "<%= t :category_id, :blank %>"
+        },
+        'listing[dimensions][condition]': {
+          required: "<%= t :condition, :blank %>",
+          digits: "<%= t :condition, :blank %>"
+        },
+        'listing[title]': {
+          required: "<%= t :title, :blank %>"
+        },
+        'listing[description]': {
+          required: "<%= t :description, :blank %>"
+        },
+        'listing[price]': {
+          required: "<%= t :price, :blank %>"
+          min: "<%= t :price, :greater_than_or_equal_to,
+            { minimum_price:
+                ActionController::Base.helpers.number_to_currency(Brooklyn::Application.config.pricing.minimum)
+            } %>"
+        },
+        'listing[shipping]': {
+          required: "<%= t :shipping, :blank %>"
+        }
+      },
+      showErrors: (errorMap, errorList) ->
+        for error in errorList
+          $element = $(error.element)
+          if $element && this.settings.ignore.indexOf($element.attr('id')) > -1
+            return false
+          $parent = $element.parent()
+          $('.errorlist, .validlist', $parent).remove()
+          $msgElement = $('<div/>').
+            addClass('errorlist error span5 inline-block-element pull-right').
+            html(error.message)
+          $msgElement.insertAfter($element)
+        for element in this.successList
+          $element = $(element)
+          if this.settings.ignore.indexOf($element.attr('id')) > -1
+            return false
+          $parent = $element.parent()
+          $('.errorlist, .validlist', $parent).remove()
+          $msgElement = $('<div/>').
+            addClass('validlist valid span5 inline-block-element pull-right').
+            html('Great')
+          $msgElement.insertAfter($element)
+    })
+
+    this.disableButton()
+
+    @inputFields.each (input, value) =>
+      $(value).on 'focusout', (e) =>
+        # Validate all the form elements when one of them changes.
+        # Fix for a Chrome issue where autofill doesn't trigger a
+        # change event (and thus fields aren't validated).
+        # Safari doesn't trigger a change on autofill, so we trigger
+        # off of focusout as well.
+        this.validateTextFields()
+        this.validateImageFields()
+
+  validateTextFields: () ->
+    $('input', '#new_purchase').each ->
+      textField = $(this)
+      textField.valid() if textField.val() != ''
+
+  validateImageFields: () =>
+    #Check if image has been uploaded
+    if(typeof $('[data-photo-url]').val() is 'undefined' && (typeof $('.remote-file-url').val() is 'undefined' || $('.remote-file-url').val() == ''))
+      $('#statusMessage').remove()
+      $('#preview_listing').attr('disabled','disabled').addClass('disabled')
+      errorMsg = $('<div id="statusMessage"></div>').
+        addClass('errorlist error span4 inline-block-element pull-right').
+        html('<%= I18n.t('activerecord.errors.models.listing_photo.attributes.file.blank') %>')
+      $('#import-buttons').append(errorMsg)
+    else
+      $('#statusMessage').remove()
+      successMsg = $('<div id="statusMessage">Great!</div>').
+        addClass('validlist valid span4 inline-block-element pull-right')
+      $('#import-buttons').append(successMsg)
+      if @validator.checkForm()
+        this.enableButton()
+
+  enableButton: () =>
+    @button.removeAttr('disabled')
+    @button.removeClass('disabled')
+    this.enableDraft()
+
+  disableButton: () =>
+    @button.attr('disabled', true)
+    @button.addClass('disabled')
+    this.enableDraft()
+
+  # Blur triggers validation
+  forceBlur: () ->
+    $("input:not(.combobox-container input)").trigger "blur"
+
+  enableDraft: () =>
+    $('#save_draft').removeAttr('disabled').removeClass('disabled')
+    $('#listing_tags_tag').attr('autocomplete', 'off').attr('placeholder', 'add a tag')
+    this.validateTextFields()
+
+jQuery ->
+  form = new CreateListingForm
+
+  # Enable saving draft button.
+  setTimeout form.enableDraft, 500

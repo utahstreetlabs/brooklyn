@@ -1,0 +1,28 @@
+<% title "Admin: #{@category.name}" %>
+
+<%= bootstrap_breadcrumb [
+  ['Admin', admin_dashboard_path],
+  ['Categories', admin_categories_path],
+  @category.name
+] %>
+
+<% if @dimensions.any? %>
+  <% @dimensions.each do |dimension| %>
+    <h2><%= dimension.name %> dimension</h2>
+    <% if dimension.values.any? %>
+      <ul>
+        <% dimension.values.sort {|a, b| a.id <=> b.id}.each do |dvalue| %>
+          <li><%= dvalue.value %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>no values</p>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h2>Featured Listings</h2>
+
+<div id="featured-listings" data-role="featured-listings">
+  <%= render 'featured_listings', category: @category, features: @features %>
+</div>

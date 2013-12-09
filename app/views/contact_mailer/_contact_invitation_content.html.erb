@@ -1,0 +1,15 @@
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  Hi <%= contact.display_name %>,
+<% end %>
+
+<%= mailer_graf do %>
+  <%= user.name %> thinks you should join Copious.  The funny thing is, we think you should too.
+<% end %>
+
+<%= mailer_graf do %>
+  <%= mailer_link_to 'Click here', root_url %> to find out what all the fuss is about.
+<% end %>
+
+<%= render '/shared_mailer/footer' %>

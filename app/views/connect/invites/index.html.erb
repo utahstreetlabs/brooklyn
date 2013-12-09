@@ -1,0 +1,94 @@
+<%
+title t('.title')
+stylesheet "connect"
+javascript 'connect_invites'
+%>
+
+<div id="main-content" class="span9">
+  <h2><%= t('.invite_friends') %></h2>
+
+  <div class="black-notification pull-left">
+    <div class="invite-offer x-large"><%= t('.invite_offer_html', {
+      receive_amount: number_to_currency(Credit.amount_for_accepted_invite, precision: 0),
+      give_amount: number_to_currency(Credit.invitee_credit_amount, precision: 0) }) %>
+    </div>
+    <hr class="short-hr"/>
+    <div class="large-text"><%= t('.invite_friends') %></div>
+    <div class="x-large heavy">&amp;</div>
+    <p class="marketing-copy"><%= t('.more_invite_info_html', {
+      earn: number_to_currency(Credit.amount_for_accepted_invite, precision: 0),
+      give: number_to_currency(Credit.invitee_credit_amount, precision: 0) })%>
+      <%= link_to t('.offer_details'), Brooklyn::Application.config.urls.invite_offer_details, target: '_blank' %>
+    </p>
+    <div class="arrow-down"></div>
+  </div>
+
+  <%= image_tag("layout/Invite_Page_Final.png", class: "pull-left envelope-icon") %>
+
+
+  <div class="pull-left row margin-top">
+    <div class="span12 margin-bottom">
+      <%= link_to t('.check_status'), settings_invites_path, class: 'margin-top block-element' %>
+    </div>
+    <% if current_user.person.connected_to?(:facebook) %>
+      <div class="span6">
+        <h4><%= t('.friends_title')%></h4>
+        <p><%= t('.friends_text')%></p>
+        <div class="margin-top">
+          <%= link_to_invite_facebook %>
+          <%= bootstrap_modal :invite_friends_via_facebook, t('.invite_facebook_friends'), show_save: false,
+                               show_close: false, show_footer: true,
+                               custom_links: invite_box((@invite || FacebookInvite.new),
+                                                        connect_invites_facebook_index_path) do %>
+            <%= render '/connect/invites/modules/facebook', search_action: search_connect_invites_facebook_index_path,
+                       friend_boxes: @friend_boxes %>
+          <% end %>
+
+        </div>
+      </div>
+    <% end %>
+    <div class='span6'>
+      <h4><%= t('.invite_via_email') %></h4>
+      <p><%= t('.invite_via_email_text')%></p>
+      <div class="margin-top">
+        <%= link_to_invite_email %>
+        <%= bootstrap_modal :invite_friends_via_email, t('.email_your_friends'), show_save: false,
+                            show_close: false do %>
+          <%= render '/connect/invites/modules/email', url: connect_invites_email_index_path,
+                     invite: (@invite || EmailInvite.new) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="pull-left row x-fat-margin">
+    <div class="pull-left span6 margin-top">
+      <h4><%= t('.share_your_link') %></h4>
+      <p><%= t('.spread_the_love') %></p>
+    </div>
+    <div class="pull-left span6 margin-top">
+      <div class="invite-link-input margin-top">
+         <%= text_field_tag :invite_url, untargeted_invite_url(current_user), readonly: :readonly %>
+      </div>
+      <%= link_to image_tag("icons/invite_fb.png"), signup_invites_share_path(:facebook), target: :_blank, class: 'share facebook' %>
+      <%= link_to image_tag("icons/invite_twitter.png"), signup_invites_share_path(:twitter), target: :_blank, class: 'share twitter' %>
+    </div>
+  </div>
+</div>
+
+<% if_just_invited_friends do |invite_count| %>
+  <%= bootstrap_modal :invited, t('.invitations_sent' ), show_save: false, hidden: false, show_footer: false,
+                      never_close: true do %>
+    <p>
+      <%= t('.invite_send_receive', {
+        send: pluralize(invite_count, t('.invitation')),
+        receive: number_to_currency(Credit.amount_for_accepted_invites(invite_count), precision: 0) }) %>
+    </p>
+    <p><%= t('.accepted_invites')%></p>
+    <p><%= t('.invite_more')%></p>
+    <div class="action-container">
+      <%= link_to_invite_facebook %>
+      <%= link_to_invite_email %>
+    </div>
+  <% end %>
+<% end %>

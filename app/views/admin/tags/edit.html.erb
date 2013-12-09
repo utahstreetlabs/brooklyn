@@ -1,0 +1,10 @@
+<% title "Admin: #{@tag.name}" %>
+
+<%= bootstrap_breadcrumb [
+  ['Admin', admin_dashboard_path],
+  ['Tags', admin_tags_path],
+  [@tag.name, admin_tag_path(@tag.id)],
+  'Edit'
+] %>
+
+<%= render 'form', tag: @tag, url: admin_tag_path(@tag.id), cancel_url: admin_tag_path(@tag.id) %>

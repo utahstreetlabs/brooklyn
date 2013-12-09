@@ -1,0 +1,3 @@
+{ "photos": [
+  <%= raw @listing.photos.map { |p| render partial: 'summary', locals: { photo: p } }.join(',') %>
+]}

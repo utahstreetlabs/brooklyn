@@ -1,0 +1,49 @@
+<% title "Admin: Edit #{@user.name}" %>
+
+<%= bootstrap_breadcrumb [
+  ['Admin', admin_dashboard_path],
+  ['Users', admin_users_path],
+  [@user.name, admin_user_path(@user.id)],
+  'Edit'
+] %>
+
+<%= bootstrap_form_for @user, url: admin_user_path(@user.id) do |f| %>
+  <%= f.text_field :firstname, 'First name', maxlength: 64 do %>
+    <p class="help-block">Used to address the user directly in email salutations, etc.</p>
+  <% end %>
+  <%= f.text_field :lastname, 'Last name', maxlength: 64 %>
+  <%= f.text_field :name, 'Full name', maxlength: 128 do %>
+    <p class="help-block">Used to display the user's name throughout the site (we don't simply concatenate first and last names).</p>
+  <% end %>
+  <%= f.text_field :slug, 'Slug', maxlength: 255 do %>
+    <p class="help-block">A unique name for the user's profile page, i.e. the highlighted portion of http://copious.com/profiles/<code>{:slug}</code>. May contain only lower case letters, numbers and hyphens.</p>
+  <% end %>
+  <%= f.control_group do %>
+    <%= f.control_label :web_site_enabled, 'Web site profile setting' %>
+    <%= f.controls do %>
+      <%= f.radio_button :web_site_enabled, 'Enabled', true %>
+      <%= f.radio_button :web_site_enabled, 'Disabled', false %>
+    <% end %>
+  <% end %>
+  <%= f.control_group do %>
+    <%= f.control_label :listing_access, 'Listing access' %>
+    <%= f.controls do %>
+      <%= f.radio_button :listing_access, 'Undetermined (all listings automatically added to the bullpen)', '' %>
+      <%= f.radio_button :listing_access, 'Full (all listings automatically approved)', User::ListingAccess::FULL %>
+      <%= f.radio_button :listing_access, 'Limited (all listings automatically added to the bullpen)',
+            User::ListingAccess::LIMITED %>
+      <%= f.radio_button :listing_access, 'Blacklist (all listings activated but not added to bullpen)',
+            User::ListingAccess::NONE %>
+    <% end %>
+  <% end %>
+
+  <%= f.control_group do %>
+    <%= f.control_label :needs_onboarding, 'Onboarding'%>
+    <%= f.controls do %>
+      <%= f.check_box :needs_onboarding, 'Force onboarding (Check to force user to onboard again)'%>
+    <% end %>
+  <% end %>
+
+  <%= f.submit %>
+  <%= f.cancel admin_user_path(@user.id) %>
+<% end %>

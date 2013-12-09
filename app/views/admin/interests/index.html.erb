@@ -1,0 +1,87 @@
+<% title "Admin: All interests" %>
+
+<%= bootstrap_breadcrumb [
+  ['Admin', admin_dashboard_path],
+  'All interests'
+] %>
+
+<% if @interests.any? %>
+  <% if can? :create, Interest %>
+    <p><%= bootstrap_button 'New interest', new_admin_interest_path %></p>
+  <% end %>
+
+  <%= form_tag admin_interests_path, id: 'interests', method: :post do %>
+    <%= bootstrap_table condensed: true do %>
+      <thead>
+        <tr>
+          <th>
+            <%= check_box_tag :toggle_all, "1", false, title: 'select/deselect all', class: 'datagrid-toggle-all' %>
+          </th>
+          <th></th>
+          <th>Name</th>
+          <th>Gender</th>
+          <th># Suggested users</th>
+          <th># Autofollow collections</th>
+          <th># Interested users</th>
+          <th>Onboarding?</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @interests.each do |interest| %>
+          <%= content_tag :tr, data: {interest: interest.id} do %>
+            <%= content_tag :td do %>
+              <%= check_box_tag 'id[]', interest.id, false, id: "id_#{interest.id}", class: 'datagrid-toggle' %>
+            <% end %>
+            <%= content_tag :td do %>
+              <%= image_tag(interest.cover_photo? ? interest.cover_photo.px_30x30.url :
+                            'icons/profile_photo/px_30x30___default__.png', height: 30, width: 30) %>
+            <% end %>
+            <%= content_tag :td, data: {role: :name} do %>
+              <%= link_to interest.name, admin_interest_path(interest) %>
+            <% end %>
+            <%= content_tag :td do %>
+              <%= admin_interest_gender interest.gender %>
+            <% end %>
+            <%= content_tag :td do %>
+              <%= @suggested_counts.fetch(interest.id, 0) %>
+            <% end %>
+            <%= content_tag :td do %>
+              <%= @autofollow_counts.fetch(interest.id, 0) %>
+            <% end %>
+            <%= content_tag :td do %>
+              <%= @interested_counts.fetch(interest.id, 0) %>
+            <% end %>
+            <%= content_tag :td, data: {role: :onboarding} do %>
+              <%= yes_no interest.onboarding? %>
+            <% end %>
+            <%= content_tag :td do %>
+              <%= bootstrap_button_group pull: :right do %>
+                <%= bootstrap_button nil, admin_interest_path(interest.id), condition: :danger, size: :mini,
+                                     icon: :remove, inverted_icon: true, rel: :tooltip,
+                                     title: "Delete #{interest.name}",
+                                     data: {method: :delete, action: :delete,
+                                            confirm: 'Are you sure you want to delete this interest?'} %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </tbody>
+    <% end %>
+  <% end %>
+
+  <p>
+    <%= bootstrap_button 'Add selected to onboarding', add_all_to_onboarding_admin_interests_path,
+                         data: {method: :post, action: :add_all_to_onboarding, :'loading-text' => 'Adding selected…'} %>
+    <%= bootstrap_button 'Remove selected from onboarding', remove_all_from_onboarding_admin_interests_path,
+                         data: {method: :post, action: :remove_all_from_onboarding,
+                                :'loading-text' => 'Removing selected…'} %>
+    <%= bootstrap_button 'Delete selected', destroy_all_admin_interests_path, condition: :danger,
+                         data: {method: :delete, action: :destroy_all, :'loading-text' => 'Deleting selected…'} %>
+  </p>
+<% else %>
+  <p>No interests have been defined.</p>
+  <% if can? :create, Interest %>
+    <p><%= bootstrap_button 'Create one now', new_admin_interest_path %></p>
+  <% end %>
+<% end %>

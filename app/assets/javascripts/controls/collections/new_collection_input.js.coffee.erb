@@ -1,0 +1,54 @@
+#= require copious/plugin
+#= require copious/jsend
+#= require copious/remote_form
+
+# A text field and button for creating a new collection
+#
+# Should be instantiated once for any given new collection input
+# markup. Event handlers are bound during initialization.
+#
+# Events:
+#
+# +newCollectionInput:created+ triggered when a new collection has
+#   been successfully created
+# +newCollectionInput:creationFailed+ triggered when an attempt to
+#   create a new collection fails
+class NewCollectionInput
+  constructor: (@element, options) ->
+    @nameInput = $('[data-role=collection-name]', @element)
+    @addButton = $('[data-action=add-collection]', @element)
+    this._registerEventHandlers()
+
+  submitNewCollection: =>
+    name = @addButton.siblings('[data-role=collection-name]').val()
+    collections_path = '<%= Brooklyn::Application.routes.url_helpers.collections_path %>'
+    $.jsend.post(collections_path, 'collection[name]': name, 'collection[context]': 'standalone',
+                                    source: copious.source(@element), page_source: copious.pageSource()).
+      then((data) =>
+        this.reset()
+        @element.trigger('newCollectionInput:created', data)).
+      fail((type, data) =>
+        this.reset()
+        @element.trigger('newCollectionInput:creationFailed', data))
+
+  reset: =>
+    @nameInput.val('')
+
+  _registerEventHandlers: =>
+    # Because we can't have a form nested in another form, we copy the data
+    # from the text field into a hidden form on the page and submit that.
+    @addButton.on 'click', =>
+      this.submitNewCollection()
+      false
+    # Using .off here didn't prevent the bootstrap handler from kicking in and
+    # closing the modal when the input element was selected.  My wild guess is that
+    # the unpredictable order in which our js libraries are loaded is to blame.
+    # Either way, this does the trick.
+    @nameInput.on 'keydown', (e) =>
+      keyCode = e.which
+      if keyCode is KEYCODE_ENTER
+        this.submitNewCollection()
+        false
+
+jQuery ->
+  $.fn.newCollectionInput = copious.plugin.componentPlugin(NewCollectionInput, 'newCollectionInput')

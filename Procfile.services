@@ -1,0 +1,8 @@
+# these start services in development mode
+rubicon: bash -c 'source "$HOME/.rvm/scripts/rvm"; cd ../rubicon; bundle exec unicorn -c config/unicorn.dev.rb -E development -p 4030'
+anchor: bash -c 'source "$HOME/.rvm/scripts/rvm"; cd ../anchor; bundle exec unicorn -c config/unicorn.dev.rb -E development -p 4010'
+lagunitas: bash -c 'source "$HOME/.rvm/scripts/rvm"; cd ../lagunitas; bundle exec unicorn -c config/unicorn.dev.rb -E development -p 4000'
+pyramid: bash -c 'source "$HOME/.rvm/scripts/rvm"; cd ../pyramid; bundle exec unicorn -c config/unicorn.dev.rb -E development -p 4060'
+flyingdog: bash -c 'cd ../flyingdog; FLYINGDOG_ENV=development bin/lein ring server-headless'
+mendocino: bash -c 'cd ../mendocino; MENDOCINO_ENV=development bin/lein run'
+

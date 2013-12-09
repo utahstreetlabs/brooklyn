@@ -1,0 +1,290 @@
+<%= bootstrap_table condensed: true do %>
+  <tbody>
+    <tr>
+      <td class="span4">Created at</td>
+      <td><%= datetime order.created_at %></td>
+    </tr>
+    <tr>
+      <td>Last updated at</td>
+      <td><%= datetime order.updated_at %></td>
+    </tr>
+    <tr>
+      <td>Listing</td>
+      <td><%= link_to order.listing.title, admin_listing_path(order.listing.id) %></td>
+    </tr>
+    <tr>
+      <td>Seller</td>
+      <td>
+        <%= link_to order.listing.seller.name, admin_user_path(order.listing.seller.id) %>
+        &lt;<%= mail_to order.listing.seller.email %>&gt;
+      </td>
+    </tr>
+    <tr>
+      <td>Buyer</td>
+      <td>
+        <%= link_to order.buyer.name, admin_user_path(order.buyer.id) %>
+        &lt;<%= mail_to order.buyer.email %>&gt;
+      </td>
+    </tr>
+    <tr>
+      <td>List price</td>
+      <td><%= number_to_currency order.listing.price %></td>
+    </tr>
+    <tr>
+      <td>Shipping price</td>
+      <td>
+        <%= number_to_currency order.listing.shipping %>
+      </td>
+    </tr>
+    <tr>
+      <td>Marketplace fee</td>
+      <td>
+        <%= number_to_currency order.listing.marketplace_fee %>
+        (<% if order.listing.buyer_pays_marketplace_fee? %>buyer pays<% else %>seller pays<% end %>)
+      </td>
+    </tr>
+    <tr>
+      <td>Total price</td>
+      <td><%= number_to_currency order.listing.total_price %></td>
+    </tr>
+    <tr>
+      <td>Credit used</td>
+      <td><%= number_to_currency order.credit_amount %></td>
+    </tr>
+    <tr>
+      <td>Buyer pays</td>
+      <td><%= number_to_currency order.total_price %></td>
+    </tr>
+    <tr>
+      <td>Seller proceeds</td>
+      <td><%= number_to_currency order.listing.proceeds %></td>
+    </tr>
+    <tr>
+      <td>Billing address</td>
+      <td>
+        <%= content_or_none order.billing_address do %>
+          <%= postal_address order.billing_address %>
+        <% end %>
+      </td>
+    </tr>
+    <% if order.shipping_address %>
+      <tr>
+        <td>Shipping address</td>
+        <td><%= postal_address order.shipping_address %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td>Shipping option</td>
+      <td>
+        <% if order.listing.shipping_option %>
+          Simple Ship - <%= t ".shipping.prepaid.#{order.listing.shipping_option.code}" %>
+        <% else %>
+          Basic shipping
+        <% end %>
+      </td>
+    </tr>
+    <% if order.shipment && order.shipment.persisted? %>
+      <tr>
+        <td>Shipping carrier</td>
+        <% if order.shipment.carrier %>
+          <%= content_tag :td, data: {role: :carrier_name} do %>
+            <%= order.shipment.carrier.name %>
+          <% end %>
+        <% else %>
+          <td>None</td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>Tracking number</td>
+        <% if order.shipment.tracking_number.present? %>
+          <%= content_tag :td, data: {role: :tracking_number} do %>
+            <%= order.shipment.tracking_number %>
+          <% end %>
+        <% else %>
+          <td>None</td>
+        <% end %>
+      </tr>
+      <% if order.listing.prepaid_shipping? %>
+        <tr>
+          <td>Shipping label</td>
+          <td>
+            <% if order.shipping_label %>
+              <%= order.shipping_label.state.capitalize %>
+              <br>Generated at <%= datetime order.shipping_label.created_at %>
+              <% if order.shipping_label.expired? %>
+                <br>Expired at <%= datetime order.shipping_label.expired_at %>
+              <% else %>
+                <br>Expires at <%= datetime order.shipping_label.expires_at %>
+              <% end %>
+              <br>Stamps.com id: <%= order.shipping_label.tx_id %>
+              <br>USPS tracking #: <%= order.shipping_label.tracking_number %>
+              <br><%= bootstrap_button 'Download', admin_order_shipping_label_path(order), target: '_blank',
+                                       icon: 'download', data: {action: 'download-label'} %>
+            <% else %>
+              None
+              <% unless order.pending? || order.confirmed? %>
+                - seller probably fell back to basic shipping
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+    <tr>
+      <td>Status</td>
+      <td><%= order.human_status_name.capitalize %></td>
+    </tr>
+    <tr>
+      <td>Balanced debit</td>
+      <td>
+        <%= content_or_none order.balanced_debit_url do |url| %>
+          <%= link_to_balanced url %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>Balanced credit</td>
+      <td>
+        <%= content_or_none order.balanced_credit_url do |url| %>
+          <%= link_to_balanced url %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>Balanced refund</td>
+      <td>
+        <%= content_or_none order.balanced_refund_url do |url| %>
+          <%= link_to_balanced url %>
+        <% end %>
+      </td>    </tr>
+    <% if order.confirmed_at %>
+      <tr>
+        <td>Confirmed at</td>
+        <td><%= datetime order.confirmed_at %></td>
+      </tr>
+    <% end %>
+    <% if order.shipment && order.shipment.persisted? %>
+      <% if order.shipment.shipment_status_checked_at %>
+        <tr>
+          <td>Shipment status checked at</td>
+          <td><%= datetime order.shipment.shipment_status_checked_at %></td>
+        </tr>
+      <% end %>
+      <% if order.shipment.shipped_at? %>
+        <tr>
+          <td>Shipped at</td>
+          <td><%= datetime order.shipment.shipped_at %></td>
+        </tr>
+      <% end %>
+      <% if order.shipment.delivery_status_checked_at %>
+        <tr>
+          <td>Delivery status checked at</td>
+          <td><%= datetime order.shipment.delivery_status_checked_at %></td>
+        </tr>
+      <% end %>
+      <% if order.delivery_confirmation_requested_at %>
+        <tr>
+          <td>Delivery confirmation requested at</td>
+          <td><%= datetime order.delivery_confirmation_requested_at %></td>
+        </tr>
+      <% end %>
+      <% if order.shipment.delivered_at? %>
+        <tr>
+          <td>Delivered at</td>
+          <td><%= datetime order.shipment.delivered_at %></td>
+        </tr>
+      <% end %>
+    <% end %>
+    <% if order.completed_at? %>
+      <tr>
+        <td>Completed at</td>
+        <td><%= datetime order.completed_at %></td>
+      </tr>
+    <% end %>
+    <% if order.settled_at? %>
+      <tr>
+        <td>Settled at</td>
+        <td><%= datetime order.settled_at %></td>
+      </tr>
+      <tr>
+        <td>Seller payment</td>
+        <td>
+          <% if order.seller_payment %>
+            <%= order.seller_payment.human_state_name.capitalize %>
+            to <%= order.seller_payment.deposit_account.display_name %>
+            (<%= order.seller_payment.deposit_account.is_a?(PaypalAccount)  ? 'PayPal' : 'Bank' %>)
+            <% if order.seller_payment.paid? %>
+              on <%= datetime order.seller_payment.paid_at %>
+            <% elsif order.seller_payment.rejected? %>
+              on <%= datetime order.seller_payment.rejected_at %>
+            <% elsif order.seller_payment.canceled? %>
+              on <%= datetime order.seller_payment.canceled_at %>
+            <% end %>
+          <% else %>
+            None
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    <% if order.canceled_at? %>
+      <tr>
+        <td>Canceled at</td>
+        <td><%= datetime order.canceled_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+<% end %>
+
+<%= bootstrap_button_group do %>
+  <% if order.can_settle? && can?(:settle, order) %>
+    <%= admin_order_settle_button(order) %>
+  <% end %>
+
+  <% if order.can_complete? && can?(:complete, order) %>
+    <%= admin_order_complete_button(order) %>
+  <% end %>
+
+  <% if order.can_deliver? %>
+    <% if can?(:deliver, order) %>
+      <%= bootstrap_button 'Deliver', deliver_admin_order_path(order.id), method: :post, condition: :primary,
+            icon: :forward, inverted_icon: true, data: {action: :deliver} %>
+    <% end %>
+    <% if can?(:update, order.shipment) %>
+      <%= bootstrap_button 'Update shipment', '#', toggle_modal: :update_shipment, icon: :pencil %>
+      <%= bootstrap_modal :update_shipment, "Update Shipment", remote: true,
+            mode: :admin, refresh: '[data-role=order-info]' do %>
+        <%= render 'admin/orders/shipments/update_modal', shipment: order.shipment %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <% if order.can_ship? && can?(:ship, order) %>
+    <%= bootstrap_button 'Ship', '#', toggle_modal: :ship, condition: :primary,
+          icon: :forward, inverted_icon: true %>
+    <%= bootstrap_modal :ship, "Ship Order", mode: :admin, remote: true,
+          refresh: '[data-role=order-info]' do %>
+      <%= render 'admin/orders/ship_modal', order: order %>
+    <% end %>
+  <% end %>
+
+  <% if order.can_track? && can?(:track, order) %>
+    <%= bootstrap_button 'Track', tracking_url(order), icon: :road, data: {action: :track}, target: '_blank' %>
+  <% end %>
+
+  <% if order.can_cancel? && can?(:cancel, order) %>
+    <% if order.past_checkout? %>
+      <%= bootstrap_button 'Cancel', '#', toggle_modal: :cancel, condition: :danger,
+            icon: :'remove-sign', inverted_icon: true %>
+      <%= bootstrap_modal :cancel, "Cancel Order", mode: :admin, remote: true,
+            refresh: '[data-role=order-info]' do %>
+        <%= render 'admin/orders/cancel_modal', order: order %>
+      <% end %>
+    <% else %>
+      <%= bootstrap_button 'Cancel', cancel_admin_order_path(order.id), method: :delete,
+            condition: :danger, data: {action: :cancel, confirm: "Are you sure you want to cancel this order?"},
+            icon: :'remove-sign', inverted_icon: true %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render partial: 'admin/annotatable', locals: {annotatable: order} %>

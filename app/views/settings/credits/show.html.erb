@@ -1,0 +1,44 @@
+<%
+title 'Account Settings: My Credits'
+mp_view_event 'my credits'
+%>
+
+<h2>My Credits</h2>
+<div class="section">
+  <div class="available-credits-container">
+    <h4>Available Credits</h4>
+    <span class="credits_amount"><%= number_to_currency current_user.credit_balance %></span>
+  </div>
+  <div class="total-credits-container">
+    <h4>Total credits earned:</h4>
+    <span class="total_amount"><%= number_to_currency current_user.total_credit_value %></span>
+  </div>
+  <h5>Credit Summary - You can apply your credits during checkout</h5>
+  <%= datagrid @credits, disable_total_results: true, disable_search: true, :class => 'table-zebra' do |t| %>
+    <%= t.thead do |thead| %>
+      <%= thead.th :created_on, title: 'Received On', default: true %>
+      <%= thead.th :expires_at, title: 'Expires On' %>
+      <%= thead.th :event, title: 'Details' %>
+      <%= thead.th :amount %>
+      <%= thead.th :remaining %>
+    <% end %>
+    <%= t.tbody class: 'credit' do |tbody, credit| %>
+      <%= tbody.td do %>
+        <%= date credit.created_at %>
+      <% end %>
+      <%= tbody.td do %>
+        <%= datetime credit.expires_at if credit.expires_at %>
+      <% end %>
+      <%= tbody.td do %>
+        <%= credit_trigger_details(@triggers[credit.trigger_id]) ||
+          (credit.offer ? credit.offer.display_name : 'Special Credit') %>
+      <% end %>
+      <%= tbody.td data: {'role' => 'credit-amount'} do %>
+        <%= number_to_currency credit.amount %>
+      <% end %>
+      <%= tbody.td do %>
+        <%= number_to_currency credit.amount_available %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

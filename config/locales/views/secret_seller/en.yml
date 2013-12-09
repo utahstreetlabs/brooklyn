@@ -1,0 +1,36 @@
+en:
+  secret_seller:
+    items:
+      new:
+        title: 'Secret Seller'
+        header: 'Secret Seller'
+        body_html: "If you don’t like that tea set your aunt Mildred gave you.<br>If you got steak knives from Secret Santa, but you are a vegetarian.<br>If your friend sent you a sweater that would fit&hellip; never.<br>If you’d rather have $20 in your pocket than that “World’s Best Boss” mug."
+        tagline: "It’s ok to sell it online. We won’t tell."
+        field:
+          title:
+            label: 'Title'
+          description:
+            label: 'Description'
+          price:
+            label: 'Price'
+            placeholder: '0.00'
+          condition:
+            label: 'Condition'
+          photo:
+            label: 'Photo'
+        button:
+          save:
+            text: 'Send my secret listing'
+            disable_html: 'Saving&hellip;'
+        help:
+          header: 'Here’s how it works.'
+          body_html: "Fill out the form and we’ll post your item for you on our Secret Seller Page. We’ll e-mail you when the item sells and tell you where to send it. When your item is delivered to the buyer, we’ll send you your payment. Easy, peasy, lemon squeezy."
+          faq_link: 'FAQ page'
+          want_more_html: 'Want more info? Check out our %{faq_link}.'
+      thanks:
+        title: 'Secret Seller: Thanks!'
+        header: 'Thanks!'
+        body_html: 'Your listing request has been sent.<br><br>We will let you know if there are any questions, compliments<br>or clarifications needed via e-mail.'
+        faq_link: 'FAQ page'
+        want_more_html: 'Want more info? Check out our %{faq_link}.'
+        feed_link: 'Back to feed'

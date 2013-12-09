@@ -1,0 +1,41 @@
+# Support tracking landing pages
+#
+# Automatically loads mixpanel and Google Analytics tracking code for the right
+# environment. Automatically loads a tracking pixel that will set Copious
+# session variables that will set utm superproperties the first time
+# we load a Brooklyn page.
+#
+# Landing page creators can set a 'tracking-event' data property on an element
+# on the landing page with the 'copious-mixpanel-event' class. The value of
+# the tracking event data property will be passed along through the tracking pixel.
+# If this parameter is passed on the tracking pixel, an event with that name will
+# be recorded in mixpanel.
+#
+MP_TOKEN = '<%= Brooklyn::Application.config.tracking.mixpanel.token %>'
+
+GA_ACCOUNT = '<%= Brooklyn::Application.config.google_analytics.account_id %>'
+window._gaq ||= []
+_gaq.push(['_setAccount', GA_ACCOUNT])
+_gaq.push(['_trackPageview'])
+
+
+$.domReady ->
+  # Mixpanel initialization
+  `(function(c,a){var b,d,h,e;b=c.createElement("script");b.type="text/javascript";b.async=!0;b.src=("https:"===c.location.protocol?"https:":"http:")+'//api.mixpanel.com/site_media/js/api/mixpanel.2.js';d=c.getElementsByTagName("script")[0];d.parentNode.insertBefore(b,d);a._i=[];a.init=function(b,c,f){function d(a,b){var c=b.split(".");2==c.length&&(a=a[c[0]],b=c[1]);a[b]=function(){a.push([b].concat(Array.prototype.slice.call(arguments,0)))}}var g=a;"undefined"!==typeof f?g=a[f]=[]:f="mixpanel";g.people=g.people||[];h=['disable','track','track_pageview','track_links','track_forms','register','register_once','unregister','identify','name_tag','set_config','people.set','people.increment'];for(e=0;e<h.length;e++)d(g,h[e]);a._i.push([b,c,f])};a.__SV=1.1;window.mixpanel=a})(document,window.mixpanel||[]);
+  mixpanel.init(MP_TOKEN, {upgrade: true, store_google: false});`
+
+  # GA initialization
+  `(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();`
+
+  tracking_params = {}
+  tracking_event = $('.copious-mixpanel-event').data('tracking-event')
+  tracking_params.event = tracking_event if tracking_event
+
+  query = (location.search + '&') || "?"
+  query += ("#{key}=#{encodeURIComponent(value)}" for key, value of tracking_params).join('&')
+  tracking_url = "<%= Brooklyn::Application.routes.url_helpers.track_url(format: :gif) %>#{query}"
+  $(document.body).append("<img src='#{tracking_url}'/>")

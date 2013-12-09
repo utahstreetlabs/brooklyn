@@ -1,0 +1,31 @@
+<%
+title 'Feed'
+mp_view_event 'feed'
+body_class 'homepage_logged_in'
+javascript 'homepage_logged_in'
+stylesheet 'homepage_logged_in'
+stylesheet 'signup'
+%>
+
+<%= invite_friends_modal current_user %>
+
+<div id="main-content" class="span12" style="margin-bottom: 20px;">
+  <%= content_tag :div, id: 'listings-feed' do %>
+    <div class="divider-button-container">
+      <span id="refresh-container"></span>
+      <%= select_interests_button_and_modal if feature_enabled?('onboarding.skip_interests') %>
+    </div>
+    <%= card_feed @listings_feed, feed: {class: 'search-results-new feed listing-feed row',
+                  data: {feed_url: feed_listings_path(feed: params[:feed]), start_time: @listings_feed.start_time,
+                         end_time: @listings_feed.end_time, refresh_timestamp_url: refresh_timestamp_feed_listings_path}} %>
+    <%= infinite_scroll_widgets %>
+  <% end %>
+
+  <% handlebar_template 'refresh-template' do %>
+    <%= link_to "{{count}} new action{{#if plural}}s{{/if}}", nilhref, :class => 'refresh' %>
+  <% end %>
+</div>
+
+<% if @listings_feed %>
+  <%= link_to_listings_feed_more(limit: 24, offset: @listings_feed.count, feed: params[:feed]) %>
+<% end %>

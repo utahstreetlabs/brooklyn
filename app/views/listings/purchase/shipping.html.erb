@@ -1,0 +1,124 @@
+<%
+title "Buy #{@listing.title} in #{@listing.category.name}: Shipping info"
+javascript 'listings_purchase_shipping'
+purchase_flow_step 2
+mp_view_event 'enter shipping info'
+%>
+
+<%= render partial: 'reserved_time_box', locals: {listing: @listing} %>
+
+<h1 id="title">Enter Your Shipping Information</h2>
+
+<div id="ship-to" class="section">
+  <% if @ship_to.master_addresses.any? %>
+    <%= form_for @ship_to, as: :ship_to, url: ship_to_listing_purchase_path(@listing) do |f| %>
+      <%= f.fieldset do %>
+        <% @ship_to.master_addresses.each do |address| %>
+          <%= f.field :address_id, id: "field-address-id-#{address.id}" do %>
+            <%= f.radio_button :address_id, address.id %>
+            <%= f.label "address_id_#{address.id}", address.name %>
+            <%= postal_address address %>
+          <% end %>
+        <% end %>
+      <% end %>
+      <%= content_tag :div, id: "bill_to_shipping" do %>
+        <%= f.check_box :bill_to_shipping %>
+        <%= f.label :bill_to_shipping, 'Use this for my billing address', :class => "meta checkbox" %>
+      <% end %>
+      <%= f.buttons save_text: 'Continue to Payment' %>
+    <% end %>
+  <% else %>
+    <p>You haven't saved any shipping addresses yet.</p>
+  <% end %>
+</div>
+
+<h3>Add a New Shipping Address</h3>
+
+<%= content_tag :div, id: "new-address", class: 'section', :'data-active' => @address.errors.any? do %>
+  <div>
+    <%= form_for @address, :url => create_shipping_address_listing_purchase_path(@listing) do |f| %>
+      <%= render partial: 'shared/shipping_address_fields', locals: {f: f} %>
+      <%= content_tag :div, id: "bill_to_shipping" do %>
+        <%= f.fields_for :shipping_address do |shipping_address_fields| %>
+          <%= shipping_address_fields.check_box :bill_to_shipping %>
+          <%= f.label :bill_to_shipping, 'Use this for my billing address', :class => "meta checkbox" %>
+        <% end %>
+      <% end %>
+      <%= f.buttons save_text: 'Save address and Continue to Payment' %>
+    <% end %>
+  </div>
+<% end %>
+
+<% content_for :sidebar do %>
+  <%= purchase_order_details @listing do %>
+    <% if current_user.has_available_credit?(listing: @listing) %>
+      <% balance = current_user.credit_balance(listing: @listing) %>
+      <%= content_tag :div, id: 'credit-box', :class => 'credits-window' do %>
+        <div class="label margin-bottom">You have credit!</div>
+        <%= form_tag credit_listing_purchase_path(@listing), method: :put, remote: true do %>
+          <%= checkout_price_detail 'Your Balance', balance, 'balance' %>
+          <%= field :credit_amount, container: :div do %>
+            <div class="price-detail-name">
+              <span class="apply-credits">Apply Credits</span>
+            </div>
+            <div class="price-detail-value">
+              <%= text_field_tag 'credit_amount', number_to_unitless_currency(
+                Credit.apply_suggest_max_applicable?? @listing.order.applicable_credit(balance) : 0.00) %>
+            </div>
+          <% end %>
+          <div class="apply-credit-container">
+            <div class="credit-applied-feedback" style="display:none"></div>
+            <%= buttons save_text: 'Apply Credit', class: 'button small right-button', spinner: true %>
+          </div>
+          <span class="weak">To protect the community, we require a minimum charge of <%= number_to_currency Credit.minimum_real_charge %> for each transaction.</span>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <%= form_tag nilhref, class: 'continue-to-payment' do %>
+      <%= buttons save_text: 'Continue to Payments', :class => 'button large primary button-block' %>
+    <% end %>
+  <% end %>
+
+  <div class="order-safe">
+    <h4>Buying made easy.</h4>
+    <span class="title-copy">
+      1. One at a time.
+    </span>
+    <span class="body-copy">
+      You are buying from individual sellers, so check out is one at a time.
+    </span>
+
+    <span class="title-copy">
+      2. Secure Payments
+    </span>
+    <span class="body-copy">
+      Your payment is held in escrow until everyone is satisfied.
+    </span>
+
+    <span class="title-copy">
+      3. Track your order.
+    </span>
+    <span class="body-copy">
+      Everything ships with a tracking number.
+    </span>
+
+    <span class="title-copy">
+      4. Purchase review.
+    </span>
+    <span class="body-copy">
+      Make sure everything is ok. Once you're satisfied, the seller is paid.
+    </span>
+
+    <span class="title-copy">
+      5. Returns are simple.
+    </span>
+    <span class="body-copy">
+      Simply ship it back to the seller and your payment is refunded.
+    </span>
+
+    <span class="body-copy questions-copy">
+      Questions? &nbsp;<%= link_to_help_center("We're here to help.") %>
+    </span>
+  </div>
+<% end %>

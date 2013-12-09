@@ -1,0 +1,36 @@
+class window.ContentScraper
+  PRICE_PATTERN = /\$([\d\s\.,]{1,256})/
+
+  constructor: ->
+    @priceRegex = new RegExp(PRICE_PATTERN)
+
+  price: ->
+    validNodes = this._getValidNodes($('body')[0])
+    for n in validNodes
+      price = (n.innerHTML.match(@priceRegex) || [false, false])[1] if n.innerHTML
+      if price
+        # Remove any commas from the price, these screw up parsing in brooklyn
+        price = price.replace(/[\s,]/, '')
+        return price if price
+
+  title: ->
+    return document.title
+
+  images: ->
+    new ImageFilter()
+      .filteredImages()
+      .slice(0, 5) # only return first 5 filtered images
+
+  # Recurses over DOM nodes but does not recurse and look at children
+  # of script nodes.
+  _getValidNodes: (startNode) =>
+    nodes = []
+    findNodes = (n) ->
+      while (n)
+        if n.nodeName.toLowerCase() != 'script'
+          nodes.push(n)
+          if n.hasChildNodes()
+            findNodes(n.firstChild)
+        n = n.nextSibling
+    findNodes(startNode)
+    return nodes

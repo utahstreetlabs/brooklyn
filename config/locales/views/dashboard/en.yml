@@ -1,0 +1,84 @@
+en:
+  dashboard:
+    sold:
+      funds_waiting:
+        deposit_funds:
+          paypal:
+            instructions_html: 'You have %{amount} waiting. Click to release your payment to your PayPal account.<br>Your payment will automatically release for all future sales.'
+            sucks_html: 'Because your deposit account is PayPal, it can take up to 72 hours.<br>If you want to get paid faster, use your bank account for your deposit account.'
+            button:
+              release: 'Release payment'
+              add_bank_account: 'Add bank account'
+          bank_account:
+            instructions_html: 'You have %{amount} waiting. Click to release your payment to your bank account.<br>Your payment will automatically release for all future sales.'
+            button: 'Release payment'
+        connect_bank_account:
+          instructions_html: 'You have %{amount} waiting.<br>To get paid, finish creating your Payout Account.'
+          button: 'Finish creating Payout Account'
+        create_merchant_account:
+          instructions_html: 'You have %{amount} waiting.<br>To get paid, create your Payout Account.'
+          button: 'Create Payout Account'
+    transactions:
+      index:
+        title: 'Transaction History'
+        header: 'Transaction History'
+        th:
+          date: 'Date'
+          description: 'Description'
+          account: 'Account'
+          type: 'Type'
+          credit_state: 'Credit State'
+          amount: 'Amount'
+        tbody:
+          description:
+            none: ''
+          account:
+            unknown: ''
+          funding_source:
+            card: '%{card_type} ending in %{last_four}'
+            paypal: 'PayPal account: %{email}'
+            paypal_unknown: 'Unknown PayPal account'
+            bank_account: '%{name} ending in %{last_four}'
+            unknown: ''
+          credit_card:
+            visa: 'Visa'
+            mastercard: 'MasterCard'
+            amex: 'American Express'
+            discover: 'Discover'
+          type:
+            credit: 'Credit'
+            debit: 'Debit'
+            refund: 'Refund'
+            hold: 'Hold'
+          credit_state:
+            pending: 'Pending'
+            cleared: 'Cleared'
+            rejected: 'Rejected'
+        no_transactions: "You don't have any transactions."
+    bought_listing:
+      shipped:
+        status: 'Shipped'
+        substatus:
+          delivery_confirmation_pending_html: '#%{tracking_number}'
+          delivery_confirmation_elapsed_html: 'No confirmed delivery'
+      complete:
+        status: 'Successful purchase!'
+        substatus: ''
+      settled:
+        status: 'Successful purchase!'
+        substatus: ''
+    sold_listing:
+      shipped:
+        status: 'Shipped'
+        substatus:
+          delivery_confirmation_pending_html: '#%{tracking_number}'
+          delivery_confirmation_elapsed_html: 'No confirmed delivery<br>Buyer contacted'
+      complete:
+        status: 'Successful sale!'
+        substatus: 'Payment pending'
+      settled:
+        status: 'Successful sale!'
+        substatus:
+          paid: "Payment cleared"
+          rejected: "Payment rejected"
+          pending: "Payment pending"

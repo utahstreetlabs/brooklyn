@@ -1,0 +1,124 @@
+<%
+mediaforge_retargetting_js
+%>
+<div id="main-content">
+  <div class="full-wrapper">
+    <div class="middle-container">
+      <div class="section discovery-area">
+        <p class="main-copy">
+          Be a Seller on Copious
+        </p>
+        <div class="subcopy-area">
+          <span class="copy-paragraph">
+            Copious lets people buy and sell things quickly and easily.<br />
+            It's free to list. <br />
+            And promote your stuff to Copious users and their over 3 million friends on Facebook and Twitter.
+          </span>
+          <span class="learn-more">
+            <a>Learn about selling on Copious</a>
+          </span>
+        </div>
+      </div>
+      <div class="slides-wrapper">
+        <div id="slides" class="slides">
+          <div class="slides-shadow"></div>
+          <div class="slides_container">
+            <%#     Slide 1     %>
+            <div class="product-slide">
+              <a href="/listings/scarf-shawl-wrap-sheer-linen-mustard-green-gold">
+                <img src="/assets/landing/seller-landing.jpg" class="product-slide-photo">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="full-wrapper2">
+    <div class="middle-container">
+      <div class="landing-list-container">
+        <ul class="landing-list">
+          <li class="seller-list">
+            <h3 class="cta join-now">Join Now to get started.</h3>
+            <div class="connect-container">
+              <%= link_to_facebook_connect(seller_signup: true) %>
+              <div class="connect-twitter-container">
+                <span class="left-line">&mdash;&mdash;</span>
+                <a href="/auth/twitter" class="twitter signup">or Connect with Twitter</a>
+                <span class="right-line">&mdash;&mdash;</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-container">
+    <ul class="about-list">
+      <li>
+        <div class="seller-landing-top">
+          <h3 class="seller-landing">Reach over 1 billion users</h3>
+          <div class="hr-line"></div>
+          <span class="bodyText">
+            Leverage Facebook and Twitter to tap new customers
+          </span>
+        </div>
+      </li>
+      <li>
+        <div class="seller-landing-top">
+          <h3 class="seller-landing">Sell to real people</h3>
+          <div class="hr-line"></div>
+          <span class="bodyText">
+            See who you are selling to and reduce fraud.
+          </span>
+        </div>
+      </li>
+      <li>
+        <div class="seller-landing-top">
+          <h3 class="seller-landing">Free to list</h3>
+          <div class="hr-line"></div>
+          <span class="bodyText">
+            Pay $0.35 + 3.5% only if and when your stuff sells.
+          </span>
+        </div>
+      </li>
+      <li>
+        <div class="seller-landing-top">
+          <h3 class="seller-landing">Get started</h3>
+          <div class="hr-line"></div>
+          <span class="bodyText">
+            Create your first, free listing.
+            <%= link_to 'List Your Stuff', listings_path, id: "sell_button", class: "button", method: :POST %>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="press-wrapper">
+    <div class="press-position-container">
+      <div class="lots-of-listings">
+        <h3>Need to list more than 50 items? We have an API for that. <a>Please contact us to get started</a></h3>
+      </div>
+
+      <div class="title-container">
+        <h3 class="title">As seen on</h3>
+      </div>
+      <div class="press-container">
+        <ul class="press">
+          <li style="margin-right: 52px; margin-left: 2px; margin-top: 15px;"><img src="/assets/landing/seller/nyt.png" style="height: 26px;"></li>
+          <li style="margin-right: 57px;"><img src="/assets/landing/seller/reuters.png"></li>
+          <li style="margin-right: 58px;"><img src="/assets/landing/seller/forbes.png" style="height: 19px; margin-top:5px;"></li>
+          <li style="margin-right: 53px;"><img src="/assets/landing/seller/wsj.png" style="height: 20px; margin-top:5px;"></li>
+          <li><img src="/assets/landing/seller/tc.png" style="height:21px; margin-top: 4px;"></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,226 @@
+en:
+  exhibits:
+    dashboard:
+      buyer:
+        delivery_confirmation_elapsed:
+          button: 'Update Delivery'
+          modal:
+            title: 'Update Delivery Status'
+            text: "We have not received delivery confirmation for your purchase. Did you receive it?"
+            tracking_number: '%{number}'
+            button:
+              track: 'Track'
+              delivered: "Yes, I received it."
+              not_delivered: "No, I haven't seen it."
+        delivery_confirmed:
+          modal:
+            title: 'Your purchase has been delivered'
+            text_html: "You have %{review_remaining} until this order automatically completes, so if there is an issue with your purchase, please notify us before then at %{help_link}."
+        delivery_not_confirmed:
+          modal:
+            title: "Your purchase has not been delivered"
+            text_html: "Our support team has been notified and is looking into this issue. Please contact us at %{help_link} if you have questions."
+      seller:
+        confirmed_basic_shipping:
+          button:
+            ship: 'Ship'
+          modal:
+            title: "Enter the tracking information"
+            text_html: "Enter the tracking information for your package<br>and we'll let the buyer know how to watch for the delivery."
+            carrier:
+              label: 'Carrier'
+            tracking_number:
+              label: 'Tracking Number'
+            button:
+              submit: 'Submit'
+            disable:
+              submit_html: 'Submitting&hellip;'
+    notifications:
+      listing:
+        flagged:
+          self_html: "Your listing <strong>%{listing}</strong> was flagged for review."
+        like:
+          seller_self:
+            self_html: "You love your listing <strong>%{listing}</strong>."
+            user_html: "<strong>%{liker}</strong> loves your listing <strong>%{listing}</strong>."
+          seller_user:
+            self_html: "You love <strong>%{listing}</strong>."
+            user_html: "<strong>%{liker}</strong> loves <strong>%{listing}</strong>."
+        saved:
+          seller_self:
+            self_html: "You saved your listing <strong>%{listing}</strong> to collection <strong>%{collection}</strong>."
+            user_html: "<strong>%{saver}</strong> saved your listing <strong>%{listing}</strong> to collection <strong>%{collection}</strong>."
+          seller_user:
+            self_html: "You saved the listing <strong>%{listing}</strong> to collection <strong>%{collection}</strong>."
+            user_html: "<strong>%{saver}</strong> saved the listing <strong>%{listing}</strong> to collection <strong>%{collection}</strong>."
+        suspended:
+          self_html: "Your listing <strong>%{listing}</strong> was suspended.  For more details, visit our listing guidlines."
+        commented:
+          seller_self:
+            self_html: "You commented on your listing <strong>%{listing}</strong>."
+            user_html: "<strong>%{commenter}</strong> commented on your listing <strong>%{listing}</strong>."
+          seller_user:
+            self_html: "You commented on the listing <strong>%{listing}</strong>."
+            user_html: "<strong>%{commenter}</strong> commented on the listing <strong>%{listing}</strong>."
+          # XXX Remove when the 'notifications.layout.v2' flag is enabled
+          text_html: "%{commenter_link} commented on %{listing_link}"
+        replied:
+          self_html: "%{replier} replied to your comment on <strong>%{listing}</strong>."
+          text_html: "%{replier_link} replied to your comment on %{listing_link}"
+        mentioned:
+          user_html: "<strong>%{commenter}</strong> mentioned you in <strong>%{listing}</strong>"
+          # XXX Remove when the 'notifications.layout.v2' flag is enabled
+          text_html: "%{commenter_link} mentioned you on %{listing_link}"
+      collection:
+        follow:
+          owner_self:
+            self_html: "You are following your collection <strong>%{collection}</strong>."
+            user_html: "<strong>%{follower}</strong> is following your collection <strong>%{collection}</strong>."
+          owner_user:
+            self_html: "You are following the collection <strong>%{collection}</strong>."
+            user_html: "<strong>%{follower}</strong> is following the collection <strong>%{collection}</strong>."
+      credit:
+        granted:
+          descriptor:
+            self_html: "You earned <strong>%{amount}</strong> in credit %{descriptor} to spend until <strong>%{expiration}</strong>."
+          no_descriptor:
+            self_html: "You earned <strong>%{amount}</strong> in credit to spend until <strong>%{expiration}</strong>."
+      invite:
+        sent_pile_on:
+          self_html: "You invited <strong>%{invitee}</strong> to join Copious and be part of their network via %{network}."
+          user_html: "<strong>%{inviter}</strong> invited <strong>%{invitee}</strong> to join Copious and be part of their network via %{network}."
+      user:
+        follow:
+          self_html: "<strong>%{follower}</strong> is following you."
+      seller:
+        payment_paid:
+          bank:
+            self_html: "<strong>%{amount}</strong> for the sale of <strong>%{listing}</strong> was successfully deposited in your bank account"
+            # XXX Remove when the 'notifications.layout.v2' flag is enabled
+            text_html: "%{amount} for the sale of %{listing_link} was successfully deposited in your bank account"
+          paypal:
+            self_html: "<strong>%{amount}</strong> for the sale of <strong>%{listing}</strong> was successfully deposited in your PayPal account"
+            # XXX Remove when the 'notifications.layout.v2' flag is enabled
+            text_html: "%{amount} for the sale of %{listing_link} was successfully deposited in your PayPal account"
+        payment_rejected:
+          bank:
+            self_html: "The attempted deposit of <strong>%{amount}</strong> for the sale of <strong>%{listing}</strong> in your bank account was rejected; please review"
+            # XXX Remove when the 'notifications.layout.v2' flag is enabled
+            text_html: "The attempted deposit of %{amount} for the sale of %{listing_link} in your bank account was rejected; please review"
+          paypal:
+            self_html: "The attempted deposit of <strong>%{amount}</strong> for the sale of <strong>%{listing}</strong> in your PayPal account was rejected; please review"
+            # XXX Remove when the 'notifications.layout.v2' flag is enabled
+            text_html: "The attempted deposit of %{amount} for the sale of %{listing_link} in your PayPal account was rejected; please review"
+      collection_follow:
+        self: "You are following <strong>%{collection_link}</strong>"
+        user: "<strong>%{profile_link}</strong> is following <strong>%{collection_link}</strong>"
+      feedback:
+        feedback_score: "feedback score"
+        increased:
+          seller: "Your %{feedback_link} increased since your last sale"
+          buyer: "Your %{feedback_link} increased since your last purchase"
+        decreased:
+          seller: "Your %{feedback_link} decreased because %{reason}"
+        failure_reason:
+          never_shipped: "you didn't ship %{listing_link}"
+      listing_save: "<strong>%{saver}</strong> saved <strong>%{listing_link}</strong> to <strong>%{collection_link}</strong>"
+      tracking:
+        number_updated:
+          user_html: "The tracking number for <strong>%{listing}</strong> has changed."
+        # XXX Remove when the 'notifications.layout.v2' flag is enabled
+        update:
+          "The tracking number for %{listing_link} changed"
+      order:
+        created:
+          buyer_html: "<strong>%{user}</strong> purchased your <strong>%{listing}</strong>."
+        completed:
+          self_html: "Your sale was successful: <strong>%{listing}</strong>"
+          user_html: "Your purchase is complete: <strong>%{listing}</strong>.  See more from <strong>%{seller}</strong>."
+        delivered:
+          seller_html: "Your <strong>%{listing}</strong> was delivered to <strong>%{user}</strong>."
+          buyer_html: "The <strong>%{listing}</strong> you purchased from <strong>%{user}</strong> was delivered."
+        failed:
+          seller_html: "Your sale did not complete: <strong>%{listing}</strong>. For more details, email: help@copious.com"
+          buyer_html: "Your purchase was not successful: <strong>%{listing}</strong>."
+        delivery_confirmation_period_elapsed:
+          seller_html: "Your <strong>%{listing}</strong> delivery has not been confirmed; <strong>%{buyer}</strong> has been contacted."
+          buyer_html: "Please update your <strong>%{listing}</strong> delivery status."
+          # XXX Remove when the 'notifications.layout.v2' flag is enabled
+          buyer:
+            text_html: 'Please update your <strong>%{listing_link}</strong> delivery status'
+          seller:
+            text_html: 'Your <strong>%{listing_link}</strong> delivery has not been confirmed; <strong>%{buyer_link}</strong> has been contacted'
+        shipped:
+          buyer_html: "<strong>%{user}</strong> has shipped your <strong>%{listing}</strong>."
+        unshipped:
+          seller_html: "Please ship <strong>%{listing}</strong> before your time runs out."
+    listings:
+      orders:
+        buyer:
+          complete:
+            #header_html: "Enjoy your new find! Copious has automatically given you positive feedback to show the community that you're a fantastic buyer. Nice, right?"
+            header_html: "Enjoy your new find!"
+          confirmed:
+            header_html: "Thank you.<br>Your purchase is confirmed, and you will soon receive a confirmation e-mail."
+            instructions_html: 'When your item is shipped, you will receive a shipping confirmation e-mail complete with the carrier and tracking number.<br>Your order number is <span class="strong numbers">%{reference_number}</span>.'
+            button:
+              check_status: "Check status"
+          delivered:
+            header_html: "Your order has been delivered."
+            instructions_html: "You have until <span class='strong'>%{review_period_ends_at}</span> to review your purchase and confirm that everything turned out well.<br>If you're unable to work it out, please contact us at %{help_link}."
+            subheader:
+              complete: "Everything is in order."
+            button:
+              complete: "Complete Transaction"
+            disable:
+              complete_html: "Completing&hellip;"
+          failed:
+            text_html: "Your purchase was not successful: %{listing_link}."
+          settled:
+            #header_html: "Enjoy your new find! Copious has automatically given you positive feedback to show the community that you're a fantastic buyer. Nice, right?"
+            header_html: "Enjoy your new find!"
+          shipped:
+            header_html: "Your order has been shipped!"
+            instructions_html: 'It will be delivered by <span class="strong">%{carrier}</span> and the tracking # is <span class="strong numbers">%{tracking_number}</span>.'
+            delivery_not_confirmed_html: "Delivery for your purchase is not confirmed. Have you received it?"
+            button:
+              delivered: "Yes, I received it"
+              not_delivered: "No, I haven't seen it"
+            disable:
+              delivered_html: "Updating&hellip;"
+              not_delivered_html: "Updating&hellip;"
+        seller:
+          complete:
+            header_html: "Your sale is complete!"
+            deposit_funds:
+              paypal:
+                instructions_html: 'You have %{amount} waiting. Click to release your payment to your PayPal account.<br>Your payment will automatically release for all future sales.'
+                sucks_html: 'Because your deposit account is PayPal, it can take up to 72 hours.<br>If you want to get paid faster, use your bank account for your deposit account.'
+                button:
+                  release: 'Release payment'
+                  add_bank_account: 'Add bank account'
+                disable:
+                  release_html: 'Releasing&hellip;'
+              bank_account:
+                instructions_html: 'You have %{amount} waiting. Click to release your payment to your bank account.<br>Your payment will automatically release for all future sales.'
+                button: 'Release payment'
+                disable_html: 'Releasing&hellip;'
+            connect_bank_account:
+              instructions_html: 'You have %{amount} waiting from this sale.<br>To get paid, finish creating your Payout Account.'
+              button: 'Finish creating Payout Account'
+            create_merchant_account:
+              instructions_html: 'You have %{amount} waiting from this sale.<br>To get paid, create your Payout Account.'
+              button: 'Create Payout Account'
+          delivered:
+            header_html: "We've confirmed that your item has been delivered."
+            instructions_html: "The buyer has %{review_period} from the time of delivery to review your item<br>and make sure everything is OK. We will not release funds until either<br>the review period is complete or the buyer confirms that everything is okay."
+            review_period_ends_html: "The Transaction Review Period ends %{ends_at}."
+          failed:
+            text_html: "Your sale did not complete: %{listing_link}. For more details, email: help@copious.com"
+          settled:
+            #header_html: "Your sale is complete! Copious has automatically given you positive feedback to show the community that you're a fantastic seller. Nice, right?"
+            header_html: "Your sale is complete!"
+          shipped:
+            header_html: "Your item has been shipped!"
+            delivery_info_html: 'It will be delivered by <span class="strong">%{carrier}</span> and the tracking # is <span class="strong numbers">%{tracking_number}</span>.'
+            delivery_not_confirmed_html: 'Delivery is not yet confirmed by <span class="strong">%{carrier}</span>. The buyer has been contacted for an update.'

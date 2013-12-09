@@ -1,0 +1,13 @@
+<%= word_wrap %Q[#{raw @mentioned.firstname},
+
+#{raw @commenter.name} just mentioned you in a comment on #{raw @listing.title}.
+
+#{raw @commenter.firstname} said:
+
+#{mailer_format_text @comment.text}
+
+Keep the conversation going.
+
+Reply to #{raw @commenter.firstname} at #{rewrite_mailer_url listing_url(@listing)}] %>
+
+<%= render '/shared_mailer/footer' %>

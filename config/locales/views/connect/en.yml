@@ -1,0 +1,34 @@
+en:
+  connect:
+    who_to_follow:
+      index:
+        title: "Who to Follow"
+        no_suggestions: "We're out of suggestions."
+    invites:
+      index:
+        check_status: "Check the status of friends you've already invited."
+        title: "Invite Friends"
+        invite_friends: "Invite your Friends"
+        invite_offer_html: 'GIVE <span class="light-green">%{give_amount},</span> GET <span class="light-green">%{receive_amount}</span>'
+        more_invite_info_html: "give them %{give} to spend on Copious.  And for you? Earn %{earn} after each friend's first purchase. "
+        offer_details: "Offer details"
+        friends_title: "Grab your Facebook friends"
+        friends_text: "Post an invite directly to the friends whose taste you admire."
+        invite_facebook_friends: "Invite Facebook Friends"
+        invite_via_email: "Send invites via email"
+        invite_via_email_text: "Send to as many friends as you like."
+        email_your_friends: "Email your Friends"
+        share_your_link: "Share your link"
+        spread_the_love: "Spread the love.  This invite link is yours to share so post it on Facebook, Twitter or your blog."
+        invitations_sent: "Invitations sent!"
+        invitation: "invitation"
+        invite_send_receive: "You've sent %{send} and are in line for up to %{receive} in credits."
+        accepted_invites: "We'll let you know when your invitations have been accepted."
+        invite_more: "Invite more friends and expand your network!"
+      modules:
+        email:
+          import_contacts_html: '<span class="large_text">Import Contacts</span> from Gmail, Yahoo, Hotmail'
+          message: 'Message'
+          message_value: "Copious is the best thing that's ever happened to me (besides you, of course). It's a marketplace with lots of one-of-a-kind finds, and it also makes it easy to sell your own. Plus, you'll get %{credit_amount} for accepting my invitation. Time to do some damage."
+          placeholder: "Enter email addresses separate by whitespace or commas"
+          send_to: "Send to"

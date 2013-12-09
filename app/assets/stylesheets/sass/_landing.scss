@@ -1,0 +1,563 @@
+.landing {
+  background-color: $white;
+  .existing-account-bar {
+    background-color: #007bb1;
+    height: 70px;
+    div.existing-account {
+      position: relative;
+      @extend .container;
+      #top-login {
+        float: right;
+        width: 430px;
+        margin-right: 50px; }
+      fieldset, li {
+        float: left;
+        clear: none; }
+      fieldset {
+        width: 83%;
+        padding: 0;
+        margin: 0; }
+      li {
+        width: 45%; }
+      li#field_remember_me {
+        label {
+          vertical-align: top;
+          line-height: 14px;
+          margin-top: 0px; } }
+      #field_email {
+        margin-right: 25px; }
+      #field_remember_me {
+        position: absolute;
+        top: 47px;
+        width: 200px;
+        input {
+          margin-top: 2px;
+          height: 10px; } }
+      label {
+        line-height: 20px;
+        color: $white;
+        font-weight: normal;
+        text-transform: capitalize; }
+      div.buttons {
+        position: relative;
+        overflow: visible;
+        margin-top: 23px;
+        float: right;
+        width: 13.8%; }
+      div.buttons a {
+        position: absolute;
+        right: 75px;
+        top: 24px;
+        width: 102px;
+        text-align: right;
+        color: $white;
+        font-weight: normal;
+        font-size: $baseFontSize * 0.85; }
+      div.buttons a:hover,
+      div.buttons a.hover,
+      div.buttons a:focus,
+      div.buttons a.focus {
+        color: $orange; }
+      input[type=text], input[type=password] {
+        width: 100%; }
+      input:focus {
+        border-color: $orange; }
+      #top-login-flash {
+        position: absolute;
+        color: salmon;
+        right: 325px;
+        top: 47px; } } } }
+
+.landing .content {
+  @extend .container;
+  h1 {
+    width: 280px;
+    height: 0;
+    padding-top: 105px;
+    background-image: image-url("landing/copious_logo_beta.png");
+    background-repeat: no-repeat;
+    overflow: hidden;
+    margin: 65px 0 0 0;
+    margin-left: -10px; }
+  h2 {
+    color: $white;
+    font-weight: bold;
+    letter-spacing: -0.04em;
+    font-size: 30px;
+    line-height: 32px;
+    margin: 0 0 14px;
+    color: #007bb1;
+    width: 400px;
+    border: none;
+    padding: 15px 0px 10px;
+    text-transform: none; }
+  p {
+    clear: left;
+    font-size: 18px;
+    line-height: 24px;
+    font-family: $serifFontFamily;
+    color: #007bb1;
+    padding-right: 30px; }
+  a.button {
+    img {
+      width: 18px;
+      height: 18px;
+      vertical-align: text-bottom;
+      margin-top: 1px; } }
+  a.button.facebook {
+    margin-right: 12px; }
+  a.button.primary {
+    padding: 6px 10px !important;
+    display: inline-block;
+    img {
+      margin-right: 5px !important; } }
+  a.button.primary.facebook {
+    margin-bottom: 8px; }
+  span.meta {
+    font-size: $baseFontSize;
+    line-height: $baseLineHeight * .875;
+    color: $grayLight;
+    display: block;
+    margin: 6px 0px 0px 14px; }
+  .button + p {
+    margin-top: 20px;
+    color: $gray;
+    font-size: 16px; }
+  .button + p a {
+    color: #007bb1;
+    font-weight: normal; }
+  .button + p a:hover,
+  .button + p a.hover,
+  .button + p a:focus,
+  .button + p a.focus {
+    text-decoration: underline !important; } }
+
+.landing .thumbnail-wall {
+  width: 470px;
+  float: left;
+  background-color: $white;
+  min-height: 100%;
+  margin-top: -70px;
+  img {
+    float: left;
+    width: 70px !important;
+    height: 70px;
+    margin-bottom: 10px;
+    margin-right: 10px; } }
+
+.landing .intro {
+  @include column(8);
+  @include last;
+  margin-left: 26px;
+  margin-top: 46px;
+  .messages {
+    position: relative;
+    left: -40px;
+    width: 115%; }
+  .sell {
+    margin-top: 125px;
+    font-size: 16px; } }
+
+// WRONG LOGIN PAGE CONNECT BUTTON STYLING
+body.sessions_new {
+  a.button {
+    vertical-align: text-top;
+    img {
+      width: 18px;
+      height: 18px;
+      vertical-align: text-bottom;
+      margin-top: 2px; } }
+  a.button.facebook {
+    margin-right: 12px; }
+  #sidebar {
+    float: right; } }
+
+
+// BRAD'S LANDING PAGE
+.brad_landing, .brad_landing_comingsoon {
+  #main-content {
+    overflow: hidden;
+    height: 100%;
+    background: image-url("landing/featured/brad/Brad_bg.png") no-repeat top;
+    float: none;
+  }
+  .top-section {
+    min-height: 420px;
+    position: relative;
+    z-index: $zin-messages;
+  }
+  #brad_closet {
+    font-size: 19px;
+    width: 350px;
+    position: absolute;
+    top: 410px;
+    left: 140px;
+    background-color: #FFC800;
+    border-color: darken(#FFC800, 1%) darken(#FFC800, 5%) darken(#FFC800, 10%);
+    &:hover {
+      // for now leave it like this until we write the proper mixin for it
+      background-color: #FFC800;
+      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(lighten(#FFC800, 14%)), color-stop(25%, #FFC800), to(darken(#FFC800, 2%)));
+      background-image: -webkit-linear-gradient(lighten(#FFC800, 14%), #FFC800 25%, darken(#FFC800, 2%));
+      background-image: -moz-linear-gradient(top, lighten(#FFC800, 14%), #FFC800 25%, darken(#FFC800, 2%));
+      background-image: -ms-linear-gradient(lighten(#FFC800, 14%), #FFC800 25%, darken(#FFC800, 2%));
+      background-image: -o-linear-gradient(lighten(#FFC800, 14%), #FFC800 25%, darken(#FFC800, 2%));
+      background-image: linear-gradient(lighten(#FFC800, 14%), #FFC800 25%, darken(#FFC800, 2%));
+      background-repeat: no-repeat;
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='lighten(#FFC800, 14%)', endColorstr='darken(#FFC800, 2%)', GradientType=0);
+    }
+  }
+  #brad_listings {
+    width: 552px;
+    margin: 70px 0px 30px 40px;
+    float: left;
+  }
+  .card-container {
+    height: 240px;
+    width: 172px;
+    margin-bottom: 25px;
+    .product-card-v3 {
+      height: 240px;
+    }
+    .product-image-container {
+      width: 162px;
+      height: 162px;
+      .product-image {
+        width: 160px;
+        height: 160px;
+      }
+    }
+    .product-title {
+      top: 170px;
+      width: 100%;
+    }
+    .product-info {
+      width: 162px;
+      top: 214px;
+      .price {
+        font-family: $sansserifFontFamily;
+        font-size: 13px;
+        font-weight: 300;
+      }
+    }
+  }
+  #sidebar-text {
+    position: absolute;
+    bottom: 120px;
+    right: -268px;
+    text-align: center;
+  }
+  h2 {
+    position: relative;
+    color: #004578;
+    text-align: center;
+    padding: 10px 0px 16px;
+    &:after, &:before {
+      content: '';
+      border: none;
+      border-top: 2px dashed #004578;
+      width: 50px;
+      height: 1px;
+      position: absolute;
+      left: 50%;
+      margin-left: -25px;
+    }
+    &:after {
+      top: 0px;
+    }
+    &:before {
+      bottom: 0px;
+    }
+  }
+  // COMING SOON STUFF
+  .coming-soon {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.8);
+    text-align: center;
+    z-index: $zin-coming-soon;
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -220px 0px 0px -200px
+    }
+  }
+}
+
+// BOO'S LANDING PAGE
+// update the body class to match the festivus landing page
+.offers_show_1 {
+  &.secret_seller {
+    .invite-text-container {
+      margin-top: 129px;
+      width: 408px;
+      position: relative;
+      @include box-shadow(0px 0px 4px rgba(0,0,0,0.25));
+    }
+    .invite-text {
+      width: 400px;
+    }
+    h1 { /* offer title*/
+      font-family: $styledFontFamily;
+    }
+    .body-copy {
+      font-family: $sansserifFontFamily;
+      line-height: 22px;
+      color: #888;
+    }
+    .secret-seller-frame {
+      background-image: image-url("landing/secret-seller/Secret_Seller_landing_frame3.png");
+      position: absolute;
+      width: 1019px;
+      height: 821px;
+      top: -192px;
+      left: -330px;
+      z-index: -1;
+    }
+    .network-connect-buttons {
+      .signup {
+        width: 100%;
+        @extend .sns-connect;
+      }
+      .facebook {
+        margin-bottom: 8px;
+      }
+    }
+  }
+  &.cyber_monday {
+    // need !important to successfully override the bg style on landing page
+    background-color: #EAE6E3 !important;
+    .invite-text {
+      .copious-logo {
+        width: 60px;
+      }
+      h1 {
+        margin: 8px 0px 19px;
+      }
+    }
+    .login-containers {
+      text-align: left;
+    }
+    .network-connect-buttons {
+      .signup {
+        width: 100%;
+        @extend .sns-connect;
+      }
+      .facebook {
+        margin-bottom: 8px;
+      }
+    }
+    .invite-text-container {
+      position: relative;
+    }
+    .festivus-frame {
+      background-image: image-url("landing/featured/boo/boo-landing-frame.png");
+      position: absolute;
+      width: 484px;
+      height: 589px;
+      top: -90px;
+      left: -82px;
+    }
+  }
+  &.boo_landing {
+    // need !important to successfully override the bg style on landing page
+    background-color: #EDE9E7 !important;
+    .invite-text-container {
+      margin: 100px 130px 0px;
+      padding: 0px;
+      width: 320px;
+      .invite-text {
+        padding: 30px;
+        .copious-logo {
+          width: 60px;
+        }
+        h1 {
+          font-family: $styledFontFamily;
+          font-size: 20px;
+          font-weight: 500;
+          margin-bottom: 16px;
+          line-height: 20px;
+        }
+        .body-copy {
+          font-family: $sansserifFontFamily;
+          font-weight: 400;
+          color: #70706E;
+          font-size: 14px;
+          width: 265px;
+        }
+      }
+      .login-containers {
+        text-align: left;
+      }
+      .network-connect-buttons {
+        .signup {
+          width: 100%;
+          @extend .sns-connect;
+        }
+        .facebook {
+          margin-bottom: 8px;
+        }
+      }
+    }
+  }
+}
+
+.network-connect-buttons {
+  .signup {
+    width: 100%;
+    @extend .sns-connect;
+  }
+  .facebook {
+    margin-bottom: 8px;
+  }
+}
+
+// SECRET SELLER PAGE
+.secret_seller_items_new {
+  background-color: #FAFAFA;
+}
+.secret-seller-header-bg-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50px;
+  width: 100%;
+  height: 353px;
+  @include gradient-vertical(#F3FAFE, #FFFFFF);
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 256px;
+    width: 100%;
+    background: image-url("landing/secret-seller/Secret_Seller_snow.png") 0 100% repeat;
+    z-index: $zin-jq-slider-range; /* cuz of the snowflakes */
+  }
+  p { /* first body copy */
+    font-weight: 500;
+    line-height: 22px;
+    margin-top: 32px;
+    color: #569CBE;
+    width: 515px;
+    text-shadow: 0 1px 3px $white;
+    background: rgba(255,255,255,0.6);
+    a {
+      text-decoration: underline;
+    }
+  }
+}
+.secret-seller-tagline {
+  font-family: $styledFontFamily;
+  font-size: 29px;
+  font-weight: 600;
+  margin: 22px 0px 16px;
+  color: #31333C;
+}
+.secret-seller-header {
+  width: 976px;
+  margin: 0 auto;
+  position: relative;
+  z-index: $zin-jq-slider-handle; /* cuz of the snowflakes */
+}
+.secret-seller-subheader {
+  font-family: $sansserifFontFamily;
+  font-size: 18px;
+  font-weight: 600;
+  color: #31333C;
+}
+.secret-seller-doll, .secret-seller-doll-1, .secret-seller-doll-2 {
+  position: absolute;
+}
+.secret-seller-doll {
+  background: image-url("landing/secret-seller/Secret_Seller_doll.gif") 0 100% no-repeat;
+  top: 118px;
+  right: 118px;
+  width: 225px;
+  height: 189px;
+}
+.secret-seller-doll-1 {
+  background: image-url("landing/secret-seller/Secret_Seller_doll1.png") 0 100% no-repeat;
+  top: 0;
+  right: 359px;
+  width: 116px;
+  height: 163px;
+}
+.secret-seller-doll-2 {
+  background: image-url("landing/secret-seller/Secret_Seller_doll2.png") 0 100% no-repeat;
+  top: 20px;
+  right: 39px;
+  width: 81px;
+  height: 142px;
+}
+.image-header { /* merge w all image-replacement styling */
+  @extend .image-replacement;
+  width: 305px;
+  height: 190px;
+  background: image-url("landing/secret-seller/Secret_Seller_doll_header.png") 0 100% no-repeat;
+  &.thanks {
+    background: image-url("landing/secret-seller/Secret_Seller_thanks.png") 0 100% no-repeat;
+    width: 244px;
+    height: 69px;
+    margin-top: 85px;
+  }
+}
+#item_new {
+  padding: 13px 16px 24px 21px;
+  background: #EAEAEA;
+  @include border-radius(3px);
+  width: 527px;
+  margin-left: -19px;
+  margin-bottom: 150px;
+  border: 1px solid #E0E0E0;
+  .control-label {
+    font-family: $sansserifFontFamily;
+    text-transform: none;
+  }
+  input[type="text"], input[type="file"], textarea {
+    width: 480px;
+  }
+  textarea {
+    height: 70px;
+  }
+  .btn.btn-primary {
+    color: white;
+    font-weight: 600;
+    width: 480px;
+    height: auto;
+    padding: 12px;
+    @include gradient-directional-vertical-three-colors($deg: 276deg, $startColor: #1EBDF4, $midColor: #1EBDF4, $colorStop: 32%, $endColor: #2182eb);
+    // gradient mixin's output for IE is not working properly
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1EBDF4', endColorstr='#2182eb', GradientType=0);
+    @include box-shadow(0 2px 2px rgba(0,0,0,0.72));
+    @include text-shadow(inset);
+    &:hover {
+      @include gradient-directional-vertical-three-colors($deg: 276deg, $startColor: #12B1F2, $midColor: #209CEF, $colorStop: 42%, $endColor: #2182eb);
+      // gradient mixin's output for IE is not working properly
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1EBDF4', endColorstr='#2182eb', GradientType=0);
+      @include text-shadow(shadow);
+      box-shadow: 0 2px 2px rgba(0,0,0,0.72), inset 0 1px 1px rgba(255,255,255,0.35);
+    }
+  }
+}
+#item_condition_input, #item_price_input {
+  display: inline-block;
+  float: left;
+}
+#item_condition_input {
+  margin-left: 16px;
+  width: 203px;
+}
+#item_condition {
+  width: 100%;
+}
+#item_price_input {
+  margin-bottom: 0;
+}

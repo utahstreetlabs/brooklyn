@@ -1,0 +1,90 @@
+<%
+hide_masthead
+hide_footer
+body_class('logged_out_home')
+stylesheet 'homepage_logged_out'
+%>
+
+<%= image_tag 'landing/loh/loh-bg.jpg', class: 'loh-bg' %>
+
+<div class="loh-modal-container clear">
+  <div class="loh-modal login-modal">
+    <div class="section">
+      <%= image_tag 'layout/Logo-58-black.png', class: 'copious-logo' %>
+      <h1 class="login-copy">Welcome Back!</h1>
+      <div class="login-containers">
+        <div class="sns-login-container">
+          <%= link_to_facebook_connect %><br/>
+          <%= link_to_twitter_connect class: "button primary large" %><br/>
+        </div>
+        <%= check_box_tag(:remember_me, '1', true) %>
+        <%= label_tag(:remember_me, 'Remember Me', :class => 'checkbox') %>
+      </div>
+
+      <div class="login-divider">
+        <i> OR </i>
+      </div>
+
+      <div class="login-containers">
+        <%= form_tag login_url(secure: true), :class => 'login' do %>
+          <%= fieldset do %>
+            <%= field :email, :class => 'text', :container => :div do %>
+              <%= label_tag :email, 'Email' %>
+              <%= text_field_tag :email, (current_user ? current_user.email : params[:email]),
+                :maxlength => 255, :id => :email %>
+            <% end %>
+            <%= field :password, :container => :div do %>
+              <%= label_tag :password %>
+              <%= password_field_tag :password, nil, :maxlength => 64, :id => :password %>
+            <% end %>
+            <%= field :remember_me, :class => 'email-checkbox', :container => :div do %>
+              <%= check_box_tag :remember_me, 1, true, :id => 'remember_me_unpw' %>
+              <%= label_tag :remember_me, 'Remember Me', :class => 'checkbox' %>
+              <%= content_tag :div, :id => 'reset-password-container' do %>
+                <%= link_to 'Forgot Password?', new_password_reset_path %>
+              <% end %>
+            <% end %>
+            <%= save_button_tag 'Log in', :class => 'button primary large' %>
+          <% end %>
+        <% end %>
+    </div>
+
+    <div class="login-container">
+      <span class="already-registered">Not signed up? &nbsp; <%= link_to 'Join Now', root_path %></span>
+    </div>
+  </div>
+
+  <div id="footer-wrapper">
+    <div id="footer-content">
+      <ul class="copious-social">
+        <li class="footer-facebook">
+          <%= link_to 'Friend us on Facebook', 'http://www.facebook.com/pages/Copious/201076446577603', :target => '_blank' %>
+        </li>
+        <li class="footer-pinterest">
+          <%= link_to 'Join us on Pinterest', 'http://pinterest.com/copious/', :target => '_blank' %>
+        </li>
+        <li class="footer-twitter">
+          <%= link_to 'Follow us on Twitter', 'https://twitter.com/#!/ShopCopious', :target => '_blank' %>
+        </li>
+      </ul>
+      <% if footer_menu_active? -%>
+        <ul class="menu">
+          <li><%= link_to 'Create a Listing', new_listing_path %></li>
+          <li><%= link_to 'Blog', 'http://corporate.copious.com/blog' %></li>
+          <li><%= link_to 'About', 'http://corporate.copious.com/about-us' %></li>
+          <li><%= link_to 'Press', 'http://corporate.copious.com/news' %></li>
+          <li><%= link_to 'Contact', 'http://corporate.copious.com/contact-us' %></li>
+          <li><%= link_to_terms 'Terms' %></li>
+          <li><%= link_to_privacy_policy 'Privacy' %></li>
+          <li><%= link_to_transaction_policy 'Transaction Policy' %></li>
+          <span>© <%= Date.today.year %> Utah Street Labs, Inc.</span>
+        </ul>
+      <% end -%>
+    </div>
+    <% if content_for? :sponsors %>
+      <div class="sponsors">
+        <%= yield :sponsors %>
+      </div>
+    <% end %>
+  </div>
+</div>

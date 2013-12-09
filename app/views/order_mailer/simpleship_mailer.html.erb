@@ -1,0 +1,63 @@
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  Hi <%= raw @user.firstname %>,
+<% end %>
+
+<%= mailer_graf do %>
+  Congratulations! <%= @order.buyer.name %> has purchased <%= mailer_link_to @order.listing.title, listing_url(@order.listing) %> on Copious.
+
+  You have agreed to ship the following item within <%= count_of_days_in_words @order.listing.handling_duration %> days:
+<% end %>
+
+<%= render 'seller_order_details', order: @order %>
+
+<%= mailer_subheader do %>
+  Buyer Info
+<% end %>
+
+<%= render '/order_mailer/shipping_address', order: @shipment.order %>
+
+<%= mailer_subheader do %>
+  What do you do now?
+<% end %>
+
+<%= mailer_graf do %>
+  1. Create your Copious Simple Ship label.
+<% end %>
+
+<%# XXX  link to somewhere, maybe order management page?  XXX %>
+<%= mailer_button("Get label now", nilhref, ) %>
+
+<%= mailer_graf do %>
+  2. Head over to your post office* to grab your free [size] prepaid USPS Priority Mail Flat Rate Box and package your sold item.
+<% end %>
+
+<%# XXX  [image of the box they selected, drawn from user ed page]  XXX %>
+<%= mailer_image_tag('', :alt => 'simple-ship-extra-small') %>
+
+<%= mailer_graf do %>
+  3. Put your label on the box, skip the lines and drop it off at the counter to be shipped.
+<% end %>
+
+<%# XXX  [image of dropping off the package]  XXX %>
+<%= mailer_image_tag('', :alt => 'simple-ship-extra-small') %>
+
+<%= mailer_graf do %>
+  Payment has been received and will be transferred into your account no later than 48 hours after <%= @order.buyer.firstname %> has received your item.
+<% end %>
+
+<%= mailer_graf do %>
+  Ready for another go? <%= mailer_link_to 'List more', dashboard_url %> of your items just as easily on Copious.
+<% end %>
+
+<%= mailer_graf(styles: 'color: #999999;') do %>
+  Questions about Copious Simple Ship? Click <%= mailer_link_to 'here', 'http://help.copious.com/customer/portal/articles/610477-how-does-copious-simple-ship-work-' %>.
+  *If you already have your prepaid USPS Priority Mail Flat Rate Box, you can also <%= mailer_link_to 'schedule a pickup', 'https://tools.usps.com/go/ScheduleAPickupAction!input.action' %>.
+<% end %>
+
+<%= mailer_graf(styles: 'margin-top: 28px; margin-bottom: 0px;') do %>
+  Peace, love and selling,
+<% end %>
+
+<%= render '/shared_mailer/footer' %>

@@ -1,0 +1,1 @@
+class AutomaticFollow < Follow; end

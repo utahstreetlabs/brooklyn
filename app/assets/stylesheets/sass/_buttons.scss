@@ -1,0 +1,922 @@
+// LARGE BUTTON MIX-IN
+
+@mixin largeButton {
+  padding: 9px 25px;
+}
+
+@mixin xlargeButton {
+  padding: 10px 45px;
+}
+
+
+// SMALL BUTTON MIX-IN
+
+@mixin xsmallButton {
+  font-size: 13px;
+  line-height: 14px;
+  font-weight: 600;
+  padding: 6px 10px;
+}
+
+@mixin smallButton {
+  font-size: 14px;
+  line-height: 14px;
+  padding: 7px 14px;
+}
+
+// GENERAL BUTTON STYLING
+
+button, a.button, .button, .btn{
+  display: inline-block;
+  font-family: $styledFontFamily;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16px;
+  color: $text-color-dark;
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  vertical-align: middle;
+  white-space: nowrap;
+  letter-spacing: 1px;
+  padding: 8px 20px;
+  background-color: $button-bg-color;
+  border-width: 1px;
+  border-style: solid;
+  border-color: $button-bg-color;
+  @include border-radius(3px);
+  &:hover {
+    color: $text-color-dark;
+    @include transition(all);
+    text-decoration: none;
+    @include gradient-vertical-three-colors($startColor: $button-bg-color, $midColor: darken($button-bg-color, 3%), $colorStop: 70%, $endColor: darken($button-bg-color, 8%));
+    // gradient mixin's output for IE is not working properly
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#EEEEEE', endColorstr='#E0E0E0', GradientType=0);
+    border-color: darken($button-bg-color, 12%);
+  }
+  &:active {
+    background-image: none;
+    background-color: darken($button-bg-color, 12%);
+    border-color: darken($button-bg-color, 12%);
+    text-decoration: none;
+  }
+  img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    vertical-align: text-bottom;
+  }
+  &.email img {
+    width: 30px;
+  }
+
+  // PRIMARY BUTTON
+  // primary button large version is currently only used in invite landing page (_layout.sass)
+  &.primary, &.btn-primary {
+    position: relative;
+    font-size: 16px;
+    color: $white;
+    vertical-align: middle;
+    white-space: nowrap;
+    padding: 8px 24px;
+    background-color: $primary-button-bg-color;
+    border-color: $primary-button-bg-color;
+    &:hover {
+      color: $white;
+      @include transition(all);
+      text-decoration: none;
+      @include gradient-vertical-three-colors($startColor: $primary-button-bg-color, $midColor: darken($primary-button-bg-color, 8%), $colorStop: 70%, $endColor: darken($primary-button-bg-color, 13%));
+      // gradient mixin's output for IE is not working properly
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3c70bd', endColorstr='#2c528b', GradientType=0);
+      border-color: darken($primary-button-bg-color, 14%);
+    }
+    &:active {
+      background-image: none;
+      background-color: darken($primary-button-bg-color, 12%);
+      border-color: darken($primary-button-bg-color, 12%);
+      text-decoration: none;
+    }
+    &.curatorial {
+      background-color: $curatorial-color;
+      border-color: $curatorial-color;
+      &:hover {
+        @include gradient-vertical-three-colors($startColor: $curatorial-color, $midColor: darken($curatorial-color, 8%), $colorStop: 70%, $endColor: darken($curatorial-color, 13%));
+        // gradient mixin's output for IE is not working properly
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f7377b', endColorstr='#f7377b', GradientType=0);
+        border-color: darken($curatorial-color, 14%);
+      }
+      &:active {
+        background-image: none;
+        background-color: darken($curatorial-color, 12%);
+        border-color: darken($curatorial-color, 12%);
+        text-decoration: none;
+      }
+    }
+    &.social {
+      background-color: $social-color;
+      border-color: $social-color;
+      &:hover {
+        @include gradient-vertical-three-colors($startColor: $social-color, $midColor: darken($social-color, 8%), $colorStop: 70%, $endColor: darken($social-color, 13%));
+        border-color: darken($social-color, 14%);
+      }
+      &:active {
+        background-image: none;
+        background-color: darken($social-color, 12%);
+        border-color: darken($social-color, 12%);
+        text-decoration: none;
+      }
+    }
+    &.transactional {
+      background-color: $transaction-color;
+      border-color: $transaction-color;
+      &:hover {
+        /* a bit different from other button values */
+        @include gradient-vertical-three-colors($startColor: $transaction-color, $midColor: darken($transaction-color, 2%), $colorStop: 70%, $endColor: darken($transaction-color, 3%));
+        border-color: darken($transaction-color, 7%);
+      }
+      &:active {
+        background-image: none;
+        background-color: darken($transaction-color, 3%);
+        border-color: darken($transaction-color, 3%);
+        text-decoration: none;
+      }
+    }
+  }
+
+
+  &.disabled, &[disabled], &.disabled:hover, &[disabled]:hover {
+    background-image: none;
+    background-color: $new-button-bg-disabled;
+    border-color: $new-button-bg-disabled;
+    &.btn-primary, &.primary, &.btn-primary:hover, &.primary:hover {
+      background-color: lighten($primary-button-bg-color, 18%);
+      border-color: lighten($primary-button-bg-color, 18%);
+    }
+    &.curatorial, &.curatorial:hover {
+      background-color: lighten($curatorial-color, 18%);
+      border-color: lighten($curatorial-color, 18%);
+    }
+    &.social.btn-primary, &.social.btn-primary:hover {
+      background-color: lighten($social-color, 18%);
+      border-color: lighten($social-color, 18%);
+    }
+    &.transactional, &.transactional:hover {
+      background-color: lighten($transaction-color, 18%);
+      border-color: lighten($transaction-color, 18%);
+    }
+  }
+
+  &.actioned, &.primary.actioned, &.btn-primary.actioned { /* actioned states */
+    background-color: $button-actioned-bg-color;
+    border-color: $button-actioned-bg-color;
+    &:hover {
+      @include gradient-vertical-three-colors($startColor: $button-actioned-bg-color, $midColor: darken($button-actioned-bg-color, 8%), $colorStop: 70%, $endColor: darken($button-actioned-bg-color, 13%));
+      // gradient mixin's output for IE is not working properly
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F5F5F5', endColorstr='#F0F0F0', GradientType=0);
+      border-color: darken($button-actioned-bg-color, 14%);
+    }
+    &:active {
+      background-image: none;
+      background-color: darken($button-actioned-bg-color, 12%);
+      border-color: darken($button-actioned-bg-color, 12%);
+      text-decoration: none;
+    }
+    /* define colors for each category */
+    &.curatorial, &.curatorial:hover {
+      color: $curatorial-color;
+    }
+    &.social, &.social:hover {
+      color: $social-color;
+      font-weight: 600;
+    }
+  }
+
+
+  &.btn-overlay {
+    color: $white;
+    font-weight: 600;
+    background-image: none;
+    background-color: rgba(0,0,0,0.75);
+    border: 1px solid rgba(255,255,255,0.85);
+    @include box-shadow(inset 0 0 0 1px rgba(255,255,255,0.35));
+    @include border-radius(3px);
+    &:hover {
+      background-color: rgba(0,0,0,1);
+      border: 1px solid #FFF;
+      @include box-shadow(inset 0 0 0 1px rgba(255,255,255,0.65));
+      color: $white;
+      @include transition(0.25s);
+    }
+    &:active {
+      background-image: none;
+      background-color: rgba(0,0,0,1);
+      border: 1px solid rgba(255,255,255,0.75);
+      color: $white;
+      @include transition(0.1s);
+    }
+    .card-container &, .modal-large & { /* dimensions for buttons on listing cards & listing modal */
+      width: 110px;
+      height: 30px;
+      @include border-radius(3px);
+    }
+    .product-action-area.admin-area & { /* for feature button */
+      width: 125px;
+    }
+    .card-container.digest-card &, .card-container.collection-card &, .card-container.user-card & {
+    /* dimension for follow button on digest/collection/user card */
+      width: 134px;
+      &.actioned {
+        /* following */
+        width: 150px;
+      }
+    }
+    .card-container.invite-card & {
+      /* dimension for invite button on fb invite card */
+      width: 152px;
+    }
+    &.remove-btn {
+      /* saving this for remove buttons on listing cards in edit collection page*/
+      width: 20px;
+      height: 20px;
+      padding: 0;
+      background-color: rgba(0,0,0,0);
+      border-color: transparent;
+      &:hover {
+        background-color: rgba(0,0,0,0.4);
+        border: 1px solid #EEE;
+        .icons-button-remove {
+          @include opacity(1);
+        }
+      }
+    }
+    /* actioned states for .btn-overlay */
+    &.actioned {
+      background-color: rgba(0,0,0,0.85);
+      &:hover {
+        background-image: none;
+        background-color: rgba(0,0,0,1);
+      }
+      &.curatorial {
+        /* freezing till we finalize on the border treatment */
+        /*border-color: rgba($curatorial-color, 0.95);
+        @include box-shadow(inset 0 0 0 1px rgba($curatorial-color, 0.4));
+        &:hover {
+          border-color: rgba($curatorial-color, 1);
+          @include box-shadow(inset 0 0 0 1px rgba($curatorial-color, 0.65));
+        }*/
+      }
+      &.social {
+        /* freezing till we finalize on the border treatment */
+        /*border-color: rgba($social-color, 0.9);
+        @include box-shadow(inset 0 0 0 1px rgba($social-color, 0.65));
+        &:hover {
+          border-color: rgba($social-color, 1);
+          @include box-shadow(inset 0 0 0 1px rgba($social-color, 1));
+        }*/
+      }
+    }
+    &.disabled {
+      /* disabled overlay buttons. for follow buttons on user cards */
+      color: $text-light;
+      @include opacity(0.45);
+    }
+  }
+  &.transparent-btn, &.overlay-btn.remove-btn.transparent-btn {
+    /* this is for remove button on the feed */
+    background: transparent;
+    background-image: none;
+    border-color: transparent;
+    @include opacity(0.4);
+    @include disable-box-shadow;
+    &:hover, &:active{
+      background: transparent;
+      background-image: none;
+      border-color: transparent;
+      @include opacity(1);
+      @include disable-box-shadow;
+    }
+  }
+
+  /* general disabled state styling */
+  &.disabled, &.primary.disabled, &.btn-primary.disabled, &[disabled], &.primary[disabled], &.btn-primary[disabled],
+  &.btn-link {
+    background-image: none;
+    &:hover {
+      background-image: none;
+      cursor: default;
+    }
+    &.no-action {
+      cursor: not-allowed !important;
+    }
+    &.actionable {
+      cursor: pointer !important;
+    }
+  }
+
+  &.btn-link, &.btn-link:hover, &.primary.btn-link, &.primary.btn-link:hover, &.btn-primary.btn-link,
+  &.btn-primary.btn-link:hover {
+    padding: 0;
+    color: $linkColor;
+    font-weight: 600;
+    vertical-align: text-top !important;
+    border: none;
+    background-image: none;
+    background-color: transparent;
+  }
+
+  &.btn-danger {
+    background-color: $alert-color;
+    border-color: $alert-color;
+    color: $white;
+    font-weight: 600;
+    &:hover {
+      @include gradient-vertical-three-colors($startColor: $alert-color, $midColor: darken($alert-color, 3%), $colorStop: 70%, $endColor: darken($alert-color, 8%));
+      // gradient mixin's output for IE is not working properly
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F2F2F2', endColorstr='#E0E0E0', GradientType=0);
+      border-color: darken($alert-color, 12%);
+    }
+  }
+
+
+  &.soft {
+    color: $linkColor;
+    background-color: transparent;
+    background-image: none;
+    border-color: transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    &:hover,
+    &.hover {
+      text-decoration: underline;
+    };
+  }
+  &.small, &.btn-small {
+    @include smallButton;
+  }
+  &.xsmall, &.btn-mini {
+    @include xsmallButton;
+  }
+  &.large, &.btn-large {
+    @include largeButton;
+    .sns-login-container & {
+      padding: 7px 0px;
+    }
+  }
+  &.xlarge {
+    @include xlargeButton;
+    &.dropdown-toggle { /* horizontal browse buttons */
+      font-size: 18px;
+      padding: 12px 50px;
+    }
+  }
+}
+
+
+// Button containers
+// currently just for create a profile page of onboarding
+.bigger_buttons {
+  margin: 10px 0px;
+  .primary {
+    padding: 10px 20px 12px;
+    width: 356px;
+    .signup_buyer_profiles_new & {
+      width: 100%;
+    }
+    .settings_profile_show & { /* account settings profile page */
+      width: 460px;
+    }
+  }
+}
+
+
+// BUY NOW BUTTON
+#buy-button {
+  width: 100%;
+  background-color: $transaction-color;
+  border-color: $transaction-color;
+  text-decoration: none !important;
+  text-align: center;
+  @extend .btn-large;
+  @extend .btn-primary;
+  @extend .transactional;
+  font-size: 18px !important;
+  &.disabled {
+    @extend .disabled;
+  }
+}
+
+.sold-button {
+  width: 100%;
+  @extend .btn-large;
+  @extend .btn;
+  @extend .disabled;
+  cursor: normal !important; /* XXX CONSOLIDATE .no-action should be updated to pointer: normal */
+}
+
+// BOOKMARKLET BUTTON
+#copious-bookmarklet {
+  float: left;
+}
+#copious-bookmarklet-button.btn {
+  margin-right: 16px;
+  color: white;
+  font-weight: 600;
+  padding: 10px 21px;
+  /* XXX DELETE once .curatorial is ready */
+  background-color: #f7377b;
+  border: 1px solid #f7377b;
+  &:hover {
+    @include transition(all);
+    text-decoration: none;
+    @include gradient-vertical-three-colors($startColor: #f7377b, $midColor: darken(#f7377b, 8%), $colorStop: 70%, $endColor: darken(#f7377b, 13%));
+    // gradient mixin's output for IE is not working properly
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f7377b', endColorstr='#f7377b', GradientType=0);
+    border-color: darken(#f7377b, 17%);
+  }
+  &:active {
+    background-image: none;
+    background-color: darken(#f7377b, 12%);
+    border-color: darken(#f7377b, 12%);
+    text-decoration: none;
+  }
+  #add-modal & {
+    @extend .small;
+    margin-top: 0;
+    letter-spacing: 0;
+  }
+}
+
+
+// SNS CONNECT BUTTONS
+.sns-connect {
+  .facebook.signup, .twitter.signup {
+    height: 42px;
+    padding: 12px 45px;
+    font-weight: 600;
+    color: $white;
+  }
+  .facebook.signup {
+    background-color: #1E83FF;
+    border-color: #1E83FF;
+    background-image: none;
+    filter: none;
+    &:hover {
+      @include gradient-vertical-three-colors($startColor: lighten(#1E83FF,10%), $midColor: #1E83FF, $colorStop: 25%, $endColor: darken(#1E83FF,5%));
+      // gradient mixin's output for IE is not working properly
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1E83FF', endColorstr='#0475FF', GradientType=0);
+      border-color: darken(#1E83FF,5%);
+    }
+  }
+  .twitter.signup {
+    .logged_out_home &, .login &, .login_bookmarklet & {
+      margin-top: 12px;
+    }
+    .home_signup &, #signup_modal & {
+      margin-left: 16px;
+    }
+    background-color: #1FCEFF;
+    border-color: #1FCEFF;
+    background-image: none;
+    filter: none;
+    &:hover {
+      @include gradient-vertical-three-colors($startColor: lighten(#1FCEFF,10%), $midColor: #1FCEFF, $colorStop: 25%, $endColor: darken(#1FCEFF,5%));
+      // gradient mixin's output for IE is not working properly
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#52D9FF', endColorstr='#05C8FF', GradientType=0);
+      border-color: darken(#1FCEFF,5%);
+    }
+  }
+  .twitter.signup img, .facebook.signup img {
+    vertical-align: middle;
+    margin-top: -3px;
+    height: 20px;
+    width: auto;
+    margin-top: -3px;
+    vertical-align: middle;
+  }
+}
+
+// connect buttons on profile & dashboard
+.connect-this {
+  background-image: image-url("layout/icons-sprite-listingpage_v2_2.png");
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: text-bottom;
+  &.facebook {
+    background-position: 0px -90px;
+    float: left;
+    /* freeze till we figure out what to do
+    &:hover {
+      background-position: 0px 0px;
+    } */
+  }
+  &.twitter {
+    background-position: 0px -110px;
+  }
+  &.tumblr {
+    background-position: 0px -133px;
+  }
+  &.instagram {
+    background-position: 0px -274px;
+  }
+}
+
+/* listing page love button & invite card social network icon */
+.listings_show {
+  [data-action="love"], [data-action="unlove"] {
+    @extend .btn-primary;
+    width: 85px !important; /* need !important to override .btn-primary */
+    height: 50px !important; /* need !important to override .btn-primary */
+    padding: 15px 5px !important; /* need !important to override .btn-primary */
+    @include border-radius(3px 0 0 3px);
+    &.inactive {
+      width: 85px !important;
+      .text {
+        color: $new-button-text-disabled;
+      }
+      .icon-love {
+        background-position: -1px -203px;
+      }
+    }
+  }
+}
+
+// ICONS
+.button-icon {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  vertical-align: text-bottom;
+  margin: -1px 4px -1px 0;
+}
+
+[class^="icon-"] {
+  @extend .button-icon;
+  background-repeat: no-repeat;
+  background-image: image-url("layout/icons-sprites.png");
+}
+
+.icon-love {
+  background-position: 0px -237px;
+}
+
+.icon-liked {
+  background-position: 0px -484px;
+}
+
+.newbuttons button.left  img {
+  float: left;
+}
+/* delete this once the new icon-sprite is implemented */
+
+
+// NEW ICONS SPRITE
+// ===========================================================================
+.icons-extend {
+  display: inline-block;
+  width: $baseLineHeight;
+  height: $baseLineHeight;
+  background-repeat: no-repeat;
+  background-image: image-url("icons/icons-sprite/icons-sprite.png");
+  margin-right: 4px;
+  vertical-align: top;
+}
+[class^="icons-"] {
+  @extend .icons-extend;
+  .btn &, .timestamp & {
+    width: $bigFontSize; /* 16px */
+    height: $bigFontSize;
+  }
+  .small &, .btn-small & {
+    margin: 0 8px 0 0;
+    width: $baseFontSize; /* 14px */
+    height: $baseFontSize;
+  }
+  .no-text & {
+    margin-right: 0 !important;
+  }
+}
+
+/* Regular Icons - profile page */
+.block {
+  @extend .icons-extend;
+  background-position: 0 -50px;
+}
+.blocked {
+  @extend .icons-extend;
+  background-position: -26px -50px;
+}
+/* Regular Icons */
+.icons-timestamp {
+  background-position: -132px -307px;
+  margin-right: 2px;
+}
+
+
+/* Button Icons */
+.icons-button-love {
+  background-position: -3px -229px;
+  .actioned & {
+    background-position: -29px -229px;
+  }
+  .actioned.btn-overlay & { /* show checkmark for .btn-overlay */
+    background-position: -29px -360px;
+  }
+}
+.icons-button-save {
+  background-position: -58px -256px; /* gray */
+  .btn-primary &, .btn-overlay & {
+    background-position: -3px -256px; /* white */
+  }
+  .actioned & {
+    background-position: -29px -256px; /* magenta icon */
+  }
+  .actioned.btn-overlay & { /* show checkmark for .btn-overlay */
+    background-position: -29px -360px;
+  }
+}
+.icons-button-remove {
+  background-position: -3px -278px;
+  .transparent-btn & {
+    background-position: -27px -278px;
+  }
+}
+.icons-button-follow {
+  width: 20px !important; /* need larger width for follow icon */
+  margin-right: 8px;
+  background-position: -55px -412px;
+  .actioned & {
+    background-position: -26px -412px;
+  }
+  .btn-primary & {
+    width: 26px !important;
+    background-position: -1px -385px;
+  }
+  .btn-primary.actioned & {
+    background-position: -26px -385px;
+  }
+  .disabled & {
+    @include opacity(0.2);
+    background-position: -55px -412px;
+  }
+}
+.icons-invite-fb {
+  background-position: -53px -105px;
+}
+/* Listing Card Large Icons
+   custom sizing for now
+*/
+.icons-large-add-collection {
+  .add-placeholder & {
+    width: 89px;
+    height: 79px;
+    margin: 100px 0 0 5px;
+    background-position: -2px -604px;
+  }
+}
+.icons-large-add-listing {
+  .add-placeholder & {
+    width: 98px;
+    height: 79px;
+    margin: 100px 0 0 10px;
+    background-position: -112px -604px;
+  }
+}
+.icons-large-removed {
+  .add-placeholder & {
+    width: 68px;
+    height: 68px;
+    background-position: -55px -412px;
+  }
+}
+/* Labels - listing card */
+[class^="icons-label-"] {
+  position: absolute;
+  top: 5px;
+  left: 6px;
+  height: 20px;
+  width: 50px;
+  z-index: $zin-product-card-tab;
+}
+.icons-label-sold {
+  background-position: -55px -330px;
+}
+.icons-label-new {
+  background-position: 0px -330px;
+}
+
+/* social story icons - listing card .feed-story */
+[class^="icons-ss-"] {
+  width: 14px;
+  height: 14px;
+  margin-right: 4px;
+  vertical-align: text-bottom;
+}
+.icons-ss-add {
+  background-position: -28px -306px;
+}
+.icons-ss-love {
+  background-position: -3px -305px;
+}
+.icons-ss-comment {
+  background-position: -84px -305px;
+}
+.icons-ss-save {
+  background-position: -108px -307px;
+}
+.icons-ss-share {
+  background-position: -59px -305px;
+}
+.icons-ss-sold {
+  background-position: -59px -305px;
+}
+
+// PRIVACY TOGGLE
+.privacy-toggle {
+  min-width: 115px;
+  float: left;
+  > .btn {
+    float: left;
+    background-image: none;
+    color: $color-text-light;
+    &.small {
+      font-size: 15px;
+      line-height: 17px;
+      padding: 5px 7px;
+    }
+    &:hover {
+      @include transition(all);
+      text-decoration: none;
+      color: $grayDark;
+      -webkit-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.7), 0 1px 2px rgba(0, 0, 0, 0.08), inset -1px -1px 0 rgba(255, 255, 255, 0.7);
+      -moz-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.7), 0 1px 2px rgba(0, 0, 0, 0.08), inset -1px -1px 0 rgba(255, 255, 255, 0.7);
+      box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.7), 0 1px 2px rgba(0, 0, 0, 0.08), inset -1px -1px 0 rgba(255, 255, 255, 0.7);
+      @include hover-bg;
+      @include hover-border-color;
+    };
+    &:first-child {
+      border-right-width: 0px;
+      &:hover {
+        border-right-width: 1px;
+        padding-right: 9px;
+      };
+      &.small:hover {
+        padding-right: 6px;
+      }
+    }
+    &.active {
+      background-image: none;
+      background: $white;
+      color: $color-header;
+      -webkit-box-shadow: inset 1px 3px 5px rgba(0, 0, 0, 0.1);
+      -moz-box-shadow: inset 1px 3px 5px rgba(0, 0, 0, 0.1);
+      box-shadow: inset 1px 3px 5px rgba(0, 0, 0, 0.1);
+      text-decoration: none;
+    }
+  }
+  .status & {
+    margin: 20px 0px 0px;
+  }
+}
+
+
+// FAUX-BUTTONS
+// for carousels
+.button-faux {
+  @extend .faux-button;
+  &:hover {
+    -webkit-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.7), 0 1px 2px rgba(0, 0, 0, 0.08), inset -1px -1px 0 rgba(255, 255, 255, 0.7);
+    -moz-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.7), 0 1px 2px rgba(0, 0, 0, 0.08), inset -1px -1px 0 rgba(255, 255, 255, 0.7);
+    box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.7), 0 1px 2px rgba(0, 0, 0, 0.08), inset -1px -1px 0 rgba(255, 255, 255, 0.7);
+    @include hover-bg;
+    @include hover-border-color;
+  }
+}
+
+
+// CLOSE, CANCEL
+
+// for the current version only.
+// once the ff is off this should go away
+.cancel-purchase {
+  @include link($color-text-subtle, $linkColor);
+  font-size: 13px;
+  line-height: 13px;
+  font-weight: 500;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.cancel-purchase-button {
+  width: 23px;
+  height: 23px;
+  background: image-url("icons/close-small.png") no-repeat center center;
+  opacity: 0.3;
+  border: 1px solid transparent;
+  &:hover {
+    -webkit-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.7), 0 1px 2px rgba(0, 0, 0, 0.08), inset -1px -1px 0 rgba(255, 255, 255, 0.7);
+    -moz-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.7), 0 1px 2px rgba(0, 0, 0, 0.08), inset -1px -1px 0 rgba(255, 255, 255, 0.7);
+    box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.7), 0 1px 2px rgba(0, 0, 0, 0.08), inset -1px -1px 0 rgba(255, 255, 255, 0.7);
+    @include hover-border-color;
+    opacity: 1;
+  };
+}
+
+.cancel-purchase {
+  width: 23px;
+  height: 23px;
+  background: image-url("icons/close-small.png") no-repeat center center;
+}
+
+
+// MISC. STYLING
+.button-block {
+  display: block;
+  width: 100%;
+}
+
+.left-button {
+  float: left;
+}
+
+.right-button {
+  float: right;
+}
+
+.full-button {
+  width: 100%;
+}
+
+.clear {
+  clear: both;
+}
+
+// prevent any underline
+a.button {
+  text-decoration: none; }
+
+a.button:hover, a.button:focus {
+  text-decoration: none; }
+
+
+
+.button.small {
+  font-size: 13px;
+  line-height: 15px;
+  padding: 3px 7px 4px;
+}
+
+.marginRight {
+  margin-right: 10px; }
+
+.marginBottom {
+  margin-bottom: 16px; }
+
+.admin {
+  font: {
+    weight: 400;
+    size: $baseFontSize;
+  }
+  line-height: 13px;
+  letter-spacing: 0.2px; }
+
+
+
+// BUTTONS DIV
+// -----------
+div.buttons {
+  margin: 10px 0px;
+}
+
+
+
+
+// infinite scroll
+
+.scroll-to-top-container {
+  @extend .hidden-phone !optional;
+  #scroll-top {
+    width: 150px;
+    padding: 7px 10px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: $zin-scroll-to-top;
+    text-align: center;
+  }
+}
+
+
+// :HOVER BUTTONS
+/* currently for recommend button only */
+.on-hover-button {
+  display: none;
+  opacity: 0;
+  position: absolute;
+  bottom: 115px;
+  width: 216px;
+  left: 8px;
+}

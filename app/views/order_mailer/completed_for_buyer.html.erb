@@ -1,0 +1,23 @@
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  Hi <%= @user.firstname %>,
+<% end %>
+
+<%= mailer_graf do %>
+  Your <%= mailer_link_to @order.listing.title, listing_url(@order.listing) %> purchase is now officially complete. Congratulations!
+<% end %>
+
+<%= mailer_graf do %>
+  Copious is always changing. Take a moment to browse more great finds just for you.
+<% end %>
+
+<%= mailer_graf do %>
+  <%= mailer_button 'Browse more great finds', root_url, styles: ' margin-top: 0px !important; margin-bottom: 25px !important;'  %>
+<% end %>
+
+<%= mailer_graf(styles: 'margin-bottom: 0px;') do %>
+  Happy shopping,
+<% end %>
+
+<%= render '/shared_mailer/footer' %>

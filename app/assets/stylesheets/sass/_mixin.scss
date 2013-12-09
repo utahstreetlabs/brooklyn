@@ -1,0 +1,330 @@
+// INTERACTION
+// -------------------------------------------------------------------------------------------------------
+// HOVER GRADIENT BG
+
+@mixin hover-bg {
+  background-color: #FAFAFA;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FAFAFA), color-stop(25%, #FAFAFA), to(#E5E5E5));
+  background-image: -webkit-linear-gradient(#FAFAFA, #FAFAFA 25%, #E5E5E5);
+  background-image: -moz-linear-gradient(top, #FAFAFA, #FAFAFA 25%, #E5E5E5);
+  background-image: -ms-linear-gradient(#FAFAFA, #FAFAFA 25%, #E5E5E5);
+  background-image: -o-linear-gradient(#FAFAFA, #FAFAFA 25%, #E5E5E5);
+  background-image: linear-gradient(#FAFAFA, #FAFAFA 25%, #E5E5E5);
+  background-repeat: no-repeat;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FAFAFA', endColorstr='#E5E5E5', GradientType=0);
+}
+
+// :HOVER BORDER COLOR MIX-IN
+
+@mixin hover-border-color {
+  border-color: rgba(0, 154, 175, 0.5) rgba(0, 154, 175, 0.65) rgba(0, 154, 175, 1); }
+
+@mixin hover-border {
+  @include hover-border-color;
+  border-width: 1px;
+  border-style: solid; }
+
+// EXTERNAL LINK
+
+@mixin external-link {
+  color: $color-text !important;
+  text-decoration: underline !important;
+  &:hover,
+  &.hover,
+  &:focus,
+  &.hover {
+    color: $linkColor !important;
+  }
+  #web-site & {
+    color: $color-text-light !important;
+  }
+}
+
+.external-link {
+  @include external-link;
+}
+
+
+// grid-data-table
+@mixin grid-data-table {
+  background: #f3f3f3;
+  border: 1px solid #d4d4d4;
+  float: left;
+  td {
+    vertical-align: middle;
+    border-top: 1px solid $white;
+    .data-number {
+      font-family: $styledFontFamily;
+      font-weight: 700;
+      color: #818889;
+      @include text-shadow(0 2px 0 $white);
+      display: block; }
+    .data-label {
+      font-family: $styledFontFamily;
+      font-weight: 500;
+      color: #979b9c;
+      @include text-shadow(0 2px 0 $white);
+      text-transform: uppercase;
+      display: block; } }
+  td:first-child {
+    border-right: 1px solid #d4d4d4; }
+  td:last-child {
+    border-left: 1px solid $white; }
+  tr.first-row {
+    td {
+      border-bottom: 1px solid #d4d4d4;
+    }
+  }
+}
+
+// Drop shadows
+$boxShadow:         0 1px 5px transparentize($black, .675);
+$boxHighlight:      inset 0 2px 1px transparentize($white, .125);
+$boxShadowDropdown: 1px 1px 8px 0px transparentize($black, 0.8);
+$boxShadowModal:    0px 0px 3px 0px transparentize($black, 0.75);
+$card-shadow:       0px 1px 2px rgba(0,0,0,0.18);
+$button-shadow:     inset 1px 1px 0px rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.08), inset -1px -1px 0 rgba(255, 255, 255, 0.3);
+$new-primary-button-shadow:   0px 2px 2px rgba(0, 0, 0, 0.47);
+$new-button-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.4);
+$new-button-shadow-hover: 0px 1px 2px 0px rgba(0, 0, 0, 0.4);
+$new-disabled-button-shadow:  inset 0 0px 3px rgba(0, 0, 0, 0.2);
+$header-shadow: 0px 5px 5px rgba(0,0,0,0.4);
+$header-shadow-less: 0px 3px 3px rgba(0,0,0,0.3);
+
+@mixin box-shadow($this) {
+  -webkit-box-shadow: $this;
+     -moz-box-shadow: $this;
+          box-shadow: $this;
+}
+
+@mixin box-shadow-dropdown {
+  -webkit-box-shadow: $boxShadowDropdown;
+     -moz-box-shadow: $boxShadowDropdown;
+          box-shadow: $boxShadowDropdown;
+}
+
+@mixin box-shadow-modal {
+  -webkit-box-shadow: $boxShadowModal;
+     -moz-box-shadow: $boxShadowModal;
+          box-shadow: $boxShadowModal;
+}
+
+@mixin card-shadow {
+  -webkit-box-shadow: $card-shadow;
+  -moz-box-shadow:    $card-shadow;
+  box-shadow:         $card-shadow;
+}
+
+@mixin button-shadow {
+  -webkit-box-shadow: $button-shadow;
+  -moz-box-shadow:    $button-shadow;
+  box-shadow:         $button-shadow;
+}
+
+@mixin new-button-shadow {
+  -webkit-box-shadow: $new-button-shadow;
+  -moz-box-shadow:    $new-button-shadow;
+  box-shadow:         $new-button-shadow;
+}
+
+$textShadowLight: transparentize($white, .25);
+$textShadowDark:  transparentize($black, .75);
+
+@mixin text-shadow($shadowType: null) {
+
+  @if $shadowType == null { text-shadow: 0 1px 1px $textShadowLight; }
+
+  @else {
+    @if $shadowType == highlight { text-shadow: 0 1px 1px $textShadowLight; }
+    @if $shadowType == shadow    { text-shadow: 0 1px 1px $textShadowDark; }
+    @if $shadowType == inset    { text-shadow: 0 -1px 1px $textShadowDark; }
+    @else                        { text-shadow: 0 1px 1px $textShadowDark; }
+  }
+}
+
+// UTILITY MIXINS
+// --------------------------------------------------
+@mixin link($color-link: $linkColor, $color-hover: null, $color-active: null) {
+  &,
+  &:visited { color: $color-link; }
+
+  @if $color-hover == null {
+    &:hover,
+    &.hover,
+    &:focus,
+    &.focus { color: darken($color-link, 15%); }
+  } @else {
+    &:hover,
+    &.hover
+    &:focus,
+    &.focus { color: $color-hover; }
+  }
+
+  @if $color-active == null {
+    &:active,
+    &.active { color: darken($color-link, 30%); }
+  } @else {
+    &:active,
+    &.active { color: $color-active; }
+  }
+}
+
+// Webkit-style focus
+// ------------------
+@mixin tab-focus() {
+  border: none;
+  outline: none;
+}
+
+/*// Input grid system
+// -------------------------
+@mixin inputGridSystemInputColumns($gridGutterWidth, $gridColumnWidth, $gridRowWidth, $columns) {
+  width: (($gridColumnWidth) * $columns) + ($gridGutterWidth * ($columns - 1));
+}*/
+
+
+// Disable Box Shadows
+// -------------------------
+@mixin disable-box-shadow {
+  -webkit-box-shadow: none;
+  -moz-box-shadow:    none;
+  box-shadow:         none;
+}
+
+// Disable Text Shadows
+// -------------------------
+@mixin disable-text-shadow {
+  text-shadow: none;
+}
+
+// Border Radius (copied from Bootstrap-sass)
+// -------------------------
+@mixin border-radius($radius: 5px) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin price-box-border-radius($radius: 3px) {
+  -webkit-border-radius: 0px $radius $radius 0px;
+     -moz-border-radius: 0px $radius $radius 0px;
+          border-radius: 0px $radius $radius 0px;
+}
+
+// Transitions
+@mixin transition($transition) {
+  -webkit-transition: $transition;
+     -moz-transition: $transition;
+      -ms-transition: $transition;
+       -o-transition: $transition;
+          transition: $transition;
+}
+
+// Drop shadows
+@mixin box-shadow($shadow: 0 1px 3px rgba(0,0,0,.25)) {
+  -webkit-box-shadow: $shadow;
+     -moz-box-shadow: $shadow;
+          box-shadow: $shadow;
+}
+
+@mixin gradient-vertical($startColor: #555, $endColor: #333) {
+  background-color: $endColor;
+  background-image: -moz-linear-gradient(top, $startColor, $endColor); // FF 3.6+
+  background-image: -ms-linear-gradient(top, $startColor, $endColor); // IE10
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), to($endColor)); // Safari 4+, Chrome 2+
+  background-image: -webkit-linear-gradient(top, $startColor, $endColor); // Safari 5.1+, Chrome 10+
+  background-image: -o-linear-gradient(top, $startColor, $endColor); // Opera 11.10
+  background-image: linear-gradient(top, $startColor, $endColor); // The standard
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($startColor)}', endColorstr='#{ie-hex-str($endColor)}', GradientType=0); // IE9 and down
+}
+
+@mixin gradient-vertical-three-colors($startColor: #00b3ee, $midColor: #7a43b6, $colorStop: 50%, $endColor: #c3325f) {
+  background-color: mix($midColor, $endColor, 80%);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), color-stop($colorStop, $midColor), to($endColor));
+  background-image: -webkit-linear-gradient($startColor, $midColor $colorStop, $endColor);
+  background-image: -moz-linear-gradient(top, $startColor, $midColor $colorStop, $endColor);
+  background-image: -o-linear-gradient($startColor, $midColor $colorStop, $endColor);
+  background-image: linear-gradient($startColor, $midColor $colorStop, $endColor);
+  background-repeat: no-repeat;
+  // commenting out cuz this is not working properly. will figure it out asap and update it
+  //filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($startColor)}', endColorstr='#{ie-hex-str($endColor)}', GradientType=0); // IE9 and down, gets no color-stop at all for proper fallback
+}
+
+@mixin gradient-directional-vertical-three-colors($deg: 276deg, $startColor: #00b3ee, $midColor: #7a43b6, $colorStop: 50%, $endColor: #c3325f) {
+  background-color: mix($midColor, $endColor, 80%);
+  background-image: -webkit-gradient(276deg, 0 0, 0 100%, from($startColor), color-stop($colorStop, $midColor), to($endColor));
+  background-image: -webkit-linear-gradient(276deg, $startColor, $midColor $colorStop, $endColor);
+  background-image: -moz-linear-gradient(276deg, $startColor, $midColor $colorStop, $endColor);
+  background-image: -o-linear-gradient(276deg, $startColor, $midColor $colorStop, $endColor);
+  background-image: linear-gradient(276deg, $startColor, $midColor $colorStop, $endColor);
+  background-repeat: no-repeat;
+  // commenting out cuz this is not working properly. will figure it out asap and update it
+  //filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($startColor)}', endColorstr='#{ie-hex-str($endColor)}', GradientType=0); // IE9 and down, gets no color-stop at all for proper fallback
+}
+
+@mixin gradient-directional($startColor: #555, $endColor: #333, $deg: 276deg) {
+  background-color: $endColor;
+  background-repeat: repeat-x;
+  background-image: -moz-linear-gradient($deg, $startColor, $endColor); // FF 3.6+
+  background-image: -webkit-linear-gradient($deg, $startColor, $endColor); // Safari 5.1+, Chrome 10+
+  background-image: -o-linear-gradient($deg, $startColor, $endColor); // Opera 11.10
+  background-image: linear-gradient($deg, $startColor, $endColor); // Standard, IE10
+}
+
+@mixin gradient-radial($innerColor: #555, $outerColor: #333)  {
+  background-color: $outerColor;
+  background-image: -webkit-gradient(radial, center center, 0, center center, 460, from($innerColor), to($outerColor));
+  background-image: -webkit-radial-gradient(circle, $innerColor, $outerColor);
+  background-image: -moz-radial-gradient(circle, $innerColor, $outerColor);
+  background-image: -o-radial-gradient(circle, $innerColor, $outerColor);
+  background-repeat: no-repeat;
+}
+
+// Opacity
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  filter: alpha(opacity=$opacity * 100);
+}
+
+// Number input
+@mixin number-input {
+  font-family: $sansserifFontFamily;
+  font-weight: 300;
+}
+
+// Button Hover & Active state mixin
+@mixin link-hover-active($mainColor: $button-bg-color) {
+  &:hover {
+    background-color: mix($mainColor, darken($mainColor, 8%), 80%);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from($mainColor), color-stop(50%, darken($mainColor, 3%)), to(darken($mainColor, 8%)));
+    background-image: -webkit-linear-gradient($mainColor, darken($mainColor, 3%) 50%, darken($mainColor, 8%));
+    background-image: -moz-linear-gradient(top, $mainColor, darken($mainColor, 3%) 50%, darken($mainColor, 8%));
+    background-image: -o-linear-gradient($mainColor, darken($mainColor, 3%) 50%, darken($mainColor, 8%));
+    background-image: linear-gradient($mainColor, darken($mainColor, 3%) 50%, darken($mainColor, 8%));
+    background-repeat: no-repeat;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($mainColor)}', endColorstr='#{ie-hex-str(darken($mainColor, 8%))}', GradientType=0);
+    border: 1px solid darken($mainColor, 12%);
+  }
+  &:active {
+    background-image: none;
+    background-color: darken($mainColor, 12%);
+    border-color: darken($mainColor, 12%);
+    text-decoration: none;
+  }
+}
+
+// disable button styling
+/* for <button> tags that do not been the .btn styling */
+@mixin null-button-styling {
+  background-color: transparent;
+  background: transparent;
+  background-image: none;
+  border-color: transparent;
+  padding: 0;
+  &:hover, &:active {
+    background-image: none;
+    border-color: transparent;
+    background-color: transparent;
+  }
+}

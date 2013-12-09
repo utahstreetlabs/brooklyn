@@ -1,0 +1,23 @@
+<div data-role="collections-list">
+  <a data-toggle="dropdown" href="javascript:void(0)">
+    <div data-role="dropdown-title">default</div>
+  </a>
+  <ul class="dropdown-menu" data-role="dropdown-menu">
+    <li data-collection-id="things-that-are-awesome">
+      <a href="/path/to/things-that-are-awesome">Things That Are Awesome</a>
+    </li>
+    <li data-collection-type="have" data-collection-id="things-i-have">
+      <a href="/path/to/things-i-have">Things I Have</a>
+    </li>
+    <li data-collection-type="want" data-collection-id="things-i-want">
+      <a href="/path/to/things-i-want">Things I Want</a>
+    </li>
+    <li data-role="divider" class="divider"></li>
+    <li>
+      <div class="input-append" data-role="name-input">
+        <input type="text" placeholder="New collection" name="add_collection_input[]" data-role="collection-name">
+        <a data-disable-with="Adding…" data-action="add-collection" href="javascript:void(0)">Add</a>
+      </div>
+    </li>
+  </ul>
+</div>

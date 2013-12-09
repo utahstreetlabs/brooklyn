@@ -1,0 +1,6 @@
+<%= bootstrap_form_for order, url: cancel_admin_order_path(order), remote: true, html: {method: :delete} do |f| %>
+  <%= f.control_group :failure_reason do %>
+    <%= f.radio_button :failure_reason, 'Not shipped', Order::FailureReasons::NEVER_SHIPPED %>
+    <%= f.radio_button :failure_reason, 'Honest mistake', '' %>
+  <% end %>
+<% end %>

@@ -1,0 +1,20 @@
+<div class="tracking-number-input-container margin-bottom">
+  <h1 class="kill-margin-top">
+    <%= content_tag :span, data: {role: 'label-expired'} do %>
+      <%= t('.title') %>
+    <% end %>
+  </h1>
+  <p><%= t('.details_html', buyer_name: listing.order.buyer.firstname, contact_us_link: mail_to('help@copious.com')) %></p>
+  <%= render 'listings/seller/basic_shipping_form', listing: listing %>
+</div>
+
+<div class="full-width pull-left">
+  <h2><%= t('.shipping_address.header') %></h2>
+  <ul class="buyer-shipping-info margin-bottom span8 kill-margin-left">
+    <li><p class="strong"><%= listing.buyer.name %></p></li>
+    <li class="address-info margin-bottom"><p><%= postal_address listing.order.shipping_address %></p><li>
+  </ul>
+  <%= render 'listings/seller/basic_shipping_carrier_info' %>
+</div>
+
+<%= render 'listings/seller/basic_shipping_instructions', listing: listing %>

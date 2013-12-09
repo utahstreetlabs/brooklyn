@@ -1,0 +1,33 @@
+<% title "Admin: #{@collection.name}" %>
+
+<%= bootstrap_breadcrumb [
+  ['Admin', admin_dashboard_path],
+  ['All collections', admin_collections_path],
+  @collection.name
+] %>
+
+<%= content_tag :div, data: {role: :'collection-info'} do %>
+  <%= render partial: 'collection_info', locals: {collection: @collection} %>
+<% end %>
+
+<% if can?(:update, @collection) %>
+  <%= bootstrap_toolbar do %>
+    <%= bootstrap_button_group do %>
+      <% if can?(:manage, CollectionAutofollow) %>
+        <%= bootstrap_button '#', toggle_modal: :manage_autofollows, icon: 'star', rel: :tooltip,
+              title: 'Manage interest autofollows' %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <%= bootstrap_modal :manage_autofollows, "Manage interest autofollows for #{@collection.name}", mode: :admin,
+        refresh: '[data-role=collection-info]' do %>
+    <%= render '/admin/collections/autofollows/show_modal', collection: @collection %>
+  <% end %>
+
+  <%= bootstrap_button_group do %>
+    <%= bootstrap_button 'Edit', edit_admin_collection_path(@collection.id), icon: 'edit' %>
+    <%= bootstrap_button 'Delete', admin_collection_path(@collection.id), method: :delete, condition: :danger,
+          data: {action: 'delete', confirm: "Are you sure you want to delete #{@collection.name}?"},
+          icon: 'remove-sign', inverted_icon: true %>
+  <% end %>
+<% end %>

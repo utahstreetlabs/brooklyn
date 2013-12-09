@@ -1,0 +1,13 @@
+<%= word_wrap(%Q[
+Hi #{@contact.display_name},
+]) %>
+
+<%= word_wrap(%Q[
+#{@user.name} thinks you should join Copious.  The funny thing is, we think you should too.
+]) %>
+
+<%= word_wrap(%Q[
+Go to #{root_url} to find out what all the fuss is about.
+]) %>
+
+<%= render '/shared_mailer/footer' %>

@@ -1,0 +1,17 @@
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  Hi <%= @user.firstname %>,
+<% end %>
+
+<%= mailer_graf do %>
+  See something that strikes your fancy but feeling a little non-committal? Keep your eye on the prize by giving it a "Like." We’ll keep you in the loop with any updates on that listing.
+<% end %>
+
+<%= mailer_button 'Sign in and start Liking', dashboard_url %>
+
+<%= mailer_graf(styles: 'margin-bottom: 0px;') do %>
+  Happy shopping,
+<% end %>
+
+<%= render '/shared_mailer/footer' %>

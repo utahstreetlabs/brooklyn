@@ -1,0 +1,15 @@
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  We're sorry. Your order for <%= @order.listing.title %> has been cancelled and your funds returned. The details of your cancelled order are below<% if feature_enabled?(:feedback) %> and a non-shipment has been noted on the seller's feedback<% end %>. If this cancellation is in error, please contact our customer service at <%= mailer_mail_to Brooklyn::Application.config.email.to.help %>.
+<% end %>
+
+<%= render '/order_mailer/buyer_order_details', order: @order %>
+
+<%= mailer_subheader do %>
+  Your shipping information
+<% end %>
+
+<%= render '/order_mailer/shipping_address', order: @order %>
+
+<%= render '/shared_mailer/footer' %>

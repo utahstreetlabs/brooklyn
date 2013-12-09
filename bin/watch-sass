@@ -1,0 +1,2 @@
+#!/bin/bash
+sass --watch public/stylesheets/sass/base.sass:public/stylesheets/base.css

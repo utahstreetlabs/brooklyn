@@ -1,0 +1,23 @@
+# requires facebook js library
+
+jQuery ->
+  # pop open the FB requests dialog when invite CTA is clicked
+  $('[data-role=invite-bar]').on 'click', '[data-action=invite-cta]', (e) ->
+    e.preventDefault()
+    $button = $(this)
+    modal = new Copious.InviteModal $($button.data('target')),
+      source: 'invite_bar',
+      afterInvited: (data) =>
+        if data.bar
+          $button.closest('[data-role=invite-bar]').replaceWith(data.bar)
+        if data.redirect
+          window.location = data.redirect
+
+  # close invite bar when close button is clicked
+  $('[data-role=invite-bar]').on 'click', '[data-dismiss=invite-bar]', (e) ->
+    e.preventDefault()
+    copious.track('invite_btn click', {source: this, share_channel: 'facebook_request'})
+    $.jsend.del('<%= Brooklyn::Application.routes.url_helpers.home_invite_bar_path %>').
+      then(() =>
+        $(this).closest('[data-role=invite-bar]').remove()
+      )

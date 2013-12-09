@@ -1,0 +1,252 @@
+// loader mixin
+.divider-button-container {
+  float: left;
+  margin: 0px 0px 30px;
+  text-align: center;
+  width: 100%;
+  height: 30px;
+  position: relative;
+  .refresh, .btn-divider, .btn-primary {
+    /* .primary is for select interest modal button */
+    @extend .btn;
+    position: relative;
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -20px;
+      right: -20px;
+      bottom: 0;
+      height: 30px;
+      z-index: -1;
+      background-color: white;
+    }
+  }
+  .refresh {
+    @extend .large;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    top: 16px;
+    left: 0px;
+    height: 1px;
+    width: 100%;
+    z-index: -1;
+    border-bottom: 1px solid $new-gray;
+  }
+}
+
+#refresh-container {
+  display: none;
+  .homepage_logged_in & {
+    &:empty {
+      display: none !important;
+      /* since .homepage_logged_in is used for feed and LIH and customize button is only needed for the
+      feed page, will have to override it if theres nothing inside the refresh-container */
+    }
+  }
+}
+
+
+
+@mixin loader-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-image: image-url("icons/ajax-loader.gif");
+  margin-left: 15px;
+  vertical-align: baseline; }
+
+.loading-overlay-holder {
+  width: 100%;
+  position: absolute;
+  bottom: -5px;
+  .endless_scroll_inner_wrap & {
+    width: auto;
+    bottom: 72px;
+  }
+}
+
+.loading-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  background-image: image-url("icons/ajax-loader.gif");
+  z-index: $zin-loading-spinner;
+}
+
+.loading-spinner-search {
+  @include loader-spinner;
+  top: inherit;
+  left: inherit;
+  position: relative;
+  margin: 4px 0 0 10px;
+}
+
+.loading-spinner-facet {
+  @include loader-spinner;
+  margin: 4px 0 0 0;
+  float: right;
+}
+
+.loading-overlay {
+  width: 100%;
+  height: 100%;
+  opacity: 0.7;
+  background-color: $black; }
+
+// INSTAGRAM
+.loading-overlay.instagram {
+  @extend .loader;
+  width: 850px;
+  .loading-spinner-instagram {
+    @include loader-spinner; } }
+
+.loading-container.listing-collection {
+  @extend .loader;
+  float: left;
+  width: 100%;
+  text-align: center;
+  border-top: 1px solid $border-color-light;
+  padding-top: 10px;
+}
+
+
+// NEW SPINNER
+/* from cssload.net */
+#spinner_loading, .spinner-loading {
+  width: 50px;
+  display: inline-block;
+  margin-left: 8px;
+  position: relative;
+  top: -4px;
+  .signup_buyer_friends_index & {
+    top: 7px;
+  }
+  .modal-large & {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 162px;
+    left: 0;
+    width: 100%;
+    padding: 211px 371px;
+    margin-left: 0;
+    z-index: $zin-loh-modal;
+    background: rgba(255,255,255,0.7);
+  }
+  #search_box & {
+    top: 1px;
+  }
+}
+
+.circleG{
+  background-color:#FFFFFF;
+  float:left;
+  height: 8px;
+  margin-left: 6px;
+  width: 8px;
+  -moz-animation-name:bounce_circleG;
+  -moz-animation-duration:0.8999999999999999s;
+  -moz-animation-iteration-count:infinite;
+  -moz-animation-direction:linear;
+  -moz-border-radius:10px;
+  -webkit-animation-name:bounce_circleG;
+  -webkit-animation-duration:0.8999999999999999s;
+  -webkit-animation-iteration-count:infinite;
+  -webkit-animation-direction:linear;
+  -webkit-border-radius:10px;
+  -ms-animation-name:bounce_circleG;
+  -ms-animation-duration:0.8999999999999999s;
+  -ms-animation-iteration-count:infinite;
+  -ms-animation-direction:linear;
+  -ms-border-radius:10px;
+  -o-animation-name:bounce_circleG;
+  -o-animation-duration:0.8999999999999999s;
+  -o-animation-iteration-count:infinite;
+  -o-animation-direction:linear;
+  -o-border-radius:10px;
+  animation-name:bounce_circleG;
+  animation-duration:0.8999999999999999s;
+  animation-iteration-count:infinite;
+  animation-direction:linear;
+  border-radius:10px;
+}
+
+#circleG_1, .circleG_1{
+  -moz-animation-delay:0.18s;
+  -webkit-animation-delay:0.18s;
+  -ms-animation-delay:0.18s;
+  -o-animation-delay:0.18s;
+  animation-delay:0.18s;
+}
+
+#circleG_2, .circleG_2{
+  -moz-animation-delay:0.42000000000000004s;
+  -webkit-animation-delay:0.42000000000000004s;
+  -ms-animation-delay:0.42000000000000004s;
+  -o-animation-delay:0.42000000000000004s;
+  animation-delay:0.42000000000000004s;
+}
+
+#circleG_3, .circleG_3{
+  -moz-animation-delay:0.5399999999999999s;
+  -webkit-animation-delay:0.5399999999999999s;
+  -ms-animation-delay:0.5399999999999999s;
+  -o-animation-delay:0.5399999999999999s;
+  animation-delay:0.5399999999999999s;
+}
+
+@-moz-keyframes bounce_circleG{
+  0% {
+  }
+  50% {
+  background-color:#3B3E40;
+  }
+  100% {
+  }
+}
+
+@-webkit-keyframes bounce_circleG{
+  0% {
+  }
+  50% {
+    background-color:#3B3E40;
+  }
+  100% {
+  }
+}
+
+@-ms-keyframes bounce_circleG{
+  0% {
+  }
+  50% {
+    background-color:#3B3E40;
+  }
+  100%{
+  }
+}
+
+@-o-keyframes bounce_circleG{
+  0% {
+  }
+  50% {
+    background-color:#3B3E40;
+  }
+  100% {
+  }
+}
+
+@keyframes bounce_circleG{
+  0% {
+  }
+  50% {
+    background-color:#3B3E40;
+  }
+
+  100% {
+  }
+}

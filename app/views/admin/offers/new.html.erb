@@ -1,0 +1,9 @@
+<% title "Admin: New offer" %>
+
+<%= bootstrap_breadcrumb [
+  ['Admin', admin_dashboard_path],
+  ['Offers', admin_offers_path],
+  'New offer'
+] %>
+
+<%= render partial: 'form', locals: { offer: @offer, url: admin_offers_path } %>

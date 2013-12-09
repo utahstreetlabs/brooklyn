@@ -1,0 +1,15 @@
+<%= word_wrap(%Q[Your order has been delivered to the buyer.]) %>
+
+<%= render 'seller_order_details', order: @order %>
+
+<%= word_wrap(%Q[
+The payment will be released to your Payout Account within 72 hours. If you have yet to create your Payout Account, go to #{rewrite_mailer_url settings_seller_identity_url} to get started and ensure you're paid on time.
+
+You can check the status of this order at any time from your dashboard at #{rewrite_mailer_url sold_dashboard_url}.
+
+For more information, please refer to our Transaction Policy at #{rewrite_mailer_url Brooklyn::Application.config.urls.transaction_policy} or our Support Center's payment page at #{rewrite_mailer_url Brooklyn::Application.config.urls.payment_details}.
+
+Want to list more items? Click over to #{rewrite_mailer_url new_listing_url}.
+]) %>
+
+<%= render '/shared_mailer/footer' %>

@@ -1,0 +1,31 @@
+{
+  "reference": <%= raw order.reference_number.to_json %>,
+  "status": <%= raw order.status.to_json %>,
+  "listing": {
+    "slug": <%= raw listing.slug.to_json %>,
+    "source_uid": <%= raw listing.source_uid.to_json %>,
+    "link": [
+    {
+      "href": <%= raw api_listing_url(listing).to_json %>
+    },
+    {
+      "rel": "alternate",
+      "href": <%= raw listing_url(listing).to_json %>
+    }],
+    "price": <%= raw listing.price.to_f.to_json %>,
+    "shipping": <%= raw listing.shipping.to_f.to_json %>
+  },
+  "buyer": {
+    "name": <%= raw listing.buyer.name.to_json %>,
+    "email": <%= raw listing.buyer.email.to_json %>,
+    "uuid": <%= raw listing.buyer.uuid.to_json %>
+    <% if order.shipping_address %>
+    ,<%= raw order.shipping_address.key_value_pairs.map { |k,v| "\"#{k}\": #{raw v.to_json}" }.join(",\n") %>
+    <% end %>
+  },
+  "discount": 0.00,
+  "proceeds": <%= raw listing.proceeds.to_f.to_json %>,
+  "payment_type": <%= raw order.payment_type.to_json %>,
+  "order_time": <%= raw order.created_at.to_time.to_i.to_json %>,
+  "link": <%= raw api_order_url(order.reference_number).to_json %>
+}

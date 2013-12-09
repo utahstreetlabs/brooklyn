@@ -1,0 +1,22 @@
+<% if amount > 0 %>
+  <div class="top-message full-width">
+    <% if current_user.default_deposit_account? %>
+      <% if current_user.default_deposit_to_paypal? %>
+        <p class="h3-like kill-margin-bottom"><%= t('.deposit_funds.paypal.instructions_html', amount: number_to_currency(amount)) %></p>
+        <%= link_to t('.deposit_funds.paypal.button.release'), settle_orders_path, method: :post,
+                    class: 'primary button large pull-right margin-top-quarter',
+                    data: {:'disable-with' => 'Releasing…'} %>
+        <p class="h3-like kill-margin-bottom"><%= t('.deposit_funds.paypal.sucks_html') %></p>
+        <%= link_to t('.deposit_funds.paypal.button.add_bank_account'), nilhref,
+                    class: 'button large pull-right margin-top-quarter', data: {role: 'add-account'} %>
+      <% else %>
+        <p class="h3-like kill-margin-bottom"><%= t('.deposit_funds.bank_account.instructions_html', amount: number_to_currency(amount)) %></p>
+        <%= link_to t('.deposit_funds.bank_account.button'), settle_orders_path, method: :post,
+                    class: 'primary button large pull-right margin-top-quarter',
+                    data: {:'disable-with' => 'Releasing…'} %>
+      <% end %>
+    <% else %>
+      <p class="h3-like kill-margin-bottom"><%= t('.connect_bank_account', amount: number_to_currency(amount)) %></p>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,9 @@
+/* compilation dependencies */
+@import "variables";
+
+/* import bootstrap's responsive styles and override them with our customizations where necessary */
+@import "sass/mixin";
+/* XXX Bootstrap's new responsive system is annoyingly and unnecessarily complicated. No need to
+   bring all that madness into Copious.
+@import "bootstrap-responsive";*/
+@import "sass/responsive";

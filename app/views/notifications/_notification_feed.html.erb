@@ -1,0 +1,19 @@
+<div class="notifications section span12">
+  <h2>Notifications</h2>
+  <div id="notifications">
+    <% if @notifications %>
+      <div class="notifications-list">
+        <% if @notifications.all.empty? %>
+          <p class="empty-msg">
+            No notifications at this time.
+          </p>
+        <% else %>
+          <%= content_tag :ul, { class: 'notifications-container row' }.merge(results_tag_params) do %>
+            <%= safe_join(notification_rows(@notifications)) %>
+          <% end %>
+          <%= infinite_scroll_widgets %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

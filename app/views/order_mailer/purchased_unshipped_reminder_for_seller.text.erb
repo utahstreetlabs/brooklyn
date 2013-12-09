@@ -1,0 +1,16 @@
+<%= word_wrap(%Q[Hi #{raw @user.firstname},
+You have #{count_of_days_in_words(@order.handling_remaining)} left of the #{count_of_days_in_words(@order.handling_duration, singular: true)} handling period you specified to ship #{raw @order.listing.title} to #{raw @order.buyer.name}.#{" If you don't ship your item, you will automatically receive negative feedback as a seller." if feature_enabled?(:feedback)}
+
+If you've already shipped your item, please enter your tracking number at #{rewrite_mailer_url listing_url(@order.listing)} so the order will be able to complete and you can get paid.]) %>
+
+<%= render 'seller_order_details', order: @order %>
+
+Buyer Info
+
+<%= render 'shipping_address', order: @order %>
+
+<%= render 'shipping_suggestions' %>
+
+<%= word_wrap(%Q[Happy shipping,]) %>
+
+<%= render '/shared_mailer/footer' %>

@@ -1,0 +1,48 @@
+<%
+footer_options ||= {}
+%>
+              </td>
+              <!-- shadow effect right -->
+              <td width="10"  valign="top" style="background-image: url('<%= asset_path 'layout/CWD-border-right.png' %>');" class="temp-side"><%= image_tag 'layout/CWD-shadow-right.png', style:'display: block;border-style: none; width: 9px;', :class => 'temp-side-image' %></td>
+            </tr>
+            <tr>
+              <td style="vertical-align: top;" class="temp-side">
+                <%= image_tag 'layout/CWD-borderbottom-left.png', style:'margin: 0px !important; padding: 0px !important; width: 10px; height: 12px;', :class => 'temp-side-image' %>
+              </td>
+              <!-- faux footer. friendly disclaimer area -->
+              <td width="560" align="center" cellpadding="0" cellspacing="0" border="0" border-spacing="0" id="footer-container">
+                <div style="width: 100%; height: 16px; text-align: center; background: #FFFFFF; background-image: url('<%= asset_path 'layout/CWD-border-bottom1.png' %>'); background-repeat: repeat-x;">
+                  <%#= image_tag 'layout/email-footer-shadow.png', style:'margin: 0px !important; padding: 0px !important;', id:'footer-shadow-large' %>
+                </div>
+                <table width="560" cellpadding="0" cellspacing="0" align="center" id="footer-area" border-spacing="0" style="background: #FFFFFF; border-collapse: collapse; border-spacing: 0;">
+                  <tr>
+                    <td width="100%" align="center">
+                      <div class="footer-disclaimer-container" style="background-color: #FFFFFF; margin: 0px -3px 0px; padding: 2px 14px;color: #999999;">
+                        <span class="footer-disclaimer" style="font-size: 13px; line-height: 19px; font-weight: 400; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif; color: #999; display: block; width: 532px; margin-top: 0px; margin-bottom: 10px; text-align: left;">
+                          <strong>SELF-RESTRAINT DISCLAIMER:</strong> You are under no obligation to love, follow, share or purchase any of the aforementioned listings or users. However, we take no responsibility for you spending your entire last paycheck or all of your birthday money on a stunning pair of leopard Louboutins. Though we do strongly encourage such behavior. Shopaholics unite.
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <!-- Footer area. same as the regular/trigger-based emails' footer. -->
+                    <td width="100%" align="center">
+                      <div class="footer-container" style="background-color: #FFFFFF; margin: -9px -3px 0px; padding: 2px 14px;">
+                        <span class="footer-menu" style="font-size: 11px; line-height: 15px; font-weight: normal; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif; color: #BBBBBB; display: block; width: 532px; margin-top: 10px; margin-bottom: 0px; text-align: left;">
+                          <%= footer_content(footer_options) %>
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td style="vertical-align: top;" class="temp-side">
+                <%= image_tag 'layout/CWD-borderbottom-right.png', style:'margin: 0px !important; padding: 0px !important; width: 10px; height: 12px;', :class => 'temp-side-image' %>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

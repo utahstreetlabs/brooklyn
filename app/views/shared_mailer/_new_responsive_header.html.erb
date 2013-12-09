@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title></title>
+    <style type="text/css">
+      /*  HTML EMAIL BOILERPLATE v 0.5 CODE  */
+      #outlook a {padding:0;}
+      body{width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0;}
+      .ExternalClass {width:100%;}
+      .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;}
+      #backgroundTable {margin:0; padding:0; width:580px !important; line-height: 100% !important;}
+      img {outline:none; text-decoration:none; -ms-interpolation-mode: bicubic;}
+      a img {border-style solid; border-width: 1px; border-color: #BBBBBB;}
+      .image_fix {display:block;}
+      p {margin: 0em;}
+      table td {border-collapse: collapse;}
+      table {border-spacing: 0px !important;}
+      h1, h2, h3, h4, h5, h6 {color: black !important;}
+      /*  END VENDOR CODE  */
+
+      h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {color: #799DD3 !important;}
+      //h1 a:active, h2 a:active,  h3 a:active, h4 a:active, h5 a:active, h6 a:active {color: #799DD3 !important;}
+      a, a span {color: #799DD3 !important; text-decoration: none !important;}
+      a.action-button {color: #FFFFFF !important;}
+      span, p {font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif; font-size: 12px; line-height: 18px; font-weight: 300; color: #6F6F6E; display: inline-block;}
+      div[id=header-name] {display: block; text-align: left; width: 100%; height: 40px; font-weight: 500; }
+      div[id=header-story], div[id=header-story] span {font-weight: 300; text-align: left; font-size: 14px; line-height: 20px;}
+
+      /*  FOR IPHONE  */
+      @media only screen and (max-device-width: 480px) {
+        *[id=backgroundTable] {width: 334px !important; text-align: center;}
+        *[id=email-header] {width: 334px !important; margin-left: auto; margin-right: auto;}
+        td[id=header-logo] {width: 100% !important; text-align: center !important; }
+        img[id=digest-logo] {width: 100% !important; height: auto !important;}
+        *[id=email-wrapper] {width: 320px !important; margin: 0px !important;}
+        td[id=content-wrapper] {width: 320px !important;}
+        *[id=content-area] {width: 300px !important;}
+        *[id=footer-container] {width: 300px !important; padding-top: 0px !important; padding-bottom: 0px !important; margin-top: 0px !important; margin-bottom: 0px !important;}
+        *[id=footer-area] {width: 300px !important;}
+        img[id=footer-shadow-large] {width: 300px !important; margin-top: 0px !important; padding-top: 0px !important;}
+        span[class=footer-disclaimer] {width: 300px !important;}
+
+        /*  HTML EMAIL BOILERPLATE v 0.5 CODE  */
+        a[href^="tel"], a[href^="sms"] {
+                text-decoration: none;
+                color: #799DD3;
+                pointer-events: none;
+                cursor: default;
+        }
+
+        .mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {
+                text-decoration: default;
+                color: #799DD3;
+                pointer-events: auto;
+                cursor: default;
+        }
+      }
+
+      /*  END VENDOR CODE  */
+
+      @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+        /* Put your iPhone 4g styles in here */
+      }
+    </style>
+  </head>
+  <body>
+    <table cellpadding="0" cellspacing="0" border="0" id="BackgroundTable" width="100%" style="background-color: #FFFFFF; margin-bottom: 20px;" border-spacing="0">
+      <tr>
+        <td align="center">
+          <table cellpadding="0" cellspacing="0" border="0" id="ContentTable" width="580" style="background-color: #FFFFFF;" border-spacing="0">
+            <tr>
+              <td>
+                <table cellpadding="0" cellspacing="0" border="0" id="EmailHeader" width="580" height="70" style="background-color: #F5F5F5; padding: 5px 25px 5px 25px" border-spacing="0">
+                  <tr>
+                    <td width="58" style="width: 58px;">
+                      <table cellpadding="0" cellspacing="0" border="0" id="CopiousLogoTable" width="47" height="41" style="" border-spacing="0">
+                        <tr>
+                          <td width="41" height="41" border="0" align="center" style="background-color: #868686; width: 41px; height: 41px;">
+                            <%= mailer_image_tag "icons/emails/CopiousLogo.png", style: "display: block; border-style: none; width: 24px; height: 33px;", alt: t('shared_mailer.header.logo'), id: "CopiousLogo" %>
+                          </td>
+                          <td style="vertical-align: middle;">
+                            <%= mailer_image_tag "icons/emails/CopiousLogoArrow.png", style: "display: block; border-style: none; width: 8px; height: 13px;", id: "CopiousLogoArrow" %>
+                          </td>
+                        </tr>
+                      </table><!--  COPIOUS LOGO  -->
+                    </td>
+                    <td style="font-size: 14px; line-height: 20px; font-weight: 500; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif; color: #1D1D1B;">
+                      <div id="header-name" height="40" style="display: block; text-align: left; width: 100%; height: 40px; font-weight: 500; "><%= user.name %></span>
+                      <div id="header-story" style="font-weight: 300; text-align: left;"><%= message %></span>
+                    </td>
+                  </tr>
+                </table><!--  EMAIL HEADER  -->
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="content-container" style="text-align: center; margin: 10px 0px 30px 0px; float: left; width: 100%;">

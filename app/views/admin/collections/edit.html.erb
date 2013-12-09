@@ -1,0 +1,10 @@
+<% title "Admin: #{@collection.name}" %>
+
+<%= bootstrap_breadcrumb [
+  ['Admin', admin_dashboard_path],
+  ['Collections', admin_collections_path],
+  [@collection.name, admin_collection_path(@collection.id)],
+  'Edit'
+] %>
+
+<%= render 'form', collection: @collection, url: admin_collection_path(@collection.id), cancel_url: admin_collection_path(@collection.id) %>

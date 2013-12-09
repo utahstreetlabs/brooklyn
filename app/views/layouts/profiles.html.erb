@@ -1,0 +1,56 @@
+<% doc_header do %>
+  <%= profile_open_graph_tags profile_user, fb_profile: profile_user.person.connected_network_profile(:facebook) %>
+<% end %>
+
+
+<%= render '/layouts/top' %>
+
+<div id="profile-top" class="span12">
+  <div class="avatar-container">
+    <%= user_avatar_large profile_user, class: 'margin-right' %>
+  </div>
+  <div id="profile-info">
+    <% if admin? %>
+      <%= link_to 'Admin', admin_user_path(profile_user.id), :class => 'btn admin-tool', target: 'admin'  %>
+    <% end %>
+    <h1 class="profile_name"><%= profile_user.name %></h1>
+    <% if profile_user.bio.present? %>
+      <div id="bio">
+        <%= full_clean profile_user.bio %>
+      </div>
+    <% end %>
+    <div id="profile-network-location">
+      <% unless Brooklyn::Application.config.networks.hidden_for_users.include?(profile_user.slug) %>
+        <% if profile_user.person.connected_networks.any? %>
+          <%= profile_social_network_box profile_user.person.network_profiles, unconnected: false %>
+        <% end %>
+      <% end %>
+      <% if profile_user.web_site_enabled? && profile_user.web_site.present? %>
+        <%= link_to profile_user.web_site, rel: :nofollow, target: :_blank do %>
+          <div id="web-site"></div>
+        <% end %>
+      <% end %>
+      <% if profile_user.location.present? %>
+        <div id="location">
+          <%= profile_user.location %>
+        </div>
+      <% end %>
+      <% if logged_in? && (current_user != profile_user) %>
+        <%= profile_block_box(profile_user, current_user) %>
+      <% end %>
+    </div>
+    <% if current_user == profile_user %>
+        <%= profile_edit_profile_box %>
+    <% elsif logged_in? %>
+      <%= profile_follow_box(profile_user, current_user) %>
+    <% end %>
+  </div>
+</div>
+
+<%= content_tag :div, :class => 'span12', id: 'main-content', data: {:self => (current_user == profile_user)} do %>
+  <%= yield %>
+<% end %>
+
+<%= ajax_overlay %>
+
+<%= render '/layouts/bottom' %>

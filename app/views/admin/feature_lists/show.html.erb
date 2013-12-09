@@ -1,0 +1,13 @@
+<% title "Admin: #{@feature_list.name}" %>
+
+<%= bootstrap_breadcrumb [
+  ['Admin', admin_dashboard_path],
+  ['Feature Lists', admin_feature_lists_path],
+  @feature_list.name
+] %>
+
+<h2>Featured Listings</h2>
+
+<div id="featured-listings" data-role="featured-listings">
+  <%= admin_feature_lists_featured_listings(@feature_list, @features) %>
+</div>

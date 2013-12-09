@@ -1,0 +1,76 @@
+<% title "Admin: Dashboard" %>
+
+<%= bootstrap_breadcrumb ['Admin dashboard'] %>
+
+<%= bootstrap_table condensed: true do %>
+  <tbody>
+    <tr>
+      <th colspan="2">Orders</th>
+    </tr>
+    <tr>
+      <td>Total</td>
+      <td><%= number_with_delimiter @stats[:total_orders] %></td>
+    </tr>
+    <tr>
+      <td>Settled</td>
+      <td><%= number_with_delimiter @stats[:settled_orders] %></td>
+    </tr>
+    <tr>
+      <td>In fulfillment</td>
+      <td><%= number_with_delimiter @stats[:orders_in_fulfillment] %></td>
+    </tr>
+    <tr>
+      <td>In checkout</td>
+      <td><%= number_with_delimiter @stats[:orders_in_checkout] %></td>
+    </tr>
+    <tr>
+      <td>New this month</td>
+      <td><%= number_with_delimiter @stats[:orders_new_this_month] %></td>
+    </tr>
+    <tr>
+      <td>New today</td>
+      <td><%= number_with_delimiter @stats[:orders_new_today] %></td>
+    </tr>
+    <tr>
+      <th colspan="2">Collections</th>
+    </tr>
+    <tr>
+      <td>New this month</td>
+      <td><%= number_with_delimiter @stats[:collections_new_this_month] %></td>
+    </tr>
+    <tr>
+      <td>New today</td>
+      <td><%= number_with_delimiter @stats[:collections_new_today] %></td>
+    </tr>
+    <tr>
+      <th colspan="2">Listings</th>
+    </tr>
+    <tr>
+      <td>Total</td>
+      <td><%= number_with_delimiter @stats[:total_listings] %></td>
+    </tr>
+    <tr>
+      <td>Active</td>
+      <td><%= number_with_delimiter @stats[:active_listings] %></td>
+    </tr>
+    <tr>
+      <th colspan="2">Users</th>
+    </tr>
+    <tr>
+      <td>Total</td>
+      <td><%= number_with_delimiter @stats[:total_users] %></td>
+    </tr>
+    <tr>
+      <td>Registered</td>
+      <td><%= number_with_delimiter @stats[:registered_users] %></td>
+    </tr>
+    <tr>
+      <td>New this month</td>
+      <td><%= number_with_delimiter @stats[:users_new_this_month] %></td>
+    </tr>
+    <tr>
+      <td>New today</td>
+      <td><%= number_with_delimiter @stats[:users_new_today] %></td>
+    </tr>
+  </tbody>
+<% end %>

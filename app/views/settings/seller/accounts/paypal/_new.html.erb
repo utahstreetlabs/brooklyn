@@ -1,0 +1,20 @@
+<div class="section">
+  <%= form_for account, as: :account, url: settings_seller_accounts_path do |f| %>
+    <%= hidden_field_tag :account_type, DepositAccount::PAYPAL %>
+    <%= f.field :email, container: :div, class: 'pull-left full-width',
+      error: true,
+      help: {text: t('.field.email.example_html'), class: 'full-width'} do %>
+      <%= f.label :email, t('.field.email.label') %>
+      <%= f.email_field :email, class: 'margin-bottom pull-left margin-right' %>
+    <% end %>
+    <%= f.field :email_confirmation, container: :div, class: 'pull-left full-width', error: true do %>
+      <%= f.label :email_confirmation, t('.field.email_confirmation.label') %>
+      <%= f.email_field :email_confirmation, class: 'margin-bottom pull-left margin-right' %>
+    <% end %>
+    <%= f.field :default, container: :div do %>
+      <%= f.check_box :default %>
+      <%= f.label :default, t('.field.default.label'), class: 'checkbox margin-bottom' %>
+    <% end %>
+    <%= f.buttons save_text: t('.button.save'), class: 'span4 kill-margin-left primary large' %>
+  <% end %>
+</div>

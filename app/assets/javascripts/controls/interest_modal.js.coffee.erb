@@ -1,0 +1,64 @@
+#= require 'copious/plugin'
+#= require 'controls/interest_card'
+
+class InterestModal
+  BUILD_FEED_MSG = "<%= escape_javascript I18n.t('home.feed.select_interests.modal.save.loading_html') %>"
+  BUILD_FEED_FAIL_MSG = "<%= escape_javascript I18n.t('home.feed.select_interests.modal.save.fail') %>"
+  BUILD_FEED_SUCCESS_MSG = "<%= escape_javascript I18n.t('home.feed.select_interests.modal.save.success_html') %>"
+
+  constructor: (@element) ->
+    @saveButton = @element.find('[data-save=modal]')
+    this._setupSave()
+    this._setupCounter()
+    @loader = new ModalLoader(@element)
+    @loader.load().then (data) =>
+      this._updateSaveButton(data.interestsRemaining)
+      this._setupCards()
+
+  _setupSave: =>
+    @saveButton.on 'click', =>
+      @loader.spinnerOn()
+      @element.modalAlert('clear')
+      @element.modalAlert('info', BUILD_FEED_MSG)
+      $.jsend.post(@element.data('build-feed-url')).
+        always(=>
+          @element.modalAlert('clear')
+          @loader.spinnerOff()).
+        then(=>
+          @element.modalAlert('info', BUILD_FEED_SUCCESS_MSG)
+          #XXX: refactor home/feed.js.coffee.erb so we can receive a feed and
+          #     inject it into the page
+          location.reload()).
+        fail(=>
+          @element.modalAlert('error', BUILD_FEED_FAIL_MSG)
+        )
+
+  _setupCounter: =>
+    @element.on 'interestCard:liked', (e, data) =>
+      this._setCounter(data.interestsRemaining)
+
+    @element.on 'interestCard:unliked', (e, data) =>
+      this._setCounter(data.interestsRemaining)
+
+  _setCounter: (value) =>
+    $counter = @element.find('[data-role=counter]')
+    $counter.html(value)
+    $counterCTA = $counter.closest('[data-role=counter-cta]')
+    if value is 0
+      $counterCTA.hide()
+    else
+      $counterCTA.show()
+    this._updateSaveButton(value)
+
+  _updateSaveButton: (interestsRemaining) =>
+    @saveButton.prop('disabled', interestsRemaining != 0)
+
+  _setupCards: =>
+    $('[data-role=interest-card]').interestCard()
+
+jQuery ->
+  $.fn.interestModal = copious.plugin.componentPlugin(InterestModal, 'interestModal')
+  $('[data-role=interests-modal]').on 'show', ->
+    $(this).interestModal()
+  $('[data-role=interests-modal]').on 'shown', ->
+    copious.track('interest_modal view', source: this)

@@ -1,0 +1,132 @@
+.notifications {
+  .notification {
+    @include transition(all);
+    border-bottom: 1px solid $button-actioned-bg-color;
+    padding: 15px 20px;
+    width: 100%;
+    background: $white;
+    position: relative;
+    cursor: pointer;
+    &:hover {
+      background: lighten($linkColor, 25%);
+      .actions {
+        display: block;
+      }
+    }
+  }
+  .notification:only-child {
+    border: 0px;
+    margin-bottom: 16px;
+  }
+  h2 {
+    font-family: $styledHeaderFamily;
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: -30px;
+  }
+
+  .date {
+    margin: 60px 0 80px;
+  }
+  h5 {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+    text-align: center;
+    padding: 0 0 10px;
+    margin: 8px 0 0;
+    display: block;
+    border-bottom: 1px solid $border-color;
+    text-transform: uppercase;
+  }
+  .notification-body {
+    display: inline-block;
+    max-width: 780px;
+  }
+  .meta {
+    color: $text-lightest;
+  }
+  .content {
+    min-height: 50px;
+    margin-bottom: 0;
+  }
+  .details {
+    color: $text;
+    margin-bottom: 0px;
+    min-height: 50px;
+  }
+  .details:first-child:last-child {
+    border: 0px solid #fafafa;
+  }
+  /* delete if we're not using this anymore */
+  .invite-friends {
+    float: left;
+    display: inline-block;
+    width: 630px;
+    margin: 15px 0px;
+    a.invitee-avatar {
+      margin-right: 5px;
+      img.icon {
+        width: 50px;
+        height: 50px; } }
+    li.invite-suggestion {
+      width: 100%;
+      display: block;
+      margin-bottom: 0px;
+      .rep-remove {
+        display: none; }
+      .invite-friends-text {
+        max-width: none;
+        margin-top: 3px;
+        .invite-friend-name {
+          font-weight: 600;
+          width: auto;
+          display: block;
+          float: none;
+        }
+      }
+      .invite-wrap {
+        float: left;
+        margin-left: 8px;
+        margin-top: 5px;
+      }
+    }
+  }
+  /* up to here */
+  .notification-target-image-container {
+    float: right;
+  }
+  .notification-actor-image-container {
+    margin-right: 10px;
+    float: left;
+  }
+  .notification-actor-image-container img, .notification-actor-image-container .avatar img {
+    float: left;
+    margin-right: 0px;
+  }
+  .notification-target-image, .notification-actor-image-container img, .notification-target-image-container img {
+    width: 50px;
+    height: 50px;
+    @include border-radius(2px);
+  }
+  .actions {
+    display: none;
+    position: absolute;
+    top: 27px;
+    right: 4px;
+    opacity: 0.15;
+    img {
+      width: 10px;
+      height: 10px;
+    }
+  }
+  .actions:hover,
+  .actions.hover,
+  .actions:focus,
+  .actions.focus {
+    opacity: 1;
+  }
+}
+
+.notification:last-child {
+  border-bottom: none; }

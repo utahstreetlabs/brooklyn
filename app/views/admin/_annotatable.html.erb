@@ -1,0 +1,8 @@
+<div data-role="annotations">
+  <h4>Support links</h4>
+  <%= annotations_list(annotatable) %>
+  <%= form_for_new_annotation(annotatable) do |f| %>
+    <%= f.url_field :url, maxlength: 255, placeholder: 'http://', data: {role: 'new-annotation-url'} %>
+    <%= f.submit 'Add support link', data: {role: 'new'} %>
+  <% end %>
+</div>

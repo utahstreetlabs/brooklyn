@@ -1,0 +1,13 @@
+<%= word_wrap %Q[Hi #{raw @user.firstname},
+
+Why shop online alone when you can bring your friends along? Invite your friends to Copious. They won't even have to chip in for gas.
+
+Sharing listings on Facebook and Twitter allows friends to weigh in on your purchase decisions before you've pulled the trigger. Solicit second opinions -- two, three, four times over -- at the click of your mouse.
+
+And if we see something we think a friend would find fabulous, Copious lets us put them in the know.
+
+Invite friends at #{rewrite_mailer_url dashboard_url(more_invites: 1)}
+
+Happy selling,] %>
+
+<%= render '/shared_mailer/footer' %>

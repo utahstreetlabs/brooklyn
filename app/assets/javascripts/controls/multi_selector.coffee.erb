@@ -1,0 +1,111 @@
+#= require copious/plugin
+
+# A control that allows users to select multiple things
+#
+# Similar to a multi-select select tag, but without the usability issues.
+#
+# Events:
+#
+# +selectable:selected+ triggered when an element is selected. First argument is the
+#   selected element
+# +selectable:unselected+ triggered when an element is unselected. First argument is the
+#   selected element
+class MultiSelector
+  constructor: (@element, options) ->
+    @selectAll = if options.selectAll?
+      options.selectAll
+    else
+      @element.find('input[name=select_all]')
+
+    this._initClickHandlers()
+
+  # select or deselect all selectables
+  setAll: (value) =>
+    @selectAll.prop('checked', value)
+    for element in $('[data-role=selectable]', @element)
+      this._selectable(element).set(value, suppress_changed_event: true)
+    @element.trigger('multi_selector:selection_changed')
+
+  selectedIds: (selectableType = "[data-role=selectable]") =>
+    e.name for e in $(selectableType + ' input:checked', @element)
+
+  anySelected: (selectableType) =>
+    this.selectedIds(selectableType).length > 0
+
+  replaceSelectables: (selectables) =>
+    $('[data-role=selectables]', @element).html(selectables)
+
+  addSelectable: (selectable) =>
+    $('[data-role=selectables]', @element).append(selectable)
+
+  prependSelectable: (selectable) =>
+    $('[data-role=selectables]', @element).prepend(selectable)
+
+  _selectable: (element) =>
+    $element = $(element)
+    $element.data('selectable', $element.data('selectable') || new Selectable($element))
+    $element.data('selectable')
+
+  # Checkboxes implement some native behavior that is problematic, so work around that.
+  # Specifically, two issues:
+  #
+  # 1. When a user clicks a label, a click is generated on the checkbox as well. This
+  #    has the effect of toggling the selectable twice, which is no good. Catch label
+  #    clicks and neuter them to avoid this.
+  # 2. When a user manually clicks a checkbox, the value of prop('checked') is already
+  #    toggled in the click handler. This is not true when we programmatically trigger
+  #    click. To work around this, when the click event we are handling is manual (ie,
+  #    isTrigger is false or undefined) we call Selectable#set with the current (ie,
+  #    already toggled) value of prop('checked') and stop propagation so that the normal
+  #    selectable handler doesn't kick in.
+  _overrideNativeClickHandlers: () =>
+    @element.on 'click', 'label', (e) =>
+      e.preventDefault()
+
+    @element.on 'click', 'input[type=checkbox]', (e) =>
+      $checkbox = $(e.currentTarget)
+      if not e.isTrigger
+        this._selectable($checkbox.closest('[data-role=selectable]')).set($checkbox.prop('checked'))
+        e.stopPropagation()
+
+  _initClickHandlers: () =>
+    this._overrideNativeClickHandlers()
+    @element.on 'click', '[data-role=selectable]', (e) =>
+      this._selectable(e.currentTarget).toggle()
+    @selectAll.on 'change', =>
+      this.setAll(@selectAll.prop('checked'))
+
+class Selectable
+  constructor: (@element) ->
+    @checkbox = $('input[type=checkbox]', @element)
+
+  selected: () =>
+    @checkbox.prop('checked')
+
+  set: (value, options = {}) =>
+    if value
+      @element.addClass('selected')
+    else
+      @element.removeClass('selected')
+    @checkbox.prop('checked', value)
+    @element.trigger('multi_selector:selection_changed') unless options.suppress_changed_event?
+    if value
+      @element.trigger('selectable:selected', this)
+    else
+      @element.trigger('selectable:unselected', this)
+
+  toggle: () =>
+    this.set(!this.selected())
+
+  select: () =>
+    this.set(true)
+
+  deselect: () =>
+    this.set(false)
+
+window.Copious ?= {}
+window.Copious.MultiSelector = MultiSelector
+
+jQuery ->
+  $.fn.multiSelector = copious.plugin.componentPlugin(MultiSelector, 'multiSelector')
+

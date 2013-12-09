@@ -1,0 +1,11 @@
+<% title "Admin: Edit #{@offer.name_was}" %>
+
+<%= bootstrap_breadcrumb [
+  ['Admin', admin_dashboard_path],
+  ['Offers', admin_offers_path],
+  "Edit #{@offer.name_was}"
+] %>
+
+<p><%= link_to offer_url(@offer.uuid), offer_path(@offer.uuid, preview: '1') %></p>
+
+<%= render partial: 'form', locals: { offer: @offer, url: admin_offer_path(@offer.id) } %>

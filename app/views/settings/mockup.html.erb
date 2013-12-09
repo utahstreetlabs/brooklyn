@@ -1,0 +1,359 @@
+<%# XXX: remove when all settings pages are built %>
+
+<div id="sidebar" class="grid4">
+  <div class="section">
+    <h2>ACCOUNT SETTINGS</h2>
+    <ul class="account-settings-menu">
+      <li><a>Profile Information</a></li>
+      <li><a>Change Your Password</a></li>
+      <li><a>Email Settings</a></li>
+      <li><a>Linked Networks</a></li>
+      <li><a>Payment Information</a></li>
+      <li><a>Shipping Addresses</a></li>
+    </ul>
+  </div>
+</div>
+
+<div id="main-content" class="grid12 last">
+  
+  <!-- XXXXX mock-up PAYMENT INFORMATION XXXXX -->
+  <h3>Shipping Addresses</h3>
+  <div id="edit-addresses" class="section">
+    <ul class="errorlist"> </ul>
+    <div class="edit-address">
+      <div class="address">
+        <label for="address_id_32">Michael Oh</label>
+        533 28th ave<br>
+        san fran, CA 94111<br>
+        4224343354<br>
+        <a class="button left edit" href="#">Edit</a>
+      </div>
+      <div class="fields" style="display:none;">
+        <ol>
+        <li id="field_name" class="text field-name">
+        <label for="user_postal_addresses_attributes_0_name">Name:</label>
+        <input id="user_postal_addresses_attributes_0_name" type="text" value="Michael Oh" size="30" name="user[postal_addresses_attributes][0][name]">
+        </li>
+        <li id="field_line1" class="text field-line1">
+        <label for="user_postal_addresses_attributes_0_line1">Street Address:</label>
+        <input id="user_postal_addresses_attributes_0_line1" type="text" value="533 28th ave" size="30" name="user[postal_addresses_attributes][0][line1]">
+        </li>
+        <li id="field_line2" class="text field-line2">
+        <input id="user_postal_addresses_attributes_0_line2" type="text" value="" size="30" name="user[postal_addresses_attributes][0][line2]">
+        </li>
+        <li id="field_city" class="text field-city">
+        <label for="user_postal_addresses_attributes_0_city">City:</label>
+        <input id="user_postal_addresses_attributes_0_city" type="text" value="san fran" size="30" name="user[postal_addresses_attributes][0][city]">
+        </li>
+        <li id="field_state" class="field-state">
+        <label for="user_postal_addresses_attributes_0_state">State:</label>
+        <select id="user_postal_addresses_attributes_0_state" name="user[postal_addresses_attributes][0][state]">
+        <option value="AL">Alabama</option>
+        <option value="AK">Alaska</option>
+        <option value="AZ">Arizona</option>
+        <option value="AR">Arkansas</option>
+        <option selected="selected" value="CA">California</option>
+        <option value="CO">Colorado</option>
+        <option value="CT">Connecticut</option>
+        <option value="DE">Delaware</option>
+        <option value="DC">District Of Columbia</option>
+        <option value="FL">Florida</option>
+        <option value="GA">Georgia</option>
+        <option value="HI">Hawaii</option>
+        <option value="ID">Idaho</option>
+        <option value="IL">Illinois</option>
+        <option value="IN">Indiana</option>
+        <option value="IA">Iowa</option>
+        <option value="KS">Kansas</option>
+        <option value="KY">Kentucky</option>
+        <option value="LA">Louisiana</option>
+        <option value="ME">Maine</option>
+        <option value="MD">Maryland</option>
+        <option value="MA">Massachusetts</option>
+        <option value="MI">Michigan</option>
+        <option value="MN">Minnesota</option>
+        <option value="MS">Mississippi</option>
+        <option value="MO">Missouri</option>
+        <option value="MT">Montana</option>
+        <option value="NE">Nebraska</option>
+        <option value="NV">Nevada</option>
+        <option value="NH">New Hampshire</option>
+        <option value="NJ">New Jersey</option>
+        <option value="NM">New Mexico</option>
+        <option value="NY">New York</option>
+        <option value="NC">North Carolina</option>
+        <option value="ND">North Dakota</option>
+        <option value="OH">Ohio</option>
+        <option value="OK">Oklahoma</option>
+        <option value="OR">Oregon</option>
+        <option value="PA">Pennsylvania</option>
+        <option value="RI">Rhode Island</option>
+        <option value="SC">South Carolina</option>
+        <option value="SD">South Dakota</option>
+        <option value="TN">Tennessee</option>
+        <option value="TX">Texas</option>
+        <option value="UT">Utah</option>
+        <option value="VT">Vermont</option>
+        <option value="VA">Virginia</option>
+        <option value="WA">Washington</option>
+        <option value="WV">West Virginia</option>
+        <option value="WI">Wisconsin</option>
+        <option value="WY">Wyoming</option>
+        <option value="FM">Federated States of Micronesia</option>
+        <option value="GU">Guam</option>
+        <option value="MH">Marshall Islands</option>
+        <option value="MP">Northern Mariana Islands</option>
+        <option value="PW">Palau</option>
+        <option value="PR">Puerto Rico</option>
+        <option value="VI">Virgin Islands</option>
+        <option value="AA">Armed Forces Americas (except Canada)</option>
+        <option value="AE">Armed Forces Europe, Armed Forces Canada, Armed Forces Africa, or Armed Forces Middle East</option>
+        <option value="AP">Armed Forces Pacific</option>
+        </select>
+        </li>
+        <li id="field_zip" class="text field-zip">
+        <label for="user_postal_addresses_attributes_0_zip">Zip Code:</label>
+        <input id="user_postal_addresses_attributes_0_zip" type="text" value="94111" size="30" name="user[postal_addresses_attributes][0][zip]">
+        </li>
+        <li id="field_phone" class="text field-phone">
+        <label for="user_postal_addresses_attributes_0_phone">Phone Number:</label>
+        <input id="user_postal_addresses_attributes_0_phone" type="text" value="4224343354" size="30" name="user[postal_addresses_attributes][0][phone]">
+        </li>
+        </ol>
+        <div class="buttons ">
+        <button class="button right clear" type="submit" data-disable-with="Submitting ...">Save</button>
+        </div>
+      </div>
+    </div>
+    <div class="edit-address">
+      <div class="address">
+        <label for="address_id_32">Michael Oh</label>
+        533 28th ave<br>
+        san fran, CA 94111<br>
+        4224343354<br>
+        <a class="button left edit" href="#">Edit</a>
+      </div>
+      <div class="fields" style="display: none;">
+        <ol>
+        <li id="field_name" class="text field-name">
+        <label for="user_postal_addresses_attributes_0_name">Name:</label>
+        <input id="user_postal_addresses_attributes_0_name" type="text" value="Michael Oh" size="30" name="user[postal_addresses_attributes][0][name]">
+        </li>
+        <li id="field_line1" class="text field-line1">
+        <label for="user_postal_addresses_attributes_0_line1">Street Address:</label>
+        <input id="user_postal_addresses_attributes_0_line1" type="text" value="533 28th ave" size="30" name="user[postal_addresses_attributes][0][line1]">
+        </li>
+        <li id="field_line2" class="text field-line2">
+        <input id="user_postal_addresses_attributes_0_line2" type="text" value="" size="30" name="user[postal_addresses_attributes][0][line2]">
+        </li>
+        <li id="field_city" class="text field-city">
+        <label for="user_postal_addresses_attributes_0_city">City:</label>
+        <input id="user_postal_addresses_attributes_0_city" type="text" value="san fran" size="30" name="user[postal_addresses_attributes][0][city]">
+        </li>
+        <li id="field_state" class="field-state">
+        <label for="user_postal_addresses_attributes_0_state">State:</label>
+        <select id="user_postal_addresses_attributes_0_state" name="user[postal_addresses_attributes][0][state]">
+        <option value="AL">Alabama</option>
+        <option value="AK">Alaska</option>
+        <option value="AZ">Arizona</option>
+        <option value="AR">Arkansas</option>
+        <option selected="selected" value="CA">California</option>
+        <option value="CO">Colorado</option>
+        <option value="CT">Connecticut</option>
+        <option value="DE">Delaware</option>
+        <option value="DC">District Of Columbia</option>
+        <option value="FL">Florida</option>
+        <option value="GA">Georgia</option>
+        <option value="HI">Hawaii</option>
+        <option value="ID">Idaho</option>
+        <option value="IL">Illinois</option>
+        <option value="IN">Indiana</option>
+        <option value="IA">Iowa</option>
+        <option value="KS">Kansas</option>
+        <option value="KY">Kentucky</option>
+        <option value="LA">Louisiana</option>
+        <option value="ME">Maine</option>
+        <option value="MD">Maryland</option>
+        <option value="MA">Massachusetts</option>
+        <option value="MI">Michigan</option>
+        <option value="MN">Minnesota</option>
+        <option value="MS">Mississippi</option>
+        <option value="MO">Missouri</option>
+        <option value="MT">Montana</option>
+        <option value="NE">Nebraska</option>
+        <option value="NV">Nevada</option>
+        <option value="NH">New Hampshire</option>
+        <option value="NJ">New Jersey</option>
+        <option value="NM">New Mexico</option>
+        <option value="NY">New York</option>
+        <option value="NC">North Carolina</option>
+        <option value="ND">North Dakota</option>
+        <option value="OH">Ohio</option>
+        <option value="OK">Oklahoma</option>
+        <option value="OR">Oregon</option>
+        <option value="PA">Pennsylvania</option>
+        <option value="RI">Rhode Island</option>
+        <option value="SC">South Carolina</option>
+        <option value="SD">South Dakota</option>
+        <option value="TN">Tennessee</option>
+        <option value="TX">Texas</option>
+        <option value="UT">Utah</option>
+        <option value="VT">Vermont</option>
+        <option value="VA">Virginia</option>
+        <option value="WA">Washington</option>
+        <option value="WV">West Virginia</option>
+        <option value="WI">Wisconsin</option>
+        <option value="WY">Wyoming</option>
+        <option value="FM">Federated States of Micronesia</option>
+        <option value="GU">Guam</option>
+        <option value="MH">Marshall Islands</option>
+        <option value="MP">Northern Mariana Islands</option>
+        <option value="PW">Palau</option>
+        <option value="PR">Puerto Rico</option>
+        <option value="VI">Virgin Islands</option>
+        <option value="AA">Armed Forces Americas (except Canada)</option>
+        <option value="AE">Armed Forces Europe, Armed Forces Canada, Armed Forces Africa, or Armed Forces Middle East</option>
+        <option value="AP">Armed Forces Pacific</option>
+        </select>
+        </li>
+        <li id="field_zip" class="text field-zip">
+        <label for="user_postal_addresses_attributes_0_zip">Zip Code:</label>
+        <input id="user_postal_addresses_attributes_0_zip" type="text" value="94111" size="30" name="user[postal_addresses_attributes][0][zip]">
+        </li>
+        <li id="field_phone" class="text field-phone">
+        <label for="user_postal_addresses_attributes_0_phone">Phone Number:</label>
+        <input id="user_postal_addresses_attributes_0_phone" type="text" value="4224343354" size="30" name="user[postal_addresses_attributes][0][phone]">
+        </li>
+        </ol>
+        <div class="buttons ">
+        <button class="button right clear" type="submit" data-disable-with="Submitting ...">Save</button>
+        </div>
+      </div>
+    </div>
+    <div id="new-address">
+      <!-- XXX the form from shared/shipping_address_fields.html.erb will be generated here XXX -->
+    </div>
+  </div>
+  <!-- XXXXX mock-up ends XXXXX -->
+  
+  <!-- XXXXX mock-up PAYMENT INFORMATION XXXXX -->
+  <!-- XXX please have the <h3> slipped in before the div.section XXX -->
+  <h3>Payment Information</h3>
+  <div class="section">
+    <div id="field_payment_email" class="field-payment_email">
+      <label for="user_payment_email">Change Payment Email</label>
+      <input id="user_payment_email" type="text" value="moh@g.risd.edu" size="255" name="user[payment_email]" maxlength="255">
+    </div>
+    <div id="field_payment_email_confirmation" class="text field-payment_email_confirmation">
+      <label for="user_payment_email_confirmation">Confirm Payment Email</label>
+      <input id="user_payment_email_confirmation" type="text" size="255" name="user[payment_email_confirmation]" maxlength="255">
+    </div>
+    <div class="buttons ">
+      <button class="button right clear" type="submit" data-disable-with="Submitting ...">Save New Payment Email</button>
+    </div>
+  </div>
+  <%!-- XXXXX mock-up ends XXXXX -->
+  
+  <!-- XXXXX mock-up LINKED NETWORKS XXXXX -->
+  <!-- XXX please have the <h3> slipped in before the div.section XXX -->
+  <h3>Linked Networks</h3>
+  <!-- XXX apply .network-setting to the div.section please XXX -->
+  <div class="section network-setting">
+    <h2>
+      <img src="/images/social_networks/facebook_32.png" class="sns-icon">Facebook Profile
+      <a class="button right-button small">Disconnect</a>
+    </h2>
+    You have connected your <a>Facebook Profile</a> to your Copious account.
+    <ul>
+      <li><input type="checkbox">Notification Type</li>
+      <li><input type="checkbox">Notification Type</li>
+      <li><input type="checkbox">Notification Type</li>
+    </ul>
+    <div class="buttons ">
+      <button class="button right clear" type="submit" data-disable-with="Submitting ...">Save Changes</button>
+      <a class="button soft">Revert Changes</a>
+    </div>
+  </div>
+  <!-- XXX Social networks other than Facebook XXX -->
+  <div class="section network-setting">
+    <h2>
+      <img src="/images/social_networks/twitter_32.png" class="sns-icon">Twitter
+      <a class="button right-button small">Disconnect</a>
+    </h2>
+    You have connected your <a>Twitter Account Name</a> to your Copious account.
+  </div>
+  
+  <div class="section network-setting">
+    <h2>
+      <img src="/images/social_networks/tumblr_32.png" class="sns-icon">Tumblr
+      <a class="button right-button small">Disconnect</a>
+    </h2>
+    You have connected your <a>Tumblr Account Name</a> to your Copious account.
+  </div>
+  
+  <!-- XXX Other social networks suggestion XXX -->
+  <div class="section network-setting">
+    <h2>
+      <img src="/images/social_networks/etsy_32.png" class="sns-icon">Etsy
+      <a class="button right-button">Connect Etsy</a>
+    </h2>
+    Some explanation to lure them into hooking their accounts.
+  </div>
+  
+  <div class="section network-setting">
+    <h2>
+      <img src="/images/social_networks/facebook_32.png" class="sns-icon">Facebook Pages
+      <a class="button right-button">Connect Facebook Pages</a>
+    </h2>
+    Some explanation to lure them into hooking their accounts.
+  </div>
+  <!-- XXXXX mock-up ends XXXXX -->
+  
+  <!-- XXXXX mock-up PROFILE INFORMATION XXXXX -->
+  <!-- XXX please have the <h3> slipped in before the div.section XXX -->
+  <h3>Profile Information</h3>
+  <div class="section">
+    <!-- XXXX  instead of <ol> and <li>, just have it wrapped in <div> please.  XXXX -->
+    <div id="field_name" class="inline field-name">
+      <span class="label">Name</span>
+      @user.name
+    </div>
+    <div id="field_profile" class="field-profile">
+      <span class="label">Profile</span>
+      link_to public_profile_url(@user), public_profile_url(@user)
+    </div>
+    <div id="field_photo" class="field-photo">
+      <a id="profile-photo" href="/profiles/michael-oh">
+        <img width="190" height="190" title="Michael Oh" src="/uploads/development/user/profile_photo/110/px_190x190_203362_12501409_3074476_n.jpg" alt="">
+      </a>
+      <div class="left">
+        <label for="user_profile_photo" class="strong">Upload a new profile photo:</label>
+        <input id="user_profile_photo" type="file" name="user[profile_photo]" data-action="/profile/photo">
+        <a class="button left">Upload</a>
+      </div>
+    </div>
+  </div>
+  <!-- XXXXX mock-up ends XXXXX -->
+  
+  <!-- XXXXX mock-up CHANGE YOUR PASSWORD XXXXX -->
+  <!-- XXX please have the <h3> slipped in before the div.section XXX -->
+  <h3>Change your Password</h3>
+  <div class="section">
+    <div id="field_current_password" class="password field-current_password">
+      <label for="user_current_password">Current Password</label>
+      <input id="user_current_password" type="password" value="" size="64" name="user[current_password]" maxlength="64">
+      <a>Forgot your password?</a>
+    </div>
+    <div id="field_password" class="password field-password">
+      <label for="user_password">New Password</label>
+      <input id="user_password" type="password" value="" size="64" name="user[password]" maxlength="64">
+    </div>
+    <div id="field_password_confirmation" class="password field-password_confirmation">
+      <label for="user_password_confirmation">Confirm New Password</label>
+      <input id="user_password_confirmation" type="password" value="" size="64" name="user[password_confirmation]" maxlength="64">
+    </div>
+    <div class="buttons ">
+      <button class="button right clear" type="submit" data-disable-with="Submitting ...">Save New Password</button>
+    </div>
+  </div>
+  <!-- XXXXX mock-up ends XXXXX -->

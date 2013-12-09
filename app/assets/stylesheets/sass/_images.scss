@@ -1,0 +1,223 @@
+.avatar {
+  background: white;
+  float: left;
+  &.text-adjacent {
+    margin-right: 10px;
+  }
+  img {
+    /* XXX DELETE once border-radius applied to all imgs */
+    @include border-radius(2px);
+  }
+}
+
+.thumbnail {
+  background: white;
+  padding: 0px;
+  border: none;
+  float: left;
+  @include disable-box-shadow;
+  img {
+    width: 70px;
+    height: 70px;
+    border: 1px solid $border-color-light;
+    /* XXX DELETE once border-radius applied to all imgs */
+    @include border-radius(2px);
+  }
+  &.text-adjacent {
+    margin-right: 10px;
+  }
+}
+
+#more-like-this, #more-from-seller {
+  .thumbnail img { /* XXX DELETE once all product image photos are standardized */
+    width: 100px;
+    height: 100px;
+  }
+  li:nth-child(2n) {
+    margin-right: 0px;
+  }
+}
+
+.avatar-list {
+  margin: 10px 0px;
+  font-size: $baseFontSize;
+  line-height: 17px;
+  float: left;
+  width: 100%;
+  > li {
+    display: block;
+    float: left;
+    clear: left;
+    margin: 8px 0px;
+    font-family: $styledFontFamily;
+    font-weight: 500;
+    > .avatar {
+      @extend .text-adjacent;
+    }
+  }
+  li:first-child {
+    margin-top: 16px; }
+  li:last-child {
+    margin-bottom: 16px;
+    padding-bottom: 0;
+  }
+}
+
+// AVATARS
+
+.avatar-list {
+  float: left;
+  li {
+    font-size: 14px;
+  }
+}
+
+// THUMBNAILS
+
+.thumbnails {
+  float: left;
+  list-style: none;
+  li {
+    float: left;
+    clear: none;
+    margin: 0px $gridGutterWidth $gridGutterWidth 0px;
+    a {
+      color: $grayLightest;
+    }
+    a:hover {
+      text-decoration: none !important;
+    }
+    img {
+      border: 1px solid $border-color-light;
+    }
+  }
+  li:last-child {
+    margin-right: 0px;
+  }
+  div.thumbnail {
+    float: left;
+    margin: 0px 5px 0px 0px;
+  }
+  &.vertical {
+    width: 80px;
+    float: right;
+    margin-right: 8px;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    height: 405px;
+  }
+  #more-like-this &, #more-from-seller {
+    .thumbnail img {
+      /* XXX DELETE once product image sizes are standardized */
+      width: 108px;
+      height: 108px;
+    }
+    li:nth-child(2n) {
+      margin-right: 0px;
+    }
+  }
+  #collection-create-listings-modal & {
+    .thumbnail img {
+      /* XXX DELETE once product image sizes are standardized */
+      width: 108px;
+      height: 108px;
+    }
+    li {
+      margin-right: 24px;
+    }
+    li:nth-child(4n) {
+      margin-right: 0;
+    }
+  }
+  .placeholder {
+    float: left;
+    background-color: $border-color-dark;
+    width: 100px;
+    height: 100px;
+    margin-right: 13px;
+    margin-bottom: 15px;
+    @include border-radius(3px);
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.avatar-xsmall {
+  width: 20px;
+  height: 20px;
+  img {
+    width: 20px;
+    height: 20px;
+    /* XXX DELETE once border-radius applied to all imgs */
+    @include border-radius(2px);
+  }
+  &.text-adjacent {
+    margin-right: 8px;
+  }
+}
+
+// MORE-LINK
+
+.more-link {
+  background: $button-bg-color;
+  border: 1px solid $button-bg-color;
+  @include gradient-vertical-three-colors($startColor: #f0f0f0, $midColor: #f0f0f0, $colorStop: 13%, $endColor: #eaeaea);
+  font-family: $styledFontFamily;
+  @include border-radius(2px);
+  &:hover {
+    @include gradient-vertical-three-colors($startColor: #F2F2F2, $midColor: darken(#F2F2F2, 3%), $colorStop: 70%, $endColor: darken(#F2F2F2, 8%)); /* $midColor: #EAEAEA, $endColor: #E0E0E0 */
+    // gradient mixin's output for IE is not working properly
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F2F2F2', endColorstr='#E0E0E0', GradientType=0);
+    border-color: darken(#F2F2F2, 12%);
+  }
+
+  // for listing page
+  .thumbnails & {
+    width: 100px;
+    height: 100px;
+    a {
+      width: 100px;
+      height: 100px;
+      padding: 25px 0px;
+      display: block;
+      text-align: center;
+    }
+    .listed-by-stats, .listed-by-stats-header {
+      display: block;
+      float: none;
+    }
+    .listed-by-stats {
+      color: $linkColor;
+    }
+  }
+}
+
+ul.product-pile.more-like-this {
+  margin-bottom: 5px;
+  li {
+    margin-bottom: 11px;
+  }
+  li:hover {
+    @include transition(all);
+  }
+  li:nth-child(3n) {
+    margin-right: 0px; }
+  li:nth-child(3n+1) {
+    margin-left: -5px; } }
+
+ul.product-pile.favorites {
+  li {
+    margin: 5px 5px;
+    width: 60px;
+    height: 60px;
+    img {
+      width: 50px;
+      height: 50px; } }
+  li:nth-child(-n+3) {
+    margin-top: 0px; }
+  li:nth-child(3n+1) {
+    margin-left: 0px; }
+  li:nth-child(3n+3) {
+    margin-right: 0px; } }

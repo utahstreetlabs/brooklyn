@@ -1,0 +1,7 @@
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  <%= mailer_link_to @flagger.name, public_profile_url(@flagger) %> flagged a comment by <%= mailer_link_to @commenter.name, public_profile_url(@commenter) %> on the listing <%= mailer_link_to @listing.title, listing_url(@listing, anchor: "comment-#{@comment.id}") %> as <%= @flag[:reason] %>. Please investigate.
+<% end %>
+
+<%= render '/shared_mailer/footer' %>

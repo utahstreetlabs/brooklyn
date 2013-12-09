@@ -1,0 +1,21 @@
+<% title t('.title', name: @account.email_was) %>
+
+<h2><%= t('.header', name: @account.email_was) %></h2>
+<div class="section">
+  <%= form_for @account, as: :account, url: settings_seller_accounts_paypal_path(@account) do |f| %>
+    <%= f.field :email, container: :div, error: {class: ''} do %>
+      <%= f.label :email, t('.field.email.label') %>
+      <%= f.email_field :email %>
+      <span class="help_text full-width"><%= t('.field.email.example_html') %></span>
+    <% end %>
+    <%= f.field :email_confirmation, container: :div, error: {class: ''} do %>
+      <%= f.label :email_confirmation, t('.field.email_confirmation.label') %>
+      <%= f.email_field :email_confirmation %>
+    <% end %>
+    <%= f.field :default, container: :div do %>
+      <%= f.check_box :default %>
+      <%= f.label :default, t('.field.default.label'), class: 'checkbox' %>
+    <% end %>
+    <%= f.buttons save_text: t('.button.save') %>
+  <% end %>
+</div>

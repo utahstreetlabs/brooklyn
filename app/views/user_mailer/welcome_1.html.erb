@@ -1,0 +1,46 @@
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  Hi <%= @user.firstname %>,
+<% end %>
+
+<%= mailer_graf do %>
+  Welcome to Copious. We help you discover things you'll love, and sell the stuff you don't.
+<% end %>
+
+<%= mailer_graf do %>
+  Here's what you can do on Copious:
+<% end %>
+
+<%= mailer_graf do %>
+  <%= mailer_bold do %>Follow & Discover<% end %><br>
+  As you follow people and like items, we’ll show you better, more personalized stuff.  Invite your friends to get their picks, too.
+<% end %>
+
+<%= mailer_graf do %>
+  <%= mailer_button 'Expand your network', connect_invites_url, styles: ' margin-top: 0px !important; margin-bottom: 25px !important;' %>
+<% end %>
+
+<%= mailer_graf do %>
+  <%= mailer_bold do %>Organize into Collections<% end %><br>
+  Save things you love to collections. Collections can be anything - from Office Art to Halloween Costumes.
+<% end %>
+
+<%= mailer_graf do %>
+  <%= mailer_button 'Start collecting', new_arrivals_for_sale_url, styles: ' margin-top: 0px !important; margin-bottom: 25px !important;' %>
+<% end %>
+
+<%= mailer_graf do %>
+  <%= mailer_bold do %>Sell Your Stuff<% end %><br>
+  Add a photo and a price, and we’ll find you a buyer. It's free to list, and we take 3.5% of the purchase price.
+<% end %>
+
+<%= mailer_graf do %>
+  <%= mailer_button 'List an item to sell', root_url, styles: ' margin-top: 0px !important; margin-bottom: 25px !important;' %>
+<% end %>
+
+<%= mailer_graf(styles: 'margin-bottom: 0px;') do %>
+  Thanks for joining, and enjoy.
+<% end %>
+
+<%= render '/shared_mailer/footer' %>

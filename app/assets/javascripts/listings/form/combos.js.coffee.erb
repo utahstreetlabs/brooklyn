@@ -1,0 +1,13 @@
+#= require controls/combobox
+
+jQuery ->
+  sizeBox = new Copious.TypeAheadCombo($('#listing_size_name'),
+    '<%= I18n.t('listings.form.describe.size.add') %>',
+    'size_name_combobox',
+    '<%= Brooklyn::Application.routes.url_helpers.typeahead_tags_path(primary: 0, type: 's') %>')
+
+  brandBox = new Copious.TypeAheadCombo($('#listing_brand_name'),
+    '<%= I18n.t('listings.form.describe.brand.add') %>',
+    'brand_name_combobox',
+    '<%= Brooklyn::Application.routes.url_helpers.typeahead_tags_path(primary: 1, type: 'b') %>',
+    true)

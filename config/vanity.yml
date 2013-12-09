@@ -1,0 +1,18 @@
+development:
+  adapter: redis
+
+test:
+  adapter: redis
+
+staging:
+  adapter: redis
+  host: staging3.copious.com
+
+demo:
+  adapter: redis
+  host: demo1.copious.com
+
+production:
+  adapter: redis
+  host: cache-redis-master.copious.com
+  path: /1

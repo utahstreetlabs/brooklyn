@@ -1,0 +1,25 @@
+en:
+  top_message:
+    invitee_invite_capped:
+      text: "Sorry, %{inviter_cap} friends have already accepted this invitation. To earn up to %{total_earnable} in credit, %{invite_link}."
+      invite_link_text: 'invite your friends'
+    invalid_user_connectivity:
+      text: "To receive credit, you need to have more connections on your social account. You’re still free to browse, buy, sell and share."
+    invitee_credited:
+      text: "Congratulations! A %{amount} credit has been added to your account."
+    offer_granted:
+      text: "Congratulations! The credit has been added to your account."
+    invalid_new_only:
+      text: "So sorry&mdash;this offer is only available to new Copious users."
+    invalid_existing_only:
+      text: "So sorry&mdash;this offer is only available to existing users."
+    invalid_per_user_limit:
+      text: "You've earned this offer as many times as allowed. Sorry about that."
+    invalid_total_user_limit:
+      text: "This offer's all gone. Bummer."
+    invalid_user_connectivity:
+      text: "To receive credit, you need to have more connections on your social account. You’re still free to browse, buy, sell and share."
+    invalid_has_credit:
+      text: "So sorry&mdash;only users with no available credit may earn this offer."
+    invalid_has_purchased:
+      text: "So sorry&mdash;only users who have not purchased anything may earn this offer."

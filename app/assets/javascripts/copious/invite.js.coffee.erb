@@ -1,0 +1,8 @@
+jQuery ->
+  $('#invite-friends').on 'click', "[data-role='invite']", (event, data) ->
+    $button = $(this)
+    COPIOUSFB.postInit ->
+      CopiousFb.ensurePermission('publish_stream').
+        done(-> $button.trigger('facebook:publishStreamAllowed')).
+        fail(-> copious.flash.alert('<%= I18n.t("controllers.home.invite.error_permissions") %>'))
+    false

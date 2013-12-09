@@ -1,0 +1,50 @@
+<%
+title 'Admin: Offers'
+%>
+
+<h2>Offers</h2>
+
+<%= bootstrap_button 'New Offer', new_admin_offer_path %>
+
+<%= datagrid @offers, html: { class: 'full-width' }, disable_total_results: true, disable_search: true do |t| %>
+  <%= t.thead do |thead| %>
+    <%= thead.th :id, title: 'ID' %>
+    <%= thead.th :name, title: 'Name' %>
+    <%= thead.th :earned, title: 'Earned' %>
+    <%= thead.th :available, title: 'Avail' %>
+    <%= thead.th :amount, title: 'Amount' %>
+    <%= thead.th :minimum_purchase, title: 'Min $' %>
+    <%= thead.th :duration, title: 'Duration' %>
+    <%= thead.th :created_at, title: 'Date Created', default: true %>
+    <%= thead.th :edit, title: 'Edit' %>
+  <% end %>
+  <%= t.tbody class: 'offer' do |tbody, offer| %>
+    <%= tbody.td do %>
+      <%= offer.id %>
+    <% end %>
+    <%= tbody.td class: 'span3' do %>
+      <%= offer.name %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= offer.earned %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= offer.available %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= number_to_currency offer.amount %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= number_to_currency offer.minimum_purchase %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= offer.duration %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= offer.created_at ? (date offer.created_at) : 'n/a' %>
+    <% end %>
+    <%= tbody.actions do %>
+      <%= link_to_edit edit_admin_offer_path(offer.id) %>
+    <% end %>
+  <% end %>
+<% end %>

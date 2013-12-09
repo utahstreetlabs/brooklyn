@@ -1,0 +1,22 @@
+<%
+title t('.title')
+javascript 'connect_who_to_follow'
+%>
+
+<div id="main-content" class="span9">
+  <h2><%= t('.title') %></h2>
+  <p class="invade-top margin-bottom">Discover new people and trends. Click follow to see their listings and likes.</p>
+  <% if @user_strips.any? %>
+    <ul class="user-strip search-results" data-user-count="<%=@user_count%>">
+      <% @user_strips.each do |strip| %>
+        <%= who_to_follow_user_strip(strip) %>
+      <% end %>
+    </ul>
+    <div id="who-to-follow-more" class="search-results-container">
+      <%= infinite_scroll_widgets %>
+    </div>
+    <h2 class="no-more" data-role="no-more-suggestions" style="display: none"><%= t('.no_suggestions') %></h2>
+  <% else %>
+    <h2 class="no-more"><%= t('.no_suggestions') %></h2>
+  <% end %>
+</div>

@@ -1,0 +1,13 @@
+<% if seller == current_user %>
+  <% if liker == current_user %>
+    You love your <%= link_to_listing listing %>
+  <% else %>
+    <%= link_to_user_profile liker %> loves your <%= link_to_listing listing %>
+  <% end %>
+<% else %>
+  <% if liker == current_user %>
+    You love <%= link_to_listing listing %>
+  <% else %>
+    <%= link_to_user_profile liker %> loves <%= link_to_listing listing %>
+  <% end %>
+<% end %>

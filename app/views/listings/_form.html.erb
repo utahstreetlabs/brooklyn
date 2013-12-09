@@ -1,0 +1,101 @@
+<%
+stylesheet 'jquery.wysiwyg.css'
+stylesheet 'bootstrap-combobox'
+stylesheet 'bootstrap-combobox-local'
+javascript 'listings_form'
+form_options ||= {}
+form_options[:as] = :listing
+use_content_class 'listings-form'
+%>
+
+<div id='product-photos'>
+  <%= render 'photos', listing: listing, photos: listing.photos.all %>
+</div>
+
+<%= ajax_overlay %>
+
+<%= form_for listing, form_options do |f| %>
+  <%= f.fieldset :div =>  t('.describe.header') do %>
+    <%= f.field :category_id do %>
+      <%= f.label :title, 'Category', :class => 'big-label' %>
+      <%= f.collection_select :category_id, @sell_categories, :id, :name,
+                              {:include_blank => t('.category.category_id.blank_html')}, :class => 'span6' %>
+    <% end %>
+
+    <% if listing && listing.supports_dimensions? %>
+      <% if listing.category %>
+        <% listing.category.dimensions.each do |dimension| %>
+          <%= field dimension.slug do %>
+            <%= dimension_label t(".#{dimension.name.downcase}.label"), dimension %>
+            <%= dimension_select(dimension, (params[:listing] && params[:listing][:dimensions] ? params[:listing][:dimensions][dimension.slug] : nil), class: 'span6')%>
+          <% end %>
+        <% end %>
+      <% else %>
+        <%= field :category do %>
+          <%= label_tag(:category, t("listings.category_dependent_fields.html.condition.label"), required: false, class: 'big-label') %>
+          <%= category_condition_select %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <%# COLLECTION %>
+    <% if logged_in? && feature_enabled?('listings.save_to_collection') %>
+      <%= f.label(:add_to_collection_slugs, t('.describe.collection.label'), :class => 'big-label') %>
+      <%= save_listing_to_collection_multi_selector(listing, current_user.collections, prompt: true) %>
+    <% end %>
+
+    <%# TITLE %>
+    <%= f.field :title, :class => 'text' do %>
+      <%= f.label :title, t('.describe.title.label'), :required => false, :class => 'big-label' %>
+      <%= f.text_field :title, :maxlength => 80, :class => 'span6' %>
+      <%= content_tag(:span, "This is your listing's first impressions, so make it count.", :class => "help_text") %>
+    <% end %>
+
+    <%# DESCRIPTION %>
+    <%= f.field :description, :class => 'textarea unknown' do %>
+      <%= f.label :description, t('.describe.description.label'), :required => false, :class => 'big-label'  %>
+      <%= f.text_area :description, rows: 10, cols: 40, height: 40, class: 'span6' %>
+    <% end %>
+
+    <%# SIZE %>
+    <%= f.field :size_name, :class => 'text' do %>
+      <%= f.label :size_name, t('.describe.size.label'), :required => false, :class => 'optional',
+            :help => "(optional)" %>
+
+      <%= f.select :size_name, size_options_for_select(listing),
+            class: 'span4 ignore' %>
+    <% end %>
+
+    <%# BRAND %>
+    <%= f.field :brand_name, :class => 'text', error: {class: 'error span4 kill-margin-left inline-block-element pull-right margin-right'} do %>
+      <%= f.label :brand_name, t('.describe.brand.label'), :required => false, :class => 'optional',
+            :help => "(optional)" %>
+      <%= f.select :brand_name, brand_options_for_select(listing),
+            class: 'span4 ignore' %>
+    <% end %>
+
+    <%# TAGS %>
+    <%= f.field :tags, :class => 'text tags' do %>
+      <%= f.label :tags, t('.describe.tags.label'), :required => false, :class => 'optional',
+                  :help => "(optional)" %>
+      <%= text_field_tag 'listing[tags]', params[:listing][:tags], :id => 'listing_tags', :class => 'span6 ignore' %>
+      <%= content_tag(:span, t('.describe.tags.help_html'), :class => "help_text span8") %>
+    <% end %>
+    <%-# used in listings/form.js to assign tag-autocomplete url -%>
+    <%= link_to '', autocomplete_tags_path, :id => "autocomplete-tags-path", :style => 'display: none' %>
+  <% end %>
+
+  <%= render 'new_pricing_fields', f: f, listing: listing %>
+
+  <%= f.buttons do %>
+    <%= save_button_tag save_button, id: :preview_listing, no_disable: true %>
+    <% if listing.incomplete? %>
+      <%= save_button_tag t('.save_as_draft_button'), id: :save_draft, :'class' => 'button soft large cancel',
+                          data: {action: draft_listing_path(listing)}, no_disable: true %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if listing.supports_dimensions? %>
+  <%= category_dimensions %>
+<% end %>

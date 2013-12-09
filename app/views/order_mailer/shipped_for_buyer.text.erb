@@ -1,0 +1,11 @@
+<%= word_wrap(%Q[
+It's on its way! #{@order.listing.seller.name} has confirmed shipping for #{@order.listing.title} on #{date(@order.shipped_at)}.
+
+This shipment will be delivered by #{@order.shipping_carrier_name} - #{tracking_url(@order)}.
+
+For further item and shipping details, please refer to the order form below. Please note that at this point, no further changes to the order can be made.
+]) %>
+
+<%= render 'buyer_order_details', order: @order %>
+
+<%= render '/shared_mailer/footer' %>

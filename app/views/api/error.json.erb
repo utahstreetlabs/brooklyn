@@ -1,0 +1,8 @@
+{
+  <% if error_message %>
+    "message": <%= raw error_message.to_json %>
+  <% end %>
+  <% if invalid_fields %>
+    "invalid_fields": <%= raw invalid_fields.to_json %>
+  <% end %>
+}

@@ -1,0 +1,55 @@
+<%
+title 'Account Settings: Profile Information'
+javascript 'settings_profile'
+mp_view_event 'profile settings'
+%>
+
+<h2>Profile Information</h2>
+<div class="section">
+  <%= form_for current_user, url: settings_profile_photo_path do |f| %>
+    <div class="clearfix">
+      <%= f.field :photo, container: :div  do %>
+        <div id="field_photo" class="field-photo">
+          <%= render 'photo' %>
+          <div class="left">
+            <%= f.label :profile_photo, 'Upload a new profile photo:' %>
+            <%= f.file_field :profile_photo %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <% if current_user.person.connected_to?(:facebook) %>
+    <%= form_tag settings_profile_photo_path, method: :post, remote: true, data: {role: 'refresh-photo'} do %>
+      <%= hidden_field_tag :network, :facebook  %>
+      <%= buttons save_text: 'Refresh from Facebook', bigger: true %>
+    <% end %>
+  <% end %>
+  <%= form_for current_user, url: settings_profile_photo_path do |f| %>
+    <div class="clearfix">
+      <span class="label inline-label">Name</span>
+      <%= current_user.name %>
+    </div>
+    <div class="clearfix">
+      <span class="label inline-label">Profile</span>
+      <%= link_to public_profile_url(current_user), public_profile_url(current_user) %>
+    </div>
+  <% end %>
+  <%= form_for current_user, url: settings_profile_path do |f| %>
+    <%= f.field :bio, container: :div do %>
+      <%= f.label :bio, 'About' %>
+      <%= f.text_area :bio, maxlength: 300, class: 'span6' %>
+    <% end %>
+    <%= f.field :location, container: :div do %>
+      <%= f.label :location, 'Location', help: 'e.g. San Francisco, CA' %>
+      <%= f.text_field :location, maxlength: 255, class: 'span6' %>
+    <% end %>
+    <% if current_user.web_site_enabled? %>
+      <%= f.field :web_site, container: :div do %>
+        <%= f.label :web_site, 'Web site', help: 'e.g. http://copious.com/' %>
+        <%= f.text_field :web_site, maxlength: 255, class: 'span6', placeholder: 'http://' %>
+      <% end %>
+    <% end %>
+    <%= f.buttons save_text: 'Save changes', bigger: true %>
+  <% end %>
+</div>

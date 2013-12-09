@@ -1,0 +1,8 @@
+/* compilation dependencies */
+@import "variables";
+
+/* XXX: these cause rules to be inlined into compiled stylesheets everytime this file is imported into a top
+   level stylesheet. refactor all top level stylesheets to only ever import this one time per page. */
+@import "sass/mixin";
+@import "extends";
+@import "sass/base";

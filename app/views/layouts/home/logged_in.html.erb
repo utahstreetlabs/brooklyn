@@ -1,0 +1,23 @@
+<%
+title 'Home'
+body_class 'homepage_logged_in'
+javascript 'homepage_logged_in'
+stylesheet 'homepage_logged_in'
+stylesheet 'signup'
+%>
+
+<%= render '/layouts/top' %>
+
+<%= invite_bar current_user, request: invite_bar_request, source: 'feed' unless @tutorial_bar %>
+<%= invite_friends_modal current_user %>
+
+<div id="main-content" class="span12" style="margin-bottom: 20px;">
+  <%= home_messaging %>
+  <%= home_collection_carousel @collection_carousel if @collection_carousel %>
+
+  <%= yield %>
+</div>
+
+<%= hot_or_not_modal @hot_or_not_modal if @hot_or_not_modal %>
+
+<%= render '/layouts/bottom' %>

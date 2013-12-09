@@ -1,0 +1,13 @@
+<% title "Admin: Order #{@order.reference_number}" %>
+
+<%= bootstrap_breadcrumb [
+  ['Admin', admin_dashboard_path],
+  ['Users', admin_users_path],
+  [@user.name, admin_user_path(@user.id)],
+  ['Orders', admin_user_orders_path(@user.id)],
+  @order.reference_number
+] %>
+
+<%= content_tag :div, data: {role: :'order-info'} do %>
+  <%= render partial: '/admin/orders/order_info', locals: {order: @order} %>
+<% end %>

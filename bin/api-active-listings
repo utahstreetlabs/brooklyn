@@ -1,0 +1,83 @@
+#!/usr/bin/env ruby
+
+require 'net/http'
+require 'optparse'
+
+options = {}
+
+optparse = OptionParser.new do|opts|
+  options[:count] = false
+  opts.on('-c', '--count', "Count listings") do
+    options[:count] = true
+  end
+
+  options[:token] = nil
+  opts.on('-t', '--token TOKEN', "bearer token") do |t|
+    options[:token] = t
+  end
+
+  options[:photos] = nil
+  opts.on('-p', '--photos', "Get photos") do
+    options[:photos] = true
+  end
+
+  options[:listing_id] = nil
+  opts.on('-l', '--listing LISTING_ID', "listing id") do |id|
+    options[:listing_id] = id
+  end
+
+  options[:cancel] = nil
+  opts.on('--cancel LISTING_ID', "Cancel listing") do |id|
+    options[:cancel] = id
+  end
+
+  options[:active] = nil
+  opts.on('-a', '--active', "show active listings only") do
+    options[:active] = true
+  end
+
+  options[:extra] = nil
+  opts.on('-e', '--extra', "fetch extra information about listings") do
+    options[:extra] = true
+  end
+
+  # This displays the help screen, all programs are
+  # assumed to have this option.
+  opts.on( '-h', '--help', 'Display this screen' ) do
+    puts opts
+    exit
+  end
+end
+
+optparse.parse!
+
+if (options[:count] && options[:cancel])
+  puts "Can not use both count and cancel arguments; choose one."
+  exit
+end
+
+content_type = "application/json; charset=utf-8"
+if options[:cancel]
+  endpoint = "/v1/listings/#{options[:cancel]}"
+elsif options[:photos]
+  endpoint = "/v1/listings/#{options[:listing_id]}/photos"
+  endpoint << "/count" if options[:count]
+else
+  endpoint = "/v1/listings"
+  endpoint << "/active" if options[:active]
+  endpoint << "/count" if options[:count]
+end
+
+params = options.select { |k| [:extra].include?(k) }.keys.map { |p| "#{p}=1" }.join('&')
+endpoint << "?#{params}" if params
+
+req_klass = options[:cancel] ? Net::HTTP::Delete : Net::HTTP::Get
+
+# Verify that listing exists and is active.
+Net::HTTP.start('127.0.0.1', 3000) do |http|
+  request = req_klass.new(endpoint, "Content-Type" => content_type, "Authorization" => "Bearer #{options[:token]}")
+  response = http.request(request)
+  puts "#{response.code} #{response.message}"
+  response.each_header { |name, value| puts "#{name}: #{value}"}
+  puts response.body
+end

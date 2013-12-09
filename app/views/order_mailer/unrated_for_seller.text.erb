@@ -1,0 +1,10 @@
+<%= word_wrap(%Q[
+Just a friendly reminder to rate the transaction on your sale to #{@order.buyer.name}. This will complete your transaction.
+
+To rate your order, please go here:
+#{listing_url(@order.listing)}
+
+Congrats on your sale!
+]) %>
+
+<%= render '/shared_mailer/footer' %>

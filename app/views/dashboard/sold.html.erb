@@ -1,0 +1,60 @@
+<%
+title "Items you've sold"
+javascript 'dashboard'
+suppress_right_sidebar
+%>
+
+<h2>Items you've sold</h2>
+
+<% if @funds_waiting > 0 %>
+  <div class="top-message full-width">
+    <% if current_user.default_deposit_account? %>
+      <% if current_user.default_deposit_to_paypal? %>
+        <p class="h3-like kill-margin-bottom"><%= t('.funds_waiting.deposit_funds.paypal.instructions_html', amount: number_to_currency(@funds_waiting)) %></p>
+        <%= link_to t('.funds_waiting.deposit_funds.paypal.button.release'), settle_orders_path, method: :post,
+                    class: 'primary button large pull-right margin-top-quarter',
+                    data: {:'disable-with' => 'Releasing…'} %>
+        <p class="h3-like kill-margin-bottom"><%= t('.funds_waiting.deposit_funds.paypal.sucks_html') %></p>
+        <%= link_to t('.funds_waiting.deposit_funds.paypal.button.add_bank_account'), settings_seller_accounts_path,
+                    class: 'button large pull-right margin-top-quarter' %>
+      <% else %>
+        <p class="h3-like kill-margin-bottom"><%= t('.funds_waiting.deposit_funds.bank_account.instructions_html', amount: number_to_currency(@funds_waiting)) %></p>
+        <%= link_to t('.funds_waiting.deposit_funds.bank_account.button'), settle_orders_path,
+                    class: 'primary button large pull-right margin-top-quarter' %>
+      <% end %>
+    <% elsif current_user.balanced_merchant? %>
+      <p class="h3-like kill-margin-bottom"><%= t('.funds_waiting.connect_bank_account.instructions_html', amount: number_to_currency(@funds_waiting)) %></p>
+      <%= link_to t('.funds_waiting.connect_bank_account.button'), settings_seller_accounts_path,
+                  class: 'primary button large pull-right margin-top-quarter' %>
+    <% else %>
+      <p class="h3-like kill-margin-bottom"><%= t('.funds_waiting.create_merchant_account.instructions_html', amount: number_to_currency(@funds_waiting)) %></p>
+      <%= link_to t('.funds_waiting.create_merchant_account.button'), settings_seller_accounts_path,
+                  class: 'primary button large pull-right margin-top-quarter' %>
+    <% end %>
+  </div>
+<% end %>
+
+<div class="section">
+  <% if @listings.any? %>
+    <table>
+      <thead>
+        <tr>
+          <th><%= sortable :title, 'Item', :default => true %></th>
+          <th><%= sortable :total_price, 'Price' %></th>
+          <th><%= sortable :purchased, 'Purchased' %></th>
+          <th><%= sortable :seller, 'Buyer' %></th>
+          <th><%= sortable :status, 'Status / Next Step' %></th>
+        </tr>
+      </thead>
+      <tbody data-role='dashboard-listings'>
+        <% @listings.each do |listing| %>
+          <%= render 'sold_listing', :listing => listing %>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>You haven't sold anything yet.</p>
+  <% end %>
+</div>
+
+<%= paginate @listings %>

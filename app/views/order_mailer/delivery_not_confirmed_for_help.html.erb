@@ -1,0 +1,17 @@
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  Delivery confirmation was requested <%= count_of_days_in_words @order.delivery_confirmation_requested_at_ago %>, but the buyer has not responded. Please investigate.
+<% end %>
+
+<%= mailer_header do %>
+  Order Details:
+<% end %>
+
+<%= mailer_graf do %>
+  1. Order #: <%= mailer_link_to @order.reference_number, admin_order_url(@order) %>
+  2. Listing name: <%= mailer_link_to @order.listing.title, listing_url(@order.listing) %>
+  3. Seller name: <%= mailer_link_to @order.listing.seller.name, public_profile_url(@order.listing.seller) %>
+<% end %>
+
+<%= render '/shared_mailer/footer' %>

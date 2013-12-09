@@ -1,0 +1,11 @@
+<%= word_wrap(%Q[Hi #{raw @user.firstname},
+
+We noticed that you shipped #{raw @order.listing.title} to #{raw @order.buyer.name} #{count_of_days_in_words @order.shipped_at_ago} ago, but delivery has not been confirmed by the shipping service.
+
+#{raw @order.buyer.name} has been contacted so we can determine the delivery status and process payment.
+
+List another item at #{rewrite_mailer_url new_listing_url}
+
+Thank you,]) %>
+
+<%= render '/shared_mailer/footer' %>

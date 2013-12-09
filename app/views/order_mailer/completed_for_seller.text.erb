@@ -1,0 +1,9 @@
+<%= word_wrap(%Q[Hi #{raw @user.firstname},
+
+Your #{raw @order.listing.title} sale is now officially complete. Congratulations!
+
+Take a moment to list another item at #{rewrite_mailer_url new_listing_url}.
+
+Happy selling,]) %>
+
+<%= render '/shared_mailer/footer' %>

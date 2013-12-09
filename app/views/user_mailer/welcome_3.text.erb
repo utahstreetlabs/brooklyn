@@ -1,0 +1,9 @@
+<%= word_wrap %Q[Hi #{raw @user.firstname},
+
+See something that strikes your fancy but feeling a little non-committal? Keep your eye on the prize by giving it a "Like." We'll keep you in the loop with any updates on that listing.
+
+Sign in and start Liking at #{rewrite_mailer_url dashboard_url}
+
+Happy shopping,] %>
+
+<%= render '/shared_mailer/footer' %>

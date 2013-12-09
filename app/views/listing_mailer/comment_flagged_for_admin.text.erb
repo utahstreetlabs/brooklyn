@@ -1,0 +1,2 @@
+<%
+body = %Q/#{@flagger.name} flagged a comment by #{@commenter.name} on the listing #{@listing.title} as #{@flag[:reason]}. Please investigate at #{listing_url(@listing, anchor: "comment-#{@comment.id}")}./%><%= word_wrap body %>

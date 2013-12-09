@@ -1,0 +1,13 @@
+en:
+  info:
+    extras:
+      bookmarks:
+        cantsee: "Can't see your bookmarks bar?"
+        command_sequence:
+          chrome:
+            macintosh: "Just press SHIFT COMMAND B"
+          firefox:
+            macintosh: "Just click View > Toolbars > Bookmarks Toolbar"
+      bookmarklet:
+        button:
+          title: "+ Add to Copious"

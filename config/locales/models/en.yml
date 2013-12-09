@@ -1,0 +1,238 @@
+en:
+  activemodel:
+    errors:
+      models:
+        anchor:
+          comment:
+            attributes:
+              text:
+                blank: 'You must enter some text.'
+                too_long: 'Your comment must be %{count} characters at most.'
+          comment_reply:
+            attributes:
+              text:
+                blank: 'You must enter some text.'
+                too_long: 'Your comment must be %{count} characters at most.'
+        balanced/person_merchant_identity:
+          attributes:
+            postal_code:
+              invalid: 'Please enter a valid U.S. ZIP code.'
+            phone_number:
+              invalid: 'Please enter a valid U.S. phone number.'
+            tax_id:
+              blank: 'This field is required.'
+              invalid: 'Please enter a valid, 9-digit U.S. Social Security Number.'
+        email_invite:
+          attributes:
+            to:
+              blank: 'You must enter at least one email address.'
+              invalid: 'These addresses are not valid: %{addresses}'
+              too_many: 'You may enter up to %{count} addresses.'
+        facebook_invite:
+          attributes:
+            id:
+              blank: 'You must choose at least one friend.'
+              too_long: 'You may choose up to %{count} friends.'
+        login:
+          attributes:
+            base:
+              inauthentic: "Sorry, we couldn't verify your email or password. Please try again."
+        purchase:
+          # all attribute error messages explicitly listed so they can be inlined into client-side validation code
+          attributes:
+            cardholder_name:
+              blank: 'This field is required.'
+            card_number:
+              blank: 'This field is required.'
+              invalid: 'Please enter a valid credit card number.'
+              doublecheck: 'Doublecheck'
+            expires_on:
+              blank: 'This field is required.'
+              after_or_equal_to: 'This date has passed.'
+              doublecheck: 'Doublecheck'
+            security_code:
+              blank: 'This field is required.'
+              invalid: 'Please enter a valid, 3- or 4-digit card security code.'
+              doublecheck: 'Doublecheck'
+            line1:
+              blank: 'This field is required.'
+            city:
+              blank: 'This field is required.'
+            state:
+              blank: 'This field is required.'
+            zip:
+              blank: 'This field is required.'
+              invalid: 'Please enter a valid, 5- or 9-digit US ZIP code.'
+            phone:
+              blank: 'This field is required.'
+              invalid: 'Please enter a valid, 10-digit US phone number.'
+  activerecord:
+    errors:
+      models:
+        collection:
+          attributes:
+            name:
+              invalid: 'Oops, the name may only consist of letters and numbers.'
+              blank: 'Please add a collection name to continue.'
+            user:
+              too_many_collections: "Sorry, you can't add any more collections (max %{max})."
+            readonly: "Sorry, you can't edit this collection"
+        deposit_account:
+          attributes:
+            routing_number:
+              invalid: 'Please provide a valid 9-digit bank account routing number.'
+        listing:
+          attributes:
+            title:
+              blank: 'Please give your listing a title.'
+              too_long: 'The title must be %{count} characters at most.'
+            description:
+              blank: 'Please tell your buyers about your listing.'
+              digits: 'Please tell your buyers about your listing.'
+            price:
+              blank: 'You must enter a price.'
+              greater_than_or_equal_to: 'The price must be %{minimum_price} or more.'
+            shipping:
+              blank: ''
+              greater_than_or_equal_to: 'The shipping price must be %{minimum_shipping} or more.'
+            shipping_option_code:
+              invalid: 'The total price for your listing must be greater than the cost of Simple Ship.'
+            tax:
+              greater_than_or_equal_to: 'The tax amount must be %{minimum_tax} or more.'
+            category_id:
+              blank: 'Please select a category.'
+              digits: 'Please select a category.'
+            photos:
+              empty: 'You must add at least one photo.'
+            seller:
+              not_registered: 'Seller must be in registered state'
+              not_registered_or_guest: 'Seller must be in guest or registered state'
+            dimension_values:
+              invalid: 'Listing may not have dimension values from a different category.'
+            condition:
+              blank: 'Please select a condition.'
+              digits: 'Please select a condition.'
+            size:
+              invalid: 'Please choose a valid size from those suggested.'
+            tags:
+              illegal:
+                one: 'Sorry! %{tags} is currently a limited tag and cannot be added to your listing.'
+                other: 'Sorry! %{tags} are currently limited tags and cannot be added to your listing.'
+        listing_photo:
+          attributes:
+            file:
+              blank: 'You must choose a file to upload.'
+        listing_source:
+          attributes:
+            images:
+              empty: 'The source does not have any images that are large enough.'
+        offer:
+          attributes:
+            eligibility:
+              blank: 'You must select at least one option'
+            fb_story_image:
+              blank: 'You must upload an image for Facebook stories'
+              invalid_size: 'Please provide an image at least %{width}px by %{height}px with a maximum aspect ratio of %{aspect_ratio}'
+        order:
+          attributes:
+            tracking_number:
+              blank: 'You must enter a tracking number.'
+              invalid: 'You must enter a tracking number in the correct format.'
+            credit_amount:
+              invalid: 'Invalid credit amount.'
+              lte_credit_balance: 'Must be less than or equal to the available credit balance.'
+              lt_listing_price: 'Must be less than the listing price.'
+        paypal_account:
+          attributes:
+            email:
+              invalid: 'Please provide a valid e-mail address.'
+              confirmation: 'Does not match confirmation e-mail address.'
+        postal_address:
+          attributes:
+            line1:
+              blank: 'You must enter a street address.'
+            city:
+              blank: 'You must enter a city.'
+            state:
+              blank: 'You must choose a state.'
+            zip:
+              blank: 'You must enter a zip code.'
+              invalid: 'You must enter a zip code in the correct format.'
+            phone:
+              blank: 'You must enter a phone number.'
+              invalid: 'You must enter a phone number in the correct format.'
+            name:
+              blank: 'You must enter a name for this address.'
+              taken: 'You are already using this name and address.'
+        tag:
+          attributes:
+            name:
+              blank: 'You must enter a name for this tag.'
+            slug:
+              blank: 'You must enter a unique slug for this tag.'
+              invalid: 'You must enter a slug in the correct format.'
+        user:
+          attributes:
+            firstname:
+              blank: 'You must enter your first name.'
+              too_long: 'The first name must be %{count} characters at most.'
+            lastname:
+              blank: 'You must enter your last name.'
+              too_long: 'The last name must be %{count} characters at most.'
+            slug:
+              blank: 'You must enter a unique name for your profile page.'
+              taken: 'The name you entered has already been taken.'
+              too_long: 'The name must be %{count} characters at most.'
+              invalid: 'The name may only contain lower case letters, digits, and hyphens.'
+            email:
+              not_found: 'That email address does not exist in the system.'
+              blank: 'You must enter your email address.'
+              taken: 'The email address you entered has already been taken.'
+              too_long: 'The email address must be %{count} characters at most.'
+              invalid: 'You must enter a valid email address.'
+              confirmation: 'The email addresses you entered did not match.'
+            password:
+              blank: 'You must enter a password.'
+              confirmation: 'The passwords you entered did not match.'
+            reset_password_token:
+              invalid: 'The password reset token is no longer valid. You will need to try again.'
+            current_password:
+              blank: 'You must enter your current password.'
+              not_current: 'You must enter your current password.'
+            orders:
+              unfinalized: 'User cannot be deactivated with unfinalized orders.'
+            web_site:
+              invalid: 'This does not appear to be a properly formatted URL. Please double-check it and try again.'
+              server_error: 'This web site does not seem to be responding. Please double-check the URL to make sure you typed it correctly.'
+  errors:
+    messages:
+      blank: 'This field is required.'
+      not_found: 'not found'
+      carrierwave_integrity_error: 'You must upload a GIF, JPEG or PNG file.'
+  models:
+    collection:
+      defaults:
+        name:
+          have: 'Things I Have'
+          want: 'Things I Want'
+          awesome: 'Things That Are Awesome'
+    want:
+      attributes:
+        condition:
+          new: 'New'
+          used: 'Used'
+          new_with_tags: 'New with Tags'
+          like_new: 'Like New (Worn Once)'
+          handmade: 'Handmade'
+    order:
+      balanced_tx_description: 'Order: %{reference_number} - %{listing_title}'
+    secret_seller_item:
+      attributes:
+        condition:
+          new: 'New'
+          used: 'Used'
+          new_with_tags: 'New with Tags'
+          like_new: 'Like New (Worn Once)'
+          handmade: 'Handmade'
+    shipping_label:
+      suggested_filename: '%{listing_title} - Copious - Ship %{ship_date}.%{extension}'

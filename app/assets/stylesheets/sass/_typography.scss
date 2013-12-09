@@ -1,0 +1,550 @@
+// HEADERS
+h1, h3, h4, h5, h6 {
+  font-weight: normal;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+  font-family: $styledFontFamily;
+  line-height: $baseLineHeight;
+}
+
+// Titles
+h1 {
+  margin-top: $baseLineHeight;
+  margin-bottom: $baseLineHeight;
+  font-family: $styledFontFamily;
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 38px;
+  color: $color-title;
+  display: block;
+  #order-summary & {
+    line-height: 42px;
+  }
+  &.big {
+    font-size: 41px;
+    line-height: 50px;
+    margin-bottom: 32px;
+  }
+  .strong {
+    font-weight: 500;
+  }
+  &.hero {
+    font-size: 36px;
+    line-height: 46px;
+    font-weight: 500;
+    margin: 0 0 10px;
+    color: $header-color-dark;
+    text-align: center;
+  }
+  &.page-title, &.section-title {
+    text-align: center;
+    font-family: $styledHeaderFamily;
+    font-weight: 500;
+    color: $header-color-dark;
+    text-transform: uppercase;
+    padding: 0;
+  }
+  &.page-title {
+    font-size: 40px;
+    line-height: 46px;
+    &.hero {
+      font-size: 42px;
+      line-height: 48px;
+    }
+  }
+  &.section-title {
+    font-size: 34px; /* same as .nav-tabs.hero */
+    line-height: 36px;
+    margin: 0px 0 20px 0;
+    &~ h2 { /* for short sub-header treatment */
+      font-family: $styledHeaderFamily;
+      font-size: 15px;
+      text-align: center;
+      color: $text-color-dark;
+      margin-top: -30px;
+      margin-bottom: 20px;
+      padding-bottom: 0;
+    }
+    &~ p { /* for lengthy description of text */
+      font-family: $sansserifFontFamily;
+      color: $text-light;
+      text-align: center;
+      margin-top: -20px;
+      margin-bottom: 20px;
+    }
+  }
+  &.styled-header {
+    font-family: $styledHeaderFamily;
+    text-transform: uppercase;
+  }
+}
+
+// Page Titles
+h2 {
+  font-size: 24px;
+  line-height: $baseLineHeight * 1.5;
+  font-weight: 500;
+  margin-bottom: 10px;
+  margin-top: 0px;
+  padding: 0 0 10px 0;
+  color: $new-color-header;
+  #order-summary & {
+    line-height: 33px;
+  }
+  // same styling as product_listing.scss:1080. consider consolidating later
+  &.sub-header {
+    font-size: $bigFontSize; /* 16px */
+    line-height: $baseLineHeight; /* 20px */
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  &.section-title {
+    /* only used in create external listing form page */
+    text-align: center;
+    font-family: $styledHeaderFamily;
+    font-weight: 500;
+    color: $header-color-dark;
+    text-transform: uppercase;
+    padding: 0;
+    margin: 0 0 40px 0;
+  }
+}
+
+// Headers
+h3 {
+  font-size: 18px;
+  line-height: $baseLineHeight * 1.5;
+  padding-top: 4px;
+  padding-bottom: 12px;
+  font-weight: 500;
+  color: $color-header;
+  &.sub-header {
+    padding-top: 0px;
+  }
+  img {
+    height: 25px;
+    width: 25px;
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: text-top;
+  }
+  li & {
+    line-height: 26px;
+  }
+  &.big {
+    font-size: 21px;
+    line-height: 21px;
+    font-weight: 400;
+    padding-bottom: 10px;
+  }
+}
+
+
+// Profile name / User card Name / Featured Listings
+h4 {
+  font-size: 19px;
+  color: $color-header;
+  line-height: 25px;
+  font-weight: 600;
+  &.warning {
+    font-weight: bold;
+  }
+  a {
+    font-weight: inherit;
+  }
+  &.numbers {
+    font-size: 21px;
+    color: $green;
+    font-weight: 500;
+  }
+  &.faux-big-label {
+    font-size: 18px;
+    color: #333333;
+    margin-bottom: 4px;
+  }
+  .meta {
+    color: $color-text-light;
+    font-weight: 500;
+  }
+}
+
+h4.profile-name {
+  display: inline-block; }
+
+// Listed by, Safe Shopping
+h5 {
+  font-size: 16px;
+  font-weight: 400;
+  #order-details &, #order-info & {
+    clear: both;
+    color: $color-header;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+}
+
+// Secondary Header
+// For cases where the h3 header is used already
+// ex) account settings networks page
+h6 {
+  font-size: 16px;
+  font-weight: 500;
+  padding-bottom: 12px;
+  text-transform: none;
+}
+
+
+
+// BODY TEXT
+// ---------
+p, span {
+  font-family: $sansserifFontFamily;
+  font-size: $baseFontSize;
+  line-height: $baseLineHeight;
+  font-weight: 400;
+
+  &.small { /* small font size*/
+    font-size: $smallFontSize;
+    line-height: $baseFontSize * 1.14285714; /* 16px */
+  }
+}
+
+p {
+  color: $grayLight;
+  margin: 0 0 $baseLineHeight / 2;
+  &.invade-top {
+    margin-top: -5px;
+  }
+  .modal & {
+    color: $color-header;
+  }
+  &.h2-like {
+    font-size: 24px;
+    line-height: $baseLineHeight * 1.5;
+    font-weight: 300;
+    margin: 0px;
+    padding: 0 0 10px 0;
+    .loh-modal & {
+      color: $color-text-light;
+      font-weight: 400;
+    }
+  }
+  &.h3-like {
+    font-size: 18px;
+    line-height: $baseLineHeight * 1.5 - 2 !important; /* 28px */
+    padding-top: 4px;
+    padding-bottom: 6px;
+    color: $color-header;
+    display: block;
+    .top-message & {
+      display: inline-block;
+    }
+    .login-container &, .loh-modal-container & {
+      color: $color-text-light;
+    }
+  }
+  &.label-like {
+    font-weight: 500;
+  }
+}
+
+// Forms
+// ------------------------------
+label, button {
+  font-family: $styledFontFamily;
+}
+
+label, .label, .control-label, .control-group > label {
+  display: block;
+  font-family: $styledHeaderFamily;
+  text-transform: uppercase;
+  font-size: 19px;
+  line-height: 22px;
+  color: $text-color-dark;
+  margin-bottom: 7px;
+  &.big-label {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  #user_edit & {
+    &.big-label {
+      margin-top: 4px;
+      margin-bottom: 10px;
+    }
+  }
+  &.meta {
+    color: $grayLight;
+    font-weight: 500;
+    font-size: 14px;
+  }
+  &.inline-label {
+    display: inline-block;
+    margin-right: $gridGutterWidth;
+    font-weight: 500;
+  }
+  &.weak {
+    color: $color-text;
+    font-size: 14px;
+    line-height: 14px;
+  }
+}
+
+input, select, textarea {
+  font-family: $sansserifFontFamily;
+}
+
+
+// CARET
+// ---------
+
+.caret {
+  vertical-align: middle;
+  margin-top: -2px;
+  margin-left: 2px;
+  &:hover {
+    opacity: 0.9;
+  }
+  a:hover & {
+    opacity: 0.9;
+  }
+}
+
+// COLOR
+.color-header {
+  color: $color-header;
+}
+
+
+// TIMESTAMPS
+.timestamp {
+  color: $text-light;
+  .comment-content-container & {
+    /* listing modal comments */
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    color: $text-lightest;
+    display: block;
+  }
+  .listing-modal-header & {
+    /* listing modal header */
+    font-size: inherit;
+    font-weight: inherit;
+    color: $text-lightest;
+    margin-left: 10px;
+  }
+}
+
+// MISC CLASSES 2.0
+// styles we actually use
+.weak {
+  color: $text-light;
+}
+.weakest {
+  /* for text in lightest gray color */
+  /* collection page listings/followers */
+  color: $text-lightest;
+  @extend .small-text;
+}
+.small-text {
+  font-size: $smallFontSize;
+}
+.italicized { /* CURRENTLY NOT USED */
+  /* used for 'by' */
+  @extend .small-text;
+  float: left;
+  margin-right: 10px;
+  font-style: italic;
+}
+.avatar-xsmall-name {
+  /* used w .avatar-xsmall */
+  /* collection page creator name */
+  @extend .small-text;
+  @extend .weak;
+  font-weight: 500;
+}
+.inline {
+  display: inline;
+  vertical-align: middle;
+}
+
+.inline-block {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+blockquote {
+  font-family: $styledFontFamily;
+  margin-top: $baseLineHeight;
+  margin-bottom: $baseLineHeight;
+  color: lighten($grayLight, 20%);
+  font-style: italic; }
+
+strong {
+  font-weight: 600; }
+
+em, dfn {
+  font-style: italic; }
+
+dfn {
+  font-weight: bold; }
+/*
+abbr, acronym {
+  border-bottom: 1px dotted $gray; }
+*/
+address {
+  margin-bottom: $baseLineHeight;
+  font-style: italic; }
+
+del {
+  color: lighten($grayLight, 20%); }
+
+pre, code {
+  margin-top: $baseLineHeight;
+  margin-bottom: $baseLineHeight;
+  white-space: pre; }
+
+pre, code, tt {
+  font-family: $codeFontFamily; }
+
+// LISTS
+
+ol {
+  list-style-type: decimal; }
+
+dl {
+  margin-bottom: $baseLineHeight; }
+
+dl dt {
+  font-weight: bold; }
+
+dd {
+  margin-left: $baseLineHeight; }
+
+
+
+td.numeric {
+  text-align: left;
+  font-weight: 400;
+}
+
+th.center, td.center {
+  text-align: left; }
+
+table tfoot {
+  background-color: $grayLight; }
+
+table .name {
+  white-space: normal; }
+
+table .status {
+  color: $color-text-dark;
+  font-weight: 600;
+  // goes against the grid system, but leave it for now
+  width: 155px;
+  span {
+    display: block;
+    color: $gray;
+    font-size: $baseFontSize;
+    line-height: $baseLineHeight;
+    white-space: normal;
+    font-weight: normal;
+  }
+}
+
+
+table .button {
+  float: left;
+  clear: left;
+  margin: 0 auto 5px !important; }
+
+
+
+
+
+
+
+
+// MISC CLASSES
+
+.no-more {
+  background: $color-text-lighter;
+  color: transparent;
+  text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.5);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  font-weight: 600;
+}
+
+.strong {
+  font-weight: 600; }
+
+.highlight {
+  background: #fefed7; }
+
+.dquo {
+  margin-left: -0.5em; }
+
+.smalltype {
+  font-size: 14px;
+  line-height: 18px; }
+
+.normal-weight {
+  font-weight: 500;
+}
+
+.caps {
+  font-variant: small-caps;
+  text-transform: lowercase;
+  font-size: $baseFontSize * 1.4;
+  line-height: 1%; }
+
+.text-buffer {
+  margin-right: 5px;
+  font-size: $baseFontSize; }
+
+.secondary {
+  color: $grayLight; }
+
+.tertiary {
+  color: $border; }
+
+.tertiary-action {
+  color: $new-button-bg-hover;
+  text-decoration: underline;
+  &:hover {
+    color: $linkColor;
+  }
+}
+.joined {
+  font-family: $sansserifFontFamily;
+  font-size: 11px;
+  line-height: 15px;
+  font-weight: 300;
+  color: $grayLight;
+  margin: 0px 0px 5px;
+  display: block; }
+
+span.location {
+  font: {
+    weight: 400;
+    size: $baseFontSize;
+  }
+  line-height: 13px;
+  letter-spacing: 0.2px;
+  display: block;
+  margin: 5px 0px;
+}
+
+
+// EMPTY MESSAGES
+.empty-msg {
+  padding: 15px 0px 0px 16px;
+  float: left;
+  .notifications_index & {
+    padding: 40px 0 0;
+  }
+}

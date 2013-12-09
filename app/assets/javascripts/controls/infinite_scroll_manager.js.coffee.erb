@@ -1,0 +1,97 @@
+# requires that handlebars and backbone-rails have been loaded through application.js
+#
+#= require jquery/jquery.endless-scroll
+
+jQuery ->
+  # A generalized (ish) infinite scroller
+  # Currently built as a base class, considering shift to pure event publisher
+  # NB: `start()` must be called after constructing in order to actually work.  This approach is used to allow attaching
+  # event handlers to the instance before starting it.
+  class InfiniteScrollManager
+    scrolling: false
+
+    constructor: (resultsSelector, scrollTopSelector = null, moreUrl = null, scrollSelector = window) ->
+      @element = $(resultsSelector)
+      @scrollTopButton = if scrollTopSelector? then $(scrollTopSelector) else null
+      @moreUrl = if moreUrl? then moreUrl else @element.data('more-url')
+      @scrollElement = $(scrollSelector)
+      _.extend(this, Backbone.Events)
+
+    start: ->
+      return unless $(document.body).data('logged-in')
+      this.setupInfiniteScroll()
+      this.setupScrollToTop() if @scrollTopButton?
+      this.setupHistory() if HistoryManager?
+
+    setupInfiniteScroll: ->
+      @scrollElement.endlessScroll(
+        bottomPixels: 1600
+        fireOnce: false
+        fireDelay: 20
+        callback: =>
+          if @moreUrl? and not @scrolling
+            @scrolling = true
+            this.trigger('scroller:loading:start')
+            this.fetchMore()
+      )
+
+    fetchMore: (moreUrl = @moreUrl, offset = null, newMoreUrl = null) ->
+      $.jsend.get(moreUrl).then((data) =>
+        # offset indicates loading page after browser navigation
+        if offset?
+          # Remove first page from response since we don't yet support requesting multiple pages at once.
+          data.cards.splice(0, <%= Brooklyn::Application.config.listings.browse.per_page %>)
+          data.offset = offset
+        this.trigger('scroller:more', data)
+        @moreUrl = newMoreUrl or data.more
+        @scrolling = false
+        this.trigger('scroller:loading:end')
+      )
+
+    setupScrollToTop: ->
+      $window = $(window)
+      @scrollTopButton.on 'click', -> $('html, body').animate({scrollTop: 0}, 200)
+      $window.scroll =>
+        # give a few pixels of wiggle room at the top to prevent flicker
+        if $window.scrollTop() < 10 then @scrollTopButton.fadeOut('slow') else @scrollTopButton.fadeIn(1000)
+
+    setupHistory: ->
+      return unless HistoryManager.enabled()
+      # Use document.body in case event is cancelled when it bubbles to document level
+      $(document.body).on 'click', (event) =>
+        # Do nothing if event was triggered by search facet
+        return if $(event.target).closest('[data-role=search-facet]').exists()
+
+        stateData = {action: 'update', url: document.URL, offset: $(window).scrollTop()}
+        HistoryManager.addData(HistoryManager.components.scroll, stateData)
+
+      stateData = HistoryManager.getData(HistoryManager.components.scroll)
+      if stateData?
+        this._loadScrollPosition(stateData)
+      else
+        stateData = {action: 'update', url: document.URL, offset: $(window).scrollTop()}
+        HistoryManager.addData(HistoryManager.components.scroll, stateData)
+
+      HistoryManager.addStateHandler(this, HistoryManager.components.scroll, ->)
+
+    _loadScrollPosition: (data) ->
+      return unless data?
+      elementHeight = @element.height() or 0
+      targetOffset = data.offset or 0
+
+      # If not enough space to scroll to targetOffset, then fetch more results until targetOffset can be reached
+      if targetOffset > elementHeight
+        @scrolling = true
+        this.trigger('scroller:loading:start')
+        numPagesToLoad = Math.floor(targetOffset / elementHeight) + 1
+        pageSize = <%= Brooklyn::Application.config.listings.browse.per_page %>
+        currentUrl = document.URL
+        prefix = if currentUrl.lastIndexOf('?') is -1 then '?' else '&'
+        fullPageSize = pageSize * numPagesToLoad
+        fullPageUrl = "#{currentUrl}#{prefix}per_page=#{fullPageSize}&per=#{fullPageSize}&page=1"
+        nextPageUrl = "#{currentUrl}#{prefix}per_page=#{pageSize}&per=#{pageSize}&page=#{numPagesToLoad + 1}"
+        this.fetchMore(fullPageUrl, targetOffset, nextPageUrl)
+
+
+  window.Copious ?= {}
+  window.Copious.InfiniteScrollManager = InfiniteScrollManager

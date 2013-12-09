@@ -1,0 +1,45 @@
+<% title "Admin: All collections for #{@user.name}" %>
+
+<%= bootstrap_breadcrumb [
+  ['Admin', admin_dashboard_path],
+  ['Users', admin_users_path],
+  [@user.name, admin_user_path(@user.id)],
+  'All collections'
+] %>
+
+
+<%= datagrid @collections, id: 'collections', pagination_theme: :bootstrap do |t| %>
+  <%= t.thead do |thead| %>
+    <%= thead.th :name %>
+    <%= thead.th :creator %>
+    <%= thead.th :listing_count, title: '# Listings' %>
+    <%= thead.th :follower_count, title: '# Followers' %>
+    <%= thead.th :interest %>
+    <%= thead.th :created_at, title: 'Created' %>
+    <%= thead.th :updated_at, title: 'Last updated', default: true, default_direction: :desc %>
+    <%= thead.actions %>
+  <% end %>
+  <%= t.tbody do |tbody, collection| %>
+    <%= tbody.td do %>
+      <%= link_to collection.name, admin_collection_path(collection.id) %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= link_to collection.user.name, admin_user_path(collection.user.id) %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= collection.listing_count %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= collection.follower_count %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= yes_no collection.autofollowed? %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= date collection.created_at %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= date collection.updated_at %>
+    <% end %>
+  <% end %>
+<% end %>

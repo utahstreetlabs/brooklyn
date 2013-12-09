@@ -1,0 +1,11 @@
+<%= word_wrap(%Q[Hi #{@user.firstname},
+
+Kindly note that the tracking number for #{@shipment.order.listing.title} has changed. Below is the updated lowdown.]) %>
+
+<%= render '/order_mailer/buyer_order_details', order: @shipment.order, tracking_number: {updated: true} %>
+
+<%= word_wrap(%Q[Ready for another go? Find more items on Copious at #{rewrite_mailer_url root_url}.
+
+Happy shopping,]) %>
+
+<%= render '/shared_mailer/footer' %>

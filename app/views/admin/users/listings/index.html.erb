@@ -1,0 +1,51 @@
+<% title "Admin: All listings for #{@user.name}" %>
+
+<%= bootstrap_breadcrumb [
+  ['Admin', admin_dashboard_path],
+  ['Users', admin_users_path],
+  [@user.name, admin_user_path(@user.id)],
+  'All listings'
+] %>
+
+
+<%= datagrid @listings, id: 'listings', pagination_theme: :bootstrap do |t| %>
+  <%= t.thead do |thead| %>
+    <%= thead.th :title %>
+    <%= thead.th :buyer %>
+    <%= thead.th :category %>
+    <%= thead.th :state %>
+    <%= thead.th :order_status, title: 'Order status' %>
+    <%= thead.th :created_at, title: 'Created' %>
+    <%= thead.th :updated_at, title: 'Last updated', default: true, default_direction: :desc %>
+    <%= thead.actions %>
+  <% end %>
+  <%= t.tbody do |tbody, listing| %>
+    <%= tbody.td :'data-role' => "user-listing-#{listing.id}" do %>
+      <%= link_to listing.title, admin_user_listing_path(@user.id, listing.id) %>
+      <% if listing.prepaid_shipping? %>
+        <br><%= admin_listing_prepaid_shipping_indicator %>
+      <% end %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= (listing.order.nil?? '(none)' : link_to_user_profile(listing.order.buyer)) %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= listing.category ? listing.category.name : '-' %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= listing.human_state_name %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= listing.order ? listing.order.human_status_name : '-' %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= date listing.created_at %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= date listing.updated_at %>
+    <% end %>
+    <%= tbody.actions do %>
+      <%= link_to_edit edit_admin_listing_path(listing.id) %>
+    <% end %>
+  <% end %>
+<% end %>

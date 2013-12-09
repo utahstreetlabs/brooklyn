@@ -1,0 +1,13 @@
+<%
+message = t('.header.message_html',
+            commenter_link: mailer_header_link_to(@commenter.name, public_profile_url(@commenter)),
+            listing_link: mailer_header_link_to(@listing.title, listing_url(@listing)))
+%>
+
+<%= render partial: '/shared_mailer/new_responsive_header', locals: {user: @mentioned, message: message} %>
+
+<%= mailer_user_listing_social_action @commenter, :comment, @listing %>
+<%= mailer_user_comment @commenter, @comment %>
+<%= mailer_user_reply_to_action @mentioned, @commenter, @listing %>
+
+<%= render '/shared_mailer/new_responsive_footer' %>

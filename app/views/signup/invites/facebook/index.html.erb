@@ -1,0 +1,11 @@
+<%
+title 'Invite your friends'
+deactivate_masthead
+mp_view_event 'signup invite facebook'
+%>
+
+<div id="facebook-invites">
+  <%= render '/connect/invites/modules/facebook', search_action: search_signup_invites_facebook_index_path,
+             invite_action: signup_invites_facebook_index_path, invite: (@invite || FacebookInvite.new) %>
+</div>
+

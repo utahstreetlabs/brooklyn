@@ -1,0 +1,7 @@
+<%= bootstrap_form_tag set_admin_collection_autofollows_path(collection.id), remote: true do %>
+  <% Interest.by_name.each do |interest| %>
+    <%= bootstrap_check_box_tag :autofollowed_interest_ids, interest.name, interest.id,
+                                collection.autofollowed_for_interest?(interest), name: 'collection[autofollowed_interest_ids][]',
+                                id: "autofollowed_interest_ids_#{interest.id}" %>
+  <% end %>
+<% end %>

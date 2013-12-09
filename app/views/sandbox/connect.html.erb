@@ -1,0 +1,226 @@
+<%#  XXX  SIDEBAR IN HARDCODED MOCKUP STATE  XXX  %>
+<div id="sidebar" class="span4">
+  <div class="section">
+    <h3>Connect</h3>
+    <ul class="nav nav-vertical-list menu">
+      <li class="selected">Who to Follow</li>
+      <li><a href="/settings/password">Invite Friends</a></li>
+      <li><a href="/settings/email">Browse Interests</a></li>
+    </ul>
+  </div>
+</div>
+<%#  side bar ends  %>
+
+<%#  #main-content starts  %>
+<div id="main-content" class="span12 margin-left">
+  <h2>Who to Follow</h2>
+  
+  <ul class="user-strip">
+    <%#  user stip 1  %>
+    <li>
+      <%#  box left  %>
+      <%= content_tag :div, class: 'pull-left' do %>
+        <%= content_tag :div, class: 'avatar-container pull-left hidden-phone' do %>
+          <%= user_avatar_small current_user, class: 'text-adjacent' %>
+        <% end %>
+        <%= content_tag :div, class: 'avatar-container pull-left hidden-desktop' do %>
+          <%= user_avatar_xsmall current_user, class: 'text-adjacent' %>
+        <% end %>
+        <%= content_tag :div, class: 'pull-left' do %>
+          <h4><%= current_user.name %></h4>
+          <%#  XXX  for mobile, this stats is hidden  XXX  %>
+          <ul class="nav nav-vertical-list nav-stats kill-margin-bottom hidden-phone">
+            <li class="stats-sale">
+              <a href="/profiles/brian-fantana"><span data-role="listings-count">36</span>LISTINGS</a>
+            </li>
+            <li class="stats-like">
+              <a href="/profiles/brian-fantana/loved"><span data-role="liked-count">3</span>LOVES</a>
+            </li>
+            <li class="stats-following">
+              <a href="/profiles/brian-fantana/following"><span data-role="following-count">23</span>FOLLOWING</a>
+            </li>
+            <li class="stats-followers">
+              <a href="/profiles/brian-fantana/followers"><span data-role="followers-count">14</span>FOLLOWERS</a>
+            </li>
+          </ul>
+        <% end %>
+      <% end %>
+      <%#  box right  %>
+      <%= content_tag :div, class: 'pull-right' do %>
+        <%#  XXX  for mobile, this follow button is hidden  XXX  %>
+        <a href="/profiles/michael-oh/followees/brian-fantana" class="primary button follow-button following disabled actionable large hidden-phone" data-method="DELETE" data-remote="true" data-type="json" id="follow-button-84" rel="nofollow">Following</a>
+        <%#  XXX  for mobile, this close-button is hidden  XXX  %>
+        <a class="close-button hidden-phone"></a>
+        <ul class="pull-left thumbnails">
+          <li>
+            <a href="/listings/misako-distressed-blue-hobo-handbag?src=public-profile-dana-zuber" class="thumbnail"><img alt="" src="//utahstreetlabs-production.s3.amazonaws.com/listing_photo/file/613788/small_146ecb2ece9a11e1b74a22000a1e8b9e_7.jpg"></a>
+          </li>
+          <li>
+            <a href="/listings/misako-caramel-short-strap-hobo-handbag?src=public-profile-dana-zuber" class="thumbnail"><img alt="" src="//utahstreetlabs-production.s3.amazonaws.com/listing_photo/file/613842/small_b3e3d65ece9a11e184a91231382040e4_7.jpg"></a>
+          </li>
+          <li>
+            <a href="/listings/vtg-90s-black-maxi-dress-backless-cut-out-plunging-bodycon-chic-boho-glam-xxs-xs?src=public-profile-dana-zuber" class="thumbnail"><img alt="" src="//utahstreetlabs-production.s3.amazonaws.com/listing_photo/file/718282/small_Recently_Updated108-001.jpg"></a>
+          </li>
+          <li>
+            <a href="/listings/vtg-70s-dress-tunic-caftan-ethnic-bell-sleeves-hippie-festival-boho-mod-s-m?src=public-profile-dana-zuber" class="thumbnail"><img alt="" src="//utahstreetlabs-production.s3.amazonaws.com/listing_photo/file/711925/small_Recently_Updated103-003.jpg"></a>
+          </li>
+        </ul>
+      <% end %>
+      <%#  XXX  this only shows for mobile  XXX  %>
+      <%= content_tag :div, class: 'hidden-desktop' do %>
+        <%#  XXX  get rid of .nav-vertical-list  and the descriptor of the states ex. LISTINGS, LOVES  XXX  %>
+        <ul class="nav nav-stats kill-margin-bottom">
+          <li class="stats-sale">
+            <a href="/profiles/brian-fantana"><span data-role="listings-count">36</span></a>
+          </li>
+          <li class="stats-like">
+            <a href="/profiles/brian-fantana/loved"><span data-role="liked-count">3</span></a>
+          </li>
+          <li class="stats-followers">
+            <a href="/profiles/brian-fantana/followers"><span data-role="followers-count">14</span></a>
+          </li>
+        </ul>
+        <%#  XXX  for mobile, this follow button is shown   XXX  %>
+        <a href="/profiles/michael-oh/followees/brian-fantana" class="primary button follow-button following disabled actionable pull-right" data-method="DELETE" data-remote="true" data-type="json" id="follow-button-84" rel="nofollow">Following</a>
+      <% end %>
+    </li>
+    
+    <%#  user stip 2  %>
+    <li>
+      <%#  box left  %>
+      <%= content_tag :div, class: 'pull-left' do %>
+        <%= content_tag :div, class: 'avatar-container pull-left hidden-phone' do %>
+          <%= user_avatar_small current_user, class: 'text-adjacent' %>
+        <% end %>
+        <%= content_tag :div, class: 'avatar-container pull-left hidden-desktop' do %>
+          <%= user_avatar_xsmall current_user, class: 'text-adjacent' %>
+        <% end %>
+        <%= content_tag :div, class: 'pull-left' do %>
+          <h4><%= current_user.name %></h4>
+          <%#  XXX  for mobile, this stats is hidden  XXX  %>
+          <ul class="nav nav-vertical-list nav-stats kill-margin-bottom hidden-phone">
+            <li class="stats-sale">
+              <a href="/profiles/brian-fantana"><span data-role="listings-count">36</span>LISTINGS</a>
+            </li>
+            <li class="stats-like">
+              <a href="/profiles/brian-fantana/loved"><span data-role="liked-count">3</span>LOVES</a>
+            </li>
+            <li class="stats-following">
+              <a href="/profiles/brian-fantana/following"><span data-role="following-count">23</span>FOLLOWING</a>
+            </li>
+            <li class="stats-followers">
+              <a href="/profiles/brian-fantana/followers"><span data-role="followers-count">14</span>FOLLOWERS</a>
+            </li>
+          </ul>
+        <% end %>
+      <% end %>
+      <%#  box right  %>
+      <%= content_tag :div, class: 'pull-right' do %>
+        <%#  XXX  for mobile, this follow button is hidden  XXX  %>
+        <a href="/profiles/michael-oh/followees/brian-fantana" class="primary button follow-button following disabled actionable large hidden-phone" data-method="DELETE" data-remote="true" data-type="json" id="follow-button-84" rel="nofollow">Following</a>
+        <%#  XXX  for mobile, this close-button is hidden  XXX  %>
+        <a class="close-button hidden-phone"></a>
+        <ul class="pull-left thumbnails">
+          <li>
+            <a href="/listings/misako-distressed-blue-hobo-handbag?src=public-profile-dana-zuber" class="thumbnail"><img alt="" src="//utahstreetlabs-production.s3.amazonaws.com/listing_photo/file/613788/small_146ecb2ece9a11e1b74a22000a1e8b9e_7.jpg"></a>
+          </li>
+          <li>
+            <a href="/listings/misako-caramel-short-strap-hobo-handbag?src=public-profile-dana-zuber" class="thumbnail"><img alt="" src="//utahstreetlabs-production.s3.amazonaws.com/listing_photo/file/613842/small_b3e3d65ece9a11e184a91231382040e4_7.jpg"></a>
+          </li>
+          <li>
+            <a href="/listings/vtg-90s-black-maxi-dress-backless-cut-out-plunging-bodycon-chic-boho-glam-xxs-xs?src=public-profile-dana-zuber" class="thumbnail"><img alt="" src="//utahstreetlabs-production.s3.amazonaws.com/listing_photo/file/718282/small_Recently_Updated108-001.jpg"></a>
+          </li>
+          <li>
+            <a href="/listings/vtg-70s-dress-tunic-caftan-ethnic-bell-sleeves-hippie-festival-boho-mod-s-m?src=public-profile-dana-zuber" class="thumbnail"><img alt="" src="//utahstreetlabs-production.s3.amazonaws.com/listing_photo/file/711925/small_Recently_Updated103-003.jpg"></a>
+          </li>
+        </ul>
+      <% end %>
+      <%#  XXX  this only shows for mobile  XXX  %>
+      <%= content_tag :div, class: 'hidden-desktop' do %>
+        <%#  XXX  get rid of .nav-vertical-list  and the descriptor of the states ex. LISTINGS, LOVES  XXX  %>
+        <ul class="nav nav-stats kill-margin-bottom">
+          <li class="stats-sale">
+            <a href="/profiles/brian-fantana"><span data-role="listings-count">36</span></a>
+          </li>
+          <li class="stats-like">
+            <a href="/profiles/brian-fantana/loved"><span data-role="liked-count">3</span></a>
+          </li>
+          <li class="stats-followers">
+            <a href="/profiles/brian-fantana/followers"><span data-role="followers-count">14</span></a>
+          </li>
+        </ul>
+        <%#  XXX  for mobile, this follow button is shown   XXX  %>
+        <a href="/profiles/michael-oh/followees/brian-fantana" class="primary button follow-button following disabled actionable pull-right" data-method="DELETE" data-remote="true" data-type="json" id="follow-button-84" rel="nofollow">Following</a>
+      <% end %>
+    </li>
+
+    <%#  user stip 3  %>
+    <li>
+      <%#  box left  %>
+      <%= content_tag :div, class: 'pull-left' do %>
+        <%= content_tag :div, class: 'avatar-container pull-left hidden-phone' do %>
+          <%= user_avatar_small current_user, class: 'text-adjacent' %>
+        <% end %>
+        <%= content_tag :div, class: 'avatar-container pull-left hidden-desktop' do %>
+          <%= user_avatar_xsmall current_user, class: 'text-adjacent' %>
+        <% end %>
+        <%= content_tag :div, class: 'pull-left' do %>
+          <h4><%= current_user.name %></h4>
+          <%#  XXX  for mobile, this stats is hidden  XXX  %>
+          <ul class="nav nav-vertical-list nav-stats kill-margin-bottom hidden-phone">
+            <li class="stats-sale">
+              <a href="/profiles/brian-fantana"><span data-role="listings-count">36</span>LISTINGS</a>
+            </li>
+            <li class="stats-like">
+              <a href="/profiles/brian-fantana/loved"><span data-role="liked-count">3</span>LOVES</a>
+            </li>
+            <li class="stats-following">
+              <a href="/profiles/brian-fantana/following"><span data-role="following-count">23</span>FOLLOWING</a>
+            </li>
+            <li class="stats-followers">
+              <a href="/profiles/brian-fantana/followers"><span data-role="followers-count">14</span>FOLLOWERS</a>
+            </li>
+          </ul>
+        <% end %>
+      <% end %>
+      <%#  box right  %>
+      <%= content_tag :div, class: 'pull-right' do %>
+        <%#  XXX  for mobile, this follow button is hidden  XXX  %>
+        <a href="/profiles/michael-oh/followees/brian-fantana" class="primary button follow-button following disabled actionable large hidden-phone" data-method="DELETE" data-remote="true" data-type="json" id="follow-button-84" rel="nofollow">Following</a>
+        <%#  XXX  for mobile, this close-button is hidden  XXX  %>
+        <a class="close-button hidden-phone"></a>
+        <ul class="pull-left thumbnails">
+          <li>
+            <a href="/listings/misako-distressed-blue-hobo-handbag?src=public-profile-dana-zuber" class="thumbnail"><img alt="" src="//utahstreetlabs-production.s3.amazonaws.com/listing_photo/file/613788/small_146ecb2ece9a11e1b74a22000a1e8b9e_7.jpg"></a>
+          </li>
+          <li>
+            <a href="/listings/misako-caramel-short-strap-hobo-handbag?src=public-profile-dana-zuber" class="thumbnail"><img alt="" src="//utahstreetlabs-production.s3.amazonaws.com/listing_photo/file/613842/small_b3e3d65ece9a11e184a91231382040e4_7.jpg"></a>
+          </li>
+          <li>
+            <a href="/listings/vtg-90s-black-maxi-dress-backless-cut-out-plunging-bodycon-chic-boho-glam-xxs-xs?src=public-profile-dana-zuber" class="thumbnail"><img alt="" src="//utahstreetlabs-production.s3.amazonaws.com/listing_photo/file/718282/small_Recently_Updated108-001.jpg"></a>
+          </li>
+          <li>
+            <a href="/listings/vtg-70s-dress-tunic-caftan-ethnic-bell-sleeves-hippie-festival-boho-mod-s-m?src=public-profile-dana-zuber" class="thumbnail"><img alt="" src="//utahstreetlabs-production.s3.amazonaws.com/listing_photo/file/711925/small_Recently_Updated103-003.jpg"></a>
+          </li>
+        </ul>
+      <% end %>
+      <%#  XXX  this only shows for mobile  XXX  %>
+      <%= content_tag :div, class: 'hidden-desktop' do %>
+        <%#  XXX  get rid of .nav-vertical-list  and the descriptor of the states ex. LISTINGS, LOVES  XXX  %>
+        <ul class="nav nav-stats kill-margin-bottom">
+          <li class="stats-sale">
+            <a href="/profiles/brian-fantana"><span data-role="listings-count">36</span></a>
+          </li>
+          <li class="stats-like">
+            <a href="/profiles/brian-fantana/loved"><span data-role="liked-count">3</span></a>
+          </li>
+          <li class="stats-followers">
+            <a href="/profiles/brian-fantana/followers"><span data-role="followers-count">14</span></a>
+          </li>
+        </ul>
+        <%#  XXX  for mobile, this follow button is shown   XXX  %>
+        <a href="/profiles/michael-oh/followees/brian-fantana" class="primary button follow-button following disabled actionable pull-right" data-method="DELETE" data-remote="true" data-type="json" id="follow-button-84" rel="nofollow">Following</a>
+      <% end %>
+    </li>
+</div>
+<%#  #main-content ends  %>

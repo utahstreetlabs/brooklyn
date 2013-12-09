@@ -1,0 +1,12 @@
+<% if suggestions.any? %>
+  <div class="section-new rolling-actions" id="who-to-follow">
+    <h3>Who to Follow</h3>
+    <div class="help_text">Discover new people and trends. Click follow to see their listings and likes.</div>
+    <%= follow_suggestions suggestions do %>
+      <% suggestions.each do |suggestion| %>
+        <%= follow_suggestion suggestion, connections[suggestion.person_id] %>
+      <% end %>
+    <% end %>
+    <%= link_to 'More', connect_who_to_follow_index_path, class: 'show-more pull-left' %>
+  </div>
+<% end %>

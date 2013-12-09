@@ -1,0 +1,19 @@
+<div id="browse-nav">
+  <div id="browse-tabs-container">
+    <%= browse_tab 'category', facet_title('category', searcher.categories.selected),
+                    category_list_items(searcher.categories.alphabetical),
+                    data: {tracking: 'filter_category'} %>
+    <%= browse_tab 'price', facet_title('price', searcher.price_ranges.selected, name: 'Prices'),
+                    price_range_checkboxes(searcher.price_ranges.ordered),
+                    data: {tracking: 'filter_price'} %>
+    <%= browse_tab 'sort', t("search_browse.browse.sort.#{searcher.sort_key}"), listings_sort_links(searcher),
+                    data: {tracking: 'filter_sort'} %>
+  </div>
+
+  <div id="browse-details-container">
+    <%= listing_search_browse_header @searcher unless @searcher.error %>
+    <%= browse_facet_selections 'Your Selections:' %>
+  </div>
+
+  <%= render 'featured_listings', featured: @featured %>
+</div>

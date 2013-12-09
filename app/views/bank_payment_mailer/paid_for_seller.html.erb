@@ -1,0 +1,23 @@
+<%= render '/shared_mailer/header', user: @user %>
+
+<%= mailer_graf do %>
+  Hi <%= @user.firstname %>,
+<% end %>
+
+<%= mailer_graf do %>
+  Your deposit of <%= number_to_currency @payment.order.listing.proceeds %> for the sale of <%= mailer_link_to @payment.order.listing.title, listing_url(@payment.order.listing) %> in your bank account has been confirmed.
+<% end %>
+
+<%= mailer_graf do %>
+  Take a moment to list another item.
+<% end %>
+
+<%= mailer_graf do %>
+  <%= mailer_button 'List another item', new_listing_url, styles: ' margin-top: 0px !important; margin-bottom: 25px !important;' %>
+<% end %>
+
+<%= mailer_graf(styles: 'margin-bottom: 0px;') do %>
+  Thank you,
+<% end %>
+
+<%= render '/shared_mailer/footer' %>

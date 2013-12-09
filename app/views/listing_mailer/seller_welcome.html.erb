@@ -1,0 +1,49 @@
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  You’ve officially published your first listing on Copious. Congratulations!
+<% end %>
+
+<%= mailer_graf do %>
+  Below are the final steps to help maximize your selling success.
+<% end %>
+
+<%= mailer_subheader do %>
+  Be proud of your listing.
+<% end %>
+
+<%= mailer_graf do %>
+  Spread the word. Share it on Facebook, Twitter, Tumblr and Pinterest (or just email it).
+<% end %>
+
+<%= mailer_graf do %>
+  <%= mailer_button 'Share your listing', listing_url(@listing), styles: ' margin-top: 0px !important; margin-bottom: 25px !important;' %>
+<% end %>
+
+<%= mailer_subheader do %>
+  Get your friends on the bandwagon.
+<% end %>
+
+<%= mailer_graf do %>
+  They can support you and browse great finds, and you can both earn Copious credit.
+<% end %>
+
+<%= mailer_graf do %>
+  <%= mailer_button 'Invite your friends', connect_invites_url, styles: ' margin-top: 0px !important; margin-bottom: 25px !important;' %>
+<% end %>
+
+<%= mailer_subheader do %>
+  Do it again.
+<% end %>
+
+<%= mailer_graf do %>
+  And again, and again.
+<% end %>
+
+<%= mailer_button 'Create another listing', new_listing_url, styles: ' margin-top: 0px !important; margin-bottom: 25px !important;' %>
+
+<%= mailer_graf(styles: 'margin-bottom: 0px;') do %>
+  Happy selling,
+<% end %>
+
+<%= render '/shared_mailer/footer' %>

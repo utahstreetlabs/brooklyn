@@ -1,0 +1,75 @@
+<%
+  title "Buy #{@listing.title} in #{@listing.category.name}: Shipping info"
+  javascript 'listings_purchase_shipping'
+  deactivate_masthead
+  mp_view_event 'enter shipping info'
+%>
+
+<%#   XXXXXXXXX         RESERVED TIME EXPIRED MOCKUP        XXXXXXXXXX   %>
+
+<div class="safe-shopping">
+  <h4><%= image_tag "icons/lock_icon.png" %>Safe shopping guaranteed. Copious has secure transactions.</h4>
+</div>
+
+<div id="main-content" class="grid11">
+  <%#   XXX   NEW PROGRESS BAR MOCKUP  XXXX   %>
+  <div class="progress-bar-container">
+    <table class="progress-bar">
+      <tr>
+        <td>
+          <div class="progress-number">1</div>
+          <span class="progress-text">Sign in</span>
+        </td>
+        <td class="current">
+          <div class="progress-number">2</div>
+          <span class="progress-text">Shipping</span>
+        </td>
+        <td>
+          <div class="progress-number">3</div>
+          <span class="progress-text">Purchase</span>
+        </td>
+        <td>
+          <div class="progress-number">4</div>
+          <span class="progress-text">Purchase Confirmation</span>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <%#   XXX   MOCKUP ENDS  XXXX   %>
+
+  <h2 id="title">Your reserve time has expired.</h2>
+  <div class="section expired">
+    Reminder: You have just 15 minutes to reserve a listing and checkout. If you do not checkout
+    before the time expires, the listing is made available to other Copious users.
+    <br /><br/>
+    You can see if the listing is still available for purchase.
+    <div class="button-container">
+      <a class="button primary">Return to Listing</a>
+      <a class="button">Return Home</a>
+    </div>
+  </div>
+</div>
+
+
+<div id="sidebar" class="grid5 last">
+  <%#<%= render 'order_details', listing: @listing, show_credits: true %>
+  <div class="order-details-window">
+
+    <%#  XXXX    RESERVED TIME UP  MOCKUP    XXXX  %>
+    <%#  XXXX    please add .expired    XXXX  %>
+    <div class="reserved-time-container expired">
+      <h4>Reserved Time</h4>
+      <div class="reserved-time-bg left-border">0</div><div class="reserved-time-bg right-border">0</div>
+      <div class="reserved-time-separator">:</div>
+      <div class="reserved-time-bg left-border">0</div><div class="reserved-time-bg right-border">0</div>
+    </div>
+    <%#  XXXX    MOCKUP ENDS   XXXX  %>
+
+    <div class="order-details-product-wrapper">
+      <h3 class="order-details-title"><%= listing.title %></h3>
+      <span class="seller-name">Sold by <%= listing.seller.name %></span>
+      <%= listing_photo_tag listing.photos.first, :large, class: 'listing-photo' %>
+    </div>
+  </div>
+  
+</div>

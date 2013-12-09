@@ -1,0 +1,77 @@
+<%
+title (@searcher.error ? 'Search error' : listing_search_browse_title(@searcher))
+javascript 'search_browse/browse'
+mp_view_event 'browse_listing',
+              filter_category: @searcher.categories.selected_names,
+              filter_price: @searcher.price_ranges.selected_names,
+              filter_sort: t("search_browse.browse.sort.#{@searcher.sort_key}"),
+              filter_search: @searcher.query
+fb_head_prefix
+stylesheet 'product_listing'
+hide_footer
+%>
+
+<% unless feature_enabled? 'horizontal_browse' %>
+  <%= listing_search_browse_header @searcher unless @searcher.error %>
+
+  <%= render "sidebar", :searcher => @searcher unless @searcher.error %>
+<% end %>
+
+<% if feature_enabled? 'horizontal_browse' %>
+  <div id="main-content" class="span12">
+<% else %>
+  <div id="main-content" class="span8">
+<% end%>
+
+  <% unless @searcher.error %>
+    <%= listing_search_browse_banner @searcher %>
+
+    <% unless feature_enabled? 'horizontal_browse' %>
+      <div id="your-navigation">
+        <div id="selection-container" class="tags-container" data-role="search-facet">
+          <span class="tag-title">Your Selections:</span>
+          <%= safe_join(facet_selections(@category, @searcher)) %>
+        </div>
+
+        <%= render 'featured_listings', featured: @featured %>
+
+        <div class="nav-container" data-role="search-facet">
+          <ul id="sort-container" class="nav-sort">
+            <%= safe_join(listings_sort_links(@searcher)) %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+
+    <% if feature_enabled? 'horizontal_browse' %>
+      <%= render "tabs", :searcher => @searcher unless @searcher.error %>
+    <% end %>
+
+    <%= content_tag :ul, { class: 'search-results row' }.merge(results_tag_params) do %>
+      <% if @searcher.any? %>
+        <% @results.each do |card| %>
+          <%= product_card card, source: browse_page_source %>
+        <% end %>
+      <% else %>
+        <p>No listings found</p>
+      <% end %>
+    <% end %>
+    <%= infinite_scroll_widgets %>
+  <% end %>
+</div>
+
+<%= doc_header do %>
+  <% if @searcher.tags.selected.any? && @searcher.tags.selected.count == 1 %>
+    <% if feature_enabled? :networks, :facebook, :open_graph, :object, :tag %>
+      <%= tag :meta, property: 'og:type', content: 'copious:tag' %>
+      <%= tag :meta, property: 'og:title', content: @searcher.tags.selected.first.name.to_s %>
+      <% if @results.listings.any? and @results.listings.first.photos.any? %>
+        <%= tag :meta, property: 'og:image', content: "http:#{@results.listings.first.photos.first.version_url(:small)}" %>
+      <% end %>
+      <%= tag :meta, property: 'og:url', content: browse_for_sale_url(path_tags: @searcher.tags.selected.first.slug) %>
+    <% end %>
+  <% end %>
+  <%= tag :meta, property: 'og:site_name', content: 'Copious' %>
+  <%= tag :meta, property: 'og:description', content: t('.open_graph.description') %>
+  <%= tag :meta, property: 'fb:app_id', content: Network::Facebook.app_id %>
+<% end %>

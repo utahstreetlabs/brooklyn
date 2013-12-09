@@ -1,0 +1,21 @@
+<% unless masthead_hidden? %>
+  <div id="hb-masthead" data-hb-auto="<%= feature_enabled?('hamburger.auto') %>">
+    <%= bootstrap_navbar navbar: {class: hamburger_classes} do %>
+      <div class="pull-left">
+        <%= masthead_hamburger current_user %>
+      </div>
+      <%= masthead_brand %>
+      <% if masthead_active? %>
+        <% if feature_enabled?('listings.external') || feature_enabled?('collections.add') %>
+          <div class="pull-right">
+            <% if logged_in? %>
+              <%= masthead_add_button current_user %>
+            <% else %>
+              <%= link_to 'Log in', login_path(secure: true, redirect: :login), class: 'btn pull-right', id: 'masthead-login', data: {action: 'login'} %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

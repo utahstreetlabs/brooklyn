@@ -1,0 +1,42 @@
+<% title "Admin: Facebook price alerts" %>
+
+<%= bootstrap_breadcrumb [
+  ['Admin', admin_dashboard_path],
+  'Facebook',
+  'Price alerts'
+] %>
+
+<p>This page lets you send price alert messages to Facebook users. Each recipient will receive a notification on Facebook with a message like this:</p>
+
+<blockquote><%= t 'networks.facebook.notification.price_alert.template', listing_title: 'Fancy - Black Metal Aviators', discount: '75' %></blockquote>
+
+<p>The chosen listing is the most trending listing from the ones the user has saved or loved. If the user has never saved or loved a listing, a random listing is selected from the top <%= Network::Facebook.config.notification.price_alert.random_trending_listing_choices %> trending listings.</p>
+
+<p>The discount rate is selected randomly for each user from the following values:</p>
+
+<ul>
+  <% PriceAlert::Discounts.all.each do |discount| %>
+    <li><%= discount %>%</li>
+  <% end %>
+</ul>
+
+<%= bootstrap_form_for @individual, as: :message, url: admin_facebook_price_alerts_path, method: :post,
+                       html: {id: 'new-individual-message'} do |f| %>
+  <%= field_set_tag 'Send to a specific user' do %>
+    <%= f.hidden_field :slug %>
+    <%= f.text_field :query, 'User', button: bootstrap_button('Send', type: :submit, condition: :primary),
+                     autocomplete: 'off', class: 'input-xxlarge' do %>
+      Enter the name or e-mail address of the user who will receive the message.
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= bootstrap_form_for @mass, as: :message, url: admin_facebook_price_alerts_path, method: :post,
+                       html: {id: 'new-mass-message'} do |f| %>
+  <%= field_set_tag 'Send to the most recently registered users' do %>
+    <%= f.number_field :count, 'Count', button: bootstrap_button('Send', type: :submit, condition: :primary),
+                       class: 'input-mini' do %>
+      Enter the number of users who will receive the message.
+    <% end %>
+  <% end %>
+<% end %>

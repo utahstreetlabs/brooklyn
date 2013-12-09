@@ -1,0 +1,13 @@
+<div data-role="multi-collection-selector">
+  <div data-role="multi-selector">
+    <ul data-role="selectables">
+      <li id="have" data-role="selectable" data-collection-type="have"><input type="checkbox"></li>
+      <li id="want" data-role="selectable" data-collection-type="want"><input type="checkbox"></li>
+      <li id="other" data-role="selectable"><input type="checkbox"></li>
+    </ul>
+  </div>
+  <div class="input-append" data-role="name-input">
+    <input type="text" placeholder="New collection" name="add_collection_input[]" data-role="collection-name">
+    <a data-disable-with="Adding…" data-action="add-collection" href="javascript:void(0)">Add</a>
+  </div>
+</div>

@@ -1,0 +1,374 @@
+<%
+title @listing.title
+javascript 'listings_show'
+fb_head_prefix
+%>
+
+
+<div class="messages">
+  <%#    XXXXXXXXX        MOCKUP #1          XXXXXXXXXXX %>
+  <div class="section join-now">
+    <h3>Shop with friends on Copious. Join Now.</h3>
+    <%#   XXX      if possible, apply .marginTop to div.connect-container if there's facepile      XXX   %>
+    <div class="connect-container">
+      <%= link_to_facebook_connect(label: t("shared.messages.signup.facebook")) %>
+      <%= link_to image_and_text('social_networks/twitter_32.png', t("shared.messages.signup.twitter")), auth_path(:twitter, buyer_signup: true), class: "button negative twitter signup left" %>
+    </div>
+    <div class="face-pile-container marginTop">
+      <span class="face-pile-text"><a>Kristin</a>, <a>Jim</a> and <a>5 others</a> you may know are already on Copious.</span>
+      <div class="face-piles">
+        <img src="//utahstreetlabs-staging.s3.amazonaws.com/user/profile_photo/9/px_50x50_clark_kent.jpg">
+        <img src="//utahstreetlabs-staging.s3.amazonaws.com/user/profile_photo/110/px_30x30_203362_12501409_3074476_n.jpg">
+        <img src="//utahstreetlabs-staging.s3.amazonaws.com/user/profile_photo/24/px_50x50_cutter_gambrelle_tom.jpeg">
+        <img src="//utahstreetlabs-staging.s3.amazonaws.com/user/profile_photo/7/px_50x50_195595_100002276923121_6364737_n.jpg">
+        <img src="http://graph.facebook.com/12500026/picture?type=square">
+        <img src="//utahstreetlabs-staging.s3.amazonaws.com/user/profile_photo/2/px_30x30_co10102762-m.jpg">
+        <img src="//utahstreetlabs-staging.s3.amazonaws.com/user/profile_photo/47/px_30x30_41529_3902182_3258685_n.jpg">
+        <img src="//utahstreetlabs-staging.s3.amazonaws.com/user/profile_photo/5/px_30x30_186303_100002250733229_4893036_n.jpg">
+      </div>
+    </div>
+  </div>
+  <%#    XXXXXXXXX        MOCKUP ENDS          XXXXXXXXXXX %>
+
+  <%#    XXXXXXXXX        MOCKUP #1   without facepile       XXXXXXXXXXX %>
+  <div class="section join-now" style="margin-bottom: 50px;">
+    <h3>Shop with friends on Copious. Join Now.</h3>
+    <div class="connect-container">
+      <%= link_to_facebook_connect(label: t("shared.messages.signup.facebook")) %>
+      <%= link_to image_and_text('social_networks/twitter_32.png', t("shared.messages.signup.twitter")), auth_path(:twitter, buyer_signup: true), class: "button negative twitter signup left" %>
+    </div>
+  </div>
+  <%#    XXXXXXXXX        MOCKUP ENDS          XXXXXXXXXXX %>
+
+
+  <%#    XXXXXXXXX        MOCKUP #2          XXXXXXXXXXX %>
+  <div class="section join-now">
+    <h3 class="alternative">Shop with friends on Copious. <br>Join Now.</h3>
+    <div class="connect-container second">
+      <%= link_to_facebook_connect(label: t("shared.messages.signup.facebook")) %>
+      <%= link_to image_and_text('social_networks/twitter_32.png', t("shared.messages.signup.twitter")), auth_path(:twitter, buyer_signup: true), class: "button negative twitter signup left" %>
+    </div>
+    <div class="face-pile-container second">
+      <span class="face-pile-text"><a>Kristin</a>, <a>Jim</a> and <a>5 others</a> you may know are already on Copious.</span>
+      <div class="face-piles">
+        <img src="//utahstreetlabs-staging.s3.amazonaws.com/user/profile_photo/9/px_50x50_clark_kent.jpg">
+        <img src="//utahstreetlabs-staging.s3.amazonaws.com/user/profile_photo/110/px_30x30_203362_12501409_3074476_n.jpg">
+        <img src="//utahstreetlabs-staging.s3.amazonaws.com/user/profile_photo/24/px_50x50_cutter_gambrelle_tom.jpeg">
+        <img src="//utahstreetlabs-staging.s3.amazonaws.com/user/profile_photo/7/px_50x50_195595_100002276923121_6364737_n.jpg">
+        <img src="http://graph.facebook.com/12500026/picture?type=square">
+        <img src="//utahstreetlabs-staging.s3.amazonaws.com/user/profile_photo/2/px_30x30_co10102762-m.jpg">
+      </div>
+    </div>
+  </div>
+  <%#    XXXXXXXXX        MOCKUP ENDS          XXXXXXXXXXX %>
+
+    <%#    XXXXXXXXX        MOCKUP #2   without facepile       XXXXXXXXXXX %>
+  <div class="section join-now" style="margin-bottom: 50px;">
+    <h3 class="alternative">Shop with friends on Copious. <br>Join Now.</h3>
+    <div class="connect-container second">
+      <%= link_to image_and_text('social_networks/facebook_32.png', t("shared.messages.signup.facebook")), auth_path(:facebook, buyer_signup: true), class: "button primary facebook signup" %>
+      <%= link_to image_and_text('social_networks/twitter_32.png', t("shared.messages.signup.twitter")), auth_path(:twitter, buyer_signup: true), class: "button negative twitter signup left" %>
+    </div>
+  </div>
+    <%#    XXXXXXXXX        MOCKUP ENDS          XXXXXXXXXXX %>
+
+
+  <div class="section join-now2">
+    <h3>Shop with friends on Copious. Join Now.</h3>
+    <div class="connect-container">
+      <%= link_to image_and_text('social_networks/facebook_32.png', t("shared.messages.signup.facebook")), auth_path(:facebook, buyer_signup: true), class: "button primary facebook signup" %>
+      <%= link_to image_and_text('social_networks/twitter_32.png', t("shared.messages.signup.twitter")), auth_path(:twitter, buyer_signup: true), class: "button negative twitter signup left" %>
+    </div>
+    <div class="face-pile-container">
+      <span class="face-pile-text"><a>Kristin</a>, <a>Jim</a> and <a>5 others</a> you may know are already on Copious.</span>
+      <div class="face-piles">
+        <img src="//utahstreetlabs-staging.s3.amazonaws.com/user/profile_photo/9/px_50x50_clark_kent.jpg">
+        <img src="//utahstreetlabs-staging.s3.amazonaws.com/user/profile_photo/110/px_30x30_203362_12501409_3074476_n.jpg">
+        <img src="//utahstreetlabs-staging.s3.amazonaws.com/user/profile_photo/24/px_50x50_cutter_gambrelle_tom.jpeg">
+        <img src="//utahstreetlabs-staging.s3.amazonaws.com/user/profile_photo/7/px_50x50_195595_100002276923121_6364737_n.jpg">
+        <img src="http://graph.facebook.com/12500026/picture?type=square">
+        <img src="//utahstreetlabs-staging.s3.amazonaws.com/user/profile_photo/2/px_30x30_co10102762-m.jpg">
+        <img src="//utahstreetlabs-staging.s3.amazonaws.com/user/profile_photo/47/px_30x30_41529_3902182_3258685_n.jpg">
+        <img src="//utahstreetlabs-staging.s3.amazonaws.com/user/profile_photo/5/px_30x30_186303_100002250733229_4893036_n.jpg">
+      </div>
+    </div>
+  </div>
+
+  <div class="section join-now3">
+    <h3>Shop with friends on Copious. Join Now.</h3>
+    <div class="connect-container">
+      <%= link_to image_and_text('social_networks/facebook_32.png', t("shared.messages.signup.facebook")), auth_path(:facebook, buyer_signup: true), class: "button primary facebook signup" %>
+      <%= link_to image_and_text('social_networks/twitter_32.png', t("shared.messages.signup.twitter")), auth_path(:twitter, buyer_signup: true), class: "button negative twitter signup left" %>
+    </div>
+    <div class="face-pile-container">
+      <span class="face-pile-text"><a>Kristin</a>, <a>Jim</a> and <a>5 others</a> you may know are already on Copious.</span>
+      <div class="face-piles">
+        <img src="//utahstreetlabs-staging.s3.amazonaws.com/user/profile_photo/9/px_50x50_clark_kent.jpg">
+        <img src="//utahstreetlabs-staging.s3.amazonaws.com/user/profile_photo/110/px_30x30_203362_12501409_3074476_n.jpg">
+        <img src="//utahstreetlabs-staging.s3.amazonaws.com/user/profile_photo/24/px_50x50_cutter_gambrelle_tom.jpeg">
+        <img src="//utahstreetlabs-staging.s3.amazonaws.com/user/profile_photo/7/px_50x50_195595_100002276923121_6364737_n.jpg">
+        <img src="http://graph.facebook.com/12500026/picture?type=square">
+        <img src="//utahstreetlabs-staging.s3.amazonaws.com/user/profile_photo/2/px_30x30_co10102762-m.jpg">
+        <img src="//utahstreetlabs-staging.s3.amazonaws.com/user/profile_photo/47/px_30x30_41529_3902182_3258685_n.jpg">
+        <img src="//utahstreetlabs-staging.s3.amazonaws.com/user/profile_photo/5/px_30x30_186303_100002250733229_4893036_n.jpg">
+      </div>
+    </div>
+  </div>
+<%# XXXXXX FLASH MESSAGING MOCK-UP XXXXXX %>
+<%#<ul id="flash" style="">
+  <li id="flash-notice">
+    Your shipping address was saved.
+  </li>
+  <li id="flash-alert">
+    Your shipping address was saved.
+  </li>
+  <li id="flash-success">
+    Your shipping address was saved.
+  </li>
+  <li id="flash-warning">
+    Your shipping address was saved.
+  </li>
+</ul>%>
+<%# XXXXXX END XXXXXX %>
+</div>
+
+<% if @listing.sold? && (buyer? || seller?) %>
+  <%= render 'product_order_info', listing: @listing, rating: @rating %>
+<% end %>
+
+<div id="main-content" class="grid11">
+  <%= render 'product_breadcrumb' %>
+
+  <% if seller? %>
+    <div class="section call-to-action">
+      <%= render 'listings/seller/dashboard', listing: @listing %>
+    </div>
+  <% end %>
+  <div class="section no-bg">
+    <%= render 'product_title', listing: @listing %>
+    <%#= render 'product_photos', photos: @photos %>
+    <div id="product-photos">
+      <div id="image_wrap">
+        <img id="photo-137" class="main-photo" src="/uploads/development/listing_photo/file/137/large_corgi-jump.jpg?1317060121" alt="">
+        <div id="thumbnails" class="secondary-images">
+          <ul class="items">
+            <li class="carousel-up active">
+              <img src="/images/layout/carousel_up.png">
+            </li>
+            <div class="carousel-window">
+            <li class="thumbnail">
+              <img id="thumbnail-137" class="thumb" src="/uploads/development/listing_photo/file/137/small_corgi-jump.jpg?1317060122" alt="">
+            </li>
+            <li class="thumbnail">
+              <img id="thumbnail-137" class="thumb" src="/uploads/development/listing_photo/file/340/small_oudnkgq0i0o5ucjn3pvzig.jpg?1317060744" alt="">
+            </li>
+            <li class="thumbnail">
+              <img id="thumbnail-137" class="thumb" src="/uploads/development/listing_photo/file/341/small_xgam3wxe1k6muyumqawafq.jpg?1317060746" alt="">
+            </li>
+            <li class="thumbnail">
+              <img id="thumbnail-137" class="thumb" src="/uploads/development/listing_photo/file/342/small_uyar1nf43ey6z2ykzzdlhg.jpg?1317060748" alt="">
+            </li>
+            <li class="thumbnail">
+              <img id="thumbnail-137" class="thumb" src="/uploads/development/listing_photo/file/343/small_xwl_viejle68xpup7g8qeq.jpg?1317060750" alt="">
+            </li>
+            <li class="thumbnail">
+              <img id="thumbnail-137" class="thumb" src="/uploads/development/listing_photo/file/331/small_rqzxkskur0ajhppsnsulqw.jpg?1317060718" alt="">
+            </li>
+            </div>
+            <li class="carousel-down">
+              <img src="/images/layout/carousel_down.png">
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section action-statistics">
+    <%= render 'product_statistics', listing: @listing, like_info: @like_info %>
+  </div>
+
+  <div class="section">
+    <%= render 'product_info', listing: @listing %>
+  </div>
+
+  <% if logged_in? and @listing.active? %>
+    <div id="product-comments" class="section">
+      <%= render 'product_comments', feed: @feed %>
+    </div>
+  <% end %>
+</div>
+<div id="sidebar" class="grid5 last">
+  <%# XXXX SANDBOX: Price box states mock ups XXXX %>
+  <div class="product-pricing">
+  <div class="price-shipping-container">
+    <div class="price">$954.00</div>
+    <%# XXXX Add .free for free shipping please XXXX %>
+    <div class="shipping free">
+      FREE SHIPPING <br>
+    </div>
+  </div>
+  <a class="buy button positive" data-method="POST" href="/listings/leaping-corgi/purchase">Buy now</a>
+  </div>
+
+  <div class="product-pricing">
+  <div class="price-shipping-container">
+    <div class="price">$954.00</div>
+    <div class="shipping">
+      + $5.00 shipping <br>
+    </div>
+  </div>
+  <a class="buy button positive" data-method="POST" href="/listings/leaping-corgi/purchase">Buy now</a>
+  </div>
+
+  <div class="product-pricing">
+  <div class="price-shipping-container">
+    <div class="price">$954.00</div>
+    <div class="shipping">
+      + $5.00 shipping <br>
+    </div>
+  </div>
+  <%# XXX Add .disabled for button & remove after time out, return the Buy Now text XXX%>
+  <a class="buy disabled button positive" data-method="POST" href="/listings/leaping-corgi/purchase">8:46</a>
+  <span><a>username</a> is currently under checkout.</span>
+  </div>
+
+  <div class="product-pricing">
+  <div class="price-shipping-container">
+    <div class="price">$954.00</div>
+    <div class="shipping">
+      + $5.00 shipping
+    </div>
+  </div>
+  <div class="clock">
+    12:58
+  </div>
+  <span><a>username</a> is currently under checkout.</span>
+  </div>
+
+  <div class="product-pricing">
+  <div class="price-shipping-container">
+    <div class="price">$954.00</div>
+    <div class="shipping">
+      + $5.00 shipping <br>
+    </div>
+  </div>
+  <div class="clock">
+    12:58
+  </div>
+  <%# XXX Remove buy button and add like button XXX%>
+  <span id="like">
+    <a class="like button active" title="Like" rel="nofollow" data-type="json" data-remote="true" data-method="PUT" href="/listings/leaping-corgi/like">
+    <img src="/images/icons/like_color_small.png?1314828071" alt="Like">
+    Like
+    </a>
+  </span>
+  <span>Someone beat you to this and have only a few more minutes to complete the purchase. <strong>Like it to keep an eye on it.</strong></span>
+  </div>
+
+  <div class="product-pricing">
+  <div class="price-shipping-container">
+    <div class="price">$954.00</div>
+    <div class="shipping">
+      + $5.00 shipping <br>
+    </div>
+  </div>
+  <div class="sold">
+    <span>This item has been <strong>sold.</strong> <br> Interested in items like this?</span>
+  </div>
+  <%# XXX Remove buy button and add like & follow button XXX%>
+  <span id="like">
+    <a class="like button active" title="Like" rel="nofollow" data-type="json" data-remote="true" data-method="PUT" href="/listings/leaping-corgi/like">
+    <img src="/images/icons/like_color_small.png?1314828071" alt="Like">
+    Like
+    </a>
+  </span>
+  <span class="follow-wrap" data-follower-count="#seller-followers-count">
+  <a class="button positive follow clear ra-act remote-link" rel="nofollow" data-type="json" data-remote="true" data-method="PUT" href="/profiles/kristin-b-nienhuis/follow">Follow this Seller</a>
+  </span>
+  </div>
+
+  <div class="product-pricing">
+  <div class="price-shipping-container">
+    <div class="price">$954.00</div>
+    <div class="shipping">
+      + $5.00 shipping <br>
+    </div>
+  </div>
+  <div class="sold">
+    <span>You sold this to <a>username</a> on mm/dd/yyyy. You earned $##.## on this transaction.</span>
+  </div>
+  <%# XXX Remove buy button add feedback button XXX%>
+  <span id="feedback">
+    <a class="feedback button active" title="Like" rel="nofollow" data-type="json" data-remote="true" data-method="PUT" href="/listings/leaping-corgi/like">
+    Send Feedback to Copious
+    </a>
+  </span>
+  </div>
+
+  <div class="product-pricing">
+  <div class="price-shipping-container">
+    <div class="price">$954.00</div>
+    <div class="shipping">
+      + $5.00 shipping <br>
+    </div>
+  </div>
+  <div class="sold">
+    <span>You bought this for $##.## and there are ## people who liked this item. <br><br>
+    Want to relist it? Do it now!</span>
+  </div>
+  <%# XXX Remove buy button add feedback button XXX%>
+  <span id="relist">
+    <a class="relist button active" title="Like" rel="nofollow" data-type="json" data-remote="true" data-method="PUT" href="/listings/leaping-corgi/like">
+    Relist this Item
+    </a>
+  </span>
+  </div>
+
+  <div class="product-pricing warning">
+  <div class="price-shipping-container">
+    <div class="price">$954.00</div>
+    <div class="shipping">
+      + $5.00 shipping
+    </div>
+  </div>
+  <div class="clock">
+    12:58
+  </div>
+  <span>Complete your purchase.</span>
+  <%# XXX Assign .request so the text fits into the button XXX %>
+  <a class="buy button positive request" data-method="POST" href="/listings/leaping-corgi/purchase">Click to Proceed</a>
+  </div>
+
+  <%# XXXX SANDBOX: END XXXX %>
+  <%#<%= render 'product_pricing', listing: @listing, like_info: @like_info %>
+  <%#<%= render 'product_status', listing: @listing %>
+
+  <% unless seller? %>
+    <%= render 'product_seller', listing: @listing, connection: @connection %>
+  <% end %>
+
+
+</div>
+
+<%= render 'shared/ajax_overlay' %>
+
+<% doc_header do %>
+  <% if feature_enabled? :networks, :facebook, :open_graph, :object, :listing %>
+    <%= tag :meta, property: 'og:type', content: 'copious:listing' %>
+    <% @listing.tags.each do |t| %>
+      <%= tag :meta, property: 'copious:tags', content: browse_for_sale_url(path_tags: t.slug) %>
+    <% end %>
+    <%= tag :meta, property: 'copious:category', content: browse_for_sale_url(@listing.category) %>
+  <% else %>
+    <%= tag :meta, property: 'og:type', content: 'product' %>
+  <% end %>
+  <%= tag :meta, property: 'og:title', content: @listing.title %>
+  <% @photos.each do |photo| %>
+    <%= tag :meta, property: 'og:image', content: photo.file.small.url %>
+  <% end %>
+  <%= tag :meta, property: 'og:url', content: listing_url(@listing) %>
+  <%= tag :meta, property: 'og:site_name', content: 'Copious' %>
+  <%= tag :meta, property: 'og:description', content: t('.open_graph.description') %>
+  <%= tag :meta, property: 'fb:app_id', content: Network::Facebook.app_id %>
+<% end %>

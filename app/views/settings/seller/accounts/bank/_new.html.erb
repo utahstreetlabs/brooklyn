@@ -1,0 +1,24 @@
+<div class="section">
+  <%= form_for account, as: :account, url: settings_seller_accounts_path do |f| %>
+    <%= hidden_field_tag :account_type, DepositAccount::BANK %>
+    <%= f.field :name, container: :div, class: 'pull-left full-width', error: true,
+                help: {text: t('.field.name.example'), class: 'full-width'} do %>
+      <%= f.label :name, t('.field.name.label') %>
+      <%= f.text_field :name, class: 'margin-bottom pull-left margin-right' %>
+    <% end %>
+    <%= f.field :number, container: :div, class: 'pull-left full-width', error: true do %>
+      <%= f.label :number, t('.field.number.label') %>
+      <%= f.text_field :number, class: 'margin-bottom pull-left margin-right' %>
+    <% end %>
+    <%= f.field :routing_number, container: :div, class: 'pull-left full-width', error: true do %>
+      <%= f.label :routing_number, t('.field.routing_number.label') %>
+      <%= f.text_field :routing_number, class: 'pull-left margin-right' %>
+    <% end %>
+    <%= image_tag 'misc/check.jpg', class: 'margin-top margin-bottom' %>
+    <%= f.field :default, container: :div, class: 'pull-left full-width' do %>
+      <%= f.check_box :default %>
+      <%= f.label :default, t('.field.default.label'), class: 'checkbox margin-bottom' %>
+    <% end %>
+    <%= f.buttons save_text: t('.button.save'), class: 'span4 kill-margin-left primary large' %>
+  <% end %>
+</div>

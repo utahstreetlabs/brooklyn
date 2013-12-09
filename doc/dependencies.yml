@@ -1,0 +1,2520 @@
+---
+- name: "SyslogLogger"
+  version: "2.0"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/SyslogLogger-2.0/README.txt"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/SyslogLogger-2.0/README.txt"
+- name: "actionmailer"
+  version: "3.1.12"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/actionmailer-3.1.12/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/actionmailer-3.1.12/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/actionmailer-3.1.12/README.rdoc"
+- name: "actionpack"
+  version: "3.1.12"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/actionpack-3.1.12/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/actionpack-3.1.12/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/actionpack-3.1.12/README.rdoc"
+- name: "active_shipping"
+  version: "0.9.13.6.copious"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/active_shipping-0.9.13.6.copious/lib/vendor/quantified/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/active_shipping-0.9.13.6.copious/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/active_shipping-0.9.13.6.copious/lib/vendor/quantified/README.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/active_shipping-0.9.13.6.copious/lib/vendor/xml_node/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/active_shipping-0.9.13.6.copious/README.markdown"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/active_shipping-0.9.13.6.copious/lib/vendor/quantified/README.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/active_shipping-0.9.13.6.copious/lib/vendor/xml_node/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/active_shipping-0.9.13.6.copious/README.markdown"
+- name: "active_utils"
+  version: "1.0.1"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/active_utils-1.0.1/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/active_utils-1.0.1/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/active_utils-1.0.1/README.md"
+- name: "activemerchant"
+  version: "1.20.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/activemerchant-1.20.0/MIT-LICENSE"
+  readme_files:
+- name: "activemodel"
+  version: "3.1.12"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/activemodel-3.1.12/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/activemodel-3.1.12/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/activemodel-3.1.12/README.rdoc"
+- name: "activerecord"
+  version: "3.1.12"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/activerecord-3.1.12/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/activerecord-3.1.12/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/activerecord-3.1.12/README.rdoc"
+- name: "activeresource"
+  version: "3.1.12"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/activeresource-3.1.12/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/activeresource-3.1.12/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/activeresource-3.1.12/README.rdoc"
+- name: "activesupport"
+  version: "3.1.12"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/activesupport-3.1.12/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/activesupport-3.1.12/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/activesupport-3.1.12/README.rdoc"
+- name: "activevalidators"
+  version: "1.9.0.3.copious"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/activevalidators-1.9.0.3.copious/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/activevalidators-1.9.0.3.copious/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/activevalidators-1.9.0.3.copious/README.md"
+- name: "acts_as_list"
+  version: "0.1.8"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/acts_as_list-0.1.8/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/acts_as_list-0.1.8/README.md"
+- name: "addressable"
+  version: "2.2.8"
+  license: "Apache 2.0"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/addressable-2.2.8/LICENSE.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/addressable-2.2.8/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/addressable-2.2.8/README.md"
+- name: "airbrake"
+  version: "3.1.2"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/airbrake-3.1.2/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/airbrake-3.1.2/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/airbrake-3.1.2/README_FOR_HEROKU_ADDON.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/airbrake-3.1.2/resources/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/airbrake-3.1.2/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/airbrake-3.1.2/README_FOR_HEROKU_ADDON.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/airbrake-3.1.2/resources/README.md"
+- name: "akami"
+  version: "1.2.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/akami-1.2.0/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/akami-1.2.0/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/akami-1.2.0/README.md"
+- name: "anchor"
+  version: "1.4.0"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+- name: "arel"
+  version: "2.2.3"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/arel-2.2.3/MIT-LICENSE.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/arel-2.2.3/README.markdown"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/arel-2.2.3/README.markdown"
+- name: "asset_sync"
+  version: "0.5.0"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/asset_sync-0.5.0/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/asset_sync-0.5.0/README.md"
+- name: "attr_required"
+  version: "0.0.5"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/attr_required-0.0.5/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/attr_required-0.0.5/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/attr_required-0.0.5/README.rdoc"
+- name: "attribute_normalizer"
+  version: "1.1.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/attribute_normalizer-1.1.0/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/attribute_normalizer-1.1.0/README.textile"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/attribute_normalizer-1.1.0/README.textile"
+- name: "awesome_print"
+  version: "1.1.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/awesome_print-1.1.0/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/awesome_print-1.1.0/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/awesome_print-1.1.0/README.md"
+- name: "backbone-rails"
+  version: "0.9.2"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/backbone-rails-0.9.2/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/backbone-rails-0.9.2/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/backbone-rails-0.9.2/README.md"
+- name: "balanced"
+  version: "0.3.11.copious.1"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/balanced-0.3.11.copious.1/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/balanced-0.3.11.copious.1/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/balanced-0.3.11.copious.1/README.md"
+- name: "bartt-ssl_requirement"
+  version: "1.3.1"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/bartt-ssl_requirement-1.3.1/README"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/bartt-ssl_requirement-1.3.1/README"
+- name: "bcrypt-ruby"
+  version: "3.0.1"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/bcrypt-ruby-3.0.1/COPYING"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/bcrypt-ruby-3.0.1/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/bcrypt-ruby-3.0.1/README.md"
+- name: "bootstrap-datepicker-rails"
+  version: "0.6.16"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/bootstrap-datepicker-rails-0.6.16/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/bootstrap-datepicker-rails-0.6.16/README.md"
+- name: "bootstrap-sass"
+  version: "2.3.0.0"
+  license: "Apache 2.0"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/bootstrap-sass-2.3.0.0/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/bootstrap-sass-2.3.0.0/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/bootstrap-sass-2.3.0.0/README.md"
+- name: "bootstrap-slider-rails"
+  version: "2.0.0.1"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/bootstrap-slider-rails-2.0.0.1/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/bootstrap-slider-rails-2.0.0.1/README.md"
+- name: "braintree"
+  version: "2.13.1"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/braintree-2.13.1/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/braintree-2.13.1/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/braintree-2.13.1/README.rdoc"
+- name: "bson"
+  version: "1.6.1"
+  license: "Apache 2.0"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/bson-1.6.1/LICENSE.txt"
+  readme_files:
+- name: "bson_ext"
+  version: "1.6.1"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+- name: "builder"
+  version: "3.0.4"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/builder-3.0.4/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/builder-3.0.4/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/builder-3.0.4/README.rdoc"
+- name: "bundler"
+  version: "1.2.4"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/bundler-1.2.4/lib/bundler/templates/newgem/LICENSE.txt.tt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/bundler-1.2.4/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/bundler-1.2.4/lib/bundler/templates/newgem/README.md.tt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/bundler-1.2.4/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/bundler-1.2.4/lib/bundler/templates/newgem/README.md.tt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/bundler-1.2.4/README.md"
+- name: "cancan"
+  version: "1.6.7"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/cancan-1.6.7/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/cancan-1.6.7/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/cancan-1.6.7/spec/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/cancan-1.6.7/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/cancan-1.6.7/spec/README.rdoc"
+- name: "capybara"
+  version: "2.0.2"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/capybara-2.0.2/License.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/capybara-2.0.2/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/capybara-2.0.2/README.md"
+- name: "carmen"
+  version: "1.0.0.beta2"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/carmen-1.0.0.beta2/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/carmen-1.0.0.beta2/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/carmen-1.0.0.beta2/README.md"
+- name: "carmen-rails"
+  version: "1.0.0.beta3"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/carmen-rails-1.0.0.beta3/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/carmen-rails-1.0.0.beta3/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/carmen-rails-1.0.0.beta3/README.md"
+- name: "carrierwave"
+  version: "0.5.8.copious.2"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/carrierwave-0.5.8.copious.2/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/carrierwave-0.5.8.copious.2/README.md"
+- name: "chai-jquery-rails"
+  version: "0.0.3"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/chai-jquery-rails-0.0.3/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/chai-jquery-rails-0.0.3/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/chai-jquery-rails-0.0.3/README.md"
+- name: "childprocess"
+  version: "0.3.9"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/childprocess-0.3.9/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/childprocess-0.3.9/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/childprocess-0.3.9/README.md"
+- name: "chromedriver-helper"
+  version: "0.0.2"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/chromedriver-helper-0.0.2/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/chromedriver-helper-0.0.2/README.md"
+- name: "coffee-rails"
+  version: "3.1.1"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/coffee-rails-3.1.1/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/coffee-rails-3.1.1/README.markdown"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/coffee-rails-3.1.1/README.markdown"
+- name: "coffee-script"
+  version: "2.2.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/coffee-script-2.2.0/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/coffee-script-2.2.0/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/coffee-script-2.2.0/README.md"
+- name: "coffee-script-source"
+  version: "1.2.0"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+- name: "colorize"
+  version: "0.5.8"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/colorize-0.5.8/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/colorize-0.5.8/README.rdoc"
+- name: "crack"
+  version: "0.3.2"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/crack-0.3.2/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/crack-0.3.2/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/crack-0.3.2/README.rdoc"
+- name: "database_cleaner"
+  version: "0.7.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/database_cleaner-0.7.0/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/database_cleaner-0.7.0/README.textile"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/database_cleaner-0.7.0/README.textile"
+- name: "date_validator"
+  version: "0.6.3"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/date_validator-0.6.3/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/date_validator-0.6.3/Readme.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/date_validator-0.6.3/Readme.md"
+- name: "diff-lcs"
+  version: "1.1.3"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/diff-lcs-1.1.3/License.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/diff-lcs-1.1.3/docs/COPYING.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/diff-lcs-1.1.3/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/diff-lcs-1.1.3/README.rdoc"
+- name: "erubis"
+  version: "2.7.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/erubis-2.7.0/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/erubis-2.7.0/doc-api/files/README_txt.html"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/erubis-2.7.0/README.txt"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/erubis-2.7.0/doc-api/files/README_txt.html"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/erubis-2.7.0/README.txt"
+- name: "escape"
+  version: "0.0.4"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/escape-0.0.4/Readme"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/escape-0.0.4/Readme"
+- name: "excon"
+  version: "0.16.7"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/excon-0.16.7/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/excon-0.16.7/README.md"
+- name: "execjs"
+  version: "1.2.13"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/execjs-1.2.13/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/execjs-1.2.13/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/execjs-1.2.13/README.md"
+- name: "factory_girl"
+  version: "2.3.2"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/factory_girl-2.3.2/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/factory_girl-2.3.2/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/factory_girl-2.3.2/README.md"
+- name: "factory_girl_rails"
+  version: "1.4.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/factory_girl_rails-1.4.0/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/factory_girl_rails-1.4.0/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/factory_girl_rails-1.4.0/README.md"
+- name: "faraday"
+  version: "0.8.4"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/faraday-0.8.4/LICENSE.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/faraday-0.8.4/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/faraday-0.8.4/README.md"
+- name: "faraday_middleware"
+  version: "0.9.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/faraday_middleware-0.9.0/LICENSE.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/faraday_middleware-0.9.0/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/faraday_middleware-0.9.0/README.md"
+- name: "fattr"
+  version: "2.2.0"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/fattr-2.2.0/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/fattr-2.2.0/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/fattr-2.2.0/README.erb"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/fattr-2.2.0/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/fattr-2.2.0/README.erb"
+- name: "ffi"
+  version: "1.6.0"
+  license: "LGPL-3"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/ffi-1.6.0/ext/ffi_c/libffi/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/ffi-1.6.0/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/ffi-1.6.0/COPYING"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/ffi-1.6.0/COPYING.LESSER"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/ffi-1.6.0/ext/ffi_c/libffi/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/ffi-1.6.0/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/ffi-1.6.0/ext/ffi_c/libffi/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/ffi-1.6.0/README.md"
+- name: "flyingdog"
+  version: "3.0.0"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+- name: "fog"
+  version: "1.7.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/fog-1.7.0/lib/fog/hp/README_HP.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/fog-1.7.0/lib/fog/libvirt/models/compute/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/fog-1.7.0/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/fog-1.7.0/tests/xenserver/README"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/fog-1.7.0/lib/fog/hp/README_HP.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/fog-1.7.0/lib/fog/libvirt/models/compute/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/fog-1.7.0/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/fog-1.7.0/tests/xenserver/README"
+- name: "foreigner"
+  version: "1.2.1"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/foreigner-1.2.1/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/foreigner-1.2.1/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/foreigner-1.2.1/README.rdoc"
+- name: "formatador"
+  version: "0.2.4"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/formatador-0.2.4/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/formatador-0.2.4/README.rdoc"
+- name: "ga_cookie_parser"
+  version: "0.1.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/ga_cookie_parser-0.1.0/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/ga_cookie_parser-0.1.0/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/ga_cookie_parser-0.1.0/README.rdoc"
+- name: "growl"
+  version: "1.0.3"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/growl-1.0.3/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/growl-1.0.3/README.rdoc"
+- name: "growl-rspec"
+  version: "0.0.1"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/growl-rspec-0.0.1/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/growl-rspec-0.0.1/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/growl-rspec-0.0.1/README.md"
+- name: "guard"
+  version: "0.8.8"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/guard-0.8.8/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/guard-0.8.8/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/guard-0.8.8/README.md"
+- name: "guard-rspec"
+  version: "0.5.8"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/guard-rspec-0.5.8/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/guard-rspec-0.5.8/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/guard-rspec-0.5.8/README.md"
+- name: "gyoku"
+  version: "0.4.6"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/gyoku-0.4.6/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/gyoku-0.4.6/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/gyoku-0.4.6/README.md"
+- name: "handlebars_assets"
+  version: "0.4.4"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/handlebars_assets-0.4.4/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/handlebars_assets-0.4.4/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/handlebars_assets-0.4.4/README.md"
+- name: "hashie"
+  version: "1.2.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/hashie-1.2.0/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/hashie-1.2.0/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/hashie-1.2.0/README.rdoc"
+- name: "highline"
+  version: "1.6.8"
+  license: "ruby"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/highline-1.6.8/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/highline-1.6.8/README"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/highline-1.6.8/README"
+- name: "hike"
+  version: "1.2.1"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/hike-1.2.1/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/hike-1.2.1/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/hike-1.2.1/README.md"
+- name: "httmultiparty"
+  version: "0.3.10"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/httmultiparty-0.3.10/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/httmultiparty-0.3.10/README.md"
+- name: "httparty"
+  version: "0.10.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/httparty-0.10.0/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/httparty-0.10.0/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/httparty-0.10.0/README.md"
+- name: "httpclient"
+  version: "2.2.5"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/httpclient-2.2.5/README.txt"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/httpclient-2.2.5/README.txt"
+- name: "httpi"
+  version: "1.1.1"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/httpi-1.1.1/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/httpi-1.1.1/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/httpi-1.1.1/README.md"
+- name: "i18n"
+  version: "0.6.4"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/i18n-0.6.4/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/i18n-0.6.4/README.textile"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/i18n-0.6.4/README.textile"
+- name: "instagram"
+  version: "0.8.5.copious"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/instagram-0.8.5.copious/LICENSE.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/instagram-0.8.5.copious/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/instagram-0.8.5.copious/README.md"
+- name: "jquery-rails"
+  version: "1.0.19"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/jquery-rails-1.0.19/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/jquery-rails-1.0.19/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/jquery-rails-1.0.19/README.md"
+- name: "jsend-rails"
+  version: "1.0.0"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/jsend-rails-1.0.0/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/jsend-rails-1.0.0/README.md"
+- name: "json"
+  version: "1.7.7"
+  license: "Ruby"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/json-1.7.7/COPYING"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/json-1.7.7/COPYING-json-jruby"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/json-1.7.7/README-json-jruby.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/json-1.7.7/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/json-1.7.7/README-json-jruby.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/json-1.7.7/README.rdoc"
+- name: "json_pure"
+  version: "1.6.3"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/json_pure-1.6.3/COPYING"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/json_pure-1.6.3/COPYING-json-jruby"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/json_pure-1.6.3/README-json-jruby.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/json_pure-1.6.3/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/json_pure-1.6.3/README-json-jruby.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/json_pure-1.6.3/README.rdoc"
+- name: "kaminari"
+  version: "0.13.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/kaminari-0.13.0/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/kaminari-0.13.0/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/kaminari-0.13.0/README.rdoc"
+- name: "konacha"
+  version: "2.3.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/konacha-2.3.0/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/konacha-2.3.0/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/konacha-2.3.0/README.md"
+- name: "ladon"
+  version: "4.2.0"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/ladon-4.2.0/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/ladon-4.2.0/README.md"
+- name: "lagunitas"
+  version: "2.7.0"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+- name: "launchy"
+  version: "2.0.5"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/launchy-2.0.5/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/launchy-2.0.5/README"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/launchy-2.0.5/README"
+- name: "libv8"
+  version: "3.3.10.4"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+- name: "license_finder"
+  version: "0.3.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/APACHE-2-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/apache_licensed_gem/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/gplv2_licensed_gem/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/license_directory/LICENSE/BSD-2-Clause.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/license_directory/LICENSE/GPL-2.0.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/license_directory/LICENSE/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/license_directory/LICENSE/MIT.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/license_directory/LICENSE/RUBY.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/license_names/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/MIT-LICENSE-with-varied-disclaimer"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/mit_licensed_gem/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/mit_licensed_with_hashes/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/nested_gem/vendor/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/other_licensed_gem/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/README-with-MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/license_names/Mit-License"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/license_directory/COPYING"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/license_names/COPYING.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/README.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/license_names/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/mit_licensed_gem_in_README/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/mit_licensed_gem_via_url/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/nested_readme/vendor/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/readme/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/utf8_gem/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/readme/Readme.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/readme/Project ReadMe"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/README.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/license_names/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/mit_licensed_gem_in_README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/mit_licensed_gem_in_README/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/mit_licensed_gem_via_url/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/nested_readme/vendor/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/readme/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/README-with-MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/utf8_gem/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/readme/Readme.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/bundler/gems/LicenseFinder-8fbb501b7c2a/spec/fixtures/readme/Project ReadMe"
+- name: "log_weasel"
+  version: "0.1.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/log_weasel-0.1.0/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/log_weasel-0.1.0/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/log_weasel-0.1.0/README.md"
+- name: "mail"
+  version: "2.4.4"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/mail-2.4.4/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/mail-2.4.4/README.md"
+- name: "metaclass"
+  version: "0.0.1"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/metaclass-0.0.1/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/metaclass-0.0.1/README.md"
+- name: "mime-types"
+  version: "1.21"
+  license: "GPLv2"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/mime-types-1.21/docs/COPYING.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/mime-types-1.21/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/mime-types-1.21/README.rdoc"
+- name: "mocha"
+  version: "0.13.2"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/mocha-0.13.2/MIT-LICENSE.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/mocha-0.13.2/COPYING.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/mocha-0.13.2/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/mocha-0.13.2/README.md"
+- name: "modernizr_rails"
+  version: "2.5.3"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/modernizr_rails-2.5.3/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/modernizr_rails-2.5.3/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/modernizr_rails-2.5.3/README.md"
+- name: "mogli"
+  version: "0.0.44"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+- name: "money"
+  version: "3.7.1"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/money-3.7.1/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/money-3.7.1/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/money-3.7.1/README.md"
+- name: "mongo"
+  version: "1.6.1"
+  license: "Apache 2.0"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/mongo-1.6.1/LICENSE.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/mongo-1.6.1/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/mongo-1.6.1/README.md"
+- name: "multi_json"
+  version: "1.0.4"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/multi_json-1.0.4/LICENSE.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/multi_json-1.0.4/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/multi_json-1.0.4/README.md"
+- name: "multi_xml"
+  version: "0.5.2"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/multi_xml-0.5.2/LICENSE.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/multi_xml-0.5.2/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/multi_xml-0.5.2/README.md"
+- name: "multipart-post"
+  version: "1.1.5"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/multipart-post-1.1.5/README.txt"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/multipart-post-1.1.5/README.txt"
+- name: "mysql2"
+  version: "0.3.10"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/mysql2-0.3.10/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/mysql2-0.3.10/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/mysql2-0.3.10/README.md"
+- name: "net-scp"
+  version: "1.0.4"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/net-scp-1.0.4/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/net-scp-1.0.4/README.rdoc"
+- name: "net-ssh"
+  version: "2.6.1"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/net-ssh-2.6.1/LICENSE.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/net-ssh-2.6.1/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/net-ssh-2.6.1/test/README.txt"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/net-ssh-2.6.1/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/net-ssh-2.6.1/test/README.txt"
+- name: "nokogiri"
+  version: "1.5.6"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/nokogiri-1.5.6/README.ja.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/nokogiri-1.5.6/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/nokogiri-1.5.6/README.ja.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/nokogiri-1.5.6/README.rdoc"
+- name: "nori"
+  version: "1.1.3"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/nori-1.1.3/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/nori-1.1.3/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/nori-1.1.3/README.md"
+- name: "oauth"
+  version: "0.4.5"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/oauth-0.4.5/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/oauth-0.4.5/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/oauth-0.4.5/README.rdoc"
+- name: "oauth2"
+  version: "0.5.2"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/oauth2-0.5.2/LICENSE.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/oauth2-0.5.2/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/oauth2-0.5.2/README.md"
+- name: "omniauth"
+  version: "1.0.3"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/omniauth-1.0.3/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/omniauth-1.0.3/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/omniauth-1.0.3/README.md"
+- name: "omniauth-facebook"
+  version: "1.2.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/omniauth-facebook-1.2.0/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/omniauth-facebook-1.2.0/README.md"
+- name: "omniauth-instagram"
+  version: "1.0.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/omniauth-instagram-1.0.0/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/omniauth-instagram-1.0.0/README.md"
+- name: "omniauth-oauth"
+  version: "1.0.1"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/omniauth-oauth-1.0.1/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/omniauth-oauth-1.0.1/README.md"
+- name: "omniauth-oauth2"
+  version: "1.0.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/omniauth-oauth2-1.0.0/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/omniauth-oauth2-1.0.0/README.md"
+- name: "omniauth-tumblr"
+  version: "1.1"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/omniauth-tumblr-1.1/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/omniauth-tumblr-1.1/README.md"
+- name: "omniauth-twitter"
+  version: "0.0.9"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/omniauth-twitter-0.0.9/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/omniauth-twitter-0.0.9/README.md"
+- name: "options"
+  version: "2.3.0"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/options-2.3.0/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/options-2.3.0/README.erb"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/options-2.3.0/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/options-2.3.0/README.erb"
+- name: "parallel"
+  version: "0.5.11"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/parallel-0.5.11/Readme.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/parallel-0.5.11/Readme.md"
+- name: "parallel_tests"
+  version: "0.6.16"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/parallel_tests-0.6.16/Readme.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/parallel_tests-0.6.16/Readme.md"
+- name: "polyglot"
+  version: "0.3.3"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/polyglot-0.3.3/License.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/polyglot-0.3.3/README.txt"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/polyglot-0.3.3/README.txt"
+- name: "pr_geohash"
+  version: "1.0.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/pr_geohash-1.0.0/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/pr_geohash-1.0.0/README.rdoc"
+- name: "progress_bar"
+  version: "0.4.0"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/progress_bar-0.4.0/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/progress_bar-0.4.0/README.mkd"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/progress_bar-0.4.0/README.mkd"
+- name: "pyramid"
+  version: "1.6.0"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+- name: "rack"
+  version: "1.3.10"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rack-1.3.10/COPYING"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rack-1.3.10/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rack-1.3.10/README.rdoc"
+- name: "rack-cache"
+  version: "1.2"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rack-cache-1.2/COPYING"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rack-cache-1.2/README"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rack-cache-1.2/README"
+- name: "rack-mount"
+  version: "0.8.3"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rack-mount-0.8.3/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rack-mount-0.8.3/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rack-mount-0.8.3/README.rdoc"
+- name: "rack-multipart_related"
+  version: "0.2.0.copious.1"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rack-multipart_related-0.2.0.copious.1/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rack-multipart_related-0.2.0.copious.1/README.md"
+- name: "rack-oauth2"
+  version: "0.14.4.copious.1"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rack-oauth2-0.14.4.copious.1/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rack-oauth2-0.14.4.copious.1/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rack-oauth2-0.14.4.copious.1/README.rdoc"
+- name: "rack-protection"
+  version: "1.2.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rack-protection-1.2.0/License"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rack-protection-1.2.0/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rack-protection-1.2.0/README.md"
+- name: "rack-ssl"
+  version: "1.3.3"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rack-ssl-1.3.3/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rack-ssl-1.3.3/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rack-ssl-1.3.3/README.md"
+- name: "rack-test"
+  version: "0.6.2"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rack-test-0.6.2/MIT-LICENSE.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rack-test-0.6.2/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rack-test-0.6.2/README.rdoc"
+- name: "rails"
+  version: "3.1.12"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+- name: "rails-dev-tweaks"
+  version: "0.6.1"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rails-dev-tweaks-0.6.1/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rails-dev-tweaks-0.6.1/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rails-dev-tweaks-0.6.1/README.md"
+- name: "railties"
+  version: "3.1.12"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/railties-3.1.12/lib/rails/generators/rails/plugin/templates/MIT-LICENSE.tt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/railties-3.1.12/lib/rails/generators/rails/plugin_new/templates/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/railties-3.1.12/guides/assets/images/icons/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/railties-3.1.12/lib/rails/generators/rails/app/templates/doc/README_FOR_APP"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/railties-3.1.12/lib/rails/generators/rails/app/templates/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/railties-3.1.12/lib/rails/generators/rails/plugin/templates/README.tt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/railties-3.1.12/lib/rails/generators/rails/plugin_new/templates/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/railties-3.1.12/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/railties-3.1.12/guides/assets/images/icons/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/railties-3.1.12/lib/rails/generators/rails/app/templates/doc/README_FOR_APP"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/railties-3.1.12/lib/rails/generators/rails/app/templates/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/railties-3.1.12/lib/rails/generators/rails/plugin/templates/README.tt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/railties-3.1.12/lib/rails/generators/rails/plugin_new/templates/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/railties-3.1.12/README.rdoc"
+- name: "rake"
+  version: "10.0.3"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rake-10.0.3/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rake-10.0.3/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rake-10.0.3/README.rdoc"
+- name: "rb-fsevent"
+  version: "0.9.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rb-fsevent-0.9.0/ext/fsevent_watch/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rb-fsevent-0.9.0/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rb-fsevent-0.9.0/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rb-fsevent-0.9.0/README.rdoc"
+- name: "rcov"
+  version: "0.9.11"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rcov-0.9.11/LICENSE"
+  readme_files:
+- name: "rdoc"
+  version: "3.12.2"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rdoc-3.12.2/LICENSE.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rdoc-3.12.2/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rdoc-3.12.2/test/README"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rdoc-3.12.2/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rdoc-3.12.2/test/README"
+- name: "recaptcha"
+  version: "0.3.4"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/recaptcha-0.3.4/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/recaptcha-0.3.4/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/recaptcha-0.3.4/README.rdoc"
+- name: "redhook"
+  version: "2.0.0"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/redhook-2.0.0/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/redhook-2.0.0/README.md"
+- name: "redis"
+  version: "3.0.2"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/redis-3.0.2/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/redis-3.0.2/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/redis-3.0.2/README.md"
+- name: "redis-namespace"
+  version: "1.2.1"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/redis-namespace-1.2.1/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/redis-namespace-1.2.1/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/redis-namespace-1.2.1/README.md"
+- name: "redis-objects"
+  version: "0.5.2"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/redis-objects-0.5.2/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/redis-objects-0.5.2/README.rdoc"
+- name: "resque"
+  version: "1.23.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-1.23.0/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-1.23.0/README.markdown"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-1.23.0/README.markdown"
+- name: "resque-pool"
+  version: "0.3.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/LICENSE.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/aruba-0.4.11/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/aruba-0.4.11/templates/images/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/childprocess-0.1.7/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/childprocess-0.3.1/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/cucumber-1.1.9/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/ffi-0.6.3/ext/ffi_c/libffi/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/ffi-0.6.3/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/ffi-1.0.11/ext/ffi_c/libffi/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/ffi-1.0.11/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/gherkin-2.3.3/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/gherkin-2.9.0/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/gherkin-2.9.3/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/multi_json-1.1.0/LICENSE.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/multi_json-1.2.0/LICENSE.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/mustache-0.99.4/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rake-0.8.7/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rake-0.9.2.2/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/redis-2.2.2/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/redis-namespace-1.0.3/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/resque-1.20.0/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/sinatra-1.3.2/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/SystemTimer-1.2.2/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/SystemTimer-1.2.3/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/vegas-0.1.11/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/diff-lcs-1.1.3/License.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rack-protection-1.2.0/License"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-2.8.0/License.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-2.9.0/License.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-core-2.8.0/License.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-core-2.9.0/License.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-expectations-2.8.0/License.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-expectations-2.9.0/License.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-expectations-2.9.1/License.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-mocks-2.8.0/License.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-mocks-2.9.0/License.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/diff-lcs-1.1.3/docs/COPYING.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/hpricot-0.8.6/COPYING"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/json-1.4.6/COPYING"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/json-1.6.5/COPYING"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/json-1.6.5/COPYING-json-jruby"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/json-1.6.6/COPYING"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/json-1.6.6/COPYING-json-jruby"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rack-1.4.1/COPYING"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rdiscount-1.6.8/COPYING"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/ronn-0.7.3/COPYING"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/SystemTimer-1.2.2/COPYING"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/SystemTimer-1.2.3/COPYING"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/term-ansicolor-1.0.7/COPYING"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/tilt-1.3.3/COPYING"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/aruba-0.4.11/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/builder-3.0.0/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/builder-3.0.0/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/childprocess-0.1.7/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/childprocess-0.3.1/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/cucumber-1.1.9/examples/i18n/README.textile"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/cucumber-1.1.9/examples/python/README.textile"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/cucumber-1.1.9/examples/ramaze/README.textile"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/cucumber-1.1.9/examples/ruby2python/README.textile"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/cucumber-1.1.9/examples/sinatra/README.textile"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/cucumber-1.1.9/examples/tcl/README.textile"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/cucumber-1.1.9/examples/watir/README.textile"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/cucumber-1.1.9/fixtures/self_test/README.textile"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/cucumber-1.1.9/lib/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/cucumber-1.1.9/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/diff-lcs-1.1.2/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/diff-lcs-1.1.3/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/ffi-0.6.3/ext/ffi_c/libffi/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/ffi-0.6.3/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/ffi-1.0.11/ext/ffi_c/libffi/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/ffi-1.0.11/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/gherkin-2.3.3/lib/gherkin/rb_lexer/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/gherkin-2.3.3/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/gherkin-2.9.0/lib/gherkin/rb_lexer/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/gherkin-2.9.0/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/gherkin-2.9.3/lib/gherkin/rb_lexer/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/gherkin-2.9.3/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/hpricot-0.8.6/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/json-1.4.6/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/json-1.6.5/README-json-jruby.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/json-1.6.5/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/json-1.6.6/README-json-jruby.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/json-1.6.6/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/multi_json-1.1.0/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/multi_json-1.2.0/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/mustache-0.99.4/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rack-1.4.1/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rack-protection-1.2.0/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rake-0.8.7/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rake-0.9.2.2/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rdiscount-1.6.8/README.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/redis-2.2.2/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/redis-namespace-1.0.3/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/resque-1.20.0/README.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/ronn-0.7.3/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-2.8.0/README.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-2.9.0/README.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-core-2.8.0/features/command_line/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-core-2.8.0/features/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-core-2.8.0/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-core-2.9.0/features/command_line/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-core-2.9.0/features/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-core-2.9.0/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-expectations-2.8.0/features/built_in_matchers/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-expectations-2.8.0/features/README.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-expectations-2.8.0/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-expectations-2.9.0/features/built_in_matchers/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-expectations-2.9.0/features/README.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-expectations-2.9.0/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-expectations-2.9.1/features/built_in_matchers/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-expectations-2.9.1/features/README.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-expectations-2.9.1/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-mocks-2.8.0/features/argument_matchers/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-mocks-2.8.0/features/message_expectations/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-mocks-2.8.0/features/method_stubs/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-mocks-2.8.0/features/README.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-mocks-2.8.0/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-mocks-2.9.0/features/argument_matchers/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-mocks-2.9.0/features/message_expectations/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-mocks-2.9.0/features/method_stubs/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-mocks-2.9.0/features/README.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-mocks-2.9.0/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/sinatra-1.3.2/README.de.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/sinatra-1.3.2/README.es.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/sinatra-1.3.2/README.fr.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/sinatra-1.3.2/README.hu.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/sinatra-1.3.2/README.jp.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/sinatra-1.3.2/README.pt-br.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/sinatra-1.3.2/README.pt-pt.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/sinatra-1.3.2/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/sinatra-1.3.2/README.ru.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/sinatra-1.3.2/README.zh.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/SystemTimer-1.2.2/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/SystemTimer-1.2.3/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/term-ansicolor-1.0.7/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/tilt-1.3.3/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/trollop-1.16.2/README.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/vegas-0.1.11/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/aruba-0.4.11/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/builder-3.0.0/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/builder-3.0.0/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/childprocess-0.1.7/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/childprocess-0.3.1/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/cucumber-1.1.9/examples/i18n/README.textile"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/cucumber-1.1.9/examples/python/README.textile"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/cucumber-1.1.9/examples/ramaze/README.textile"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/cucumber-1.1.9/examples/ruby2python/README.textile"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/cucumber-1.1.9/examples/sinatra/README.textile"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/cucumber-1.1.9/examples/tcl/README.textile"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/cucumber-1.1.9/examples/watir/README.textile"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/cucumber-1.1.9/fixtures/self_test/README.textile"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/cucumber-1.1.9/lib/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/cucumber-1.1.9/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/diff-lcs-1.1.2/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/diff-lcs-1.1.3/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/ffi-0.6.3/ext/ffi_c/libffi/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/ffi-0.6.3/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/ffi-1.0.11/ext/ffi_c/libffi/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/ffi-1.0.11/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/gherkin-2.3.3/lib/gherkin/rb_lexer/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/gherkin-2.3.3/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/gherkin-2.9.0/lib/gherkin/rb_lexer/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/gherkin-2.9.0/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/gherkin-2.9.3/lib/gherkin/rb_lexer/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/gherkin-2.9.3/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/hpricot-0.8.6/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/json-1.4.6/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/json-1.6.5/README-json-jruby.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/json-1.6.5/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/json-1.6.6/README-json-jruby.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/json-1.6.6/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/multi_json-1.1.0/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/multi_json-1.2.0/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/mustache-0.99.4/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rack-1.4.1/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rack-protection-1.2.0/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rake-0.8.7/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rake-0.9.2.2/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rdiscount-1.6.8/README.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/redis-2.2.2/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/redis-namespace-1.0.3/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/resque-1.20.0/README.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/ronn-0.7.3/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-2.8.0/README.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-2.9.0/README.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-core-2.8.0/features/command_line/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-core-2.8.0/features/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-core-2.8.0/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-core-2.9.0/features/command_line/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-core-2.9.0/features/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-core-2.9.0/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-expectations-2.8.0/features/built_in_matchers/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-expectations-2.8.0/features/README.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-expectations-2.8.0/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-expectations-2.9.0/features/built_in_matchers/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-expectations-2.9.0/features/README.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-expectations-2.9.0/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-expectations-2.9.1/features/built_in_matchers/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-expectations-2.9.1/features/README.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-expectations-2.9.1/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-mocks-2.8.0/features/argument_matchers/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-mocks-2.8.0/features/message_expectations/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-mocks-2.8.0/features/method_stubs/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-mocks-2.8.0/features/README.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-mocks-2.8.0/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-mocks-2.9.0/features/argument_matchers/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-mocks-2.9.0/features/message_expectations/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-mocks-2.9.0/features/method_stubs/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-mocks-2.9.0/features/README.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/rspec-mocks-2.9.0/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/sinatra-1.3.2/README.de.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/sinatra-1.3.2/README.es.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/sinatra-1.3.2/README.fr.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/sinatra-1.3.2/README.hu.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/sinatra-1.3.2/README.jp.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/sinatra-1.3.2/README.pt-br.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/sinatra-1.3.2/README.pt-pt.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/sinatra-1.3.2/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/sinatra-1.3.2/README.ru.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/sinatra-1.3.2/README.zh.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/SystemTimer-1.2.2/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/SystemTimer-1.2.3/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/term-ansicolor-1.0.7/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/tilt-1.3.3/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/trollop-1.16.2/README.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-pool-0.3.0/vendor/bundle/ruby/1.8/gems/vegas-0.1.11/README.rdoc"
+- name: "resque-retry"
+  version: "0.2.2"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-retry-0.2.2/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-retry-0.2.2/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-retry-0.2.2/README.md"
+- name: "resque-scheduler"
+  version: "1.9.9"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-scheduler-1.9.9/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-scheduler-1.9.9/README.markdown"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-scheduler-1.9.9/README.markdown"
+- name: "resque-unique-job"
+  version: "0.0.1"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-unique-job-0.0.1/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-unique-job-0.0.1/README.markdown"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-unique-job-0.0.1/README.markdown"
+- name: "risingtide"
+  version: "0.6.0"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+- name: "rmagick"
+  version: "2.13.2"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rmagick-2.13.2/README-Mac-OSX.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rmagick-2.13.2/README.html"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rmagick-2.13.2/README-Mac-OSX.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rmagick-2.13.2/README.html"
+- name: "rpx_now"
+  version: "0.6.24"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rpx_now-0.6.24/Readme.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rpx_now-0.6.24/Readme.md"
+- name: "rsolr"
+  version: "1.0.6"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rsolr-1.0.6/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rsolr-1.0.6/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rsolr-1.0.6/README.rdoc"
+- name: "rspec"
+  version: "2.12.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-2.12.0/License.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-2.12.0/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-2.12.0/README.md"
+- name: "rspec-core"
+  version: "2.12.2"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-core-2.12.2/License.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-core-2.12.2/features/command_line/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-core-2.12.2/features/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-core-2.12.2/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-core-2.12.2/features/command_line/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-core-2.12.2/features/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-core-2.12.2/README.md"
+- name: "rspec-expectations"
+  version: "2.12.1"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-expectations-2.12.1/License.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-expectations-2.12.1/features/built_in_matchers/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-expectations-2.12.1/features/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-expectations-2.12.1/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-expectations-2.12.1/features/built_in_matchers/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-expectations-2.12.1/features/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-expectations-2.12.1/README.md"
+- name: "rspec-mocks"
+  version: "2.12.2"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-mocks-2.12.2/License.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-mocks-2.12.2/features/argument_matchers/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-mocks-2.12.2/features/message_expectations/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-mocks-2.12.2/features/method_stubs/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-mocks-2.12.2/features/mutating_constants/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-mocks-2.12.2/features/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-mocks-2.12.2/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-mocks-2.12.2/features/argument_matchers/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-mocks-2.12.2/features/message_expectations/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-mocks-2.12.2/features/method_stubs/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-mocks-2.12.2/features/mutating_constants/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-mocks-2.12.2/features/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-mocks-2.12.2/README.md"
+- name: "rspec-rails"
+  version: "2.12.2"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-rails-2.12.2/License.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-rails-2.12.2/features/controller_specs/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-rails-2.12.2/features/matchers/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-rails-2.12.2/features/model_specs/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-rails-2.12.2/features/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-rails-2.12.2/features/routing_specs/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-rails-2.12.2/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-rails-2.12.2/features/controller_specs/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-rails-2.12.2/features/matchers/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-rails-2.12.2/features/model_specs/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-rails-2.12.2/features/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-rails-2.12.2/features/routing_specs/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rspec-rails-2.12.2/README.md"
+- name: "rubicon"
+  version: "2.0.0"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+- name: "ruby-graphviz"
+  version: "1.0.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/ruby-graphviz-1.0.0/COPYING"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/ruby-graphviz-1.0.0/examples/sdlshapes/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/ruby-graphviz-1.0.0/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/ruby-graphviz-1.0.0/examples/sdlshapes/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/ruby-graphviz-1.0.0/README.rdoc"
+- name: "ruby-hmac"
+  version: "0.4.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/ruby-hmac-0.4.0/README.txt"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/ruby-hmac-0.4.0/README.txt"
+- name: "rubyzip"
+  version: "0.9.9"
+  license: "ruby"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rubyzip-0.9.9/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rubyzip-0.9.9/README.md"
+- name: "rufus-scheduler"
+  version: "2.0.16"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rufus-scheduler-2.0.16/LICENSE.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rufus-scheduler-2.0.16/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rufus-scheduler-2.0.16/README.rdoc"
+- name: "sass"
+  version: "3.2.5"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sass-3.2.5/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sass-3.2.5/vendor/listen/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sass-3.2.5/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sass-3.2.5/vendor/listen/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sass-3.2.5/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sass-3.2.5/vendor/listen/README.md"
+- name: "sass-rails"
+  version: "3.1.7"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sass-rails-3.1.7/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sass-rails-3.1.7/README.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sass-rails-3.1.7/test/fixtures/engine_project/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sass-rails-3.1.7/test/fixtures/sass_project/doc/README_FOR_APP"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sass-rails-3.1.7/test/fixtures/sass_project/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sass-rails-3.1.7/test/fixtures/scss_project/doc/README_FOR_APP"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sass-rails-3.1.7/test/fixtures/scss_project/README"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sass-rails-3.1.7/README.markdown"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sass-rails-3.1.7/test/fixtures/engine_project/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sass-rails-3.1.7/test/fixtures/sass_project/doc/README_FOR_APP"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sass-rails-3.1.7/test/fixtures/sass_project/README"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sass-rails-3.1.7/test/fixtures/scss_project/doc/README_FOR_APP"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sass-rails-3.1.7/test/fixtures/scss_project/README"
+- name: "savon"
+  version: "1.1.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/savon-1.1.0/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/savon-1.1.0/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/savon-1.1.0/README.md"
+- name: "seed-fu"
+  version: "2.1.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/seed-fu-2.1.0/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/seed-fu-2.1.0/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/seed-fu-2.1.0/README.md"
+- name: "selenium-webdriver"
+  version: "2.31.0"
+  license: "Apache 2.0"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/selenium-webdriver-2.31.0/COPYING"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/selenium-webdriver-2.31.0/README"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/selenium-webdriver-2.31.0/README"
+- name: "sendgrid"
+  version: "1.0.1"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sendgrid-1.0.1/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sendgrid-1.0.1/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sendgrid-1.0.1/README.md"
+- name: "session_off"
+  version: "0.4"
+  license: "Apache 2.0"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/session_off-0.4/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/session_off-0.4/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/session_off-0.4/README.md"
+- name: "simple_oauth"
+  version: "0.2.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/simple_oauth-0.2.0/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/simple_oauth-0.2.0/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/simple_oauth-0.2.0/README.md"
+- name: "sinatra"
+  version: "1.3.3"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sinatra-1.3.3/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sinatra-1.3.3/README.de.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sinatra-1.3.3/README.es.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sinatra-1.3.3/README.fr.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sinatra-1.3.3/README.hu.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sinatra-1.3.3/README.jp.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sinatra-1.3.3/README.ko.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sinatra-1.3.3/README.pt-br.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sinatra-1.3.3/README.pt-pt.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sinatra-1.3.3/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sinatra-1.3.3/README.ru.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sinatra-1.3.3/README.zh.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sinatra-1.3.3/README.de.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sinatra-1.3.3/README.es.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sinatra-1.3.3/README.fr.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sinatra-1.3.3/README.hu.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sinatra-1.3.3/README.jp.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sinatra-1.3.3/README.ko.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sinatra-1.3.3/README.pt-br.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sinatra-1.3.3/README.pt-pt.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sinatra-1.3.3/README.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sinatra-1.3.3/README.ru.rdoc"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sinatra-1.3.3/README.zh.rdoc"
+- name: "sinon-chai-rails"
+  version: "1.0.3"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sinon-chai-rails-1.0.3/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sinon-chai-rails-1.0.3/README.md"
+- name: "sinon-rails"
+  version: "1.4.2.1"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sinon-rails-1.4.2.1/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sinon-rails-1.4.2.1/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sinon-rails-1.4.2.1/README.md"
+- name: "spork"
+  version: "0.9.0.rc9"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/spork-0.9.0.rc9/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/spork-0.9.0.rc9/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/spork-0.9.0.rc9/README.rdoc"
+- name: "sprockets"
+  version: "2.0.4"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sprockets-2.0.4/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sprockets-2.0.4/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sprockets-2.0.4/README.md"
+- name: "stamps"
+  version: "0.2.0.copious.7"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/stamps-0.2.0.copious.7/LICENSE.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/stamps-0.2.0.copious.7/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/stamps-0.2.0.copious.7/README.md"
+- name: "state_machine"
+  version: "1.1.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/state_machine-1.1.0/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/state_machine-1.1.0/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/state_machine-1.1.0/README.md"
+- name: "sunspot"
+  version: "1.3.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sunspot-1.3.0/LICENSE"
+  readme_files:
+- name: "sunspot_rails"
+  version: "1.3.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sunspot_rails-1.3.0/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sunspot_rails-1.3.0/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sunspot_rails-1.3.0/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sunspot_rails-1.3.0/README.rdoc"
+- name: "therubyracer"
+  version: "0.9.9"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/therubyracer-0.9.9/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/therubyracer-0.9.9/spec/redjs/README.txt"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/therubyracer-0.9.9/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/therubyracer-0.9.9/spec/redjs/README.txt"
+- name: "thor"
+  version: "0.14.6"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/thor-0.14.6/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/thor-0.14.6/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/thor-0.14.6/spec/fixtures/doc/README"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/thor-0.14.6/README.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/thor-0.14.6/spec/fixtures/doc/README"
+- name: "thrift"
+  version: "0.9.0"
+  license: "Apache 2.0"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/thrift-0.9.0/README"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/thrift-0.9.0/README"
+- name: "thrift_client"
+  version: "0.9.0"
+  license: "Apache 2.0"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  readme_files:
+- name: "tilt"
+  version: "1.3.6"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/tilt-1.3.6/COPYING"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/tilt-1.3.6/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/tilt-1.3.6/README.md"
+- name: "timecop"
+  version: "0.3.5"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/timecop-0.3.5/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/timecop-0.3.5/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/timecop-0.3.5/README.rdoc"
+- name: "treetop"
+  version: "1.4.12"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/treetop-1.4.12/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/treetop-1.4.12/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/treetop-1.4.12/README.md"
+- name: "trollop"
+  version: "1.16.2"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/trollop-1.16.2/README.txt"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/trollop-1.16.2/README.txt"
+- name: "tumblife"
+  version: "0.3.1"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/tumblife-0.3.1/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/tumblife-0.3.1/README.rdoc"
+- name: "twitter"
+  version: "2.2.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/twitter-2.2.0/LICENSE.md"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/twitter-2.2.0/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/twitter-2.2.0/README.md"
+- name: "typhoeus"
+  version: "0.2.4.2.copious"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/typhoeus-0.2.4.2.copious/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/typhoeus-0.2.4.2.copious/README.textile"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/typhoeus-0.2.4.2.copious/README.textile"
+- name: "tzinfo"
+  version: "0.3.37"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/tzinfo-0.3.37/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/tzinfo-0.3.37/README"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/tzinfo-0.3.37/README"
+- name: "uglifier"
+  version: "1.2.1"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/uglifier-1.2.1/LICENSE.txt"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/uglifier-1.2.1/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/uglifier-1.2.1/README.rdoc"
+- name: "useragent"
+  version: "0.4.10"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/useragent-0.4.10/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/useragent-0.4.10/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/useragent-0.4.10/README.rdoc"
+- name: "vanity"
+  version: "1.8.0.copious.1"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/vanity-1.8.0.copious.1/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/vanity-1.8.0.copious.1/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/vanity-1.8.0.copious.1/README.rdoc"
+- name: "vegas"
+  version: "0.1.11"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/vegas-0.1.11/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/vegas-0.1.11/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/vegas-0.1.11/README.rdoc"
+- name: "viva-app_config"
+  version: "1.2.0"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/viva-app_config-1.2.0/README.rdoc"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/viva-app_config-1.2.0/README.rdoc"
+- name: "wasabi"
+  version: "2.5.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/wasabi-2.5.0/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/wasabi-2.5.0/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/wasabi-2.5.0/README.md"
+- name: "webmock"
+  version: "1.7.8"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/webmock-1.7.8/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/webmock-1.7.8/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/webmock-1.7.8/README.md"
+- name: "websocket"
+  version: "1.0.7"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/websocket-1.0.7/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/websocket-1.0.7/README.md"
+- name: "weighted_randomizer"
+  version: "0.1.2"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/weighted_randomizer-0.1.2/LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/weighted_randomizer-0.1.2/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/weighted_randomizer-0.1.2/README.md"
+- name: "xpath"
+  version: "1.0.0"
+  license: "other"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/xpath-1.0.0/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/xpath-1.0.0/README.md"
+- name: "yajl-ruby"
+  version: "1.1.0"
+  license: "MIT"
+  approved: true
+  license_url: ""
+  notes: ""
+  license_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/yajl-ruby-1.1.0/MIT-LICENSE"
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/yajl-ruby-1.1.0/README.md"
+  readme_files:
+  - path: "~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/yajl-ruby-1.1.0/README.md"

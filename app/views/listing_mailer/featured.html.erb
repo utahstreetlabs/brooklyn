@@ -1,0 +1,23 @@
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  Nice work, <%= @listing.seller.firstname %>.  You posted something so great, we decided to show it to everyone on Copious. *cue the fireworks*
+<% end %>
+
+<%= mailer_graf do %>
+  <%= mailer_link_to(mailer_image_tag(@listing.photos.first.version_url(:small)), listing_url(@listing)) %>
+<% end %>
+
+<%= mailer_graf do %>
+  Visit your listing here: <%= mailer_link_to(@listing.title, listing_url(@listing)) %>
+<% end %>
+
+<%= mailer_graf do %>
+  Take advantage of your popularity: <%= mailer_link_to('Post more items to sell', new_listing_path) %>
+<% end %>
+
+<%= mailer_graf(styles: 'margin-bottom: 0px;') do %>
+  Keep up the good work, partner.
+<% end %>
+
+<%= render '/shared_mailer/footer' %>

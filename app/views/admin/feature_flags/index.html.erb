@@ -1,0 +1,37 @@
+<% title "Admin: Feature flags" %>
+
+<%= bootstrap_breadcrumb [
+  ['Admin', admin_dashboard_path],
+  'Feature flags'
+] %>
+
+<%= datagrid @flags, id: 'feature-flags', pagination_theme: :bootstrap do |t| %>
+  <%= t.thead do |thead| %>
+    <%= thead.th :name, default: true %>
+    <%= thead.th :description %>
+    <%= thead.th :enabled, title: t('.enabled.title') %>
+    <%= thead.th :admin_enabled, title: t('.admin_enabled.title') %>
+  <% end %>
+  <%= t.tbody do |tbody, flag| %>
+    <%= tbody.td do %>
+      <%= flag.name %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= flag.description %>
+    <% end %>
+    <%= tbody.td id: feature_flag_user_button_target(flag), data: {role: 'flag-enabled'} do %>
+      <% if flag.enabled? %>
+        <%= feature_flag_user_enabled_button flag %>
+      <% else %>
+       <%= feature_flag_user_disabled_button flag %>
+      <% end %>
+    <% end %>
+    <%= tbody.td id: feature_flag_admin_button_target(flag), data: {role: 'flag-enabled'} do %>
+      <% if flag.admin_enabled? %>
+        <%= feature_flag_admin_enabled_button flag %>
+      <% else %>
+       <%= feature_flag_admin_disabled_button flag %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

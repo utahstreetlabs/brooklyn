@@ -1,0 +1,23 @@
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  Hi <%= @user.firstname %>,
+<% end %>
+
+<%= mailer_graf do %>
+  It's easier than ever to list items on Copious. In under a minute, you can get your listing out to millions of buyers.
+<% end %>
+
+<%= mailer_graf do %>
+  For a limited time, you'll earn $10 in Copious Credit when your listing is published.
+<% end %>
+
+<%= mailer_graf do %>
+  <%= mailer_button 'Create a listing & Grab $10', new_listing_url %>
+<% end %>
+
+<%= mailer_graf(styles: 'margin-top: 28px; margin-bottom: 0px;') do %>
+  Happy publishing,
+<% end %>
+
+<%= render '/shared_mailer/footer' %>

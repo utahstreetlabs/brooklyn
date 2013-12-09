@@ -1,0 +1,6 @@
+jQuery ->
+  closeWindow = () ->
+    window.opener.postMessage('close', '*') if window.opener
+
+  setTimeout(closeWindow, 10000)
+

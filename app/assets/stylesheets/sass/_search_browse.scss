@@ -1,0 +1,140 @@
+.search-facet {
+  max-height: 220px; /* span3*/
+  overflow-y: auto;
+  width: 300px;
+  -webkit-overflow-scrolling: touch;
+}
+.facet-count {
+  color: #999;
+  font-size: 15px;
+}
+li.facet {
+  position: relative;
+  height: 27px;
+  .browse-tabs & {
+    &.selected {
+      color: $white;
+      .facet-name {
+        color: $white;
+      }
+    }
+    &:hover {
+      .facet-count {
+        color: $border-color-light;
+      }
+    }
+  }
+}
+li.facet a {
+  position: absolute;
+  width: 95%;
+  height: 100%;
+}
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  -webkit-border-radius: 5px;
+}
+::-webkit-scrollbar-track-piece {
+  background-color: #f0f0f0;
+  -webkit-border-radius: 5px;
+  -webkit-box-shadow: inset 0px 0px 4px rgba(0,0,0,0.15);
+}
+::-webkit-scrollbar-thumb {
+  background-color: $border-darker;
+  -webkit-border-radius: 5px;
+}
+
+#browse-nav {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 30px;
+  border-bottom: 1px solid $border-color;
+  /* leave the styling for classes that are both used for horizontal browse and current browse pages,
+     but specific to horizontal browse only here */
+  .facet-count, .facet-name {
+    line-height: 28px;
+  }
+  .facet-name {
+    white-space: nowrap;
+    font-weight: 500;
+  }
+  .facet-count {
+    font-size: 14px;
+    float: right;
+  }
+  .facet {
+    &.selected {
+      color: $white;
+      .facet-name, .facet-count {
+        color: $white;
+      }
+    }
+  }
+}
+#browse-tabs-container {
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 15px;
+  .dropdown-toggle {
+    @extend .xlarge;
+    .caret {
+      margin: -1px -13px 0 20px;
+    }
+  }
+}
+.browse-tab {
+  display: inline-block;
+  /* XXX CONSOLIDATE these styling+IX should be applied to the dropdown-menu itself.
+  same as li.facet styling, but has different markup. */
+  .search-facet li {
+    height: 34px;
+    text-align: left;
+    a {
+      line-height: 28px;
+      font-weight: 500;
+      height: 100%;
+      width: 100%;
+      white-space: normal;
+    }
+    &.selected, &.selected a {
+      color: $white;
+    }
+  }
+}
+#category-container, #price-container {
+  margin-right: 15px;
+}
+#browse-details-container {
+  text-align: center;
+  #selection-container {
+    float: none;
+    display: inline-block;
+    width: auto;
+    vertical-align: top;
+  }
+}
+.browse-title {
+  text-align: center;
+  margin: 10px 0;
+  .search-string-wrap {
+    color: $grayLight;
+  }
+  span {
+    font-family: $styledFontFamily;
+    font-size: 25px;
+  }
+  .category-title {
+    font-weight: 600;
+    color: #38312f;
+  }
+  .result-text {
+    margin-left: 5px;
+    color: $gray;
+    .items-found-number {
+      font-weight: bold;
+      color: #333333;
+    }
+  }
+}

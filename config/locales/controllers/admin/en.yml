@@ -1,0 +1,132 @@
+en:
+  controllers:
+    admin:
+      annotations:
+        could_not_annotate: 'Could not add support link: %{errors}'
+        could_not_destroy: 'Could not remove support link: %{errors}'
+      categories:
+        featured:
+          reordered: '%{The new featured listing order has been saved.}'
+          removed: '%{listing} is no longer featured for %{category}.'
+      collections:
+        autofollows:
+          set: 'The interest autofollows for %{collection} were updated.'
+        destroyed: '<em>%{name}</em> was deleted.'
+        updated: 'Your changes to %{name} were saved.'
+      feature_lists:
+        featured:
+          removed: 'The listing is no longer featured for %{feature_list}.'
+      interests:
+        collections:
+          destroyed: '%{collection} was removed from the list.'
+        created: '<em>%{name}</em> was created.'
+        destroyed: '<em>%{name}</em> was deleted.'
+        all_added_to_onboarding: 'The selected interests were added to onboarding.'
+        none_selected_add_all_to_onboarding: 'You must select at least one interest to add to onboarding.'
+        all_removed_from_onboarding: 'The selected interests were removed from onboarding.'
+        none_selected_remove_all_from_onboarding: 'You must select at least one interest to remove from onboarding.'
+        destroyed_all: 'The selected interests were deleted.'
+        none_selected_destroy_all: 'You must select at least one interest to delete.'
+        updated: '<em>%{name}</em> was updated.'
+        users:
+          destroyed: '%{user} was removed from the list.'
+      listings:
+        cancelled: 'The listing has been canceled.'
+        could_not_cancel: 'The listing was not in an appropriate state to be cancelled.'
+        reactivated: 'The listing has been reactivated.'
+        could_not_reactivate: 'The listing was not in an appropriate state to be reactivated.'
+        suspended: 'The listing has been suspended.'
+        could_not_suspend: 'The listing was not in an appropriate state to be suspended.'
+        updated: 'Your changes were saved.'
+        approved: 'The listing is now approved.'
+        could_not_approve: 'The listing was already approved or disapproved.'
+        disapproved: 'The listing is now disapproved.'
+        could_not_disapprove: 'The listing was already approved or disapproved.'
+        featured_for_category: 'The listing is now featured in %{category}.'
+        not_featured_for_category: 'The listing is no longer featured in %{category}.'
+        featured_for_tags: 'The listing is now featured in %{tags}.'
+        not_featured_for_tags: 'The listing is no longer featured in any tags.'
+        featured_for_feature_lists: 'The listing is now featured in %{feature_lists}.'
+        not_featured_for_feature_lists: 'The listing is no longer featured in any feature lists.'
+        love_emails:
+          created: 'The love email was sent.'
+          error_creating: "The love email was not sent because you don't love this listing."
+      offers:
+        created: 'Offer <em>%{id}</em> was added.'
+        updated: 'Your changes to offer <em>%{id}</em> were saved.'
+        user_types_error: 'Please select at least one valid user type.'
+      onboarding:
+        interests:
+          destroyed: '%{interest} was removed from the list.'
+      orders:
+        confirmed: 'The order was confirmed.'
+        error_confirming: 'There was an error confirming the order. Try reloading the page and see if the order is still in a confirmable state.'
+        completed: 'The order was completed.'
+        completed_and_settled: 'The order was completed and settled.'
+        error_completing: 'There was an error completing the order. Try reloading the page and see if the order is still in a completeable state.'
+        delivered: 'The order was delivered.'
+        error_delivering: 'There was an error delivering the order. Try reloading the page and see if the order is still in a deliverable state.'
+        settled: 'The order was settled.'
+        error_settling: 'There was an error settling the order. Try reloading the page and see if the order is still in a settleable state.'
+        shipped: 'The order was shipped.'
+        error_shipping: 'There was an error shipping the order. Try reloading the page and see if the order is still in a shippable state.'
+        canceled: 'The order was canceled.'
+        error_canceling: 'There was an error cancelling the order. Try reloading the page and see if the order is still in a cancellable state.'
+        shipments:
+          updated: 'The shipment was updated.'
+          error_tracking: "This number failed our validation check, but it still might be correct.  It's your call.  Check the box below to bypass validation and save the tracking number.  Buyer and seller will be notified of the change.<p><p>Also, are you sure you selected the right shipping carrier?  (UPS or USPS)"
+      payments:
+        paypal:
+          pay_none_selected: 'You did not select any payments.'
+          paid_all: 'The selected payments were marked paid.'
+      facebook:
+        announcements:
+          sent: "Announcements are being sent."
+        price_alerts:
+          sent_individual: "The message is being sent to %{user}."
+          sent_mass:
+            one: "The message is being sent to 1 user."
+            other: "The messages are being sent to %{count} users."
+          not_connected: "%{user} is not connected to Facebook."
+      tags:
+        created: '<em>%{name}</em> was added.'
+        updated: 'Your changes to <em>%{name}</em> were saved.'
+        promoted: '<em>%{name}</em> was made a primary tag.'
+        merge_none_selected: 'You did not select any tags to merge.'
+        merged: 'The selected tags were merged into <em>%{name}</em>.'
+        destroy_all_none_selected: 'You did not select any tags to delete.'
+        destroyed_all: 'The selected tags were deleted.'
+        removed: '<em>%{name}</em> was removed.'
+        featured:
+          reordered: '%{The new featured listing order has been saved.}'
+          removed: '%{listing} is no longer featured for %{tag}.'
+      users:
+        created: '%{name} was created.'
+        updated: 'Your changes to %{name} were saved.'
+        deactivated: '%{name} has taken his ball and gone home.'
+        reactivated: 'Like the phoenix, %{name} rises from the ashes to buy and sell things once again.'
+        destroyed: "%{name} is destroyed. You win."
+        destroy_failed: '%{name} is quite powerful. Delete harder.'
+        credits:
+          created: 'The %{amount} credit was granted.'
+        web_site:
+          created: 'The web site profile setting was enabled.'
+          deleted: 'The web site profile setting was disabled.'
+        listing_access:
+          full: '%{name} now has full listing access. Listings will bypass the bullpen and be automatically approved.'
+          none: '%{name} now has no listing access. Listings will be activated but not added to the bullpen for approval.'
+          limited: '%{name} now has limited listing access. Listings will be automatically added to the bullpen for approval.'
+        autofollows:
+          added: '%{name} was added to the autofollow list.'
+          removed: '%{name} was removed from the autofollow list.'
+        superuser:
+          created: '%{name} is now a superuser.'
+          deleted: '%{name} is no longer a superuser.'
+        admin:
+          created: '%{name} is now an admin.'
+          deleted: '%{name} is no longer an admin.'
+        suggestions:
+          set: 'The interest suggestions for %{user} were updated.'
+        follow_emails:
+          created: 'The follow email was sent.'
+          error_creating: "The follow email was not sent because you don't follow this user."

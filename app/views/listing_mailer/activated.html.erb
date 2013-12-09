@@ -1,0 +1,20 @@
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  Hi <%= @user[:firstname] %>,
+<% end %>
+
+<%= mailer_graf do %>
+  <%= mailer_link_to @listing.seller.name, public_profile_url(@listing.seller) %> just listed a new item:
+<% end %>
+
+<%= render 'listing_info', listing: @listing %>
+
+<%= mailer_graf do %>
+  <%= mailer_button "See what else #{@listing.seller.firstname} is selling", public_profile_url(@listing.seller) %>
+<% end %>
+
+<%= mailer_graf(styles: 'margin-bottom: 0px;') do %>
+  Happy browsing,
+<% end %>
+<%= render '/shared_mailer/footer' %>

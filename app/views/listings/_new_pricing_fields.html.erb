@@ -1,0 +1,95 @@
+<%= f.fieldset div: t('.price.header'), :class => 'pricing-fieldset-new' do %>
+  <div id="pricing-box" class="right-pane">
+    <%= f.label nil, t('.price.buyer_pays.header'), required: false  %>
+    <%= content_tag :div, nil, id: 'buyer-price-details',
+          data: {fee_rate: listing.pricing_scheme.buyer_fee_variable.to_s, hide_shipping: !listing.supports_shipping?} %>
+  </div>
+
+  <%= f.field :price, :class => 'number-input input-prepend text pull-left' do %>
+    <%= f.label :price, t('.price.price_field.label'), :class => 'big-label' %>
+    <span class="add-on">&#36;</span>
+    <%= f.text_field :price, placeholder: t('.price.price_field.placeholder'), maxlength: 18,
+                      value: number_with_precision(f.object.price, precision: 2), :class => 'span3' %>
+  <% end %>
+  <% if listing.supports_original_price? %>
+    <%= f.field :original_price, :class => 'number-input input-prepend text pull-left' do %>
+      <%= f.label :original_price, t('.price.original_price_field.label'),
+                  :class => 'big-label', help: "(optional)" %>
+      <span class="add-on">&#36;</span>
+      <%= f.text_field :original_price, maxlength: 18,
+                        value: number_with_precision(f.object.original_price, precision: 2), :class => 'span3 ignore' %>
+    <% end %>
+  <% end %>
+
+  <li class="buyer-fees-container">
+    <%= f.label :marketplace_fees, t('.price.marketplace_fees_control_group.label'), :required => false,
+                :class => 'big-label' %>
+    <div>
+      <p class="label-like inline-block-element">
+        <%= t('.price.marketplace_fees_control_group.help_html', marketplace_fee_percentage:
+              number_to_percentage((listing.pricing_scheme.buyer_fee_variable * 100), precision: 0)) %>
+      </p>
+      <%= link_to(t('.price.marketplace_fees_control_group.seller_pays_field.learn_more_link'),
+                  Brooklyn::Application.config.urls.marketplace_fee, target: '_blank') %>
+    </div>
+    <%= f.check_box :seller_pays_marketplace_fee %>
+    <%= f.label :seller_pays_marketplace_fee, t('.price.marketplace_fees_control_group.seller_pays_field.label'),
+                :class => "checkbox" %>
+  </li>
+
+  <% if listing.supports_shipping?%>
+    <%= f.field :shipping, :class => 'number-input input-prepend text' do %>
+      <%= f.label :shipping, t('.price.shipping_field.label'), :class => 'big-label' %>
+      <span class="add-on">&#36;</span>
+      <%= f.text_field :shipping, placeholder: t('.price.shipping_field.placeholder'), maxlength: 18,
+                       value: number_with_precision(f.object.shipping || 0, precision: 2), :class => 'span3' %>
+      <div>
+        <%= f.check_box :free_shipping %>
+        <%= f.label :free_shipping, t('.price.free_shipping_field.label'), :class => 'checkbox' %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if listing.supports_shipping? %>
+  <%= f.fieldset div: t('.shipping.header_html') do %>
+    <%= f.field :shipping_option_code do %>
+      <%= f.label :shipping_method, t('.shipping.method.header'), :class => 'big-label' %>
+      <div class="help_text span8">
+        <%= t('.shipping.method.instructions_html', learn_more_link: link_to(t('.shipping.method.learn_more_link'), Brooklyn::Application.config.urls.prepaid_shipping_help, target: '_blank')) %>
+      </div>
+      <span id="shipping-alert-container" class="span8 alert"></span>
+      <ul>
+        <% ShippingOption.active_option_configs.each do |(code, config)| %>
+          <%= content_tag :li, data: {role: 'shipping-option', code: code,
+                          rate: number_with_precision(config.rate, precision: 2)} do %>
+            <%= f.radio_button :shipping_option_code, code, disabled: !@listing.prepaid_shipping_covered?(config) %>
+            <%= f.label "shipping_option_code_#{code}",
+                        t(".shipping.method.options.#{code}.label_html", amount: number_to_currency(config.rate)),
+                        class: 'radio' %>
+            <div class="help_text radio-help">
+              <%= t(".shipping.method.options.#{code}.help_html") %>
+            </div>
+          <% end %>
+        <% end %>
+        <li>
+          <%= f.radio_button :shipping_option_code, nil %>
+          <%= f.label :shipping_option_code, t(".shipping.method.options.basic.label_html"), class: 'radio' %>
+          <div class="help_text radio-help">
+            <%= t('.shipping.method.options.basic.help_html') %>
+            <%= link_to_shipping_estimator(t('.shipping.method.options.basic.estimator_link')) %>
+          </div>
+        </li>
+      </ul>
+    <% end %>
+
+    <%= f.field :handling_duration do %>
+      <%= f.label :handling_duration, t('.shipping.handling_duration.label'), :class => 'big-label' %>
+      <%= f.select :handling_duration, Listing::HANDLING_TIMES.map {|i| [pluralize(i, 'day'), i.days]}, {},
+                   :class => 'span6' %>
+      <div class="help_text span6">
+        <%= t('.shipping.handling_duration.help_html', transaction_policy_link: link_to_transaction_policy(t('.shipping.handling_duration.transaction_policy_link'))) %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

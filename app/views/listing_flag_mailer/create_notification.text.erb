@@ -1,0 +1,4 @@
+<%
+body = %Q/Hi,
+
+The user #{@flag.user.name} flagged the listing #{@flag.listing.title}. Please investigate at #{listing_url(@flag.listing)}./%><%= word_wrap body %>

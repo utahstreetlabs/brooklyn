@@ -1,0 +1,27 @@
+<%= render '/layouts/top' %>
+
+<div id="sidebar" class="span3">
+  <div class="section">
+    <h3>Account Settings</h3>
+    <ul class="nav nav-vertical-list menu">
+      <%= nav_li 'Profile Information', settings_profile_path %>
+      <%= nav_li 'Change Your Password', settings_password_path %>
+      <%= nav_li 'Email Settings', settings_email_path %>
+      <%= nav_li 'Linked Networks', settings_networks_path %>
+      <%= nav_li 'Shipping Addresses', settings_shipping_addresses_path %>
+      <% if feature_enabled?(:feedback) %>
+        <%= nav_li 'Privacy', settings_privacy_path %>
+      <% end %>
+      <%= nav_li 'Get Paid', settings_seller_accounts_path %>
+      <%= nav_li 'My Credits', settings_credits_path %>
+      <%#= nav_li 'Manage Invites', settings_invites_path %>
+    </ul>
+  </div>
+</div>
+
+<div id="main-content" class="span9">
+  <%= yield %>
+</div>
+
+<%= render 'shared/ajax_overlay' %>
+<%= render '/layouts/bottom' %>

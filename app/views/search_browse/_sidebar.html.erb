@@ -1,0 +1,64 @@
+<div id="sidebar" class="span4">
+  <div class="search-filter row">
+    <%= sidebar_box "Categories", hidden: searcher.categories.unselected.empty?, id: 'category-container' do %>
+      <% if searcher.categories.unselected.any? %>
+        <%= safe_join(category_list_items(searcher.categories.unselected)) %>
+      <% end %>
+    <% end %>
+
+    <%= sidebar_box 'Tags', hidden: searcher.tags.unselected.empty?, id: 'tag-container' do %>
+      <% if searcher.tags.unselected.any? %>
+        <%= safe_join(facet_list_items(searcher.tags.unselected, key: :tags)) %>
+      <% end %>
+    <% end %>
+
+    <%= sidebar_box 'Price', id: 'price-container' do %>
+      <% if searcher.price_ranges.ordered.any? %>
+        <%= safe_join(price_range_checkboxes(searcher.price_ranges.ordered)) %>
+      <% end %>
+    <% end %>
+
+    <%= sidebar_box 'Size', hidden: searcher.sizes.alphabetical.empty?, id: 'size-container' do %>
+      <% if searcher.sizes.alphabetical.any? %>
+        <%= safe_join(facet_checkboxes(searcher.sizes.alphabetical, key: :sizes)) %>
+      <% end %>
+    <% end %>
+
+    <%= sidebar_box 'Brand', hidden: searcher.brands.alphabetical.empty?, id: 'brand-container' do %>
+      <% if searcher.brands.alphabetical.any? %>
+        <%= safe_join(facet_checkboxes(searcher.brands.alphabetical, key: :brands)) %>
+      <% end %>
+    <% end %>
+
+    <%# only show dimensions if a specific category has been selected %>
+    <%= sidebar_box 'Condition', hidden: searcher.conditions.alphabetical.empty? || searcher.categories.unselected.any?,
+          id: 'condition-container' do %>
+      <% if searcher.conditions.alphabetical.any? && searcher.categories.unselected.empty? %>
+        <%= safe_join(condition_checkboxes(searcher.conditions.alphabetical)) %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div id="footer-wrapper" class="pull-left kill-margin-left">
+    <%= image_tag('layout/footer-main-logo.png', :alt => 'Copious', :class => 'footer-main-logo') %>
+    <div id="footer-content">
+      <ul class="disclaimer pull-left kill-margin-bottom">
+        <li>© <%= Date.today.year %> Utah Street Labs</li>
+        <li class="clear"><%= link_to 'About', 'http://corporate.copious.com/about-us' %></li>
+        <li><%= link_to_terms 'Terms' %></li>
+        <li><%= link_to_privacy_policy 'Privacy' %></li>
+      </ul>
+      <ul class="menu pull-left">
+        <li><%= link_to 'Help', 'http://help.copious.com' %></li>
+        <li><%= link_to 'Contact', 'http://corporate.copious.com/contact-us' %></li>
+        <li><%= link_to 'Jobs', 'http://corporate.copious.com/jobs' %></li>
+        <li><%= link_to 'Blog', 'http://corporate.copious.com/blog' %></li>
+      </ul>
+    </div>
+    <% if content_for? :sponsors %>
+      <div class="sponsors">
+        <%= yield :sponsors %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,324 @@
+<div id="main-content" class="span16" style="margin-bottom: 20px;">
+
+  <div id="listings-feed">
+    <ul class="nav-tabs">
+      <li class="selected">Your Loves &amp; Follows</li>
+      <a href="/?feed=everything"><li class="">Everything</li></a>
+    </ul>
+
+    <ul class="serach-results-new feed listing-feed pull-left full-width">
+
+      <%#  XXX PRODUCT_CARD_V5 MOCKUP STARTS HERE  %>
+      <li class="card-container-v5 logged_in  liked" data-card="product" data-listing="947" data-source="null" data-timestamp="1352846194" id="product-card-947">
+        <div class="product-image-container">
+          <a href="/listings/asdfss">
+            <img alt="" class="product-image" data-role="product-image" src="//utahstreetlabs-dev-michael.s3.amazonaws.com/listing_photo/file/1313/medium_Screen_shot_2012-11-08_at_11.49.04_PM.png">
+          </a>
+        </div>
+
+        <a href="/listings/asdfss">
+          <div class="product-info">
+            <span class="product-title">asdfss</span>
+          </div>
+        </a>
+        <div class="feed-story-container">
+          <a href="/profiles/brian-fantana">
+            <%# XXX NEW FEED-STORY STRUCTURE %>
+            <%# {user_action_icon} {user_name}  |  {card.likes}  |  {card.saves} %>
+            <span class="feed-story" data-role="feed-story">
+              <%# XXX all icons for feed-stories start as .icon-ss- %>
+              <%= content_tag(:span, nil, class: 'icons-ss-love', alt: 'Loved') %>Brian Fantana&nbsp;&nbsp;|&nbsp;&nbsp;27 Loves&nbsp;&nbsp;|&nbsp;&nbsp;12 Saves
+            </span>
+          </a>
+        </div>
+        <div class="price-box">
+          <a href="/listings/asdfss">
+            <hr>
+            <div class="price">
+              <span class="original-price">
+                $10.00
+              </span>
+              $5.00
+            </div>
+          </a>
+        </div>
+        <div class="product-action-area">
+          <%# XXX please add .curatorial for all curatorial functionalities.
+
+              So, in large we have three different categories of functionalities and each of them are associated with a color.
+              1. Curatorial, Magenta   ex) add, like, save
+              2. Transactional, Orange   ex) buy, price
+              3. Social, light blue   ex) follow
+
+              If you think appending a class for different categories of functionalities is not scalable/logical, then I can rely on the attribute selector.
+              ex. if love button has data-roll="love-button" then I'll have the styling target [data-role="love-button"]
+
+              Let me know which way you prefer.
+          %>
+          <button class="btn-overlay btn small curatorial">
+            <%# XXX all icons for buttons start as .icons-button- %>
+            <span class="icons-button-love"></span>
+            Love
+          </button>
+          <button class="btn-overlay btn small curatorial">
+            <%# XXX all icons for buttons start as .icons-button- %>
+            <span class="icons-button-save"></span>
+            Save
+          </button>
+        </div>
+        <div class="remove-btn-container">
+          <a href="/feed/listings/925" class="btn-overlay btn transparent-btn remove-btn" data-action="remove" data-method="delete" data-remote="true">
+            <span class="icons-button-remove"></span>
+          </a>
+        </div>
+        <div class="modal remotemodal" data-include-source="true" data-role="save-manager" id="listing-save-to-collection-947-modal" style="display:none">
+          <div class="modal-header"><a class="close-button pull-right" data-dismiss="modal"></a><h1>Save to Collections</h1><div class="spinner" id="spinner_loading" style="display: none;"><div class="circleG" id="circleG_1"></div><div class="circleG" id="circleG_2"></div><div class="circleG" id="circleG_3"></div></div></div><div class="modal-body"><div class="alert" style="display:none"></div><div data-role="modal-content"><img alt="" class="product-image" src="//utahstreetlabs-dev-michael.s3.amazonaws.com/listing_photo/file/1313/medium_Screen_shot_2012-11-08_at_11.49.04_PM.png" title="asdfss"><form accept-charset="UTF-8" action="/listings/asdfss/collections" class="listing-save-to-collection" data-remote="true" id="listing-save-to-collection-947-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="ylEyrVVS1Pg9Qta0qwI9JJvpTqe8/SlaFOr5auy5xzQ="></div><label for="collection_ids_947">Collection</label><select class="listing-save-to-collection-collections" id="collection_ids_947" name="collection_ids"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="aslkdfj">aslkdfj</option><option value="awesome">Things That Are Awesome</option><option value="great-stuff">great stuff</option><option data-collection-type="have" value="haves">Things I Have</option><option value="kg">kg</option><option value="sdf">sdf</option><option value="this-that">this that</option><option data-collection-type="want" value="wants">Things I Want</option><option value="what">what</option></select><label for="comment_947">Add a comment</label><textarea autofocus="autofocus" class="listing-save-to-collection-comment" id="comment_947" maxlength="480" name="comment" placeholder="Add a comment…"></textarea><div class="modal-checkbox-cta" data-role="have" style="display:none"><label class="checkbox"><input id="have_947" name="have" type="checkbox" value="1">Let me know when people want this item</label></div></form></div></div><div class="modal-footer"><button class="button primary large" data-save="modal" name="button" type="button">Save</button>
+          </div>
+        </div>
+      </li>
+
+
+      <%# LOVED state %>
+      <li class="card-container-v5 logged_in  liked" data-card="product" data-listing="947" data-source="null" data-timestamp="1352846194" id="product-card-947">
+        <div class="product-image-container">
+          <a href="/listings/asdfss">
+            <img alt="" class="product-image" data-role="product-image" src="//utahstreetlabs-dev-michael.s3.amazonaws.com/listing_photo/file/1305/medium_new_prod_dimension_15.jpeg">
+          </a>
+        </div>
+
+        <a href="/listings/asdfss">
+          <div class="product-info">
+            <span class="product-title">asdfss</span>
+          </div>
+        </a>
+        <div class="feed-story-container">
+          <a href="/profiles/brian-fantana">
+            <%# NEW FEED-STORY STRUCTURE %>
+            <%# {user_action_icon} {user_name}  |  {card.likes}  |  {card.saves} %>
+            <span class="feed-story" data-role="feed-story">
+              <%# all icons for feed-stories start as .icon-ss- %>
+              <%= content_tag(:span, nil, class: 'icons-ss-save', alt: 'Saved') %>Brian Fantana&nbsp;&nbsp;|&nbsp;&nbsp;27 Loves&nbsp;&nbsp;|&nbsp;&nbsp;12 Saves
+            </span>
+          </a>
+        </div>
+        <div class="price-box">
+          <a href="/listings/asdfss">
+            <hr>
+            <div class="price">
+              <span class="original-price">
+                $10.00
+              </span>
+              $5.00
+            </div>
+          </a>
+        </div>
+        <div class="product-action-area">
+          <%# XXX please append .actioned to the button when the action has been taken. %>
+          <button class="btn-overlay btn small curatorial actioned">
+            <%# all icons for buttons start as .icons-button- %>
+            <span class="icons-button-love"></span>
+            <%# XXX text must change from Love -> Loved %>
+            Loved
+          </button>
+          <button class="btn-overlay btn small curatorial">
+            <%# all icons for buttons start as .icons-button- %>
+            <span class="icons-button-save"></span>
+            Save
+          </button>
+        </div>
+        <div class="remove-btn-container">
+          <a href="/feed/listings/925" class="btn-overlay btn transparent-btn remove-btn" data-action="remove" data-method="delete" data-remote="true">
+            <span class="icons-button-remove"></span>
+          </a>
+        </div>
+        <div class="modal remotemodal" data-include-source="true" data-role="save-manager" id="listing-save-to-collection-947-modal" style="display:none">
+          <div class="modal-header"><a class="close-button pull-right" data-dismiss="modal"></a><h1>Save to Collections</h1><div class="spinner" id="spinner_loading" style="display: none;"><div class="circleG" id="circleG_1"></div><div class="circleG" id="circleG_2"></div><div class="circleG" id="circleG_3"></div></div></div><div class="modal-body"><div class="alert" style="display:none"></div><div data-role="modal-content"><img alt="" class="product-image" src="//utahstreetlabs-dev-michael.s3.amazonaws.com/listing_photo/file/1313/medium_Screen_shot_2012-11-08_at_11.49.04_PM.png" title="asdfss"><form accept-charset="UTF-8" action="/listings/asdfss/collections" class="listing-save-to-collection" data-remote="true" id="listing-save-to-collection-947-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="ylEyrVVS1Pg9Qta0qwI9JJvpTqe8/SlaFOr5auy5xzQ="></div><label for="collection_ids_947">Collection</label><select class="listing-save-to-collection-collections" id="collection_ids_947" name="collection_ids"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="aslkdfj">aslkdfj</option><option value="awesome">Things That Are Awesome</option><option value="great-stuff">great stuff</option><option data-collection-type="have" value="haves">Things I Have</option><option value="kg">kg</option><option value="sdf">sdf</option><option value="this-that">this that</option><option data-collection-type="want" value="wants">Things I Want</option><option value="what">what</option></select><label for="comment_947">Add a comment</label><textarea autofocus="autofocus" class="listing-save-to-collection-comment" id="comment_947" maxlength="480" name="comment" placeholder="Add a comment…"></textarea><div class="modal-checkbox-cta" data-role="have" style="display:none"><label class="checkbox"><input id="have_947" name="have" type="checkbox" value="1">Let me know when people want this item</label></div></form></div></div><div class="modal-footer"><button class="button primary large" data-save="modal" name="button" type="button">Save</button>
+          </div>
+        </div>
+      </li>
+
+      <%# SAVED state %>
+      <li class="card-container-v5 logged_in  liked" data-card="product" data-listing="947" data-source="null" data-timestamp="1352846194" id="product-card-947">
+        <div class="product-image-container">
+          <a href="/listings/asdfss">
+            <img alt="" class="product-image" data-role="product-image" src="//utahstreetlabs-dev-michael.s3.amazonaws.com/listing_photo/file/1291/medium_background-artworks1-550x530.jpg">
+          </a>
+        </div>
+
+        <a href="/listings/asdfss">
+          <div class="product-info">
+            <span class="product-title">asdfss</span>
+          </div>
+        </a>
+        <div class="feed-story-container">
+          <a href="/profiles/brian-fantana">
+            <%# NEW FEED-STORY STRUCTURE %>
+            <%# {user_action_icon} {user_name}  |  {card.likes}  |  {card.saves} %>
+            <span class="feed-story" data-role="feed-story">
+              <%# all icons for feed-stories start as .icon-ss- %>
+              <%= content_tag(:span, nil, class: 'icons-ss-save', alt: 'Saved') %>Brian Fantana&nbsp;&nbsp;|&nbsp;&nbsp;27 Loves&nbsp;&nbsp;|&nbsp;&nbsp;12 Saves
+            </span>
+          </a>
+        </div>
+        <div class="price-box">
+          <a href="/listings/asdfss">
+            <hr>
+            <div class="price">
+              <span class="original-price">
+                $10.00
+              </span>
+              $5.00
+            </div>
+          </a>
+        </div>
+        <div class="product-action-area">
+          <button class="btn-overlay btn small curatorial">
+            <span class="icons-button-love"></span>
+            Love
+          </button>
+          <%# XXX please append .actioned to the button when the action has been taken. %>
+          <button class="btn-overlay btn small curatorial actioned">
+            <%# all icons for buttons start as .icons-button- %>
+            <span class="icons-button-save"></span>
+            <%# XXX text must change from Save -> Saved %>
+            Saved
+          </button>
+        </div>
+        <div class="remove-btn-container">
+          <a href="/feed/listings/925" class="btn-overlay btn transparent-btn remove-btn" data-action="remove" data-method="delete" data-remote="true">
+            <span class="icons-button-remove"></span>
+          </a>
+        </div>
+        <div class="modal remotemodal" data-include-source="true" data-role="save-manager" id="listing-save-to-collection-947-modal" style="display:none">
+          <div class="modal-header"><a class="close-button pull-right" data-dismiss="modal"></a><h1>Save to Collections</h1><div class="spinner" id="spinner_loading" style="display: none;"><div class="circleG" id="circleG_1"></div><div class="circleG" id="circleG_2"></div><div class="circleG" id="circleG_3"></div></div></div><div class="modal-body"><div class="alert" style="display:none"></div><div data-role="modal-content"><img alt="" class="product-image" src="//utahstreetlabs-dev-michael.s3.amazonaws.com/listing_photo/file/1313/medium_Screen_shot_2012-11-08_at_11.49.04_PM.png" title="asdfss"><form accept-charset="UTF-8" action="/listings/asdfss/collections" class="listing-save-to-collection" data-remote="true" id="listing-save-to-collection-947-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="ylEyrVVS1Pg9Qta0qwI9JJvpTqe8/SlaFOr5auy5xzQ="></div><label for="collection_ids_947">Collection</label><select class="listing-save-to-collection-collections" id="collection_ids_947" name="collection_ids"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="aslkdfj">aslkdfj</option><option value="awesome">Things That Are Awesome</option><option value="great-stuff">great stuff</option><option data-collection-type="have" value="haves">Things I Have</option><option value="kg">kg</option><option value="sdf">sdf</option><option value="this-that">this that</option><option data-collection-type="want" value="wants">Things I Want</option><option value="what">what</option></select><label for="comment_947">Add a comment</label><textarea autofocus="autofocus" class="listing-save-to-collection-comment" id="comment_947" maxlength="480" name="comment" placeholder="Add a comment…"></textarea><div class="modal-checkbox-cta" data-role="have" style="display:none"><label class="checkbox"><input id="have_947" name="have" type="checkbox" value="1">Let me know when people want this item</label></div></form></div></div><div class="modal-footer"><button class="button primary large" data-save="modal" name="button" type="button">Save</button>
+          </div>
+        </div>
+      </li>
+
+
+      <%# SAVED state %>
+      <li class="card-container-v5 logged_in  liked" data-card="product" data-listing="947" data-source="null" data-timestamp="1352846194" id="product-card-947">
+        <div class="product-image-container">
+          <a href="/listings/asdfss">
+            <img alt="" class="product-image" data-role="product-image" src="//utahstreetlabs-dev-michael.s3.amazonaws.com/listing_photo/file/1295/medium_polyhedra.png">
+          </a>
+        </div>
+
+        <a href="/listings/asdfss">
+          <div class="product-info">
+            <span class="product-title">asdfss</span>
+          </div>
+        </a>
+        <div class="feed-story-container">
+          <a href="/profiles/brian-fantana">
+            <%# NEW FEED-STORY STRUCTURE %>
+            <%# {user_action_icon} {user_name}  |  {card.likes}  |  {card.saves} %>
+            <span class="feed-story" data-role="feed-story">
+              <%# all icons for feed-stories start as .icon-ss- %>
+              <%= content_tag(:span, nil, class: 'icons-ss-save', alt: 'Saved') %>Brian Fantana&nbsp;&nbsp;|&nbsp;&nbsp;27 Loves&nbsp;&nbsp;|&nbsp;&nbsp;12 Saves
+            </span>
+          </a>
+        </div>
+        <div class="price-box">
+          <a href="/listings/asdfss">
+            <hr>
+            <div class="price">
+              <span class="original-price">
+                $10.00
+              </span>
+              $5.00
+            </div>
+          </a>
+        </div>
+        <div class="product-action-area">
+          <button class="btn-overlay btn small curatorial">
+            <span class="icons-button-love"></span>
+            Love
+          </button>
+          <%# XXX please append .actioned to the button when the action has been taken. %>
+          <button class="btn-overlay btn small curatorial actioned">
+            <%# all icons for buttons start as .icons-button- %>
+            <span class="icons-button-save"></span>
+            <%# XXX text must change from Save -> Saved %>
+            Saved
+          </button>
+        </div>
+        <div class="remove-btn-container">
+          <a href="/feed/listings/925" class="btn-overlay btn transparent-btn remove-btn" data-action="remove" data-method="delete" data-remote="true">
+            <span class="icons-button-remove"></span>
+          </a>
+        </div>
+        <div class="modal remotemodal" data-include-source="true" data-role="save-manager" id="listing-save-to-collection-947-modal" style="display:none">
+          <div class="modal-header"><a class="close-button pull-right" data-dismiss="modal"></a><h1>Save to Collections</h1><div class="spinner" id="spinner_loading" style="display: none;"><div class="circleG" id="circleG_1"></div><div class="circleG" id="circleG_2"></div><div class="circleG" id="circleG_3"></div></div></div><div class="modal-body"><div class="alert" style="display:none"></div><div data-role="modal-content"><img alt="" class="product-image" src="//utahstreetlabs-dev-michael.s3.amazonaws.com/listing_photo/file/1313/medium_Screen_shot_2012-11-08_at_11.49.04_PM.png" title="asdfss"><form accept-charset="UTF-8" action="/listings/asdfss/collections" class="listing-save-to-collection" data-remote="true" id="listing-save-to-collection-947-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="ylEyrVVS1Pg9Qta0qwI9JJvpTqe8/SlaFOr5auy5xzQ="></div><label for="collection_ids_947">Collection</label><select class="listing-save-to-collection-collections" id="collection_ids_947" name="collection_ids"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="aslkdfj">aslkdfj</option><option value="awesome">Things That Are Awesome</option><option value="great-stuff">great stuff</option><option data-collection-type="have" value="haves">Things I Have</option><option value="kg">kg</option><option value="sdf">sdf</option><option value="this-that">this that</option><option data-collection-type="want" value="wants">Things I Want</option><option value="what">what</option></select><label for="comment_947">Add a comment</label><textarea autofocus="autofocus" class="listing-save-to-collection-comment" id="comment_947" maxlength="480" name="comment" placeholder="Add a comment…"></textarea><div class="modal-checkbox-cta" data-role="have" style="display:none"><label class="checkbox"><input id="have_947" name="have" type="checkbox" value="1">Let me know when people want this item</label></div></form></div></div><div class="modal-footer"><button class="button primary large" data-save="modal" name="button" type="button">Save</button>
+          </div>
+        </div>
+      </li>
+
+
+      <%# REMOVED state %>
+      <%# all icons for feed-stories start as .icon-ss- %>
+      <li class="card-container-v5 logged_in  liked" data-card="product" data-listing="947" data-source="null" data-timestamp="1352846194" id="product-card-947">
+        <div class="product-image-container">
+          <a href="/listings/asdfss">
+            <img alt="" class="product-image" data-role="product-image" src="//utahstreetlabs-dev-michael.s3.amazonaws.com/listing_photo/file/1305/medium_new_prod_dimension_15.jpeg">
+          </a>
+        </div>
+
+        <a href="/listings/asdfss">
+          <div class="product-info">
+            <span class="product-title">asdfss</span>
+          </div>
+        </a>
+        <div class="feed-story-container">
+          <a href="/profiles/brian-fantana">
+            <%# NEW FEED-STORY STRUCTURE %>
+            <%# {user_action_icon} {user_name}  |  {card.likes}  |  {card.saves} %>
+            <span class="feed-story" data-role="feed-story">
+              <%# all icons for feed-stories start as .icon-ss- %>
+              <%= content_tag(:span, nil, class: 'icons-ss-save', alt: 'Saved') %>Brian Fantana&nbsp;&nbsp;|&nbsp;&nbsp;27 Loves&nbsp;&nbsp;|&nbsp;&nbsp;12 Saves
+            </span>
+          </a>
+        </div>
+        <div class="price-box">
+          <a href="/listings/asdfss">
+            <hr>
+            <div class="price">
+              <span class="original-price">
+                $10.00
+              </span>
+              $5.00
+            </div>
+          </a>
+        </div>
+        <div class="product-action-area">
+          <%# XXX please append .actioned to the button when the action has been taken. %>
+          <button class="btn-overlay btn small curatorial actioned">
+            <%# all icons for buttons start as .icons-button- %>
+            <span class="icons-button-love"></span>
+            <%# XXX text must change from Love -> Loved %>
+            Loved
+          </button>
+          <button class="btn-overlay btn small curatorial">
+            <%# all icons for buttons start as .icons-button- %>
+            <span class="icons-button-save"></span>
+            Save
+          </button>
+        </div>
+        <div class="remove-btn-container">
+          <a href="/feed/listings/925" class="btn-overlay btn transparent-btn remove-btn" data-action="remove" data-method="delete" data-remote="true">
+            <span class="icons-button-remove"></span>
+          </a>
+        </div>
+        <div class="product-removed" data-role="remove-ui" style="display: block;">
+          <p class="product-title">This listing has been removed from your feed.</p>
+          <a href="javascript:void(0)">Undo</a>
+        </div>
+        <div class="modal remotemodal" data-include-source="true" data-role="save-manager" id="listing-save-to-collection-947-modal" style="display:none">
+          <div class="modal-header"><a class="close-button pull-right" data-dismiss="modal"></a><h1>Save to Collections</h1><div class="spinner" id="spinner_loading" style="display: none;"><div class="circleG" id="circleG_1"></div><div class="circleG" id="circleG_2"></div><div class="circleG" id="circleG_3"></div></div></div><div class="modal-body"><div class="alert" style="display:none"></div><div data-role="modal-content"><img alt="" class="product-image" src="//utahstreetlabs-dev-michael.s3.amazonaws.com/listing_photo/file/1313/medium_Screen_shot_2012-11-08_at_11.49.04_PM.png" title="asdfss"><form accept-charset="UTF-8" action="/listings/asdfss/collections" class="listing-save-to-collection" data-remote="true" id="listing-save-to-collection-947-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="ylEyrVVS1Pg9Qta0qwI9JJvpTqe8/SlaFOr5auy5xzQ="></div><label for="collection_ids_947">Collection</label><select class="listing-save-to-collection-collections" id="collection_ids_947" name="collection_ids"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="aslkdfj">aslkdfj</option><option value="awesome">Things That Are Awesome</option><option value="great-stuff">great stuff</option><option data-collection-type="have" value="haves">Things I Have</option><option value="kg">kg</option><option value="sdf">sdf</option><option value="this-that">this that</option><option data-collection-type="want" value="wants">Things I Want</option><option value="what">what</option></select><label for="comment_947">Add a comment</label><textarea autofocus="autofocus" class="listing-save-to-collection-comment" id="comment_947" maxlength="480" name="comment" placeholder="Add a comment…"></textarea><div class="modal-checkbox-cta" data-role="have" style="display:none"><label class="checkbox"><input id="have_947" name="have" type="checkbox" value="1">Let me know when people want this item</label></div></form></div></div><div class="modal-footer"><button class="button primary large" data-save="modal" name="button" type="button">Save</button>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+</div>

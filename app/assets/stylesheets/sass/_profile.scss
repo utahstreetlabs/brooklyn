@@ -1,0 +1,130 @@
+[class^="profiles_"] {
+  .profile_name {
+    line-height: 40px;
+    margin: 0 0 8px 0;
+    word-wrap: break-word;
+    float: left;
+    display: inline-block;
+    font-family: $styledFontFamily;
+  }
+}
+
+#profile-top {
+  margin-bottom: 24px;
+}
+#profile-info {
+  float: left;
+  width: 770px;
+  position: relative;
+  height: 150px;
+}
+#bio {
+  float: left;
+  clear: both;
+  height: 60px;
+  overflow: hidden;
+  @extend .span9; /* 700px */
+  @extend .kill-margin-left;
+  p {
+    margin-bottom: 0;
+    color: $color-text-light;
+  }
+}
+#profile-network-location {
+  margin: 0;
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  right: 0;
+}
+#location {
+  float: left;
+  color: $color-text-light;
+  margin-bottom: 8px;
+  max-width: 356px; /* span6 */
+  overflow: hidden;
+  /* XXX icon-sprite mixin */
+  padding-left: 25px;
+  background-image: image-url("icons/icons-sprite/icons-sprite.png");
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+  height: 20px;
+}
+#web-site {
+  float: left;
+  margin-right: 4px;
+  padding-left: 25px;
+  background-image: image-url("icons/icons-sprite/icons-sprite.png");
+  background-repeat: no-repeat;
+  background-position: 0px -76px;
+  height: 20px;
+  width: 20px;
+}
+.user-block-container {
+  float: right;
+  margin-left: 24px;
+  @include opacity(0.5);
+  &:hover {
+    @include opacity(1);
+  };
+}
+#feedback-summary-profile {
+  float: left;
+  clear: both;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 500;
+  margin-top: 16px;
+  text-transform: uppercase;
+  padding-left: 28px;
+  background-image: url(/assets/layout/icons-sprites.png);
+  background-repeat: no-repeat;
+  background-position: -55px -563px;
+}
+.cta-right-container {
+  text-align: right;
+  position: absolute;
+  top: 6px;
+  right: 0;
+}
+.cta-bottom-right-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+// Collections page
+.collection-page-info-listings {
+  float: left;
+}
+.collection-page-info-followers {
+  float: right;
+}
+#collection-top { /* same as #profile-top */
+  float: left;
+}
+.collection-page-user {
+  @extend .span4;
+  @extend .kill-margin-left;
+}
+.collection-page-creator {
+  text-align: center;
+  .center-piece {
+    display: inline-block;
+  }
+}
+.collection-page-title {
+  display: block;
+  float: left;
+  width: 100%;
+  margin: 20px 0;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+.collection-page-info {
+  @extend .span4;
+  text-align: right;
+  span {
+    line-height: 25px;
+  }
+}

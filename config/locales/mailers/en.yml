@@ -1,0 +1,175 @@
+en:
+  collection_mailer:
+    collection_follow:
+      header:
+        message_html: '%{follower} is now following %{collection_link}'
+  follow_mailer:
+    follow:
+      header:
+        message: 'You have a new follower on Copious'
+  listing_mailer:
+    commented:
+      header:
+        message_html: '%{commenter_link} just made a comment about %{listing_link}'
+    replied:
+      header:
+        message_html: '%{replier_link} just replied to your comment on %{listing_link}'
+    mentioned:
+      header:
+        message_html: '%{commenter_link} just mentioned you on %{listing_link}'
+    liked:
+      header:
+        message_html: '%{liker_link} just loved %{listing_link}'
+    saved:
+      header:
+        message_html: '%{saver} just saved %{listing} to %{collection_link}'
+  shared_mailer:
+    header:
+      logo: 'Copious'
+    stats:
+      header:
+        listings: 'LISTINGS'
+        loves: 'LOVES'
+        followers: 'FOLLOWERS'
+    social_action:
+      icon:
+        comment: 'commented on'
+        follow: 'followed'
+        love: 'loved'
+        save: 'saved'
+    action:
+      follow:
+        button:
+          view_profile: "View %{user}'s profile"
+          follow: 'Follow'
+      reply:
+        text: 'Keep the conversation going.'
+        button: 'Reply to %{commenter}'
+  # XXX: move subjects to individual message sections (eg follow_mailer instead of mailers.follow) as per action pack's
+  # virtual path algorithm
+  mailers:
+    bank_payment:
+      paid_for_seller:
+        subject: "Deposit Confirmed - You have received funds"
+      rejected_for_seller:
+        subject: "Deposit Rejected - There is an issue with your deposit"
+    cancelled_order:
+      created_for_seller:
+        subject: 'Your order for %{title} has been cancelled'
+      created_for_buyer:
+        subject: 'Your order for %{title} has been cancelled'
+    collection:
+      collection_follow:
+        subject: '%{follower} is now following your collection on Copious'
+    contact:
+      contact_invitation:
+        subject: '%{name} wants you to join Copious!'
+    credit:
+      credit_reminder_1:
+        subject: "You've earned your %{credit_amount} credit, so don't let it slip away."
+      credit_reminder_2:
+        subject: "You've got %{hours_remaining} left to spend the credits you've earned."
+    follow:
+      follow:
+        subject: '%{follower} is now following you on Copious'
+    listing:
+      comment_flagged_for_admin:
+        subject: 'A listing comment was flagged on Copious'
+      activated:
+        subject: '%{seller} just listed something on Copious'
+      seller_welcome:
+        subject: 'Welcome to selling on Copious, %{name}'
+      featured:
+        subject: '%{seller}, your listing has been featured on Copious.'
+      shared:
+        subject: '%{name} shared your listing on %{network}'
+      commented:
+        subject: '%{commenter} commented on your Copious listing'
+      replied:
+        subject: '%{replier} replied to your comment on %{listing}'
+      mentioned:
+        subject: '%{commenter} mentioned you on %{listing}'
+      liked:
+        subject: '%{liker} loved %{listing}'
+      saved:
+        subject: '%{saver} saved your listing to their collection'
+    listing_flag:
+      create_notification:
+        subject: 'A listing was flagged on Copious'
+    listing_offer:
+      created_for_admin:
+        subject: "Offer made for %{listing}"
+    order:
+      purchased_for_seller:
+        subject: 'Sold! Your listing - %{title} - has found a new home.'
+      purchased_for_buyer:
+        subject: 'Your purchase on Copious: %{title}'
+      purchased_unshipped_reminder_for_seller:
+        subject: 'Last chance to ship your item.'
+      shipped_for_seller:
+        subject: 'Your listing - %{title} - is shipped'
+      shipped_for_buyer:
+        subject: 'Your Copious order has shipped!'
+      delivery_confirmation_period_elapsed_for_buyer:
+        subject: 'Delivery confirmation not received: %{title}'
+      delivery_confirmation_period_elapsed_for_seller:
+        subject: 'No confirmed delivery: %{title}'
+      delivered_for_seller:
+        subject: 'Delivery confirmation for %{title}'
+      delivered_for_buyer:
+        subject: 'Delivery confirmation for %{title}'
+      completed_for_seller:
+        subject: 'Your %{title} sale is now complete'
+      completed_for_buyer:
+        subject: 'Your %{title} purchase is now complete'
+      unrated_for_buyer:
+        subject: 'Please rate your purchase of %{title} on Copious'
+      unrated_for_seller:
+        subject: "Please rate %{buyer_name}'s purchase on Copious"
+      not_delivered_for_help:
+        subject: "Order %{reference_number} has been marked as shipped but not delivered"
+      delivery_not_confirmed_for_help:
+        subject: "Order %{reference_number} needs followup on delivery confirmation"
+    paypal_payment:
+      created:
+        subject: 'PayPal Payment: %{order_number}'
+    secret_seller_item:
+      submitted:
+        subject: 'A new secret seller item has been submitted'
+    shipment:
+      tracking_number_updated_for_buyer:
+        subject: "There's been a change to your Copious order."
+      tracking_number_updated_for_seller:
+        subject: "There's been a change to your Copious order."
+    user:
+      reset_password_instructions:
+        subject: 'Reset your Copious password'
+      invite:
+        subject: '%{name} invites you to Copious'
+      invite_accepted:
+        subject: '%{invitee} accepted your invitation to Copious'
+      welcome_1:
+        subject: "Welcome to Copious. Let's get started."
+      welcome_2:
+        subject: 'Follow on Copious'
+      welcome_3:
+        subject: 'Track Your Favorites On Copious'
+      welcome_4:
+        subject: 'List for Free on Copious'
+      welcome_5:
+        subject: 'Build Your Copious Community'
+      friend_joined:
+        subject: '%{friend} just joined you on Copious'
+      draft_listing_reminder:
+        subject: 'Email-only Offer: List something & Grab $10'
+      invitee_purchase_credit:
+        subject: '%{invitee} just earned you %{credit_amount}'
+      connection_digest:
+        from_name: 'Copious Weekly Digest'
+        names_default: 'on Copious'
+      connection_digest_r2:
+        subject:
+          weekly_digest:
+            'Your Weekly Copious Digest'
+          latest:
+            'The Latest on Copious'

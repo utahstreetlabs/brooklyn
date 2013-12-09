@@ -1,0 +1,29 @@
+<% title "Admin: Categories" %>
+
+<%= bootstrap_breadcrumb [
+  ['Admin', admin_dashboard_path],
+  'Categories'
+] %>
+
+<%= datagrid @categories, id: 'categories', pagination_theme: :bootstrap do |t| %>
+  <%= t.thead do |thead| %>
+    <%= thead.th :name, default: true %>
+    <%= thead.th :slug %>
+    <%= thead.th :created_at, title: 'Created at' %>
+    <%= thead.th :updated_at, title: 'Last updated at' %>
+  <% end %>
+  <%= t.tbody do |tbody, category| %>
+    <%= tbody.td do %>
+      <%= link_to category.name, admin_category_path(category) %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= category.slug %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= date category.created_at %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= date category.updated_at %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -1,0 +1,4 @@
+en:
+  controllers:
+    search_browse:
+      search_error: 'There was an error performing your search. Please try again later.'

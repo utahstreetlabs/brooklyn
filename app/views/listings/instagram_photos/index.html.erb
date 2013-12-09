@@ -1,0 +1,14 @@
+<%= instagram_photos @photos, id: 'instagram-photos' do %>
+  <% @photos.each do |photo| %>
+    <%= instagram_import(@listing, photo) %>
+  <% end %>
+<% end %>
+
+<div class="loading-overlay-holder" style="display: none;">
+  <div class="loading-overlay instagram">Loading...<span class="loading-spinner-instagram"></span></div>
+</div>
+
+<% if @pagination %>
+  <%= link_to '', listing_instagram_index_path(@listing, count: 12, max_id: @pagination), style: 'display:none', class: 'instagram-photos-more' %>
+<% end %>
+

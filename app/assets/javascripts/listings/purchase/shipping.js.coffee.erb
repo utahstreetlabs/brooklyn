@@ -1,0 +1,55 @@
+jQuery ->
+  # XXX: is the accordion stuff even used at all anymore?
+  $newAddressForm = $('section#new-address')
+  $newAddressForm.accordion {collapsible: true, active: false}
+  if $newAddressForm.data 'active'
+    $newAddressForm.accordion 'activate', 0
+
+  $('form.continue-to-payment').on 'submit', ->
+    $('form#ship_to_new, form#new_postal_address').first().trigger 'submit'
+    $('button[type=submit]').attr 'disabled', true
+    # submit the form so the disabled text comes up - form should
+    # submit to nilhref
+    true
+
+  $creditBox = $('#credit-box');
+  $.remoteForm.initRemoteForm($creditBox);
+  $creditForm = $('form', $creditBox);
+
+  # since we're showing the success notice inline, we don't want to show it in the flash box
+  $creditForm.unbind 'jsend:success', $.remoteForm.showFlashOnSuccess
+
+  $creditDetails = $('.credits-applied-container > .price-detail')
+  $credit = $('.price-detail-value', $creditDetails)
+  $total = $('.total-container * .price-detail-value')
+  $balance = $('#balance', $creditBox)
+  $success = $('.credit-applied-feedback', $creditBox)
+
+  $creditBox.on 'ajax:before', (event) ->
+    $success.html ''
+    true
+
+  $creditBox.on 'jsend:success', (event, data) ->
+    # update "credit applied" text and hide that order details row if no credit is applied
+    if parseFloat(data.applied) > 0
+      $credit.html "($<span id=\"credit\">#{data.applied}</span>)"
+      $creditDetails.show()
+    else
+      $credit.html('')
+      $creditDetails.hide()
+    # update "total" text
+    $total.html "$<span id=\"total-price\">#{data.total}</span>"
+    # update "your balance" text
+    $balance.text data.balance
+    # update "apply credits" field value
+    $('#credit_amount', $creditForm).val data.applicable
+    # show inline notice
+    $success.html data.message
+    $success.show()
+    true
+
+  $creditBox.on 'jsend:fail', (event, data) ->
+    $creditForm[0].reset()
+    true
+
+  true

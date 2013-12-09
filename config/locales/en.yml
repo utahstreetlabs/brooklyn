@@ -1,0 +1,728 @@
+en:
+  follow_button:
+    follow: Follow
+    unfollow: Following
+    listing:
+      follow: Follow this seller
+      unfollow: Unfollow this seller
+  invites:
+    who_invited_me:
+      one: "%{who} believes it's imperative that you join Copious ASAP."
+      other: "%{who} invited you to join Copious, you popular person."
+  offers:
+    default_name: Special Offer
+  listings:
+    bookmarklet:
+      show:
+        title_html: 'Posting data&hellip;'
+    external:
+      bookmarklet:
+        collections:
+          index:
+            title: "Add to Copious"
+            comment_box:
+              placeholder_html: 'Say something&hellip;'
+              placeholder_typeahead_html: 'comment, @mention, #hashtag'
+              help: "Press Enter to save."
+            button:
+              submit: "Save"
+              skip: "Skip"
+            successfully_added: 'Successfully added.'
+            save_to_collections: 'Save it to your collections.'
+        complete:
+          title: 'Listing posted!'
+  feed_messages:
+    invite:
+      facebook:
+        caption: "copious.com"
+        name: "Let's shop on Copious."
+        description: "Join %{firstname} on Copious, a social marketplace to inspire your style story. Because what are friends for besides affirming (or vetoing) that you belong in those fringed wedges? <p>Copious. Discover, Collect, Sell."
+    invite_with_credit:
+      facebook:
+        caption: "copious.com"
+        name: "I want to follow your interests on Copious."
+        description: "%{invitee_firstname} - I want to fill my Copious marketplace with inspiring taste. Your style would be an awesome addition. Please join me."
+        action_name: "Follow %{name}"
+    signup:
+      facebook:
+        name: "I'm now discovering great finds on Copious."
+        description: "Copious is a marketplace tailored to what I like. I'd like to add my friends' interests to Copious to discover even more great finds. Join me."
+        action_name: "Follow %{name}"
+      twitter:
+        other_user_on_network:
+          text: "I just joined Copious! You should too: %{link}"
+        other_user_off_network:
+          text: "I just joined Copious! You should too: %{link}"
+    share_listing_shared:
+      twitter:
+        other_user_on_network:
+          text: "Checking out %{listing} by %{other_user_username} on %{copious}"
+        other_user_off_network:
+          text: "Checking out %{listing} by %{other_user_username} on %{copious}"
+      tumblr:
+        text: "%{listing} from %{other_user_username} via (<a href='%{link}'>copious</a>)"
+      pinterest:
+        text: "%{listing} %{price}"
+    share_listing_activated:
+      facebook:
+        name: "%{firstname} listed - %{listing} - on Copious"
+        description: "Found on Copious. Discover, Collect, Sell."
+      twitter:
+        other_user_on_network:
+          text: "Listed %{listing} on %{copious} %{link}"
+        other_user_off_network:
+          text: "Listed %{listing} on %{copious} %{link}"
+    share_listing_liked:
+      facebook:
+        name: "%{firstname} likes - %{listing} - on Copious"
+        description: "Found on Copious. Discover, Collect, Sell."
+      twitter:
+        other_user_on_network:
+          text: "♥ %{listing} by %{other_user_username} on %{copious} %{link}"
+        other_user_off_network:
+          text: "♥ %{listing} on %{copious} %{link}"
+    share_listing_commented:
+      facebook:
+        name: "%{firstname} commented on - %{listing} - on Copious"
+        description: '"%{comment}" - Found on Copious. Discover, Collect, Sell.'
+      twitter:
+        other_user_on_network:
+          text: "%{comment} about %{listing} by %{other_user_username} on %{copious} %{link}"
+        other_user_off_network:
+          text: "%{comment} about %{listing} on %{copious} %{link}"
+    share_user_followed:
+      facebook:
+        name: "%{firstname} is following %{other_user} on Copious"
+        description: "Found on Copious. Discover, Collect, Sell."
+      twitter:
+        other_user_on_network:
+          text: "Following %{other_user_username} on %{copious} %{link}"
+        other_user_off_network:
+          text: "Following %{other_user} on %{copious} %{link}"
+
+  controllers:
+    auth:
+      cancelled: 'You must log in to continue.'
+      connected: 'You are now connected to %{network}.'
+      welcome_new: "Welcome to Copious, %{name}!  Let's get started."
+      welcome_existing: 'Welcome back to Copious, %{name}!'
+      preferences_updated: 'Your %{network} settings have been updated.'
+      error_connecting: 'There was an error connecting to %{network}. You should try again later.'
+      error_communicating: 'There was an error communicating with the external service. You should try again later.'
+      error_network_registered: 'Could not connect to %{network}.  That account is already associated with a different Copious user.'
+      facebook_timeline: 'Facebook Timeline access was not added to your account.'
+    profiles:
+      error_missing_permission: "Since the last time you checked out Copious we've added some new social features. Click <a href=\"%{link}\">here</a> to update your preferences."
+      error_invalid_session: "Oops. Looks like that didn't post. Is it possible you changed your password? Click <a href=\"%{link}\">here</a> to re-authenticate."
+      error_action_not_allowed: "Oh dear. Your friend apparently doesn't allow posts to be made to their wall."
+      error_rate_limited_invite: "Apologies, but it looks like you might need to wait until tomorrow to send more invites.  %{network} limits the number of invites you can send per day."
+      error_access_token_invalid: "Oops.  Looks like your %{network} session might have expired.  Click <a href=\"%{link}\">here</a> to re-authenticate."
+      invalid_captcha: "Oops! We couldn’t validate the two words. Please try entering them again."
+    email_accounts:
+      janrain_error: 'There was an error fetching your contacts.  We will try again later.'
+    home:
+      invite:
+        error_permissions: "Oops! You need to allow additional Facebook permissions to invite your friends. Try again?"
+      feed_load_failed:
+        We're building your feed. Reload to take a look.
+      feed_load_fallback_to_curated:
+        We're building your feed. Reload to take a look.
+    password_resets:
+      send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
+      invalid_token: 'The password reset token is no longer valid. You will need to try again.'
+      updated: 'Your password was changed successfully. You are now logged in.'
+    orders:
+      updated: 'Your changes have been saved.'
+      confirmed: 'The order has been confirmed.'
+      shipped: 'The order has been marked as shipped.'
+      delivered: 'The order has been marked as delivered.'
+      completed: 'The order has been completed.'
+      canceled: 'The order has been canceled and the listing relisted.'
+      returned: 'Return is not yet supported.'
+      could_not_transition: 'The order state could not be changed in that way. Perhaps somebody changed it out from underneath you?'
+      invalid_shipment: "We couldn't save your shipment information.  Was it in the correct format?"
+      public: "The order has been made public."
+      private: "The order has been made private."
+    profile:
+      search_error: 'There was an error performing your search. Please try again later.'
+      invalid_captcha: "Oops! We couldn’t validate the two words. Please try entering them again."
+    return_address:
+      updated: "Your return address has been updated."
+      created: "Your return address has been added."
+      error_updating: "There was an error updating your return address.  Please try again."
+    sessions:
+      timeout: "We have logged you out after being idle for %{timeout} minutes. Please log in again."
+      re_onboarding: "Welcome back! We’ve revamped. To get the best experience, tell us your style story."
+    settings:
+      profile:
+        updated: "Your settings have been updated."
+      password:
+        updated: "Your password has been changed."
+      email:
+        updated: "Your email address has been changed."
+        updated_prefs: "Your email settings have been updated."
+      feature:
+        updated_prefs: "Your settings have been updated."
+      networks:
+        updated_prefs: "Your network settings have been updated."
+        disconnected: 'You are now disconnected from %{network}.'
+      shipping:
+        created: "Your shipping address has been added."
+        updated: "Your shipping address has been updated."
+        removed: "Your shipping address has been removed."
+        default_updated: "Your default shipping address has been saved."
+        default: "Default"
+      privacy:
+        updated: "Your privacy settings have been updated."
+        error_updating: "There was an error updating your privacy settings. Please try again."
+    offer_earnable:
+      offer_granted: "Congratulations! The credit has been added to your account."
+      invalid_new_only: "So sorry&mdash;this offer is only available to new Copious users."
+      invalid_existing_only: "So sorry&mdash;this offer is only available to existing users."
+      invalid_per_user_limit: "You've earned this offer as many times as allowed. Sorry about that."
+      invalid_total_user_limit: "This offer's all gone. Bummer."
+      invalid_user_connectivity: "To receive credit, you need to have more connections on your social account. You’re still free to browse, buy, sell and share."
+    tags:
+      could_not_like: 'Oops!  Something went wrong posting your like of that tag.  Try again?'
+      could_not_unlike: 'Oops!  Something went wrong removing your like of that tag.  Try again?'
+  contexts:
+    invites:
+      indirect_share:
+        name: "I'm on Copious. Join me and get %{signup_offer_amount}!"
+        desc: "Copious is a marketplace where you can find more of what you love, no matter what you're into. What you see is powered by your interests and friends, so everything is curated for you, by you. Join me."
+        action_name: "Join %{name}"
+  # begin views
+  dashboard:
+    who_to_follow:
+      user_on_network: "%{name} on %{network}"
+    messages:
+      header_box: ""
+    bought:
+      public: 'Public'
+      private: 'Private'
+  helpers:
+    home:
+      signup_credit_cta: "Sign up now and <strong>earn %{amount} off your first %{min_purchase}+ </strong>Copious purchase."
+    users:
+      current_user: "You"
+  profile:
+    show:
+      open_graph:
+        description: "%{name} is a part of Copious. Discover, Collect, Sell."
+    signup:
+      publish:
+        twitter: Post to my Twitter feed that I joined Copious
+        facebook: Post to my Facebook Wall that I joined Copious
+  actors:
+    actor_card:
+      story:
+        actor_multi_listing: "%{action} %{listing} and %{others_count} others"
+  profiles:
+    feedback:
+      feedback:
+        header:
+          lead: "Transaction ratings:"
+          total:
+            one: "1 Total transaction,"
+            other: "%{count} Total transactions,"
+          percent: "%{percent} Successful"
+        selling:
+          successful:
+            seller:
+              header: "Happy closet!"
+              description: "This order was successfully completed."
+            buyer:
+              header: "Happy closet!"
+              description: "This order was successfully completed."
+            other:
+              header: "Happy closet!"
+              description: "This order was successfully completed."
+          cancelled:
+            seller:
+              header: "Order canceled"
+              unshipped:
+                description: "You didn't ship the item."
+            buyer:
+              header: "Order canceled"
+              unshipped:
+                description: "The seller didn't ship the item. We are investigating what happened."
+            other:
+              header: "Order canceled"
+              unshipped:
+                description: "The seller didn't ship the item."
+          buyer_made_private: "(Buyer made this transaction private.)"
+          zero:
+            listing_link: "here"
+            seller: "You have yet to sell any items. Ready to start? Click %{listing_link}."
+            other: "%{firstname} has yet to sell any items."
+        buying:
+          successful:
+            seller:
+              header: "Happy closet!"
+              description: "This order was successfully completed."
+            buyer:
+              header: "Happy closet!"
+              description: "This order was successfully completed."
+            other:
+              header: "Happy closet!"
+              description: "This order was successfully completed."
+          cancelled:
+            seller:
+              header: "Order canceled"
+              unshipped:
+                description: "You didn't ship the item."
+            buyer:
+              header: "Order canceled"
+              unshipped:
+                description: "The seller didn't ship the item. We are investigating what happened."
+            other:
+              header: "Order canceled"
+              unshipped:
+                description: "The seller didn't ship the item."
+          buyer_made_private: "(Buyer made this transaction private.)"
+          zero:
+            feed_link: "new closet additions"
+            buyer: "Aw, this space is empty. Time to find some %{feed_link}."
+            other: "%{firstname} has yet to buy any good finds."
+  settings:
+    invites:
+      show:
+        status:
+          accepted_purchased: 'Accepted — Purchase complete'
+          accepted_not_purchased: 'Accepted — No purchase yet'
+          accepted_credit_capped: 'Accepted — Maximum reached'
+          accepted_unqualified: 'Accepted — Not qualified for credit'
+          pending: 'Pending acceptance'
+    networks:
+      facebook:
+        autoshare:
+          header: "Add Copious activities to my Facebook Timeline.  You will be redirected to Facebook if you haven't added it yet."
+          listing_activated: 'New Listings'
+          listing_commented: 'Comments'
+          listing_liked: 'Loves'
+          listing_sold: 'Sales'
+          user_followed: 'Follows'
+          never: ''
+        header: Facebook Profile
+        connect: Connect Facebook Profile
+        disconnect: Disconnect
+      twitter:
+        autoshare:
+          header: ''
+          listing_activated: 'Automatically tweet my new listings'
+          listing_commented: 'Automatically tweet my comments'
+          listing_liked: 'Automatically tweet my loves'
+          user_followed: "Automatically tweet people I'm following"
+          never: 'Never automatically share my actions on Copious'
+        header: Twitter
+        connect: Connect Twitter
+        disconnect: Disconnect
+      tumblr:
+        header: Tumblr
+        connect: Connect Tumblr
+        disconnect: Disconnect
+      instagram:
+        header: Instagram
+        connect: Connect Instagram
+        disconnect: Disconnect
+    credits:
+      triggers:
+        signup_credit_trigger: Sign up Bonus
+        invitee_credit_trigger: Invitation Bonus
+        inviter_credit_trigger: 'Invitation Bonus for %{username}'
+      offers:
+        default_name: Special Offer
+  search_browse:
+    browse:
+      open_graph:
+        description: "Found on Copious. Discover, Collect, Sell."
+      category:
+        default: 'All Categories'
+      price:
+        default: 'All Prices'
+      sort:
+        default: 'Most Recent'
+        date_state: 'Most Recent (All)'
+        date: 'Most Recent'
+        price: 'Highest Price'
+        rprice: 'Lowest Price'
+        popular: 'Most Popular'
+        relevance: 'Most Relevant'
+    search_error: 'There was an error performing your search. Please try again later.'
+  shared:
+    feedback:
+      summary:
+        total:
+          one: "1 Transaction,"
+          other: "%{count} Transactions,"
+        percent: "%{percent} Successful"
+    invites:
+      progress:
+        invites_credited:
+          one: "1 qualified invitation accepted"
+          other: "%{count} qualified invitations accepted"
+        capped: "Congratulations! You&apos;ve earned the maximum amount of credits."
+    messages:
+      signup:
+        facebook: Signup with Facebook
+        twitter: Signup with Twitter
+      login:
+        facebook: Login with Facebook
+        twitter: Login with Twitter
+    modal:
+      logging_in_html: You are being logged in&hellip;
+      waiting_html: Please wait&hellip;
+    signup:
+      why_captcha: "Please type the two words above so we know you’re a real person."
+    orders:
+      privacy:
+        hint: "Private: Copious will reveal only the purchase date to other users.<br/>Public: Copious will also reveal the listing image, title, price, and seller's name to other users."
+    welcome_headers:
+      feed:
+        logged_in:
+          title: 'Feed'
+          description_html: 'Activity from people and<br> things you follow'
+      trending:
+        logged_in:
+          title: 'Trending'
+          description_html: 'Recent listings and collections<br> with the most activity'
+        logged_out:
+          title: 'Discover the things you love'
+          sub_header: "Sell the stuff you don't"
+      home:
+        logged_in:
+          existing:
+            welcome_title: 'Welcome back, %{name}'
+            welcome_description_html: 'Discover amazing things to buy.<br> List things for sale from your home or closet.'
+          new:
+            welcome_title: 'Welcome to Copious'
+            title: 'NOW WHAT?'
+            discover_title: 'DISCOVER'
+            discover_description: 'amazing things to buy on Copious.'
+            organize_title: 'ORGANIZE'
+            organize_description: 'the things you love into collections.'
+            list_title: 'LIST'
+            list_description: 'things for sale from your home or closet.'
+    welcome_footers:
+      home:
+        logged_out:
+          signup_button: 'Sign up to see more'
+          connect1: 'Been here before? Connect above or '
+          connect2: 'log in with your email'
+    sticky_headers:
+      logged_out:
+        title: 'Discover the things you love'
+  tags:
+    tag_card:
+      story:
+        tag_liked: 'loved this'
+  # end views
+  # random stuff
+  connection_signal:
+    unit: ''
+    thousand: 'k'
+    million: 'm'
+    billion: 'b'
+  connections:
+    tooltip: 'This is the Copious Signal, a measure of your connection to the seller. The more bars filled in, the stronger the connection.'
+    summary:
+      listed_by: 'Listed by %{seller}'
+      description_self: 'This is you'
+      description:
+        one: '1 connection'
+        other: '%{count} connections'
+    detail:
+      title: 'You and %{other}'
+    types:
+      direct:
+        facebook_friend: '%{other} is your Facebook friend'
+        usl_follower: "You're following %{other} on Copious"
+        usl_followee: '%{other} is following you on Copious'
+        twitter_follower: "You're following %{other} on Twitter"
+        tumblr_follower: "You're following %{other} on Tumblr"
+      indirect:
+        facebook_friend: '%{adjacent} is friends with %{other}'
+        usl_follower: '%{adjacent} is following %{other}'
+        usl_followee: '%{adjacent} is being followed by %{other}'
+        twitter_follower: '%{adjacent} is following %{other} on Twitter'
+        tumblr_follower: '%{adjacent} is following %{other} on Tumblr'
+        facebook_friend_facebook_friend: '%{adjacent} and %{other} share mutual friends'
+        facebook_friend_usl_follower: 'Friends of %{adjacent} are following %{other}'
+        facebook_friend_usl_followee: 'Friends of %{adjacent} are being followed by %{other}'
+        facebook_friend_twitter_follower: 'Friends of %{adjacent} are following %{other} on Twitter'
+        facebook_friend_tumblr_follower: 'Friends of %{adjacent} are following %{other} on Tumblr'
+        usl_follower_facebook_friend: "%{adjacent} is following %{other}'s friends"
+        usl_follower_usl_follower: "%{adjacent} is following %{other}'s followers"
+        usl_follower_usl_followee: '%{adjacent} and %{other} are following the same people'
+        usl_follower_twitter_follower: "%{adjacent} is following %{other}'s Twitter followers"
+        usl_follower_tumblr_follower: "%{adjacent} is following %{other}'s Tumblr followers"
+        usl_followee_facebook_friend: "%{adjacent} is being followed by %{other}'s friends"
+        usl_followee_usl_follower: '%{adjacent} and %{other} are being followed by the same people'
+        usl_followee_usl_followee: '%{other} is following people who follow %{adjacent}'
+        usl_followee_twitter_follower: '%{adjacent} is followed by people who follow %{other} on Twitter'
+        usl_followee_tumblr_follower: '%{adjacent} is followed by people who follow %{other} on Tumblr'
+        twitter_follower_facebook_friend: "%{adjacent} is following %{other}'s friends on Twitter"
+        twitter_follower_usl_follower: "Twitter followers of %{adjacent} are following %{other}"
+        twitter_follower_usl_followee: 'Twitter followers of %{adjacent} are being followed by %{other}'
+        twitter_follower_twitter_follower: "%{adjacent} is following %{other}'s Twitter followers on Twitter"
+        twitter_follower_tumblr_follower: "%{adjacent} is following %{other}'s Tumblr followers on Twitter"
+        tumblr_follower_facebook_friend: "%{adjacent} is following %{other}'s friends on Tumblr"
+        tumblr_follower_usl_follower: "Tumblr followers of %{adjacent} are following %{other}"
+        tumblr_follower_usl_followee: 'Tumblr followers of %{adjacent} are being followed by %{other}'
+        tumblr_follower_twitter_follower: "%{adjacent} is following %{other}'s Twitter followers on Tumblr"
+        tumblr_follower_tumblr_follower: "%{adjacent} is following %{other}'s Tumblr followers on Tumblr"
+  networks:
+    facebook:
+      name: Facebook
+      notification:
+        follow:
+          template: '@[%{user_id}] is now following you on Copious.'
+        love:
+          template: '@[%{user_id}] likes something you like. "%{listing_title}"'
+        comment:
+          template: '@[%{user_id}] commented on something you like. "%{listing_title}"'
+        mention:
+          template: '@[%{user_id}] mentioned you on %{listing_title}.'
+        announce:
+          many_friends:
+            template: '@[%{user_id_1}], @[%{user_id_2}], and %{other_friends} found something they like on Copious.'
+          one_friend:
+            template: '@[%{user_id}] found something they like on Copious.'
+          no_friends:
+            template: '2 of your friends found something they like on Copious.'
+        price_alert:
+          template: 'Great news! "%{listing_title}" is on sale. Get it now for %{discount}% off.'
+    twitter:
+      name: Twitter
+    tumblr:
+      name: Tumblr
+    instagram:
+      name: Instagram
+    pinterest:
+      name: Pinterest
+    connections:
+      facebook:
+        one: '1 friend'
+        other: '%{count} friends'
+      twitter:
+        one: '1 follower'
+        other: '%{count} followers'
+      tumblr:
+        one: '1 follower'
+        other: '%{count} followers'
+      instagram:
+        one: '1 follower'
+        other: '%{count} followers'
+  invite_bar:
+    before:
+      description_html: "Get <strong>%{amount}</strong> for every friend you invite after they make their first purchase!"
+      button: "Invite Friends"
+    after:
+      description:
+        one: "Congrats! You've sent 1 invitation and are in line for up to %{value} in credits."
+        other: "Congrats! You've sent %{count} invitations and are in line for up to %{value} in credits."
+      button: "Invite More Friends"
+  invite_modal:
+    title: 'Invite your friends'
+    description_html: "Get %{amount} for every friend you invite after they make their first purchase."
+    recommended_tab: 'Recommended Friends'
+    requests:
+      message: "%{inviter} has invited you to join Copious! Discover more of what you're into, no matter what you're into. Explore on Copious now!"
+    buttons:
+      save: 'Send Invites'
+      select_all: 'Select All'
+    search:
+      placeholder: 'Search Friends'
+  save_modal:
+    collection_error: 'Select at least 1 collection.'
+  create_collection:
+    modal:
+      name_error: 'You must add a collection name.'
+  listing_modal:
+    header:
+      timestamp: "%{timestamp} ago"
+      listing_source:
+        internal:
+          story_html: "Added to %{name_on} Copious %{timestamp}"
+          story_notimestamp_html: "Added to %{name_on} Copious"
+          name_on: "%{name} on"
+        external:
+          story_html: "Added %{to_name} from %{domain} %{timestamp}"
+          story_notimestamp_html: "Added %{to_name} from %{domain}"
+          to_name: "to %{name}"
+    description:
+      more: more
+      less: less
+    comments:
+      see_all:
+        other: "See all %{count} comments"
+      timestamp: "%{timestamp} ago"
+      placeholder:
+        typeahead_html: "comment, @mention, #hashtag"
+        default_html: "Add a comment&hellip;"
+    button:
+      sold: 'Sold'
+      shop: 'Shop'
+    footer:
+      more_from_collection: "More from %{collection}"
+      by_username: " by %{name}"
+      more_from_user: "More from %{name}"
+  recommend_modal:
+    title: 'Make a Recommendation'
+    description_html: "Copious is better with friends.<br>Recommend this item to your friends and earn <strong>%{amount}</strong> when they make their first purchase."
+    buttons:
+      save: 'Recommend'
+    requests:
+      message: "%{recommender} thinks you'll like %{listing} on Copious!"
+  signup_modal:
+    top:
+      desktop_html: "Discover things you love <br> Sell the stuff you don't"
+      phone_html: 'A social marketplace to buy and sell the things you love'
+    button:
+      facebook: 'Connect with Facebook'
+      twitter: 'Signup with Twitter'
+    remember_me: 'Remember Me'
+    bottom:
+      login_link: 'log in with your username'
+      login_html: 'Been here before? Connect above or %{login_link}'
+  onboarding_follow:
+    title: 'Follow your friends'
+    description: "Discover more of what you love through your friends on Copious."
+    requests:
+      message: "%{follower} wants to follow you on Copious!"
+    modal:
+      title: 'Shop with friends'
+      description: 'Follow your friends to see what they like.'
+      save:
+        label: 'Continue'
+  collection_card:
+    listing_count:
+      one: "%{count} Listing"
+      other: "%{count} Listings"
+    follower_count:
+      one: "%{count} Follower"
+      other: "%{count} Followers"
+    button:
+      edit:
+        label: Edit
+        disable_html: 'Editing&hellip;'
+      delete:
+        label: Delete
+        disable_html: 'Deleting&hellip;'
+      cancel:
+        label: Cancel
+        disable_html: 'Cancelling&hellip;'
+      follow:
+        label: Follow
+        disable_html: 'Following&hellip;'
+      unfollow:
+        label: Following
+        disable_html: 'Unfollowing&hellip;'
+      admin:
+        label: Admin
+    modal:
+      edit_collection:
+        title: 'Edit Collection'
+        name:
+          placeholder: 'My Wishlist'
+        button:
+          delete: 'Delete'
+          save: 'Save'
+      delete_collection_confirm:
+        title: 'Delete Collection'
+        content: "There are %{num} items in your collection.  Are you sure you want to permanently delete %{name}?"
+    saved: 'Your collection has been updated.'
+    error_updating: 'Your collection could not be updated.  Please try again.'
+    not_owner: 'You are not the owner of that collection.'
+    deleted: 'Your collection has been deleted.'
+  add_collection_card:
+    button:
+      add:
+        label: 'Add a Collection'
+    title: 'New collection name'
+    listings: '-- Listings'
+  add_listing_card:
+    button:
+      add:
+        label: 'Add a Listing'
+  follow_card:
+    story_html: "We recommend %{followee_link}"
+    shared_interest_html: "You & %{followee} love %{interest}"
+  facebook_feed_dialog_invite_card:
+    story_html: 'Invite your Facebook friends'
+    invite_story: 'Get a %{amount} bonus for every friend you invite'
+    button: 'Invite Friends'
+  facebook_facepile_invite_card:
+    front:
+      invite_link: 'Invite'
+      story_html: '%{invite_link} your Facebook friends'
+      more: '+%{count}'
+      info_html: 'Earn <strong>%{amount}</strong> for every friend you invite after they make their first purchase.'
+      button: 'Invite Friends'
+      invite_title: 'Invite Your Friends'
+      invite_story: 'Get a %{amount} bonus for every friend you invite'
+      invite_credit_limit: 'Earn up to %{amount}'
+    requests:
+      message: "%{inviter} has invited you to join Copious! Discover more of what you're into, no matter what you're into. Explore on Copious now!"
+    back:
+      header: 'Congratulations'
+      copy: 'You are now in line for up to'
+      info_html: 'Invite more friends to earn a<br> bigger bonus today!'
+      button: 'Invite More Friends'
+  promotion_card:
+    secret_seller:
+      story: 'Introducting Secret Seller'
+      action: 'How Does It Work'
+    ios:
+      story: 'Copious recommends the iPhone app.'
+      action: 'List from your iPhone. Do it.'
+  product_card:
+    v4:
+      size: "size %{name}"
+      comment_header: "COMMENTS"
+      comment_listing_link_all: "All"
+      comment_listing_link: "%{comment_count}"
+      comment_listing_first: "Be the first to leave a comment."
+      comment: "comment"
+      comment_box:
+        placeholder_html: 'Say something&hellip;'
+        placeholder_typeahead_html: 'comment, @mention, #hashtag'
+        help: "Press Enter to post."
+    v5:
+      removed:
+        removed_copy: 'This listing has been removed from your feed.'
+      collection:
+        removed: Removed
+  user_card:
+    stats:
+      listings:
+        one: '1 Listing'
+        other: '%{count} Listings'
+      collections:
+        one: '1 Collection'
+        other: '%{count} Collections'
+      likes:
+        one: '1 Love'
+        other: '%{count} Loves'
+    shared_interest:
+      default: 'Copious'
+      self: "You're awesome"
+      description: 'You both like %{interest}'
+  tutorial_bar:
+    title: Welcome to Copious
+    description_html: 'Your feed is a place to discover the things you love based on your interests and people you follow. <br>Comment on your favorite listings and invite your friends so they can discover more of what they love too.'
+    tutorial_like_step:
+      cta: Love something
+    tutorial_comment_step:
+      cta: Leave a comment
+    tutorial_invite_step:
+      cta: Invite friends
+      message: "%{inviter} has invited you to join Copious! Discover more of what you're into, no matter what you're into. Explore on Copious now!"
+      invite_button: Invite
+  datetime:
+    distance_in_words:
+      about_x_months: 'more than a month'
+      x_months: 'more than a month'
+      about_x_years: 'more than a month'
+      over_x_years: 'more than a month'
+      almost_x_years: 'more than a month'

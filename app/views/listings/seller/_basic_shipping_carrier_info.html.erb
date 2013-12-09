@@ -1,0 +1,6 @@
+<p class="carrier-info">
+  <strong><%= t('.header', carriers: carrier_list_string) %></strong><br>
+  <%= t('.instructions') %><br>
+  <%= carrier_links %>
+  <%= t('.or_on_paypal_html', paypal_link: link_to(t('.paypal_link'), 'http://www.paypal.com')) %>
+</p>

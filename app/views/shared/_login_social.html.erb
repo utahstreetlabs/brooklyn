@@ -1,0 +1,11 @@
+<div class="login-containers">
+  <div class="network-connect-buttons">
+    <%= link_to_facebook_connect(label: "Connect with Facebook", d: (defined?(d) ? d : params[:d])) %>
+    <%= link_to image_and_text("social_networks/loh-twitter-icon.png", "Connect with Twitter"),
+      auth_prepare_path(network: :twitter, d: (defined?(d) ? d : params[:d])), class: "button primary large signup twitter" %><br/>
+  </div>
+  <div class="remember-me-container">
+    <%= check_box_tag(:remember_me, '1', true, :class => 'margin-top-half') %>
+    <%= label_tag(:remember_me, 'Remember Me', :class => 'checkbox margin-top-half weak') %>
+  </div>
+</div>

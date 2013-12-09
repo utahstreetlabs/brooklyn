@@ -1,0 +1,21 @@
+<%
+deactivate_masthead
+stylesheet 'product_listing'
+%>
+
+<%= render '/layouts/top' %>
+
+<div class="safe-shopping">
+  <h4><%= image_tag "icons/lock_icon.png" %>Safe shopping guaranteed. Copious has secure transactions.</h4>
+</div>
+
+<div id="main-content" class="span8">
+  <%= purchase_progress_bar %>
+  <%= yield %>
+</div>
+
+<div id="sidebar" class="span4">
+  <%= yield :sidebar %>
+</div>
+
+<%= render '/layouts/bottom' %>

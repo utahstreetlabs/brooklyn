@@ -1,0 +1,33 @@
+<% title "Admin: Facebook announcements" %>
+
+<%= bootstrap_breadcrumb [
+  ['Admin', admin_dashboard_path],
+  'Facebook',
+  'Announcements'
+] %>
+
+<p>This page lets you send a canned announcement to every Facebook user. Each user will receive a notification on Facebook with one of the following messages.</p>
+
+<p><%= bootstrap_label :info, 'Note' %> Facebook will replace uids in the message with user names.
+
+<h5>When the user has no Facebook friends</h5>
+
+<blockquote><%= t 'networks.facebook.notification.announce.no_friends.template', user_id: '862365480' %></blockquote>
+
+<h5>When the user has one Facebook friend</h5>
+
+<blockquote><%= t 'networks.facebook.notification.announce.one_friend.template', user_id: '862365480' %></blockquote>
+
+<h5>When the user has two or more Facebook friends</h5>
+
+<blockquote><%= t 'networks.facebook.notification.announce.many_friends.template', user_id_1: '862365480', user_id_2: '764919047', other_friends: '78 other friends' %></blockquote>
+
+<%= bootstrap_button_group do %>
+  <%= bootstrap_button 'Send announcement', type: :button, toggle_modal: :announcement, condition: :primary %>
+<% end %>
+
+<%= bootstrap_modal :announcement, "Confirm announcement", remote: true, show_save: false, show_close: false,
+                    custom_links: admin_facebook_announcement_buttons do %>
+  <p><%= bootstrap_label :warning, 'Warning' %> The announcement will be distributed to every registered user who is connected to Facebook. That's tens of thousands of users!</p>
+  <p>Are you absolutely sure you want to send the announcement?</p>
+<% end %>

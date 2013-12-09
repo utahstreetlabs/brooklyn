@@ -1,0 +1,7 @@
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  The user <%= mailer_link_to @flag.user.name, public_profile_url(@flag.user) %> flagged the listing <%= mailer_link_to @flag.listing.title, listing_url(@flag.listing) %>. Please investigate.
+<% end %>
+
+<%= render '/shared_mailer/footer' %>

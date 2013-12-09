@@ -1,0 +1,80 @@
+#= require copious/plugin
+#= require jquery/jquery.urldecoder.copious
+#= require copious/jsend
+#= require controls/flash
+#= require controls/profile/new_profile_form
+
+# A modal for creating a user profile.
+#
+# Also reponsible for making auth calls to facebook - the only reason
+# to make an auth call to Facebook is in situations where we may need
+# to show this modal, so this seems reasonable. The modal will not be
+# shown if the user is already registered on the site.
+class NewProfileModal
+  constructor: (@modal) ->
+    @authUrl = '<%= Network::Facebook.auth_callback_path %>'
+    @saveButton = @modal.find('[data-save=modal]')
+    this.authorize()
+
+  authorize: () =>
+    params = {remember_me: $('[name=remember_me]').val()}
+    $.jsend.get(@authUrl, params).
+      then((data) =>
+        if data.user_state is 'connected'
+          this.showModal(data)
+        else if data.user_state is 'logged_in'
+          copious.flash.notice('<%= I18n.t("controllers.auth.connected", network: "Facebook") %>')
+          this.reloadPage()
+        else
+          destination = $.url.parse(location.href).params?.d
+          if destination
+            window.location = destination
+          else
+            # the only other successful responses mean the user is now logged in, so just reload
+            this.reloadPage()).
+      fail =>
+        copious.flash.alert('<%= I18n.t("controllers.auth.error_connecting", network: "Facebook") %>')
+
+
+  setContent: (content) =>
+    @modal.find('[data-role=modal-content]').html(content)
+    this._setDestination()
+
+  setTitle: (title) =>
+    @modal.find('[data-role=modal-title]').html(title)
+
+  reloadPage: =>
+    # display the login modal and show the spinner to give the illusion that work is happening the background
+    loggingInModal = $('#logging_in-modal')
+    loggingInModal.modal('show')
+    $('.spinner', loggingInModal).show()
+    location.reload()
+
+  showModal: (data) =>
+    this._setupForm(data)
+    @modal.modal('show')
+
+  _setupForm: (data) =>
+    this.setContent(data.profileForm)
+    this.setTitle(data.title) if data.title?
+    @saveButton.prop('disabled', true)
+    @saveButton.on 'click', =>
+      @modal.find('form').submit()
+    @modal.on 'newProfileForm:valid', =>
+      @saveButton.prop('disabled', false)
+    @modal.on 'newProfileForm:invalid', =>
+      @saveButton.prop('disabled', true)
+    form = @modal.find('form')
+    form.newProfileForm('setExternalPhoto', data.authType, data.authId)
+    form.on 'submit', =>
+      @saveButton.prop('disabled', true)
+
+  # set an input in the form that will determine where the user will
+  # be redirected after this form is submitted
+  _setDestination: (location = window.location.href) =>
+    @modal.find('input[name=d]').val(location)
+
+jQuery ->
+  $.fn.newProfileModal = copious.plugin.componentPlugin(NewProfileModal, 'newProfileModal')
+  $('#new-profile-modal').on 'shown', ->
+    copious.track('create_profile_modal view', source: this)

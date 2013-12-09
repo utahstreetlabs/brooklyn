@@ -1,0 +1,10 @@
+<% avatar_img_options ||= {height: 50, width: 50} %>
+<% invite_button_options ||= {} %>
+<% invite_suggestion_class ||= "ra-action" %>
+
+<%= content_tag :li, id: "invite-suggestion-#{profile.id}", class: "invite-suggestion #{invite_suggestion_class}" do %>
+  <%= link_to_delete_invite_suggestion(profile.id) %>
+  <div class="invite-friends-text">
+    <span class="invite-wrap"><%= invite_button profile, invite_button_options %></span>
+  </div>
+<% end %>

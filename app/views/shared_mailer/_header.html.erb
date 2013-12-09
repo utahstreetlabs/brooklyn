@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Copious Email</title>
+    <style>
+      #outlook a {padding:0;} /* Force Outlook to provide a "view in browser" menu link. */
+  		body{width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0;}
+  		/* Prevent Webkit and Windows Mobile platforms from changing default font sizes, while not breaking desktop design. */
+  		.ExternalClass {width:100%;} /* Force Hotmail to display emails at full width */
+  		.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;} /* Force Hotmail to display normal line spacing.*/
+  		#backgroundTable {margin:0; padding:0; width:100% !important; line-height: 100% !important;}
+  		img {outline:none; text-decoration:none; -ms-interpolation-mode: bicubic;}
+  		a img {border:none;}
+  		p {margin: 0em;}
+  		table td {border-collapse: collapse;}
+      table {border-spacing: 0px;}
+      /* Link color override. */
+
+
+      @media only screen and (max-device-width: 480px) {
+        *[id=backgroundTable] {max-width: 320px !important;}
+        *[id=main-table] {max-width: 320px !important; width: 100% !important;}
+        *[id=sub-table] {max-width: 320px !important; width: 100% !important;}
+        *[id=content-wrapper] {padding-left: 15px !important;}
+        *[id=footer-table] {max-width: 320px !important; width: 100% !important;}
+        *[id=footer-wrapper] {padding-left: 15px !important; padding-right: 5px !important; font-size: 10px !important; line-height: 16px !important;}
+        p[class=bodyText] {
+          font-size: 16px !important;
+          line-height: 20px !important;
+        }
+        span.button-text{
+          font-size: 2em !important;
+          line-height: 2.3em !important;
+        }
+        p[class=header] {
+          font-size: 26px !important;
+          line-height: 30px !important;
+          font-weight: 300 !important;
+          font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !important;
+          color: $red !important;
+          display: inline-block !important;
+          text-align: left !important;
+          padding-left: 0px !important;
+          margin-top: 10px;
+          margin-bottom: 16px;
+          margin-left: 0px;
+          margin-right: 0px;
+        }
+        p[class=subHeader] {
+          font-size: 20px !important;
+        }
+        *[class=mailer-button]{margin-bottom: 16px !important;}
+      }
+    </style>
+  </head>
+  <body style="margin:0px;padding:0px;">
+    <style>
+      .header {
+        font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+        font-size: 33px;
+        line-height: 37px;
+        font-weight: 300;
+        color: #333333;
+        display: block;
+        text-align: left;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 16px;
+        margin-left: 0px;
+        margin-right: 0px;
+      }
+      .subHeader{
+        font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 600;
+        margin-top: 16px;
+        margin-bottom: 16px;
+        margin-left: 0px;
+        margin-right: 0px;
+      }
+      .bodyText{
+        font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 400;
+        color: #555555;
+      }
+      .bold{
+        font-weight: bold;
+      }
+      .mailer-button {
+        text-decoration: none !important;
+        background-color: #29bfd3;
+        padding-top: 1px;
+        padding-right: 0px;
+        padding-bottom: 1px;
+        padding-left: 0px;
+        margin-top: 20px;
+        border-style: solid;
+        border-width: 1px;
+        border-top-color: #77c6d0;
+        border-right-color: #77c6d0;
+        border-bottom-color: #009aae;
+        border-left-color: #79c6d0;
+        border-collapse: separate !important;
+        display: inline-block;
+      }
+    </style>
+    <table cellpadding="0" cellspacing="0" border="0" id="backgroundTable" width="100%" style="background-color: #FFFFFF;" border-spacing="0">
+      <tr>
+        <td align="center">
+          <table width="580px" cellpadding="0" cellspacing="0px" bgcolor="#FFFFFF" id="main-table">
+            <tr bgcolor="#FFFFFF" height="45px">
+              <td style=" padding-left:10px; vertical-align: middle;">
+                <%= mailer_image_tag('layout/Logo-58-black.png', :width => '100', :height => '22', :alt => 'Copious', :class => 'main-logo', :style => 'vertical-align: middle; margin-left:4px;') %>
+              </td>
+            </tr>
+            <tr>
+              <td align="center">
+                <table width="580px" id="sub-table" bgcolor="#FFFFFF" style="margin-top: 0px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding-bottom:5px;">
+                  <tr>
+                    <td style="padding-left:12px; padding-right:10px; padding-top:0px; padding-bottom:10px;" id="content-wrapper">

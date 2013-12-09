@@ -1,0 +1,7 @@
+{
+  "id": <%= raw photo.uuid.to_json %>,
+  <% if photo.source_uid %>
+    "source_uid": <%= raw photo.source_uid.to_json %>,
+  <% end %>
+  "link": <%= raw absolute_url(photo.file.large.url, root_url: root_url).to_json %>
+}

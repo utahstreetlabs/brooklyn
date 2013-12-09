@@ -1,0 +1,94 @@
+<%= bootstrap_table condensed: true, data: {role: 'user-info'} do %>
+  <tr>
+    <td class="span4">Created at</td>
+    <td><%= datetime user.created_at %></td>
+  </tr>
+  <tr>
+    <td>Last updated at</td>
+    <td><%= datetime user.updated_at %></td>
+  </tr>
+  <tr>
+    <td>Registration state</td>
+    <td data-role="registration-state"><%= user.state.capitalize %></td>
+  </tr>
+  <tr>
+    <td>Admin level</td>
+    <td><% if @user.superuser?%>Superuser<% elsif @user.admin? %>Admin<% else %>None<% end %></td>
+  </tr>
+  <% if user.registered? || user.inactive? %>
+    <tr>
+      <td>Public profile</td>
+      <td><%= link_to_user_profile user, text: user.slug %></td>
+    </tr>
+    <tr>
+      <td>Web site profile setting enabled?</td>
+      <td data-role="web-site-enabled"><%= yes_no user.web_site_enabled? %></td>
+    </tr>
+    <tr>
+      <td>Account email</td>
+      <td><%= mail_to user.email %></td>
+    </tr>
+    <tr>
+      <td>Balanced account</td>
+      <td>
+        <%= content_or_none user.balanced_url do |url| %>
+          <%= link_to_balanced url %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td># Collections</td>
+      <td data-role="user-collections">
+        <%= user.collections.any?? link_to(user.collections.count, admin_user_collections_path(user.id)) : '0' %>
+      </td>
+    </tr>
+    <tr>
+      <td># Listings</td>
+      <td data-role="user-listings">
+        <%= user.seller_listings.any?? link_to(user.seller_listings.count, admin_user_listings_path(user.id)) : '0' %>
+      </td>
+    </tr>
+    <tr>
+      <td># Orders</td>
+      <td data-role="user-orders">
+        <%= user.buyer_orders.any?? link_to(user.buyer_orders.count, admin_user_orders_path(user.id)) : '0' %>
+      </td>
+    </tr>
+    <tr>
+      <td>Credit balance</td>
+      <td data-role="credit-balance"><%= number_to_currency user.credit_balance %></td>
+    </tr>
+    <tr>
+      <td>Listing access</td>
+      <td data-role="listing-access">
+        <% if user.full_listing_access? %>
+          Full
+        <% elsif user.no_listing_access? %>
+          None
+        <% elsif user.limited_listing_access? %>
+          Limited
+        <% else %>
+          Undetermined
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>On interest suggestion lists</td>
+      <td data-role="suggested-user">
+        <% if user.suggested_for_interests.any? %>
+          <%= admin_user_interest_suggestions user %>
+        <% else %>
+          None
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>On autofollow list?</td>
+      <td data-role="autofollow-user"><%= yes_no user.autofollowed? %></td>
+    </tr>
+    <tr>
+      <td>Scores</td>
+      <td><%= link_to 'Interests', admin_scores_interests_path(user_id: user.id) %></td>
+    </tr>
+  <% end %>
+<% end %>

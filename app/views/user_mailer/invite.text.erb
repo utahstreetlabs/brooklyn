@@ -1,0 +1,13 @@
+<%= word_wrap %Q[Hi friend of a friend,
+
+#{raw @user.name} thinks you'll really enjoy buying and selling things you love on Copious. And naturally, we couldn't agree more.
+
+A few words from #{raw @user.firstname}:
+
+#{mailer_format_text @message}
+
+Join now at #{rewrite_mailer_url invite_url(@user.untargeted_invite_code)}
+
+Can't wait to meet you,] %>
+
+<%= render '/shared_mailer/footer' %>

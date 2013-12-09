@@ -1,0 +1,88 @@
+#= require 'copious/jsend'
+#= require 'copious/plugin'
+#= require 'controls/multi_selector'
+#= require 'controls/modal_spinner'
+#= require 'facebook'
+
+class FollowFriendsModal
+  SUGGESTIONS_URL = '<%= Brooklyn::Application.routes.url_helpers.follow_suggestions_signup_buyer_friends_path %>'
+
+  constructor: (@element) ->
+    @requestModalOptions = {
+      message: @element.data('message')  # the text of the invite request
+    }
+    @form = @element.find('[data-role=follow-friends-form]')
+    @continueButton = @element.find('[data-save=modal]')
+    @multiSelector = @element.find('[data-role=multi-friend-selector]').
+      multiSelector(selectAll: $('#select-all-friends')).multiSelector('instance')
+    this._loadSuggestions().then =>
+      @multiSelector.setAll(true) # default to all selected
+    @continueButton.on 'click', (e) =>
+      e.preventDefault()
+      this.continueClick()
+      false
+
+  continueClick: =>
+    @recipients = this.inviteRecipientIds()
+    @followeeIds = this.followeeIds()
+    copious.track('onboarding_follow click', {
+      share_channel: 'facebook_request',
+      suggested_recipients: @element.find('[data-type=invite]').length,
+      suggested_app_users: @element.find('[data-type=follow]').length,
+      selected_recipients: @recipients.length,
+      selected_app_users: @followeeIds.length},
+      => this.invite())
+    @element.modal('hide')
+
+  invite: () =>
+    if @recipients.length > 0
+      this._fbAppRequestDialog(to: @recipients.join(','))
+    else
+      this.follow()
+
+  follow: () =>
+    $.jsend.ajax(@form.attr('action'), {'followee_ids[]': @followeeIds}, @form.attr('method'))
+
+  inviteRecipientIds: =>
+    @multiSelector.selectedIds("[data-type=invite]")
+
+  followeeIds: =>
+    @multiSelector.selectedIds("[data-type=follow]")
+
+  ### private methods ###
+
+  _disableContinue: =>
+    @continueButton.addClass('disabled')
+
+  _enableContinue: =>
+    @continueButton.removeClass('disabled')
+
+  _loadSuggestions: =>
+    @element.modalSpinner('on')
+    this._disableContinue()
+    $.jsend.get(SUGGESTIONS_URL).
+      then (data) =>
+        @element.modalSpinner('off')
+        this._enableContinue()
+        @multiSelector.replaceSelectables(data.suggestions) if data.suggestions?
+
+  # XXX: follow() is passed as the callback in copious.track() because otherwise the track request doesn't get sent.
+  _fbAppRequestDialog: (appRequestOptions) =>
+    CopiousFb.appRequest($.extend(@requestModalOptions, appRequestOptions)).
+      then(=>
+        copious.track('fb_request sent',
+          {request_source: 'onboarding_follow', request_type: 'u2u_follow', selected_recipients: @recipients.length},
+          => this.follow())).
+      fail(=>
+        copious.track('fb_request cancel',
+          {request_source: 'onboarding_follow', request_type: 'u2u_follow', selected_recipients: @recipients.length},
+          => this.follow()))
+
+jQuery ->
+  $.fn.followFriendsModal = copious.plugin.componentPlugin(FollowFriendsModal, 'followFriendsModal')
+  window.FollowFriendsModal = FollowFriendsModal
+  $('[data-role=follow-friends-modal]').on 'show', ->
+    $(this).followFriendsModal()
+  $('[data-role=follow-friends-modal]').on 'shown', ->
+    copious.track('onboarding_follow view', source: this)
+  $('[data-role=follow-friends-modal][data-show=true]').modal()

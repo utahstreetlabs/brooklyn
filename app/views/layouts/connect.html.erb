@@ -1,0 +1,16 @@
+<%= render '/layouts/top' %>
+<% stylesheet 'invites' %>
+
+<div id="sidebar" class="span3">
+  <div class="section">
+    <h3>Connect</h3>
+    <ul class="nav nav-vertical-list menu">
+      <%= nav_li t('connect.who_to_follow.index.title'), connect_who_to_follow_index_path %>
+      <%= nav_li t('connect.invites.index.title'), connect_invites_path %>
+    </ul>
+  </div>
+</div>
+
+<%= yield %>
+
+<%= render '/layouts/bottom' %>

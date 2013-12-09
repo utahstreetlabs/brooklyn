@@ -1,0 +1,21 @@
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  Hi <%= @inviter.firstname %>,
+<% end %>
+
+<%= mailer_graf do %>
+  <%= mailer_link_to @invitee[:name], public_profile_url(@invitee[:slug]) %> just made a first purchase and earned you <%= @referral_credit_amount %>. Congratulations!
+<% end %>
+
+<%= mailer_graf do %>
+ Introduce more friends to Copious so they can start seeing great finds and you might even earn extra spending money. Total win-win situation.
+<% end %>
+
+<%= mailer_button "Invite more friends", connect_invites_url %>
+
+<%= mailer_graf(styles: 'margin-bottom: 0px;') do %>
+  Happy shopping,
+<% end %>
+
+<%= render '/shared_mailer/footer' %>

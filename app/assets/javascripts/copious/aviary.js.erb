@@ -1,0 +1,45 @@
+// Aviary support
+//
+// Add a function for popping the Aviary editor and submitting an
+// update form after Aviary saves.
+//
+// Orchestrate Aviary -> Brooklyn download through JavaScript rather
+// than via the Aviary webhook to ensure the user actually sees the
+// correctly cropped photo in the photo uploader after Aviary saves
+jQuery(function($) {
+  Aviary = Aviary || null;
+  var featherEditor = (Aviary ? new Aviary.Feather({
+    apiKey: '<%= Brooklyn::Application.config.aviary.key %>',
+    apiVersion: 2,
+    cropPresets: ['Custom', ['Square', '1:1']],
+    tools: 'enhance,effects,orientation,crop',
+    appendTo: ''
+  }) : null);
+
+  $.aviary = function(id, src, listingId, updateFormId) {
+    if (featherEditor) {
+      featherEditor.launch({
+        image: id,
+        url: src,
+        onSave: function(id, newURL) {
+          var $updateForm = $('#' + updateFormId);
+          $('.remote-file-url', $updateForm).val(newURL);
+          $('#' + id).parent().addClass('loading').loader();
+
+          // submit update form and update photos on success
+          $updateForm.submit();
+          $updateForm.on('jsend:success', function(event, data) {
+            $(document.body).trigger('new-photos', data);
+          });
+        }
+      });
+    }
+    return false;
+  };
+
+  $(document.body).on('click', '.aviary-trigger', function() {
+    var $this = $(this);
+    $.aviary($this.data('photo-id'), $this.data('photo-url'), $this.data('listing-id'), $this.data('update-form-id'));
+  });
+})
+

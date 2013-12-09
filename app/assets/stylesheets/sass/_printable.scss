@@ -1,0 +1,57 @@
+body.printable {
+  .content.row {
+    display: block !important;
+  }
+  padding: 20px;
+  width: 800px;
+  font-size: $baseFontSize * 1.3;
+  background: none;
+  a {
+    color: $gray;
+    font-weight: normal; }
+  #logo-bar {
+    float: left;
+    margin-bottom: 10px; }
+  #printable-content {
+    clear: both; }
+  p {
+    margin-bottom: 0;
+    line-height: 25px; }
+  #invoice {
+    .actions, #details-show, #ship-to, a.edit, #manage-address, #order-status {
+      display: none; }
+    h5 {
+      background-color: transparent;
+      font-size: $baseFontSize * 1.5;
+      border-top-width: 0;
+      border-bottom: 1px solid #b1b1b3;
+      margin-bottom: 10px;
+      padding-bottom: 5px;
+      margin-top: 10px; }
+    #order-summary p {
+      float: left; }
+    #order-summary {
+      @extend .span12;
+      img {
+        float: right; } }
+    #order-payment, #order-seller {
+      width: 47%;
+      float: left;
+      .payment-container {
+        border: none; }
+      .payment-status-container {
+        float: left !important;
+        border: none; } }
+    #order-shipping, #order-buyer {
+      width: 47%;
+      float: right; }
+    #order-payment, #order-seller {
+      clear: both; }
+    #order-payment, #order-shipping {
+      margin-top: 15px; }
+    .avatar {
+      height: inherit;
+      display: block;
+    } 
+  } 
+}

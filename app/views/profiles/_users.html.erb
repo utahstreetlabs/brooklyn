@@ -1,0 +1,18 @@
+<%
+empty_msg = 'No users' unless defined? empty_msg
+%>
+<div id="users">
+  <div class="nav-container">
+    <%= profile_tabs profile_user %>
+  </div>
+  <% if cards.any? %>
+    <ul class="users-results row">
+      <% cards.each do |card| %>
+        <%= user_card card %>
+      <% end %>
+      <%= paginate cards %>
+    </ul>
+  <% else %>
+    <p class="empty-msg"><%= empty_msg %></p>
+  <% end %>
+</div>

@@ -1,0 +1,7 @@
+<%= word_wrap %Q[Hi #{@inviter.firstname.html_safe}, #{@invitee[:name]} just made a first purchase and earned you #{@referral_credit_amount}. Congratulations!
+
+Since you can never bring too many friends shopping, go ahead and invite some more at #{rewrite_mailer_url dashboard_url(more_invites: 1)}
+
+Happy shopping,] %>
+
+<%= render '/shared_mailer/footer' %>

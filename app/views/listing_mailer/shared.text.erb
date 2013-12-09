@@ -1,0 +1,10 @@
+<%= word_wrap %Q[Hi #{@listing.seller.firstname.html_safe},
+
+The word is out! #{@sharer.name.html_safe} just shared #{@listing.title} on #{t :name, scope: [:networks, @network]}.
+
+It seems as though #{@sharer.name.html_safe} has great taste.
+
+#{follow_text(@sharer, @listing.seller)}
+
+Sharing is caring,] %>
+<%= render '/shared_mailer/footer' %>

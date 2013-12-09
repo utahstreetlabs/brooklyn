@@ -1,0 +1,29 @@
+<%
+  hide_masthead
+  @body_class = 'full-signup-2'
+  hide_footer
+%>
+
+<%= image_tag 'landing/buyer/fullbg-3.jpg', class: 'bg' %>
+<div class="signup-modal-container clear">
+  <div class="signup-modal">
+    <%= image_tag 'layout/copious-mainlogo-big.png', class: 'main-logo centered' %>
+    <div class="divider"></div>
+    <span class="main-copy">Thou shall covet thy<br/> neighbor&#146;s closet.</span>
+    <div class="connect-container">
+      <div class="incentives-container">
+        Join now and get <span class="dollar-sign">$</span><span class="strong">5</span> free.
+      </div>
+      <%= link_to_facebook_connect %><br/>
+      <span class="left-line">&mdash;&mdash;&mdash;&mdash;</span>
+      <%= link_to 'or Connect with Twitter', auth_path(:twitter, buyer_signup: true), class: 'twitter signup'%>
+      <span class="right-line">&mdash;&mdash;&mdash;&mdash;</span>
+    </div>
+
+    <span class="main-copy2">Copious. Discover, Collect, Sell.</span>
+    <div class="divider" style="margin: 0px;float:left;"></div>
+    <div class="login-container">
+      <span class="already-registered">Already registered? <%= link_to 'Log In', login_path %></span>
+    </div>
+  </div>
+</div>

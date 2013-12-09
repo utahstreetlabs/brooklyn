@@ -1,0 +1,16 @@
+<% title t('.title') %>
+<div class="secret-seller-header-bg-container">
+  <div class="secret-seller-header">
+    <h1 class="image-header thanks"><%= t('.header') %></h1>
+    <p class="margin-bottom"><%= t('.body_html') %></p>
+    <p class="margin-top">
+      <%= t('.want_more_html', faq_link:
+            link_to(t('.faq_link'), Brooklyn::Application.config.urls.secret_seller_faq)) %>
+    </p>
+    <p class="margin-top"><%= link_to t('.feed_link'), root_path %></p>
+  </div>
+</div>
+
+<div id="main-content" class="span12" data-role="thanks">
+  <h2><%= t('.header') %></h2>
+</div>

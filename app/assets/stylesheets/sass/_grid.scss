@@ -1,0 +1,129 @@
+$grid_type: fixed !default;
+$grid_columns: 16 !default;
+$grid_column_width: 46 !default;
+$grid_gutter_width: 16 !default;
+
+// GENERATED VARS. You can ignore these.
+$grid_full_width: $grid_columns * $grid_column_width + $grid_columns * $grid_gutter_width - $grid_gutter_width;
+$grid_column_width_percent: $grid_column_width / $grid_full_width * 100 * 1%;
+$grid_gutter_width_percent: $grid_gutter_width / $grid_full_width * 100 * 1%;
+$baseFontSize_unitless: $baseFontSize / 1px;
+
+@mixin container($type: none, $box_padding_multiplier: 1) {
+  @extend .clearfix;
+  @if $grid_type == "fixed" {
+    //width: #{($grid_column_width + $grid_gutter_width) * $grid_columns - $grid_gutter_width}px
+    width: 976px;
+    @if $type == "box" {
+      padding-left: #{$grid_gutter_width * $box_padding_multiplier}px;
+      padding-right: #{$grid_gutter_width * $box_padding_multiplier}px; } }
+  margin: 0 auto; }
+
+@mixin span($n) {
+  width: #{$grid_column_width * $n + $grid_gutter_width * ($n - 1)}px;
+  @if $n == $grid_columns {
+    margin: 0; } }
+
+// COLUMN MIXIN. Column CSS classes are also generated. You can make an element span a specific
+// number of columns either by using this mixin in your SASS for that element (such as +column(4)),
+// or by speficing the CSS class in your HTML (such as class=column-4).
+@mixin column($n) {
+  @include span($n);
+  float: left;
+  margin-right: #{$grid_gutter_width}px;
+  @if $n == $grid_columns {
+    margin: 0; } }
+
+// BOX MIXIN. A "box" is a column that has inner padding the width of the gutters. It's useful when
+// you intend to have a background color or other screen on the element, such that content butting up
+// aganist the interior edges of the element would be undesirable. Use it just like the column mixin
+// (+box(4) or class=box-4).
+
+@mixin box($n) {
+  float: left;
+  width: #{$grid_column_width * $n + $grid_gutter_width * ($n - 1) - $grid_gutter_width * 2}px;
+  padding: #{$grid_gutter_width}px;
+  margin-right: #{$grid_gutter_width}px;
+  @if $n == $grid_columns {
+    margin: 0; } }
+
+// APPEND AND PREPEND MIXINS
+// These mixins append or prepend the specificed number of blank columns to an element, using padding.
+// Note that because they use padding, they are not compatible with boxes. I need to make a margin-based
+// version for boxes, but haven't gotten there, yet. Use them as with the other mixins (+append(2) or
+// class=prepend-2).
+@mixin append($n) {
+  padding-right: #{$grid_column_width * $n + $grid_gutter_width * $n}px !important; }
+
+@mixin prepend($n) {
+  padding-left: #{$grid_column_width * $n + $grid_gutter_width * $n}px !important; }
+
+// PUSH AND PULL MIXINS
+// These mixins push or pull an element out of the flow by the specified number of columns. Use as with
+// the other mixins (+push(4) or class=pull-4).
+@mixin pull($n) {
+  float: left;
+  margin-bottom: $baseLineHeight;
+  margin-left: -#{$grid_column_width * $n + $grid_gutter_width * $n}px !important; }
+
+@mixin push($n) {
+  float: right;
+  margin-bottom: $baseLineHeight;
+  margin-right: -#{$grid_column_width * $n + $grid_gutter_width * $n}px !important; }
+
+// OTHER MIXINS
+@mixin last {
+  margin-right: 0 !important; }
+
+// Generate the CSS classes.
+
+@for $n from 1 to $grid_columns + 1 {
+  .column-#{$n} {
+    @include column($n); } }
+
+@for $n from 1 to $grid_columns + 1 {
+  .box-#{$n} {
+    @include box($n); } }
+
+@for $n from 1 to $grid_columns {
+  .append-#{$n} {
+    @include append($n); } }
+
+@for $n from 1 to $grid_columns {
+  .prepend-#{$n} {
+    @include prepend($n); } }
+
+@for $n from 1 to $grid_columns / 2 + 1 {
+  .pull-#{$n} {
+    @include pull($n); } }
+
+@for $n from 1 to $grid_columns / 2 + 1 {
+  .push-#{$n} {
+    @include push($n); } }
+
+.last {
+  @include last; }
+
+.grid3 {
+  @include column(3); }
+
+.grid4 {
+  @include column(4); }
+
+.grid5 {
+  @include column(5); }
+
+.grid8 {
+  @include column(8); }
+
+.grid9 {
+  @include column(9); }
+
+.grid11 {
+  @include column(11); }
+
+.grid12 {
+  @include column(12); }
+
+.grid16 {
+  @include column(16); }

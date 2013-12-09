@@ -1,0 +1,17 @@
+<%
+  first ||= false
+%>
+
+<h3>Success! Your listing is now live!</h3>
+<% if first %>
+  <%= adwords_tracking_pixel(:firstlisting) %>
+  <p>
+    Congratulations, you've created your first listing. Now just kick back and count the benjamins...
+  </p>
+  <p>
+    Or, create another listing = more benjamins. Or, the chances of listings selling
+    goes up a gazillion times if you add more connections to your graph.
+  </p>
+<% else %>
+  <%= adwords_tracking_pixel(:newlisting) %>
+<% end %>

@@ -1,0 +1,10 @@
+<%
+title 'Invite your friends'
+deactivate_masthead
+mp_view_event 'signup invite email'
+%>
+
+<div id="email-invites">
+  <%= render '/connect/invites/modules/email', url: signup_invites_email_index_path,
+             invite: (@invite || EmailInvite.new) %>
+</div>

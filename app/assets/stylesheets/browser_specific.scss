@@ -1,0 +1,242 @@
+@import "includes";
+
+// all the css fixes for internet explorer
+// using css_browser_selector.js to give a class to <html> with the browsers name.
+
+.ie8,.ie7 {
+  // login page, button wrap prevention
+  #login-wrapper {
+    width: 666px !important;
+  }
+
+  // Selector issue fixes
+  //------------------------
+  .search-results-new, .search-results {
+    .card-container {
+      margin-left: 9px !important;
+      .tag-products {
+        li {
+          margin-right: 3px;
+        }
+      }
+    };
+  }
+  .thumbnails {
+    li {
+      margin: 0px 20px 24px 0px !important;
+    }
+  }
+  .listed-by-stats-container {
+    li {
+      margin-right: 3px !important;
+    }
+  }
+  #instagram-photos {
+    .instagram-import {
+      margin-right: 10px !important;
+    }
+  }
+  .like-suggestions {
+    .tag-container, .interest-container {
+      margin-right: 12px !important;
+      .tag-products {
+        li {
+          margin-right: 4px !important;
+        }
+      }
+    }
+  }
+  .bottom-strip {
+    .thumbnails {
+      li {
+        margin-right: 12px !important;
+      }
+    }
+  }
+
+  // onboarding follow page
+  .thumbnail > img {
+    max-width: none !important;
+  }
+
+  // invite page facebook friend select
+  .friend-box.friend-box-highlight {
+    background: $color-hover-list-light !important;
+    background-color: $color-hover-list-light !important;
+    background-image: none !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#54CCDC', endColorstr='#54CCDC',GradientType=0 ) !important;
+  }
+  .friend-box.friend-box-selected {
+    background: $color-hover-list !important;
+    background-color: $color-hover-list !important;
+    background-image: none !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#29BFD3', endColorstr='#29BFD3',GradientType=0 ) !important;
+    border: 1px solid $linkColor;
+    .avatar-container {
+      border-color: #777777;
+    }
+    .fb-name {
+      color: $white !important;
+      @include text-shadow(0 1px 0 transparentize($black, .5));
+    }
+  }
+  // grey disabled button fix
+  #fb-friend-invite {
+    button.disabled, button {
+      color: $white !important;
+    }
+  }
+  .masthead #header-navbar {
+    .nav.pull-left .dropdown-menu {
+      top: 5px !important;
+    }
+    .nav.pull-right .dropdown-menu {
+      right: 73px !important;
+      top: -5px !important;
+    }
+    .dropdown-menu li a:hover {
+      background-color: #D3F1F5;
+    }
+  }
+  // media query doesn't work for IE8
+  .hidden-desktop {
+    display: none !important;
+  }
+}
+
+.ie {
+  // logged out homepage
+  .loh-bg {
+    display: block !important;
+  }
+  .signup-modal {
+    .connect-container {
+      .button.primary {
+        margin-left: 30px !important;
+      }
+    }
+  }
+  // New logged out homepage
+  .signup-modal-container2 {
+    #footer-content {
+      font-size: 13px !important;
+      line-height: 16px !important;
+    }
+  }
+  // Search bar on header fix (need those !important to override inline styling)
+  #search_box label {
+    line-height: 20px !important;
+    top: 3px !important;
+  }
+  #field_location {
+    .help_text {
+      float: none !important;
+    }
+  }
+  // feedback icons proof
+  .feedback-outcome-successful, .feedback-outcome-fail {
+    margin-left: 0px !important;
+    background-repeat: no-repeat;
+    background-image: image-url("layout/icons-sprites.png");
+    padding-left: 30px;
+    font-weight: 600;
+    color: $color-header;
+    display: block;
+    clear: both;
+  }
+  .feedback-outcome-successful {
+    background-position: 0px -561px;
+  }
+  .feedback-outcome-fail {
+    background-position: 0px -586px;
+  }
+  .profiles_feedback_selling, .profiles_feedback_buying {
+    .meta {
+      float: left;
+    }
+  }
+  #feedback-summary {
+    float: left;
+    clear: both;
+    display: block;
+    margin: 10px 0px;
+    a {
+      font-size: 16px;
+      float: left;
+      font-weight: 400;
+      padding-left: 30px;
+      background-repeat: no-repeat;
+      background-image: image-url("layout/icons-sprites.png");
+      background-position: -52px -611px;
+    }
+  }
+}
+
+// FIREFOX FIX
+.gecko {
+  .nav-sort {
+    li:hover {
+      a {
+        margin: 0px;
+      }
+    }
+    li.selected {
+      margin: 0px;
+    }
+  }
+  #hb-tray #browse-tab .dropdown-toggle .caret {
+    margin-top: -11px; /* hamburger browse tab caret positioning */
+  }
+  #field_location {
+    .help_text {
+      float: none !important;
+    }
+  }
+  .card-container-v4 .card-v4 {
+    z-index: auto;
+  }
+  .invite-friends-list li {
+    width: 160px;
+  }
+  .comment-content-container {
+    width: 203px; /* smaller space than other browsers cuz scrollbar styling is for webkit only */
+  }
+  /* listing modal */
+  .modal-large {
+    width: 800px; /* need more spacing cuz of ff's thick scrollbar */
+  }
+  .listing-modal-body-content {
+    width: 340px;
+    padding-right: 15px;
+  }
+  .listing-modal-header {
+    margin-right: -15px;
+  }
+  #select-interests-modal {
+    width: 680px; /* need more spacing cuz of ff's thick scrollbar */
+  }
+  #follow-friends-modal, #follow-friends-modal #signup_follow_container {
+    width: 570px; /* need more spacing cuz of ff's thick scrollbar */
+  }
+}
+
+
+// CHROME
+.chrome {
+  /* listing modal CTA fix */
+  /* need more specific selectors to fix for chrome 25 */
+  .modal.modal-large .stats-button-container {
+    float: none;
+    width: 93px;
+    height: 110px;
+    margin-right: 10px;
+    display: inline-block;
+    &:last-child {
+      margin-right: 0;
+    }
+    .btn.curatorial, .btn.transactional {
+      min-width: 93px;
+      min-height: 76px;
+    }
+  }
+}

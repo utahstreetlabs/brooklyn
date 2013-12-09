@@ -1,0 +1,17 @@
+<div style="display: block;" data-role="save-manager" class="modal remotemodal"
+     data-url="/save_modal">
+  <div data-role="modal-content">
+  </div></div><div class="modal-footer"><button type="button" name="button" data-save="modal" class="button primary large">Save</button></div></div>
+</div>
+
+<div style="display:none;" data-role="new-collection" id="create-collection-in-dropdown-hidden-form">
+  <form method="post" id="new_collection" data-remote="true" action="/collections">
+    <div id="collection_name_input">
+      <input type="text" name="collection[name]" data-role="new-collection-name">
+    </div>
+    <input type="hidden" value="dropdown" name="collection[context]" id="collection_context">
+  </form>
+</div>
+
+<div data-role='save-manager-success-modal'>
+</div>

@@ -1,0 +1,204 @@
+#= require copious/jsend
+#= require copious/remote_form
+#= require jquery/jquery.urldecoder.copious
+#= require copious/plugin
+#= require controls/profile/new_profile_modal
+
+# There is no Dana, only Zuul...
+#
+# Manages activities related to protecting secure areas of the site and authenticating the user.
+#
+# Expects two modals to be present in the page:
+#
+# * +#logging-in-modal+ - shown to indicate that the viewer has been logged into the site and is being
+#                         sent to the original destination
+# * +#waiting-modal+ - shown to indicate to the viewer that a connection is being made in the background
+# * +#signup-modal+ - shown to a logged-out viewer whenever it is determined that the viewer needs to be logged in to
+#                     the site before performing an action or navigating to another area; should allow the viewer to
+#                     sign up or log in within the context of the modal
+#
+# Assumes that the viewing user is not authenticated directly with Copious but may be logged into Facebook (therefore,
+# do not load this library if the viewing user is logged into Copious).
+#
+# If the viewer is logged into Facebook and has authenticated the Copious app with Facebook, then the user will be
+# automatically logged into Copious and either 1) sent to the user's original destination, if the user has a
+# registered Copious account, or 2) sent into the onboarding flow.
+#
+# If the viewer is logged into neither Copious nor FB, he may still be required to log into Copious explicitly.
+# There are different policies for determining when the viewer needs to be logged in. Which policy is in effect is
+# determined by the content of the +<copious:auth-policy> meta tag.
+#
+# 1. Immediately (as soon as the fact that the viewer is not logged in is determined); chosen when the value for
+#    +<copious:auth-policy>+ is +immediate+, when the tag's value is not recognized or when the tag does not exist
+# 2. Whenever the user attempts to perform an action that requires a logged-in user (eg following another user or
+#    commenting on a listing), but not when navigating between pages that have logged-out states; chosen when the value
+#    for +<copious:auth-policy>+ is +protected+
+# 3. Whenever the user attemps to perform any action at all; chosen when the value for +<copious:auth-policy>+ is
+#    +any+
+#
+# TODO:
+#
+# 1. Only perform autologin when activated by a meta tag
+# 2. Rename "signup modal" to "auth modal" since the ultimate purpose is authentication, regardless of whether the
+#    viewer has an existing Copious account or not
+# 3. Use a third modal to kick off profile creation rather than replacing the signup modal's content
+class Gatekeeper
+  constructor: ->
+    @authUrl = '<%= Network::Facebook.auth_callback_path %>'
+    @loggingInModal = $('#logging_in-modal')
+    @signupModal = $("#signup-modal")
+    @waitingModal = $("#waiting-modal")
+    @authImmediately = true
+    @authProtected = false
+    @authAny = false
+    @controlsProtected = false
+    @useFbEntryPoint = false
+
+    this._configureControlProtection()
+    this._configureSignupEntryPoint()
+    this._configureSignupModal()
+
+  # Asynchronously logs the viewer into Copious. If the viewer is fully registered with Copious, the browser is
+  # redirected to the user's original destination in the logged-in state. If the viewer has connected FB to Copious but
+  # has not yet completed registration, the new profile modal is shown.
+  autoLogin: =>
+    # it's possible the signup modal is visible, if the immediate auth policy is engaged and there was some latency
+    # in determing the user's FB status.
+    @signupModal.modal('hide')
+    @waitingModal.modal('hide')
+    $('#new-profile-modal').newProfileModal()
+
+  # Redirects the browser to the user's original destination in the logged-in state.
+  goToOriginalDestination: (url) =>
+    # display the login modal and show the spinner to give the illusion that work is happening the background
+    @loggingInModal.modal('show')
+    $('.spinner', @loggingInModal).show()
+    currentUrl = $.url.parse(url)
+    # if no destination was specified, just reload the page - the new version of the page will be in the logged-in
+    # state
+    this._redirectWindow(if currentUrl.params? && currentUrl.params.d? then currentUrl.params.d else url)
+
+  # Sends the viewer to the signup flow entry point (determined as per +_configureSignupEntryPoint+).
+  enterSignupFlow: =>
+    if @useFbEntryPoint
+      COPIOUSFB.postInit ->
+        copiousFb.logIn()
+    else
+      @signupModal.modal('show')
+
+  doAuthImmediately: =>
+    this._determineAuthPolicy() unless @authPolicy?
+    @authImmediately
+
+  doAuthForProtectedResources: =>
+    this._determineAuthPolicy() unless @authPolicy?
+    @authProtected
+
+  doAuthForAnyResource: =>
+    this._determineAuthPolicy() unless @authPolicy?
+    @authAny
+
+  # Configures manual authentication based on the +content+ attribute of the +copious:auth-policy+ meta tag.
+  #
+  # * If any, protect all controls (navigational or otherwise) other than those in the signup modal
+  # * If protected, protect all controls with the +data-protected+ attribute
+  # * If immediate, start the manual auth flow (+enterSignupFlow+)
+  _configureControlProtection: =>
+    this._protectControls($('[data-always-protected=true]'))
+    if this.doAuthForAnyResource()
+      # all controls but those in the signup modal
+      this._protectControls($('a, button').
+        filter(':not(#signup-modal, #signup-modal *, #new-profile-modal, #new-profile-modal *,
+                [data-always-protected=true], [data-action=auth], [data-action=auth-facebook],
+                [data-action=auth-twitter])'))
+    else if this.doAuthForProtectedResources()
+      this._protectControls($('a, button').filter('[data-protected]'))
+
+  _configureSignupModal: =>
+    @signupModal.on 'click', '[data-action=auth-facebook]', =>
+      @signupModal.modal('hide')
+      @waitingModal.modal('show')
+      $('.spinner', @waitingModal).show()
+
+  # Replaces any existing click handlers from +$controls+ with one that shows the signup modal and suppresses the
+  # default click behavior.
+  _protectControls: (controls) =>
+    $.each(controls, (i, control) =>
+      $control = $(control)
+      $control.off 'click'
+      $control.on 'click', =>
+        @signupModal.data('source', copious.source($control) or 'undefined')
+        this.enterSignupFlow()
+        false
+    )
+    @controlsProtected = true
+
+  _redirectWindow: (url) =>
+    window.location = url
+
+  # Configure the signup entry point bsaed on the +content+ attribute of the +copious:signup-entry-point+ meta tag.
+  #
+  # * If 'fb', launch the FB OAuth modal directly
+  # * Otherwise, launch the Copious signup modal
+  _configureSignupEntryPoint: =>
+    $meta = $('meta[name="copious:signup-entry-point"]')
+    @useFbEntryPoint = $meta.exists() and $meta.attr('content') is 'fb'
+
+  _determineAuthPolicy: =>
+    $meta = $('meta[name="copious:auth-policy"]').first()
+    $forced = $('meta[name="copious:force-auth"]').first()
+    if $meta.exists()
+      content = $meta.attr('content')
+      @authPolicy = content
+      if content is 'any'
+        @authAny = true
+        @authProtected = false
+        @authImmediately = false
+      else if content is 'protected'
+        @authProtected = true
+        @authAny = false
+        @authImmediately = false
+    if $forced.exists()
+      content = $forced.attr('content')
+      if content is 'immediate'
+        @authImmediately = true
+
+window.Copious ?= {}
+window.Copious.Gatekeeper = Gatekeeper
+
+jQuery ->
+  $.fn.gatekeeper = copious.plugin.componentPlugin(Gatekeeper, 'gatekeeper')
+
+  $document = $(document)
+  $document.gatekeeper()
+  gatekeeper = $document.gatekeeper('instance')
+
+  # data api
+
+  # The FB library checks the user's FB login status when initializing the FB api and fires one of two events to
+  # indicate that the user is logged in to FB. This happens as soon as the FB api and the FB library have
+  # been loaded at page load time.
+
+  $document.on 'facebook:connected', ->
+    gatekeeper.autoLogin()
+
+  # XXX: it's possible that by this point the FB library has not triggered +facebook:connected+ even though the user
+  # is logged in to FB. if that's the case, then the signup modal will show up briefly until the event is handled, at
+  # which point Gatekeeper will replace the signup modal with the logging in modal.
+  if gatekeeper.doAuthImmediately()
+    gatekeeper.enterSignupFlow()
+
+# module loading stuff below
+
+if COPIOUSFB?.postInit?
+  COPIOUSFB.postInit => completeInitialization()
+
+COPIOUSGK ?=
+  apiInitialized: false
+  postInitQueue: []
+
+COPIOUSGK.apiInitialized = true
+
+completeInitialization = ->
+  _.each(COPIOUSGK.postInitQueue, (callback) -> callback())
+  COPIOUSGK.postInit = (callback) -> callback()

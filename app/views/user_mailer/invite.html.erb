@@ -1,0 +1,25 @@
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  Hi friend of a friend,
+<% end %>
+
+<%= mailer_graf do %>
+  <%= mailer_link_to @user.name, public_profile_url(@user) %> thinks you'll really enjoy buying and selling things you love on Copious. And naturally, we couldn't agree more.
+<% end %>
+
+<%= mailer_graf do %>
+  A few words from <%= @user.firstname %>:
+<% end %>
+
+<%= mailer_quote do %>
+  <%= @message %>
+<% end %>
+
+<%= mailer_button "Join now", invite_url(@user.untargeted_invite_code) %>
+
+<%= mailer_graf(styles: 'margin-bottom: 0px;') do %>
+  Can't wait to meet you,
+<% end %>
+
+<%= render '/shared_mailer/footer' %>

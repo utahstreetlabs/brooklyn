@@ -1,0 +1,27 @@
+<% if featured and featured.listings.any? %>
+  <div class="featured-products-wrap">
+    <div class="featured-top-section">
+      <h3>
+        Featured Listings
+      </h3>
+      <div class="featured-navigation">
+        <span class="navi"></span>
+        <%= link_to image_tag('layout/carousel_left.png'), nilhref, class: 'prev button-faux', title: 'Previous' %>
+        <%#= link_to '', nilhref, class: 'prev', title: 'Previous' %>
+
+        <%= link_to image_tag('layout/carousel_right.png'), nilhref, class: 'next button-faux', title: 'Next' %>
+      </div>
+    </div>
+    <div class="featured-products product-card-v3">
+      <div class="featured-products-list items">
+        <% featured.each_slice(4) do |listing_slice| %>
+          <ul>
+            <% listing_slice.each do |card| %>
+              <%= product_card card, refer_source: :featured %>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

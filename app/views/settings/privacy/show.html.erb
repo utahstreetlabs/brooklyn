@@ -1,0 +1,19 @@
+<%
+title 'Account Settings: Email Settings'
+mp_view_event 'email settings'
+%>
+
+<h2>Privacy</h2>
+<div class="section">
+  <%= form_for @privacy, as: :privacy, url: settings_privacy_path, method: :put do |f| %>
+    <%= f.field :purchase_details, container: :div do %>
+      <%= f.radio_button :purchase_details, false %>
+      <%= f.label 'purchase_details_false', 'Make my purchase details public', class: 'radio' %>
+      <p class="margin-bottom">If selected, Copious will show image, item title, seller name, purchase date and price to other users.</p>
+      <%= f.radio_button :purchase_details, true %>
+      <%= f.label 'purchase_details_true', 'Make my purchase details private', class: 'radio' %>
+      <p>If selected, Copious will only show purchase date to other users.</p>
+    <% end %>
+    <%= f.buttons save_text: 'Save changes' %>
+  <% end %>
+</div>

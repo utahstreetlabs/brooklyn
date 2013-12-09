@@ -1,0 +1,16 @@
+en:
+  controllers:
+    settings:
+      seller:
+        identity:
+          attempt2: "Your identity cannot be verified. Please ensure that the information below is correct and try again."
+          attempt3: "Your account still cannot be verified, so we need more information. Please revise and try again or contact us at %{help_link}."
+          error_updating: 'Your account cannot be verified. Please ensure that the information below is correct and try again or contact us at %{help_link}.'
+        accounts:
+          unidentified_bank: 'The routing number you provided cannot be matched to a bank. Please contact us at %{help_link} or try another account.'
+          defaulted: 'Your default deposit account has been changed.'
+          payout_account_created: 'Success! Your Payout Account has been created.'
+          deposit_account_created: 'Your deposit account has been created.'
+          destroyed: 'Your deposit account has been deleted.'
+          paypal:
+            updated: 'Your deposit account has been edited.'

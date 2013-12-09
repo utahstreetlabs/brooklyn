@@ -1,0 +1,79 @@
+class FollowBox
+  constructor: ->
+    @requestModalOptions = {
+      message: $('.message-container').data('message')  # the text of the invite request
+    }
+    copious.track('onboarding_follow view')
+    @form = $('#follow-friends-form')
+    @continueButton = $('#continue-button')
+    @multiSelector = $('[data-role=multi-friend-selector]').multiSelector('instance')
+    this._loadSuggestions()
+    $(document).on 'change', 'input[name=select_all]', (e) =>
+      @multiSelector.setAll($(e.currentTarget).prop('checked'))
+
+  invite: () ->
+    if @recipients.length > 0
+      this._fbAppRequestDialog(to: @recipients.join(','))
+    else
+      this.follow()
+
+  follow: () ->
+    if @followIds.length > 0
+      $('<input>').attr({name: 'followee_ids', value: @followIds, type: 'hidden'}).appendTo(@form)
+    @form.submit()
+
+  continueClick: () ->
+    @recipients = @multiSelector.selectedIds("[data-type=invite]")
+    @followIds = @multiSelector.selectedIds("[data-type=follow]")
+    copious.track('onboarding_follow click', {
+      share_channel: 'facebook_request',
+      suggested_recipients: $('[data-type=invite]').length,
+      suggested_app_users: $('[data-type=follow]').length,
+      selected_recipients: @recipients.length,
+      selected_app_users: @followIds.length},
+      => this.invite())
+
+  ### private methods ###
+
+  _disableContinue: () ->
+    @continueButton.addClass('disabled')
+    @continueButton.off 'click'
+    @continueButton.on 'click', (event) =>
+      event.preventDefault()
+      false
+
+  _enableContinue: () ->
+    @continueButton.removeClass('disabled')
+    @continueButton.off 'click'
+    @continueButton.on 'click', (event) =>
+      event.preventDefault()
+      this.continueClick()
+      false
+
+  _loadSuggestions: () ->
+    $('.spinner').show()
+    this._disableContinue()
+    $.jsend.get('<%= Brooklyn::Application.routes.url_helpers.follow_suggestions_signup_buyer_friends_path %>').
+      then (data) =>
+        $('.spinner').hide()
+        this._enableContinue()
+        @multiSelector.replaceSelectables(data.suggestions) if data.suggestions?
+        @multiSelector.setAll(true)
+        scrollable = $('[data-role=multi-friend-selector]').closest('.scrollable').data('scrollable')
+        scrollable.refresh() if scrollable?
+
+  _fbAppRequestDialog: (appRequestOptions) ->
+    FB.ui $.extend({method: 'apprequests'}, @requestModalOptions, appRequestOptions), (response) =>
+      # see http://developers.facebook.com/blog/post/569/ for what the requests v2 response object looks like
+      if response and response.request?
+        copious.track('fb_request sent',
+          {request_source: 'onboarding_follow', request_type: 'u2u_follow', selected_recipients: @recipients.length},
+          => this.follow())
+      else
+        copious.track('fb_request cancel',
+          {request_source: 'onboarding_follow', request_type: 'u2u_follow', selected_recipients: @recipients.length},
+          => this.follow())
+
+jQuery ->
+  if $('[data-role=follow-box]').length
+    follow_box = new FollowBox

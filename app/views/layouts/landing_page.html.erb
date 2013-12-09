@@ -1,0 +1,36 @@
+<%
+  mp_view_event @mp_view_event
+  @body_class ||= @default_body_class
+%>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <%= tag :meta, property: 'fb:app_id', content: Network::Facebook.app_id %>
+    <%= tag :meta, name: 'google-site-verification', content: 'WYJ5q8FynwkHDyFeDpJslvs-7QOSZSYfStQ1M0ZW-RA' %>
+    <title>Copious</title>
+    <%= csrf_meta_tag %>
+    <%= render 'layouts/stylesheets' %>
+    <%= optimizely_tag %>
+    <%= typekit_tags %>
+    <%= gatekeeper_meta_tags %>
+  </head>
+  <%= content_tag :body, class: @body_class do %>
+    <%= facebook_jssdk %>
+    <%= render 'layouts/masthead' %>
+    <div id="fb-root"></div>
+    <%= yield %>
+    <div class="footer-wrapper">
+      <%= render 'shared/global_footer' unless footer_hidden? %>
+      <%= javascript_defaults :login => show_login_header? %>
+      <%= yield :script_includes %>
+      <% if content_for? :script %>
+        <%= javascript_tag do %>
+          $(function() {
+          <%= yield :script %>
+          });
+        <% end %>
+      <% end %>
+    </div>
+  <% end # body %>
+</html>

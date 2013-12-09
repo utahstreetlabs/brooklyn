@@ -1,0 +1,5 @@
+<%= mailer_graf do %>
+  <%= order.buyer.name %><br/>
+  <%= postal_address order.shipping_address %><br/>
+  <%= order.buyer.email %>
+<% end %>

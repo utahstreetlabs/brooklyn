@@ -1,0 +1,22 @@
+<% offer_text = " #{@credit.offer.descriptor}" if @credit.offer %>
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  Hi <%= @user.firstname %>,
+<% end %>
+
+<%= mailer_graf do %>
+  There are only <%= @days_remaining %> left for you to spend the <%= @credit_amount %> in credit you earned<%= offer_text %>.
+<% end %>
+
+<%= mailer_graf do %>
+  We're thinking you could find more than a few things you love.
+<% end %>
+
+<%= mailer_button 'Find something awesome', root_url %>
+
+<%= mailer_graf(styles: 'margin-bottom: 0px;') do %>
+  Happy hunting,
+<% end %>
+
+<%= render '/shared_mailer/footer' %>

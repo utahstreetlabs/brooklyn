@@ -1,0 +1,24 @@
+en:
+  admin:
+    payments:
+      paypal:
+        index:
+          title: 'Admin: PayPal transfers'
+          breadcrumb:
+            parent: 'Admin'
+            title: 'PayPal transfers'
+          paypal_button: 'Go to PayPal'
+          th:
+            email: 'Email'
+            amount: 'Amount'
+            user: 'User'
+            order_number: 'Order #'
+            settled_at: 'Settled'
+            paid_at: 'Paid'
+            state: 'Status'
+          td:
+            paid: 'Paid'
+            pending: 'Pending'
+          button:
+            pay_all: 'Mark the selected payments paid'
+          no_transfers: 'No transfers to process.'

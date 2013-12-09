@@ -1,0 +1,13 @@
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  Listing: <%= mailer_link_to @offer.listing.title, listing_url(@offer.listing) %><br>
+  Seller: <%= mailer_link_to @offer.listing.seller.name, public_profile_url(@offer.listing.seller) %><br>
+  Offerer: <%= mailer_link_to @offer.user.name, public_profile_url(@offer.user) %><br>
+  List price: <%= number_to_currency @offer.listing.price %><br>
+  Offer price: <%= number_to_currency @offer.amount %><br>
+  Valid for: <%= count_of_days_in_words @offer.duration %><br>
+  Message: <%= mailer_format_html @offer.message %>
+<% end %>
+
+<%= render '/shared_mailer/footer' %>

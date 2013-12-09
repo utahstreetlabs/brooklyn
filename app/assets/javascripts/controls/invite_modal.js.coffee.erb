@@ -1,0 +1,129 @@
+# requires facebook js library
+
+# Custom facebook invite modal.
+#
+# Uses the facebook apprequest api to send u2u invite requests.
+# Should be attached an element that is a target of a bootstrap modal.
+#
+# data api:
+#
+# message: the message to use in u2u requests
+# use-fb-dialog: if set, the bootstrap modal will be closed and the facebook-provided u2u
+#                message dialog will be displayed. this can be used when we aren't able
+#                to provide invite suggestions from our data as, for example, when a user has
+#                not connected their facebook account.
+class InviteModal
+  constructor: (@element, options) ->
+    @options = $.extend({
+      url: '<%= Brooklyn::Application.routes.url_helpers.invites_facebook_u2u_index_path %>'
+    }, options)
+
+    # see https://developers.facebook.com/docs/reference/dialogs/requests/ for details of the apprequests dialog api
+    @requestModalOptions = {
+      message: @element.data('message')  # the text of the invite request
+    }
+
+    # FB docs lie. exclude_ids is being completely ignored, whether I pass it as a comma-separated string of ids or an
+    # array. I'll leave the code as is though, hoping that it starts working someday.
+    excludeIds = @element.data('exclude')
+    @requestModalOptions.exclude_ids = excludeIds.toString() if excludeIds? # a single id is parsed as a number for some reason
+
+    if @element.data('use-fb-dialog')
+      # set timeout to let the modal show code work first
+      setTimeout((() => @element.modal('hide')), 1)
+      this.showFbRequestDialog()
+    else
+      # disconnect any existing save events first
+      @element.off 'click.save.modal'
+      @element.on 'click.save.modal', '[data-save=modal]', (event) =>
+        this.invite()
+        @element.modal('hide')
+        false # don't bubble the click or allow the default click handler to proceed
+      @multiSelector = $('[data-role=multi-friend-selector]', @element).multiSelector('instance')
+      this._loadSuggestions()
+      @element.off 'change'
+      @element.on 'change', 'input[name=select_all]', (e) =>
+        @multiSelector.setAll($(e.currentTarget).prop('checked'))
+      @saveButton = $('[data-save=modal]', @element)
+      @element.off 'multi_selector:selection_changed'
+      @element.on 'multi_selector:selection_changed', (e) =>
+        if @multiSelector.selectedIds().length == 0
+          this._disableSave()
+        else
+          this._enableSave()
+      $('#search-string').val('')
+      @searchForm = $('#search-form')
+      @searchForm.off 'submit'
+      @searchForm.on 'submit', (e) =>
+        this._loadSearchResults()
+        false
+      @element.data('source', options.source) if options.source
+
+  # Send u2u invitation requests. May pop a facebook-provided confirmation dialog.
+  invite: () ->
+    recipients = @multiSelector.selectedIds()
+    this._fbAppRequestDialog(to: recipients.join(','))
+    @element.trigger('inviteModal:invite', [{recipients: recipients, source: @element}])
+
+  # Show the facebook-provided modal dialog for sending u2u requests
+  # should be used when we aren't able to get invite suggestions from our
+  # system, as when, for example, a user is not connected to facebook.
+  showFbRequestDialog: () ->
+    this._fbAppRequestDialog(filters: ['app_non_users'])
+
+  showSpinner: =>
+    $('.spinner', @element).show()
+
+  hideSpinner: =>
+    $('.spinner', @element).hide()
+
+  ### private methods ###
+
+  _loadSearchResults: () ->
+    searchString = $('#search-string').val()
+    suggestionsPath = '<%= Brooklyn::Application.routes.url_helpers.invites_facebook_suggestions_path %>'
+    this.showSpinner()
+    $.jsend.get(suggestionsPath, {name: searchString}).
+      then (data) =>
+        this.hideSpinner()
+        @multiSelector.replaceSelectables(data.suggestions) if data.suggestions?
+        scrollable = @element.find('.scrollable').data('scrollable')
+        scrollable.refresh() if scrollable?
+    copious.track('invite_modal search', {source: @element, share_channel: 'facebook_request'})
+
+  _disableSave: () ->
+    @saveButton.prop('disabled', true)
+    @saveButton.addClass('disabled')
+
+  _enableSave: () ->
+    @saveButton.prop('disabled', false)
+    @saveButton.removeClass('disabled')
+
+  _loadSuggestions: () ->
+    this.showSpinner()
+    $.jsend.get('<%= Brooklyn::Application.routes.url_helpers.invites_facebook_suggestions_path %>').
+      then (data) =>
+        this.hideSpinner()
+        @multiSelector.replaceSelectables(data.suggestions) if data.suggestions?
+        @multiSelector.setAll(true)
+        scrollable = @element.find('.scrollable').data('scrollable')
+        scrollable.refresh() if scrollable?
+
+  _fbAppRequestDialog: (appRequestOptions) ->
+    FB.ui $.extend({method: 'apprequests'}, @requestModalOptions, appRequestOptions), (response) =>
+      # see http://developers.facebook.com/blog/post/569/ for what the requests v2 response object looks like
+      if response and response.request?
+        # record the request and update the invite bar html
+        params = {
+          request_id: response.request,
+          to: response.to.toString(),
+          source: copious.source(@element)
+        }
+        $.jsend.post(@options.url, params).then(@options.afterInvited)
+        @element.trigger('inviteModal:requestSent')
+      else
+
+        @element.trigger('inviteModal:requestCancelled')
+
+window.Copious ?= {}
+window.Copious.InviteModal = InviteModal

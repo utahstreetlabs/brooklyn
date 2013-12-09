@@ -1,0 +1,37 @@
+#= require copious/jsend
+#= require copious/plugin
+
+class NotificationCountPoller
+  constructor: (@element) ->
+    @url = '<%= Brooklyn::Application.routes.url_helpers.count_notifications_unviewed_index_path %>'
+    @started = false
+    @enabled = @element.attr('content') is 'true'
+
+  poll: =>
+    $.jsend.get(@url).then((data) => $(document).trigger('notificationcount:more', data.count))
+
+  start: ->
+    if not @started and @enabled
+      setInterval (=> this.poll()), 30000
+      @started = true
+    this
+
+class NotificationCounter
+  constructor: (@element) ->
+    @invisible = @element.data('invisible') is true
+
+    $(document).on 'notificationcount:more', (e, count) =>
+      if count > 0
+        @element.html(count)
+        if @invisible then @element.hide() else @element.show()
+      else
+        @element.html('')
+        @element.hide()
+      @element.trigger('notificationcount:updated', count)
+
+jQuery ->
+  $.fn.notificationCountPoller = copious.plugin.componentPlugin(NotificationCountPoller, 'notificationCountPoller')
+  $.fn.notificationCounter = copious.plugin.componentPlugin(NotificationCounter, 'notificationCounter')
+
+  $('meta[name="copious:notifications:poll"]').notificationCountPoller('start')
+  $('[data-role=notification-pill]').notificationCounter()

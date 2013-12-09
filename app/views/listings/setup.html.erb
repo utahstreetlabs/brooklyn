@@ -1,0 +1,29 @@
+<%
+title t('.title')
+%>
+
+<div class="span12">
+  <%= adwords_tracking_pixel(:startlisting) %>
+   <% if guest? %>
+     <div class="block-message-notice">
+       <h3>Sell. Smile. Repeat.</h3>
+       <span class="block-message-text">Welcome. Selling is easy. And it's free to list. </span>
+       <h4>Prefer to look around first?</h4>
+       <%= link_to_facebook_connect(label: t("shared.messages.signup.facebook"), seller_signup: true) %><br/>
+     </div>
+   <% end %>
+
+  <h1><%= t '.header' %></h1>
+
+  <%= listing_create_banner class: 'kill-margin-left' %>
+
+  <%= render 'form', listing: @listing, save_button: t('.save_button'),
+        form_options: {url: complete_listing_path(@listing), html: {method: :POST}}, cancel_url: dashboard_path %>
+
+ <% if guest? %>
+   <div class="block-message-notice bottom-position">
+     <h4>Prefer to look around first?</h4>
+     <%= link_to_facebook_connect(label: t("shared.messages.signup.facebook"), primary: false) %>
+   </div>
+ <% end %>
+</div>

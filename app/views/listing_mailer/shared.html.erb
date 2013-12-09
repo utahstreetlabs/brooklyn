@@ -1,0 +1,22 @@
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  Hi <%= @listing.seller.firstname %>,
+<% end %>
+
+<%= mailer_graf do %>
+  The word is out! <%= mailer_link_to @sharer.name, public_profile_url(@sharer) %> just shared <%= mailer_bold do %><%= @listing.title %><% end %> on <%= t :name, scope: [:networks, @network] %>:
+<% end %>
+
+<%= render 'listing_info', listing: @listing %>
+
+<%= mailer_graf do %>
+  It seems as though <%= @sharer.firstname %> has great taste.
+<% end %>
+
+<%= mailer_follow_button(@sharer, @listing.seller, styles: ' margin-top: 0px !important; margin-bottom: 25px !important;') %>
+
+<%= mailer_graf(styles: 'margin-bottom: 0px;') do %>
+  Happy following,
+<% end %>
+<%= render '/shared_mailer/footer' %>

@@ -1,0 +1,6 @@
+<%= content_tag :div, data: {role: "dashboard-order-form", order: order.id} do %>
+  <%= form_for order, :url => order_complete_path(order), :remote => true, :html => {:method => :POST} do |f| %>
+    <%= hidden_field_tag :source, source %>
+    <%= f.buttons :save_text => 'Complete', action: :complete, class: 'button' %>
+  <% end %>
+<% end %>

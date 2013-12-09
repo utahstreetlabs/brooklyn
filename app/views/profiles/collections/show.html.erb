@@ -1,0 +1,73 @@
+<%
+title t('.title', user: profile_user.display_name, collection: @collection.name)
+javascript 'profile_show'
+fb_head_prefix
+%>
+
+<div id="collection-top" class="span12">
+  <%# Listings %>
+  <div class="collection-page-info-listings">
+    <div class="avatar-container">
+      <%= content_tag :span, pluralize(@collection.listing_count, 'Listing'), class: 'weakest' %>
+    </div>
+  </div>
+
+  <%# Followers %>
+  <div class="collection-page-info-followers">
+    <% if feature_enabled? 'collections.follow' %>
+      <%= content_tag :span, pluralize(@collection.follower_count, 'Follower'), class: 'weakest' %><br>
+    <% end %>
+  </div>
+
+  <%# Creator %>
+  <div class="collection-page-creator">
+    <div class="center-piece">
+      <%= user_avatar_xsmall profile_user, class: 'text-adjacent avatar-xsmall' %>
+      <%= link_to public_profile_collections_path(profile_user), class: 'inline' do %>
+        <%= content_tag :span, profile_user.name, class: 'avatar-xsmall-name' %>
+      <% end %>
+    </div>
+  </div>
+
+  <%# Collection Title %>
+  <div class="collection-page-title">
+    <h1 class="hero"><%= @collection.name %></h1>
+  </div>
+
+  <% if logged_in? %>
+    <div class="collection-page-connect divider-button-container collection-follow-divider">
+      <% if @collection.owner == current_user %>
+        <% if feature_enabled? 'collections.edit' %>
+          <%= collection_edit_button(@collection) %>
+        <% end %>
+      <% else %>
+        <% if feature_enabled? 'collections.follow' %>
+          <%= collection_follow_button(@collection, current_user.following_collection?(@collection),
+                                       class: 'btn-divider', condition: :primary) %>
+        <% end %>
+      <% end %>
+      <% if admin? %>
+        <%= bootstrap_button(t('collection_card.button.admin.label'), admin_collection_path(@collection.id),
+                             class: 'btn-divider') %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div id="listings" class="span12">
+  <% if @cards %>
+    <div class="search-results-container">
+      <% if @cards.any? %>
+        <%= content_tag :ul, {class: 'search-results row'}.merge(results_tag_params) do %>
+          <% if profile_user == current_user && feature_enabled?('collections.add_listing_card') %>
+            <%= collection_add_listing_card(current_user) %>
+          <% end %>
+          <%= safe_join(feed_cards(@cards)) %>
+        <% end %>
+        <%= infinite_scroll_widgets %>
+      <% else %>
+        <p class="empty-msg"><%= t '.empty', name: profile_user.firstname %></p>
+      <% end %>
+    </div>
+  <% end %>
+</div>

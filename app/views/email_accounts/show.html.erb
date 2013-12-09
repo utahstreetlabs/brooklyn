@@ -1,0 +1,35 @@
+<%
+title 'Invite your friends'
+deactivate_masthead
+javascript 'email_account_show'
+%>
+
+<div id="main-content" class="welcome">
+  <h2>Select Friends to Invite</h2>
+  <%= render 'invite_form', :contacts => @contacts %>
+  <p>
+    Please only send invites to people you know will be interested in
+    joining Copious. No one likes spam.
+  </p>
+</div>
+
+<% handlebar_template 'contacts-template' do %>
+  <table class="checkbox-table">
+    {{#each contacts}}
+    <tr class="hoverable">
+      <td class="check-box-col">
+        <input type="checkbox" name="emails[{{id}}]" id="emails[{{id}}]" checked="true"></input>
+      </td>
+      <td class="name-col">{{name}}</td>
+      <td class="email-col">{{email}}</td>
+    </tr>
+    {{/each}}
+  </table>
+<% end %>
+
+<% handlebar_template 'loading-template' do %>
+  <div class="loading-overlay-holder" style="display: none;">
+    <div class="loading-overlay"></div>
+    <span class="loading-spinner"></span>
+  </div>
+<% end %>

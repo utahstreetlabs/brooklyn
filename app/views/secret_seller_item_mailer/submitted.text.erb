@@ -1,0 +1,7 @@
+<%= word_wrap %Q[There's a new secret seller listing request.
+
+Seller: #{raw @item.seller.name}
+Title: #{raw @item.title}
+Description: #{mailer_format_text @item.description}
+Condition: #{t(@item.condition, scope: 'models.secret_seller_item.attributes.condition')}
+Price: #{number_to_currency @item.price}] %>

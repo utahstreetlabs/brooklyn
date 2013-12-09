@@ -1,0 +1,32 @@
+<% title "Autofollowed users" %>
+
+<%= bootstrap_breadcrumb [
+  ['Admin', admin_dashboard_path],
+  'Autofollowed users'
+] %>
+
+<p>Reorder by dragging and dropping in the list.</p>
+
+<% if @users.any? %>
+  <%= bootstrap_table condensed: true, data: {role: 'sortable-table'} do %>
+    <tbody>
+      <% @users.each do |user| %>
+        <%= content_tag :tr, data: {user: user.id, role: 'user',
+              :'reorder-url' => reorder_admin_user_autofollows_path(user.id)} do %>
+          <td><%= user_avatar_medium(user) %></td>
+          <td class="span11"><%= link_to user.name, admin_user_path(user.id) %></td>
+          <td>
+            <%= bootstrap_button_group do %>
+              <%= bootstrap_button nil, remove_admin_user_autofollows_path(user.id),
+                    condition: :danger, size: :mini, icon: :remove, inverted_icon: true, rel: :tooltip,
+                    title: "Remove #{user.name}", data: {method: :post, remote: true, link: :remote, format: :json,
+                      confirm: "Are you sure you want to remove #{user.name}?", action: 'remove-autofollow'} %>
+            <% end %>
+          </td>
+        <% end %>
+      <% end %>
+    </tbody>
+  <% end %>
+<% else %>
+  <p>No users have been added to the list yet. <%= link_to 'Find one to add', admin_users_path %>.</p>
+<% end %>

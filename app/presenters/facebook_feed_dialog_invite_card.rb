@@ -1,0 +1,2 @@
+class FacebookFeedDialogInviteCard < FeedCard
+end

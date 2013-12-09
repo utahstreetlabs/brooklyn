@@ -1,0 +1,7 @@
+<%= word_wrap(%Q[Hi #{raw @user.firstname},
+
+Your deposit of #{number_to_currency @payment.order.listing.proceeds} for the sale of #{raw @payment.order.listing.title} in your bank account has been confirmed.
+
+Take a moment to list another item at #{rewrite_mailer_url new_listing_url}.]) %>
+
+<%= render '/shared_mailer/footer' %>

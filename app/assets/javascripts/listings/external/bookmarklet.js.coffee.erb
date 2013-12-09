@@ -1,0 +1,22 @@
+jQuery ->
+  class BookmarkletPopup
+    constructor: ->
+      if window.addEventListener
+        window.addEventListener('message', this.onMessage, false)
+      else if (window.attachEvent)
+        window.attachEvent('message', this.onMessage)
+
+    onMessage: (e) =>
+      @sourceUrl ||= window.name
+      if e.origin is @sourceUrl
+        if e.data is 'ping'
+          e.source.postMessage('ready', e.origin)
+        else
+          $.jsend.post("<%= Brooklyn::Application.routes.url_helpers.listing_sources_path %>?source=bookmarklet",
+            JSON.parse(e.data)).then((data) =>
+              if data.redirect
+                window.location = data.redirect +
+                  (if (!!~ data.redirect.indexOf "?") then "&" else "?") + "source=bookmarklet"
+            )
+
+  new BookmarkletPopup()

@@ -1,0 +1,19 @@
+<div class="price-detail">
+  <span class="price-detail-name"><%= I18n.t('pricing_box.price.label') %></span>
+  <span class="price-detail-value" data-role="price">${{currency price}}</span>
+</div>
+<div class="price-detail">
+  <span class="price-detail-name"><%= I18n.t('pricing_box.fees.label') %></span>
+  <span class="price-detail-value" data-role="marketplace-fee">${{currency marketplaceFee}}</span>
+</div>
+{{#unless hideShipping}}
+<div class="price-detail">
+  <span class="price-detail-name"><%= I18n.t('pricing_box.shipping.label') %></span>
+  <span class="price-detail-value" data-role="shipping">${{currency shipping}}</span>
+</div>
+{{/unless}}
+<hr />
+<div class="price-detail">
+  <span class="price-detail-name primary"><%= I18n.t('pricing_box.total.label') %></span>
+  <span class="price-detail-value primary" data-role="cost">${{currency cost}}</span>
+</div>

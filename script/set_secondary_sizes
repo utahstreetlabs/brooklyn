@@ -1,0 +1,13 @@
+#!/bin/sh
+
+thor brooklyn:set_primary_tag "XXS" -c "Extra extra small" "Xtra xtra small"
+thor brooklyn:set_primary_tag "XS" -c "Extra small" "Xtra small"
+thor brooklyn:set_primary_tag "S" -c "Small"
+thor brooklyn:set_primary_tag "M" -c "Medium"
+thor brooklyn:set_primary_tag "L" -c "Large"
+thor brooklyn:set_primary_tag "XL" -c "Extra large" "Xtra large"
+thor brooklyn:set_primary_tag "XXL" -c "Extra extra large" "Xtra xtra large"
+thor brooklyn:set_primary_tag "One size fits all" -c "1 size fits all"
+thor brooklyn:set_primary_tag "One size fits most" -c "1 size fits most"
+
+

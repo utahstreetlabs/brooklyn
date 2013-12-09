@@ -1,0 +1,7 @@
+en:
+  profile:
+    new:
+      title: "Create your Copious Profile"
+    loved:
+      title: "User Profile for %{name}: Loved listings"
+      empty: "%{name} has not loved any listings or tags yet."

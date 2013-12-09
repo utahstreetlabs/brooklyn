@@ -1,0 +1,45 @@
+<%= content_tag :div, class: "section network-setting network-setting-#{network}" do %>
+  <h3>
+    <%= image_tag "social_networks/#{network}_32.png", class: 'sns-icon' %>
+    <%= t("settings.networks.#{network}.header") %>
+
+    <% if profile %>
+      <% if current_user.identities.count > 1 %>
+        <%= settings_disconnect_network_button(profile) %>
+      <% end %>
+    <% else %>
+      <%= settings_connect_network_button(network) %>
+    <% end %>
+  </h3>
+
+  <% if profile %>
+    <p class="invade-top">You have connected <%= link_to_network_profile profile %> to your Copious account.</p>
+    <% if settings_has_autoshare_choices?(network) %>
+      <%= autoshare_auth_header(profile) do %>
+        <%= form_tag settings_network_path(profile), method: :PUT do %>
+          <ul>
+            <h6><%= t("settings.networks.#{network}.autoshare.header") %></h6>
+            <%= settings_autoshare_choices(network) %>
+          </ul>
+          <% if Network.klass(network).allow_never_autoshare? %>
+            <% checkbox_id = "never_autoshare_#{network}" %>
+            <%= hidden_field_tag "never_autoshare", '0', id: "#{checkbox_id}_hidden" %>
+            <%= check_box_tag "never_autoshare", '1', current_user.preferences.never_autoshare, id: checkbox_id %>
+            <%= label_tag checkbox_id, t("settings.networks.#{network}.autoshare.never"), :class => 'checkbox' %>
+          <% end %>
+        <%= buttons save_text: 'Save Changes', :'data-role' => 'autoshare-save' %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% else %>
+    <% if defined?(connect_more) and connect_more %>
+      <div class="connect-more-cta">
+        <p>Link another account to connect to more buyers and sellers.</p>
+      </div>
+    <% else %>
+      <div class="connect-cta">
+        <p>Linking your account is the best way to connect to buyers and sellers and experience Copious.</p>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

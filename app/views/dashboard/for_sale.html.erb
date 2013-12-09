@@ -1,0 +1,30 @@
+<%
+title "Items you have for sale"
+suppress_right_sidebar
+%>
+
+<h2>Items you have for sale</h2>
+<div class="section">
+  <% if @listings.any? %>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th><%= sortable :title, 'Title', :default => true %></th>
+          <th class="numeric"><%= sortable :price, 'Price' %></th>
+          <th class="numeric"><%= sortable :shipping, 'Shipping' %></th>
+          <th><%= sortable :listed, 'Listed' %></th>
+          <th class="center">Next step</th>
+        </tr>
+      </thead>
+      <tbody data-role='dashboard-listings'>
+        <% @listings.each do |listing| %>
+          <%= render 'for_sale_listing', :listing => listing %>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>You don't have any items for sale.</p>
+  <% end %>
+</div>
+<%= paginate @listings %>

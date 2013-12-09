@@ -1,0 +1,5 @@
+<% if current_user == buyer %>
+  Your <%= link_to_listing listing %> purchase completed successfully
+<% else %>
+  Your <%= link_to_listing listing %> sale completed successfully
+<% end %>

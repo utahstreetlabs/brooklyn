@@ -1,0 +1,13 @@
+<%
+message = t('.header.message_html', liker_link: mailer_header_link_to(@liker.name, public_profile_url(@liker)),
+            listing_link: mailer_header_link_to(@listing.title, listing_url(@listing)))
+%>
+
+<%= render partial: '/shared_mailer/new_responsive_header', locals: {user: @listing.seller, message: message} %>
+
+<%= mailer_user_listing_social_action @liker, :love, @listing %>
+<%= mailer_user_info @liker %>
+<%= mailer_user_stats_and_listings @liker, @liker_listing_infos %>
+<%= mailer_user_follow_action @listing.seller, @liker %>
+
+<%= render '/shared_mailer/new_responsive_footer' %>

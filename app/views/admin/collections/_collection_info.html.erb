@@ -1,0 +1,32 @@
+<%= bootstrap_table condensed: true do %>
+  <tr>
+    <td class="span4">Created at</td>
+    <td><%= datetime @collection.created_at %></td>
+  </tr>
+  <tr>
+    <td>Last updated at</td>
+    <td><%= datetime @collection.updated_at %></td>
+  </tr>
+  <tr>
+    <td>Name</td>
+    <td><%= link_to @collection.name, public_profile_collection_path(@collection.user, @collection) %></td>
+  </tr>
+  <tr>
+    <td>Owner</td>
+    <td><%= link_to @collection.user.name, admin_user_path(@collection.user.id) %></td>
+  </tr>
+  <tr>
+    <td># Listings</td>
+    <td><%= @collection.listing_count %></td>
+  </tr>
+  <tr>
+    <td># Followers</td>
+    <td><%= @collection.follower_count %></td>
+  </tr>
+  <tr>
+    <td>Interest Suggestion</td>
+    <td>
+      <%= @collection.autofollowed? ? @collection.autofollows.map(&:interest).map(&:name).join(", ") : 'no' %>
+    </td>
+  </tr>
+<% end %>

@@ -1,0 +1,118 @@
+<%
+mediaforge_retargetting_js
+%>
+<div id="main-content">
+  <div class="full-wrapper">
+    <div class="middle-container">
+      <div class="section discovery-area">
+        <p class="main-copy">
+          Your closet is full... <br>
+          of potential <br>
+        </p>
+        <div class="subcopy-area">
+          <span class="copy-paragraph">
+            One Copious member's clutter is another's catch.<br />
+            Manage your closet chaos by purging unwanted items and send them off to be loved by someone else. <br />
+            Your stress level and wallet will thank you.
+          </span>
+          <span class="learn-more">
+            <a>Learn about selling on Copious</a>
+          </span>
+        </div>
+      </div>
+      <div class="slides-wrapper">
+        <div id="slides" class="slides">
+          <div class="slides-shadow"></div>
+          <div class="slides_container">
+            <%#     Slide 1     %>
+            <div class="product-slide">
+              <a href="/listings/scarf-shawl-wrap-sheer-linen-mustard-green-gold">
+                <img src="/assets/landing/seller/seller-landing.jpg" class="product-slide-photo">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="full-wrapper2">
+    <div class="middle-container">
+      <div class="landing-list-container">
+        <ul class="landing-list">
+          <li class="seller-list">
+            <h3 class="cta join-now">Join Now to get started.</h3>
+            <div class="connect-container">
+              <%= link_to_facebook_connect %>
+              <div class="connect-twitter-container">
+                <span class="left-line">&mdash;&mdash;</span>
+                <a href="/auth/twitter" class="twitter signup">or Connect with Twitter</a>
+                <span class="right-line">&mdash;&mdash;</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-container">
+    <ul class="about-list">
+      <li>
+        <div class="seller-landing-top">
+          <h3 class="seller-landing">Be yourself</h3>
+          <div class="hr-line"></div>
+          <span class="bodyText">
+            Use your existing Facebook or Twitter profiles to start selling right away.
+          </span>
+        </div>
+      </li>
+      <li>
+        <div class="seller-landing-top">
+          <h3 class="seller-landing">Network Up</h3>
+          <div class="hr-line"></div>
+          <span class="bodyText">
+            Use your contacts to give your listing even more exposure in the Copious community.
+          </span>
+        </div>
+      </li>
+      <li>
+        <div class="seller-landing-top">
+          <h3 class="seller-landing">Free to list</h3>
+          <div class="hr-line"></div>
+          <span class="bodyText">
+            Listing costs nothing. Pay a small transaction fee only when your stuff sells.
+          </span>
+        </div>
+      </li>
+      <li>
+        <div class="seller-landing-top">
+          <h3 class="seller-landing">Get started</h3>
+          <div class="hr-line"></div>
+          <span class="bodyText">
+            Create your first, free listing.
+            <%= link_to 'List Your Stuff', listings_path, id: "sell_button", class: "button", method: :POST %>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="press-wrapper">
+    <div class="press-position-container">
+      <div class="title-container">
+        <h3 class="title">As seen on</h3>
+      </div>
+      <div class="press-container">
+        <ul class="press">
+          <li style="margin-right: 58px; margin-left: 2px"><img src="/assets/landing/seller/nyt.png" style="height: 23px;"></li>
+          <li style="margin-right: 67px;"><img src="/assets/landing/seller/refinery29.png" style="height: 17px; margin-top: 1px;"></li>
+          <li style="margin-right: 57px;"><img src="/assets/landing/seller/smashing.png" style="height: 30px; margin-top: -6px;"></li>
+          <li style="margin-right: 54px;"><img src="/assets/landing/seller/wsj.png" style="height: 17px; margin-top: 3px;"></li>
+          <li><img src="/assets/landing/seller/tc.png" style="height: 18px; margin-top: 3px;"></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

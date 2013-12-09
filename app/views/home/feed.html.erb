@@ -1,0 +1,24 @@
+
+<%= content_tag(:h1, t('.section_title'), class: 'section-title') %>
+
+<%= content_tag :div, id: 'listings-feed' do %>
+  <%# freezing it for now %>
+  <%#= feed_selector selected_feed %>
+  <div class="divider-button-container">
+    <div id="refresh-container"></div>
+    <%= select_interests_button_and_modal if feature_enabled?('onboarding.skip_interests') %>
+  </div>
+  <%= card_feed @listings_feed, feed: {class: 'search-results-new feed listing-feed row',
+                data: {feed_url: feed_listings_path(feed: params[:feed]), start_time: @listings_feed.start_time,
+                       end_time: @listings_feed.end_time,
+                       refresh_timestamp_url: refresh_timestamp_feed_listings_path}} %>
+  <%= infinite_scroll_widgets %>
+<% end %>
+
+<% if @listings_feed %>
+  <%= link_to_listings_feed_more(limit: 24, offset: @listings_feed.count, feed: params[:feed]) %>
+<% end %>
+
+<% handlebar_template 'refresh-template' do %>
+  <%= link_to "{{count}} new action{{#if plural}}s{{/if}}", nilhref, :class => 'refresh' %>
+<% end %>

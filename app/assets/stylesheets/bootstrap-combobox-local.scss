@@ -1,0 +1,31 @@
+.combobox-selected .combobox-clear {
+  display: inline-block;
+}
+.combobox-selected .caret {
+  display: none;
+}
+
+.combobox-container .add-on {
+  height: 34px;
+}
+.combobox-container input {
+  padding: 4px 5px 4px 30px;
+  background: image-url("layout/icons-sprites2.png") no-repeat 5px -80px;
+  background-size: 85px;
+}
+
+.btn .combobox-clear {
+  margin-top: 4px;
+}
+
+.icon-remove {
+  background-image: image-url('/assets/glyphicons-halflings.png');
+}
+
+.dropdown-menu {
+  width: 235px;
+}
+
+.tags-dropdown-menu {
+  width: 478px;
+}

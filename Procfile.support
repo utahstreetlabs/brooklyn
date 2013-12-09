@@ -1,0 +1,2 @@
+# these start services needed for development
+solr: bundle exec rake sunspot:solr:run

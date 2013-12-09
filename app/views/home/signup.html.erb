@@ -1,0 +1,36 @@
+<%
+hide_masthead
+hide_footer
+title 'Sign Up'
+suppress_login_header
+mp_view_event 'signup'
+javascript 'signup'
+stylesheet 'homepage_logged_out'
+%>
+<div class="container">
+  <div class="section top-piece">
+    <%= image_tag 'layout/Logo-58-black.png', class: 'copious-logo' %>
+    <h1 class="margin-top hidden-phone">A social marketplace to buy and sell<br>the things you love</h1>
+    <h1 class="hidden-desktop">A social marketplace to buy and sell the things you love</h1>
+  </div>
+  <div class="row">
+    <div class="section span11">
+      <div class="sns-connect">
+        <%= link_to_facebook_connect class: 'signup button xlarge primary facebook' %>
+        <%= link_to_twitter_connect class: 'button primary xlarge', primary: true,
+                                    href: auth_prepare_path(network: :twitter, d: params[:d]) %>
+      </div>
+      <div class="remember-me">
+        <%= check_box_tag(:remember_me, '1', true, class: 'margin-top', id: 'network-login-remember-me') %>
+        <%= label_tag(:remember_me, 'Remember Me', class: 'checkbox margin-top weak') %>
+      </div>
+    </div>
+    <div class="bottom-piece">
+      <p class="already-registered">Been here before? Connect above or <%= link_to link_to_username_login %></p>
+      <div class="facepile-container hidden-phone">
+        <fb:facepile width="300" max_rows="1"></fb:facepile>
+      </div>
+      <%= autologin_modal %>
+    </div>
+  </div>
+</div>

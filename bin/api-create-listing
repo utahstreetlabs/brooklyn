@@ -1,0 +1,65 @@
+#!/usr/bin/env ruby
+
+require 'net/http'
+require 'yajl'
+
+(token, photo) = ARGV
+if token.nil?
+  puts "Usage: api-create-listing <token> [photo]"
+  exit
+end
+
+listing = {
+  empty: true,
+  listing: {
+    title: "Hamburgler doll",
+    category: "accessories",
+    description: "Wicked awesome",
+    condition: "New with Tags",
+    tags: ["McDonalds", "Doll"],
+    size: "Large",
+    brand: "Mattel",
+    price: "250.00",
+    shipping: "0",
+    seller_pays_marketplace_fee: true,
+    handling_duration: 345600
+  }
+}
+
+if photo
+  content_type = %Q{multipart/related; boundary=boundary; type="application/json"; start="json"}
+
+  photo_filename = File.basename(photo)
+  photo_content_type = IO.popen(["file", "--brief", "--mime-type", photo], in: :close, err: :close).read.chomp
+
+  photo_cid = "photo.1"
+  listing[:listing][:photo] = "cid:#{photo_cid}"
+
+  data = ''
+  data << "--boundary\r\n"
+  data << "Content-Type: application/json; charset=utf-8\r\n"
+  data << %Q{Content-Disposition: inline; name="json"; filename="listing.json"\r\n}
+  data << "\r\n"
+  data += Yajl::Encoder.encode(listing)
+  data << "\r\n"
+  data << "--boundary\r\n"
+  data << "Content-Type: #{photo_content_type}\r\n"
+  data << %Q{Content-Disposition: inline; name="#{photo_cid}"; filename="#{photo_filename}"\r\n}
+  data << "\r\n"
+  data << File.open(photo, 'rb') { |f| f.read }
+  data << "\r\n"
+  data << '--boundary--'
+else
+  content_type = "application/json; charset=utf-8"
+
+  data = Yajl::Encoder.encode(listing)
+end
+
+Net::HTTP.start('127.0.0.1', 3000) do |http|
+  request = Net::HTTP::Post.new('/v1/listings', "Content-Type" => content_type, "Authorization" => "Bearer #{token}")
+  request.body = data
+  response = http.request(request)
+  puts "#{response.code} #{response.message}"
+  response.each_header { |name, value| puts "#{name}: #{value}"}
+  puts response.body
+end

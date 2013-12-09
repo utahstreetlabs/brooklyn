@@ -1,0 +1,540 @@
+en:
+  listings:
+    recommend_button: 'Recommend'
+    setup:
+      title: 'Sell your stuff'
+      header: 'Sell your stuff'
+      callout:
+        text: 'Out with the old, in with the new.'
+        learn_more_link: 'Learn more about selling on Copious'
+      save_button: 'Next step: Preview your listing'
+    edit:
+      title: 'Edit %{listing_title}'
+      header: 'Edit your listing'
+      save_button: 'Save your changes'
+    feature:
+      button:
+        feature:
+          text: 'Feature'
+        featured:
+          text: 'Featured'
+        disable_html: 'Opening&hellip;'
+      modal:
+        title: 'Feature Listing'
+      success_modal:
+        title: 'Your changes have been saved.'
+        featured_in: 'The listing is now featured in %{features}.'
+        no_features: 'The listing is not featured.'
+    photos:
+      header: '1. Add photos'
+      computer:
+        button: '+ Upload from your computer'
+      instagram:
+        button: '+ Upload from Instagram'
+        breakout_box:
+          instagram_link: 'Learn more'
+          text_html: 'Instagram lets you edit your photos and makes it easy to upload them from your smartphone. %{instagram_link}'
+        modal:
+          header: 'Import Instagram Photos'
+          finished_link: 'Finished'
+      help:
+        text_html: 'You can rearrange the order by drag and dropping the photos in the order you prefer.<br>The cover shot is the photo seen everywhere across the site.'
+    photo_list:
+      cover_photo_label: 'Cover Photo'
+      edit_button: 'Rotate / Edit'
+    return_address:
+      details:
+        no_return_address: "You haven't saved any addresses yet."
+    form:
+      category:
+        category_id:
+          blank_html: 'Choose from…'
+      describe:
+        header: '2. Describe your item'
+        title:
+          label: 'Listing title'
+        description:
+          label: 'Description'
+        size:
+          label: 'Size'
+        brand:
+          label: 'Brand'
+          add: '+ Add '
+        tags:
+          label: 'Tags'
+          help_html: 'Hit &quot;enter&quot; to save each tag. <br>Tagging suggestions: style, type of item, color, material, best for&hellip;'
+        collection:
+          label: 'Collections'
+      condition:
+        label:
+          blank_html: 'Choose condition…'
+      save_as_draft_button: 'Save as a draft'
+      combo_placeholder: 'Search…'
+    category_dependent_fields:
+      html:
+        condition:
+          label: 'Condition'
+          blank_html: 'Choose condition…'
+      condition:
+          label: 'Condition'
+    new_pricing_fields:
+      shipping:
+        header_html: '4. Select your shipping and handling methods'
+        method:
+          header: 'Shipping method'
+          learn_more_link: "Learn more about Simple Ship"
+          alert: "Increase your shipping price to enable all of these shipping methods."
+          instructions_html: "With Simple Ship, you'll get a completed shipping label with tracking automatically for the same price as the Post Office. Use free USPS Flat Rate boxes and you're good to go. Or, take care of the shipping yourself. %{learn_more_link}"
+          options:
+            extra_small_box:
+              label_html: "Simple Ship: Extra Small Package %{amount}"
+              help_html: "(Note: Extra Small packaging is not provided for free by USPS. Must be provided by you)"
+            small_box:
+              label_html: "Simple Ship: Priority Mail Small Flat Rate Box %{amount}"
+              help_html: ""
+            medium_box:
+              label_html: "Simple Ship: Priority Mail Medium Flat Rate Box - Cube %{amount}"
+              help_html: ""
+            medium_flat:
+              label_html: "Simple Ship: Priority Mail Medium Flat Rate Box - Flat %{amount}"
+              help_html: ""
+            large_box:
+              label_html: "Simple Ship: Priority Mail Large Flat Rate Box %{amount}"
+              help_html: ""
+            basic:
+              estimator_link: 'Estimate shipping cost'
+              label_html: "Custom: you select"
+              help_html: "(remember! must ship with UPS or USPS with tracking number)"
+        handling_duration:
+          label: "Handling time"
+          transaction_policy_link: 'Copious Transaction Policy'
+          help_html: 'Tell buyers how long it takes for your item to ship. Each transaction is managed according to the %{transaction_policy_link}.'
+      price:
+        header: '3. Price your item'
+        buyer_pays:
+          header: 'What the buyer pays'
+        price_field:
+          label: 'Listing price'
+          placeholder: '0.00'
+        original_price_field:
+          label: 'Original price'
+          placeholder: '0.00'
+          less_than_price: "Original price must be more than price."
+        shipping_field:
+          label: 'Shipping price'
+          placeholder: '0.00'
+        free_shipping_field:
+          label: 'Free shipping'
+        marketplace_fees_control_group:
+          label: 'Marketplace fee'
+          help_html: "Copious charges a %{marketplace_fee_percentage} marketplace fee at checkout."
+          seller_pays_field:
+            learn_more_link: 'Learn more'
+            label: "I'll pay the marketplace fee."
+    seller:
+      basic_shipping_carrier_info:
+        header: 'Please note that all orders must be shipped via %{carriers}'
+        instructions: "To receive a tracking number, fill out a shipment on the respective carrier's website"
+        paypal_link: "PayPal"
+        or_on_paypal_html: "or on %{paypal_link}"
+      basic_shipping_instructions:
+        header: "A Note About Payment"
+        exceed_handling_period_html: "If you do not ship your order <strong>within %{handling_days}</strong>, it will be canceled and the funds returned to the buyer."
+        sold_listings_link: "your sales"
+        support_links_html: "Please click on the following links to learn more about %{payment_details_link}, %{sold_listings_link} or %{help_link} for general support."
+      confirmed_basic_shipping:
+        title: 'Your item has been purchased.'
+        subtitle: 'Time to ship and enter your tracking number so you can receive your payment.'
+        shipping_address:
+          header: 'Buyer Shipping Address'
+      confirmed_prepaid_shipping_expired_label:
+        title: "We're sorry to say that your Copious Simple Ship label has expired."
+        details_html: "However, you still need to ship your sold item to %{buyer_name} with a tracking number.<br> To be refunded for your expired label, please contact us at %{contact_us_link}."
+        shipping_address:
+          header: 'Buyer Shipping Address'
+      confirmed_prepaid_shipping:
+        title: Your item has been purchased.
+        subtitle:
+          handling_remaining: 'You have %{handling_days} to ship.'
+          handling_expired: 'Please ship it immediately.'
+        handling_expired: 'Your %{handling_days} of handling time have passed.'
+        shipping_address:
+          header: 'Buyer Shipping Address'
+        return_address:
+          header: 'Your Return Address'
+          change: 'Change your address'
+          choose: 'Choose your return address'
+          modal:
+            header: 'Your Return Address Information'
+        instructions:
+          header:
+            not_generated: 'What do you do now?'
+            whats_next: "What's next?"
+          step1:
+            download:
+              text_html: 'Download and print your Copious Simple Ship label.<br>You have only <span class="strong">%{expires_in_days} left</span> before it expires.<br>If needed, you can always re-download your label before it expires.'
+              button:
+                enabled: 'Download now'
+                disabled: 'Downloading …'
+            generate:
+              text: 'Create your Copious Simple Ship label.'
+              button:
+                enabled: 'Create now'
+                disabled: 'Creating …'
+              return_address_required: 'You must specify a return address before you can create your label.'
+              expiration_hint_html: 'Your label will <span class="strong">expire %{expires_in_days} after creation</span>, so wait until you’re ready to press this button.'
+          step2:
+            extra_small_box_html: 'Pack your sold item into your extra small package and head over to your post office.<br>Remember that your package must weigh 8 oz. (roughly a roll of quarters) or less.'
+            small_box_html: 'Head over to your post office&#42; to grab your free Small Flat Rate Box and<br>package your sold item.'
+            medium_box_html: 'Head over to your post office&#42; to grab your free Medium Flat Rate Box - Cube and<br>package your sold item.'
+            medium_flat_html: 'Head over to your post office&#42; to grab your free Medium Flat Rate Box - Flat and<br>package your sold item.'
+            large_box_html: 'Head over to your post office&#42; to grab your free prepaid Large Flat Rate Box and<br>package your sold item.'
+          step3_html: 'Put your label on the box, skip the lines and drop it off to ship to your lucky buyer.'
+        signoff_html: '… And in a few days, you’ll make %{buyer_name} very happy. See? Goodbyes don’t have to be complicated.'
+        questions:
+          help_link: 'here'
+          text_html: 'Questions? Click %{help_link}.'
+        schedule_pickup:
+          schedule_link: 'schedule a pickup'
+          text_html: '&#42;If you already have your prepaid USPS Priority Mail Flat Rate Box, you can also %{schedule_link}.'
+      seller_info_cta_modal:
+        header_html: 'Create your Payout Account now &amp; get paid faster.'
+        button:
+          create_merchant_account: 'Create Payout Account'
+        text: "Every seller needs a Payout Account to receive payment. Create yours now."
+    order_details:
+      public: 'Public'
+      private: 'Private'
+      shipped:
+        status: 'Shipped'
+      complete:
+        status: 'Successful sale!'
+      settled:
+        status: 'Successful sale!'
+    like_box:
+      like_this_product:
+        one: "%{likers} loves this."
+        other: "%{likers} love this."
+    save_to_collection:
+      button:
+        save:
+          text: 'Save'
+          disable_html: 'Saving&hellip;'
+        saved:
+          text: 'Saved'
+        add:
+          text: 'Add'
+          disable_html: 'Adding&hellip;'
+      modal:
+        title: 'Save to Collections'
+        collection_label: 'Collection'
+        comment_label: 'Add a comment'
+        new_collection:
+          placeholder_html: 'New collection'
+        price_alert:
+          instructions: 'Get notified of price changes'
+          '0': 'None'
+          '25': '25%'
+          '50': '50%'
+          '75': '75%'
+          '100': 'Any'
+        comment:
+          placeholder_html: 'Add a comment&hellip;'
+        have:
+          label: 'Let me know when people want this item'
+        collection:
+          none:
+            label_html: 'Choose a collection&hellip;'
+      want_modal:
+        title: '%{collection}'
+        instructions_html: "Tell us what you're looking for and we'll alert you if it becomes available."
+        max_price:
+          label: 'Maximum total price'
+        condition:
+          label: 'Condition'
+        notes:
+          label: 'Other particulars (optional)'
+          placeholder_html: 'color, style, etc.'
+        skip: 'Skip'
+      success_modal:
+        title: 'Saved to Collection'
+        more_from_seller: 'More from %{seller}:'
+        button:
+          save:
+            label: 'Add Mine For Sale'
+    price_box:
+      shipping_and_fees: '%{shipping} shipping'
+      shipping_no_fees: '%{shipping} shipping'
+      free_shipping: 'Free Shipping!'
+      fees_waived: ''
+      fees_waived_email: 'Paid by seller.'
+    product_card:
+      story:
+        listing_liked: 'loved this'
+        listing_commented: 'commented on this'
+        listing_activated: 'listed this'
+        listing_saved: 'saved this'
+        listing_sold: 'sold this'
+        listing_shared: 'shared this'
+        listing_saved: 'saved this to %{collection_name}'
+      multi:
+        story:
+          text: '%{action_list} this'
+        actor:
+          listing_liked: 'loved this'
+          listing_commented: 'commented on this'
+          listing_activated: 'listed this'
+          listing_saved: 'saved this'
+          listing_sold: 'sold this'
+          listing_shared: 'shared this'
+          listing_saved: 'saved this'
+        action:
+          listing_liked: 'loved'
+          listing_commented: 'commented on'
+          listing_activated: 'listed'
+          listing_sold: 'sold'
+          listing_shared: 'shared'
+          listing_saved: 'saved'
+      stories:
+        saved:
+          deleted_collection_name: a collection
+      stats:
+        loves:
+          one: '%{count} Love'
+          other: '%{count} Loves'
+        saves:
+          one: '%{count} Save'
+          other: '%{count} Saves'
+        listings:
+          one: '%{count} Listing'
+          other: '%{count} Listings'
+        collections:
+          one: '%{count} Collections'
+          other: '%{count} Collections'
+    show:
+      seller:
+        button:
+          edit: 'Edit listing'
+          cancel: 'Cancel listing'
+          create: 'Create another listing'
+          complete: 'Complete listing'
+          activate: 'Publish listing'
+          listings: 'Go to your listings'
+        confirm:
+          cancel: 'Are you sure?'
+        disable:
+          cancel_html: 'Canceling&hellip;'
+          activate_html: 'Publishing&hellip;'
+        status:
+          active: 'Your listing is actively for sale.'
+          incomplete: 'Your listing is saved as a draft. Complete your listing to publish.'
+          inactive: 'Your listing is almost live!'
+          inactive_message_html: "Take a minute and make sure that your listing's details are correct.<br>If you need to make changes, go back and edit your listing."
+          inactive_guest: 'Your listing is not active. Publish your listing to put it up for sale.'
+          suspended_html: 'Your listing has been suspended. If you have any questions about this action, please %{help_link}.'
+          canceled: 'Your listing has been canceled.'
+          button:
+            facebook_html: 'Sign Up &amp; Publish My Listing'
+            twitter_html: 'Sign Up &amp; Publish My Listing'
+      listed_by:
+        header: 'Listed By'
+        guest: "Guest"
+        joined_on: "Joined %{date}"
+        edit_profile_button: 'Edit Profile'
+        bio:
+          more: more
+          less: less
+        profiles:
+          facebook_html:
+            one: "<span><strong>1</strong> friend </span>"
+            other: "<span><strong>%{count}</strong> friends </span>"
+          twitter_html:
+            one: "<span><strong>1</strong> follower </span>"
+            other: "<span><strong>%{count}</strong> followers </span>"
+          tumblr_html:
+            one: "<span><strong>1</strong> follower </span>"
+            other: "<span><strong>%{count}</strong> followers </span>"
+          instagram_html:
+            one: "<span><strong>1</strong> follower </span>"
+            other: "<span><strong>%{count}</strong> followers </span>"
+        loves:
+          one: 'Love'
+          other: 'Loves'
+      more_from_seller:
+        header: 'More From %{name}'
+        more_listings: 'More Listings'
+      love_button:
+        loved: 'Loved'
+        love: 'Love'
+      comment_box:
+        placeholder_html: 'Say something&hellip;'
+        placeholder_typeahead_html: 'comment, @mention, #hashtag'
+        help: 'Press Enter to post.'
+      comment:
+        flags:
+          flagged_html:
+            one: "This comment has been flagged %{by} %{reason}"
+            other: "This comment has been flagged %{count} times %{by} %{reason}"
+          flagged_by_html:
+            one: "by %{flagger_link}"
+            other: "by %{flagger_link} and others"
+          flagged_for_html: "for <em>%{reason}</em>"
+        timestamp: "%{timestamp} ago"
+      love_box:
+        header: 'Loves'
+        cta: 'Be the first to love this.'
+      price_box:
+        free_shipping: 'Free Shipping!'
+        shipping: '%{shipping} shipping'
+        sold:
+          buyer_html: 'Sold! You bought this item on %{bought_on}'
+          seller_html: 'Sold! %{buyer_link} bought this item on %{bought_on}'
+          other_html: 'Sold! This item was bought on %{bought_on}'
+        active:
+          in_checkout: 'Somebody else is buying this item, but they might not follow through. Check back later to see if it has become available.'
+        suspended: 'This listing has been suspended.'
+        canceled: 'This listing has been canceled.'
+        button:
+          payment: 'Enter payment information'
+          shipping: 'Enter shipping information'
+          buy_now: 'Buy Now'
+          make_an_offer: 'Make an Offer'
+      modal:
+        make_an_offer:
+          title: 'Make an Offer'
+          instructions_html: 'Interested at a different price?<br> Make a reasonable offer and see what the seller thinks.'
+          free_shipping_html: '%{price} + free shipping'
+          shipping_html: '%{price} + %{shipping} shipping'
+          price:
+            label: 'List price'
+          amount:
+            label: 'Your offer'
+            placeholder: '0.00'
+          duration:
+            label: 'Offer good for'
+          message:
+            label: 'Message to seller'
+          success:
+            title: 'Success! Your offer has been sent.'
+            instructions: 'If the seller chooses to either accept your offer or make a counter-offer, they will contact you via Copious. So, hang tight.'
+          button:
+            save: 'Send Offer'
+      description:
+        header: 'Description'
+        more: more
+        less: less
+      details:
+        header: 'Details'
+        category: 'Category'
+        condition: 'Condition'
+        size: 'Size'
+        brand: 'Brand'
+        handling: 'Handling'
+        handling_to_ship: '%{duration} to ship'
+        tags: 'Tags'
+      share_box:
+        header: 'Share'
+        title: 'Share on %{network}'
+        network:
+          facebook: 'Facebook'
+          twitter: 'Twitter'
+          tumblr: 'Tumblr'
+          pinterest: 'Pinterest'
+      report_box:
+        button:
+          report: 'Report'
+          reported: 'Reported'
+        disable:
+          report_html: 'Reporting&hellip;'
+        thanks:
+          full: 'Thank you. This listing has been flagged for review.'
+          minimal: 'Thank you.'
+      admin_box:
+        header: 'Admin'
+        button:
+          listing: 'Listing'
+          order: 'Order'
+      open_graph:
+        description: "Found on Copious. Discover, Collect, Sell."
+    sandbox:
+      open_graph:
+        description: "Found on Copious. Discover, Collect, Sell."
+    share:
+      link:
+        default:
+          facebook: Facebook
+          twitter: Twitter
+          tumblr: Tumblr
+          pinterest: Pinterest
+        active_cta:
+          facebook: Share it
+          twitter: Tweet it
+          tumblr: Tumbl it
+          pinterest: Pin it
+      facebook:
+        timeline: 'Add your Copious listings and actions to your Facebook Timeline'
+      message:
+        facebook: 'Share it on Facebook'
+        twitter: 'Share it on Twitter'
+        tumblr: 'Post on Tumblr'
+        pinterest: 'Pin it on Pinterest'
+    purchase:
+      reserved_time_box:
+        button:
+          cancel: 'Cancel this purchase and return to listing'
+    bookmarklet:
+      overlay:
+        no_images: 'Sorry, this site prevents us from posting images on this page.'
+    external:
+      new:
+        title: 'Add to Copious'
+        header: 'Add to Copious'
+        section1:
+          header: 'Select an Image'
+        section2:
+          header: 'Add Details'
+          field:
+            url:
+              label: 'Link'
+            title:
+              label: 'Title'
+            category:
+              label: 'Category'
+              prompt_html: 'Choose from&hellip;'
+            collection:
+              label: 'Collections'
+            price:
+              label: 'Price'
+              placeholder: '0.00'
+            description:
+              label: 'Description'
+              placeholder: "Add the product description"
+        button:
+          save:
+            text: '+ Add to Copious'
+            disable_html: 'Adding&hellip;'
+    modal:
+      share_box:
+        title: 'Share on %{network}'
+        network:
+          facebook: 'Facebook'
+          twitter: 'Twitter'
+          tumblr: 'Tumblr'
+          pinterest: 'Pinterest'
+      story:
+        loved: 'Loved'
+    stories:
+      no_actor: 'Copious User'
+  pricing_box:
+    price:
+      label: 'Price'
+    shipping:
+      label: 'Shipping'
+    fees:
+      label: 'Fees'
+    total:
+      label: 'Total'
+    marketplace_fees:
+      label: 'Marketplace Fees'
+    buyer_pays:
+      label: 'TOTAL'

@@ -1,0 +1,4 @@
+<p>
+  <%= bootstrap_button %Q/Suspend "#{listing.title}"/, suspend_admin_listing_path, condition: :danger,
+        data: {method: :post, action: :suspend} %>
+</p>

@@ -1,0 +1,13 @@
+<% title "Admin: #{@listing.title}" %>
+
+<%= bootstrap_breadcrumb [
+  ['Admin', admin_dashboard_path],
+  ['Users', admin_users_path],
+  [@user.name, admin_user_path(@user.id)],
+  ['Listings', admin_user_listings_path(@user.id)],
+  @listing.title
+] %>
+
+<%= content_tag :div, data: {role: :'listing-info'} do %>
+  <%= render partial: '/admin/listings/listing_info', locals: {listing: @listing} %>
+<% end %>

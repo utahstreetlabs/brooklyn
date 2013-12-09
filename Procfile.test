@@ -1,0 +1,9 @@
+# start services needed for tests
+solr: bundle exec rake sunspot:solr:run RAILS_ENV=test
+
+rubicon: bash -c 'source "$HOME/.rvm/scripts/rvm"; cd ../rubicon; bundle exec foreman start -f Procfile.test'
+anchor: bash -c 'source "$HOME/.rvm/scripts/rvm"; cd ../anchor; bundle exec foreman start -f Procfile.test'
+lagunitas: bash -c 'source "$HOME/.rvm/scripts/rvm"; cd ../lagunitas; bundle exec foreman start -f Procfile.test'
+#XXXrisingtide: add rising tide here once it's part of tests
+pyramid: bash -c 'source "$HOME/.rvm/scripts/rvm"; cd ../pyramid; bundle exec unicorn -c config/unicorn.dev.rb -E test -p 4061'
+flyingdog: bash -c 'cd ../flyingdog; FLYINGDOG_ENV=test bin/lein ring server-headless 4071'

@@ -1,0 +1,42 @@
+      </div>
+      </div>
+      <div id="root_footer"><!-- Sticky Footer Spacer -->
+        <%# Do not show logged out footer on pages w/o masthead or if user is connected or registered %>
+        <%= logged_out_footer unless current_user || masthead_hidden? %>
+      </div><!-- #root_footer -->
+    </div><!-- #root -->
+    <% unless footer_hidden? %>
+      <%= content_tag(:div, id: 'footer', class: hamburger_classes) do %>
+        <%= render 'shared/global_footer' %>
+      <% end %><!-- #footer -->
+    <% end %>
+
+    <% unless logged_in? %>
+      <%= autologin_modal %>
+      <%= waiting_modal %>
+      <%= signup_modal(show_alert: session.delete(:show_signup_alert)) %>
+    <% end %>
+    <%= create_collection_modal %>
+    <%= add_modal if logged_in? %>
+    <%= follow_friends_modal if show_follow_friends? %>
+    <%= add_listing_from_web_modal %>
+    <%# we need to include the profile creation modal on all pages
+        because we used it to authorize additional networks for logged
+        in users. this is yet another smell that suggests this should be
+        a different component %>
+    <%= profile_creation_modal %>
+    <%= javascript_defaults :login => show_login_header? %>
+    <%= registration_trackers if display_requested?(:registration_trackers) %>
+    <%= listing_activation_trackers if display_requested?(:listing_activation_trackers) %>
+    <%= yield :script_includes %>
+    <% if content_for? :script %>
+      <%= javascript_tag do %>
+        $(function() {
+        <%= yield :script %>
+        });
+      <% end %>
+    <% end %>
+    <%= yield :handlebar_templates %>
+    <%= yield(:body_end).html_safe %>
+  </body>
+</html>

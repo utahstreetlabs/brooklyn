@@ -1,0 +1,29 @@
+<% title "Admin: Feature Lists" %>
+
+<%= bootstrap_breadcrumb [
+  ['Admin', admin_dashboard_path],
+  'Feature Lists'
+] %>
+
+<%= datagrid @feature_lists, id: 'feature-lists', pagination_theme: :bootstrap do |t| %>
+  <%= t.thead do |thead| %>
+    <%= thead.th :name, default: true %>
+    <%= thead.th :slug %>
+    <%= thead.th :created_at, title: 'Created at' %>
+    <%= thead.th :updated_at, title: 'Last updated at' %>
+  <% end %>
+  <%= t.tbody do |tbody, feature_list| %>
+    <%= tbody.td do %>
+      <%= link_to feature_list.name, admin_feature_list_path(feature_list) %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= feature_list.slug %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= date feature_list.created_at %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= date feature_list.updated_at %>
+    <% end %>
+  <% end %>
+<% end %>

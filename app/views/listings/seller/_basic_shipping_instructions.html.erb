@@ -1,0 +1,15 @@
+<h2><%= t('.header') %></h2>
+<ul class="bulleted">
+  <li>
+    <p class="kill-margin"><%= t('.exceed_handling_period_html', handling_days: count_of_days_in_words(listing.handling_duration)) %></p>
+  </li>
+  <li>
+    <p class="kill-margin"><%= t('.support_links_html', payment_details_link: link_to_payment_details, sold_listings_link: link_to(t('.sold_listings_link'), sold_dashboard_url), help_link: link_to_help_center) %></p>
+  </li>
+</ul>
+
+<%#
+<ul class="actions">
+  <li>%><%# link_to 'Print Packing Slip', '#', :class => "button positive" %><%#</li>
+</ul>
+%>

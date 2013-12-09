@@ -1,0 +1,8 @@
+/* compilation dependencies */
+@import "variables";
+
+/* import bootstrap's styles and override them with our customizations where necessary */
+@import "bootstrap";   /* import bootstrap's first, cuz its opacity mixin's output is fucked. opacity(1)'s output is
+                          opacity: 0.01 for some odd reason. by calling sass/mixin after resolves this */
+@import "sass/mixin";  /* XXX: _mixins.scss is merged into sass/mixin */
+@import "bootstrap_overrides"; /* XXX: move to sass folder */

@@ -1,0 +1,20 @@
+en:
+  collections:
+    create:
+      modal:
+        title: 'Add a Collection'
+        name:
+          placeholder: 'Collection name'
+        button:
+          add: 'Add Collection'
+        disable:
+          add_html: 'Adding&hellip;'
+      listings_modal:
+        title: 'New Collection'
+        instructions_html: 'Save the things you like to %{collection}:'
+        button:
+          save:
+            label: 'Save'
+      success_modal:
+        title: 'Saved to Collection'
+        instructions_html: 'Other listings you might be interested in:'

@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+ENV['RAILS_ENV'] ||= 'development'
+require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
+
+require 'resque'
+
+Resque.enqueue(RemindPurchasedUnshippedOrders)
+
+

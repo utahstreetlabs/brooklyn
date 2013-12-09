@@ -1,0 +1,18 @@
+<%= form_for listing.order.shipment, url: ship_listing_path(listing), html: {method: :post} do |f| %>
+  <%= f.fieldset do %>
+    <%= f.field :carrier_name, :class => 'text' do %>
+      <h2 class="margin-top">Enter your tracking number:</h2>
+      <%= f.label :carrier_name, 'Carrier' %>
+      <%= carrier_selector %>
+    <% end %>
+    <%= f.field :tracking_number, :class => 'text' do %>
+      <%= f.label :tracking_number, 'Tracking Number' %>
+      <%= f.text_field :tracking_number, size: 20 %>
+    <% end %>
+  <% end %>
+  <%= f.buttons save_text: 'Enter tracking number', bigger: true, disable_with: 'Submitting ...' %>
+<% end %>
+
+<%= script do %>
+  $('#order_tracking_number').focus();
+<% end %>

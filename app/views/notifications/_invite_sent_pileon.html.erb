@@ -1,0 +1,8 @@
+<%= link_to_user_profile inviter %> invited <%= link_to_profile invitee %> to join Copious and be part of
+their network via <%= t(:name, scope: "networks.#{invitee.network}") %>.
+
+<%= content_tag :div, class: 'invite-friends' do %>
+  <ul>
+  <%= render '/shared/invite_friend', profile: invitee, invite_button_options: {:invited => invited} %>
+  </ul>
+<% end %>

@@ -1,0 +1,28 @@
+<div id="main-content" class="span16">
+  <h1>Collecting your favorite products from around the web is easy.</h1>
+  <p id="bookmarklet-instructions">
+    When you are browsing the web, just click the Add to Copious
+    bookmark to add listings to your Copious profile. <br>You can put
+    them into your collections and build and share these with other
+    Copious users.
+  </p>
+<% if feature_enabled?("listings.external.bookmarklet") %>
+  <div class="well">
+    <div style="float: left; display: inline-block;">
+      <%= external_bookmarklet_button %>
+    </div>
+    <p id="bookmarklet-button">
+        ← Drag the Add to Copious button to your bookmarks bar.
+    </p>
+  </div>
+
+  <p id="bookmarklet-bookmarks-instructions">
+    <%= browser_bookmarks_bar_instructions %>
+  </p>
+<% else %>
+  <div>
+    We're working on our bookmarklet.  We'll let you know when it's
+    ready!
+  </div>
+<% end %>
+</div>

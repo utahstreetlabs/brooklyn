@@ -1,0 +1,28 @@
+<%= mailer_graf do %>
+  <% if defined?(signature) %>
+    <%= signature %>
+  <% else %>
+    The Copious Team
+  <% end %>
+<% end %>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+
+          <table width="580px" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" id="footer-table">
+            <tr>
+              <td id="footer-wrapper" style="padding-left:12px; color: #999; padding-top: 10px; padding-right: 10px; padding-bottom: 10px;font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif; font-size: 12px; line-height: 18px; font-weight: 400;">
+                Copious | 164 Townsend St #6, San Francisco, CA 94107<br />
+                To ensure delivery to your inbox, add no-reply@copious.com to your address book.<br />
+                Change your email <%= mailer_link_to 'settings', settings_email_url %>.
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+<%= word_wrap %Q[Hi #{raw @follower.firstname},
+
+#{raw @friend.name} just joined Copious. Don't shop online alone when you can bring your friends along. Do you want to follow them back?
+
+Follow #{raw @friend.name} at #{rewrite_mailer_url public_profile_url(@friend)}
+
+Happy following,] %>
+
+<%= render '/shared_mailer/footer' %>

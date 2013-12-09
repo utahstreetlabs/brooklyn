@@ -1,0 +1,13 @@
+<ul class="media-list">
+  <% suggestions.each do |listing| %>
+    <li class="media">
+      <%= link_to listing_path(listing), class: 'pull-left' do %>
+        <%= listing_photo_tag(listing.photos.first, :small, class: 'media-object') %>
+      <% end %>
+      <div class="media-body">
+        <h4 class="media-heading"><%= listing.title %></h4>
+        <div class="media"><%= listing.description %></div>
+      </div>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,14 @@
+<%= word_wrap(%Q[Congratulations! You’ve just purchased #{@order.listing.title}. The details of your order are below, and you will receive a confirmation email when the item has been shipped.
+
+Your payment will be transferred to #{@order.listing.seller.name} once the item is delivered and the transaction is complete.
+
+You can check the status of shipment here: #{listing_url(@order.listing)}
+]) %>
+
+<%= render 'buyer_order_details', order: @order %>
+
+Your shipping information:
+
+<%= render 'shipping_address', order: @order %>
+
+<%= render '/shared_mailer/footer' %>

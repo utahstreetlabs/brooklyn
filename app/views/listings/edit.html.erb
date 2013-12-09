@@ -1,0 +1,10 @@
+<%
+title t('.title', listing_title: @listing.title)
+javascript 'listings_edit'
+%>
+<div class="span12">
+  <h1><%= t '.header' %></h1>
+
+  <%= render 'form', listing: @listing, save_button: t('.save_button'), form_options: {url: listing_path(@listing)},
+                     cancel_url: listing_path(@listing) %>
+</div>

@@ -1,0 +1,29 @@
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  Hi <%= @user.firstname %>,
+<% end %>
+
+<%= mailer_graf do %>
+  You have <%= count_of_days_in_words(@order.handling_remaining) %> left of the <%= count_of_days_in_words(@order.handling_duration, singular: true) %> handling period you specified to ship <%= mailer_link_to @order.listing.title, listing_url(@order.listing) %> to <%= mailer_link_to @order.buyer.name, public_profile_url(@order.buyer) %>.<% if feature_enabled?(:feedback) %> If you don't ship your item, you will automatically receive negative feedback as a seller.<% end %>
+<% end %>
+
+<%= mailer_graf do %>
+  If you've already shipped your item, please enter your tracking number <%= mailer_link_to 'here', listing_url(@order.listing) %> so the order will be able to complete and you can get paid.
+<% end %>
+
+<%= render 'seller_order_details', order: @order %>
+
+<%= mailer_subheader do %>
+  Buyer Info
+<% end %>
+
+<%= render 'shipping_address', order: @order %>
+
+<%= render 'shipping_suggestions' %>
+
+<%= mailer_graf(styles: 'margin-bottom: 0px;') do %>
+  Happy shipping,
+<% end %>
+
+<%= render '/shared_mailer/footer' %>

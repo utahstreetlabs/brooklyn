@@ -1,0 +1,53 @@
+<% title t('.title') %>
+
+<%= bootstrap_breadcrumb [
+  [t('.breadcrumb.parent'), admin_dashboard_path],
+  t('.breadcrumb.title')
+] %>
+
+<p><%= bootstrap_button t('.paypal_button'), 'http://paypal.com', target: 'paypal' %>
+
+<% if @payments.any? %>
+  <%= bootstrap_form_tag pay_all_admin_payments_paypal_index_path, id: 'payments' do %>
+    <%= datagrid @payments, pagination_theme: :bootstrap, disable_search: true, result_name: 'payment',
+                 html: {class: 'table table-condensed'} do |t| %>
+      <%= t.thead do |thead| %>
+        <%= thead.toggle %>
+        <%= thead.th :'deposit_accounts.email', title: t('.th.email') %>
+        <%= thead.th :amount, title: t('.th.amount') %>
+        <%= thead.th :'users.name', title: t('.th.user') %>
+        <%= thead.th :'orders.reference_number', title: t('.th.order_number') %>
+        <%= thead.th :'orders.settled_at', title: t('.th.settled_at') %>
+        <%= thead.th :paid_at, title: t('.th.paid_at') %>
+        <%= thead.th :state, title: t('.th.state') %>
+      <% end %>
+      <%= t.tbody do |tbody, payment| %>
+        <%= tbody.toggle payment, :id, checked: payment.paid?, disabled: payment.paid? %>
+        <%= tbody.td do %>
+          <%= payment.paypal_email %>
+        <% end %>
+        <%= tbody.td do %>
+          <%= number_to_currency payment.amount %>
+        <% end %>
+        <%= tbody.td do %>
+          <%= link_to payment.recipient_name, admin_user_path(payment.recipient.id) %>
+        <% end %>
+        <%= tbody.td do %>
+          <%= link_to payment.reference_number, admin_order_path(payment.order) %>
+        <% end %>
+        <%= tbody.td do %>
+          <%= date payment.settled_at %>
+        <% end %>
+        <%= tbody.td do %>
+          <%= date(payment.paid_at) if payment.paid? %>
+        <% end %>
+        <%= tbody.td do %>
+          <%= payment.paid? ? t('.td.paid') : t('.td.pending') %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <p><%= bootstrap_submit_tag t('.button.pay_all') %></p>
+  <% end %>
+<% else %>
+  <p><%= t('.no_transfers') %></p>
+<% end %>

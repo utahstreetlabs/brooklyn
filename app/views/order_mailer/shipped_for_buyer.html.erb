@@ -1,0 +1,17 @@
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  It’s on its way! <%= @order.listing.seller.name %> has confirmed shipping for <%= @order.listing.title %> on <%= date(@order.shipped_at) %>.
+<% end %>
+
+<%= mailer_graf do %>
+  This shipment will be delivered by <%= @order.shipping_carrier_name %> - <%= mailer_link_to @order.tracking_number, tracking_url(@order) %>.
+<% end %>
+
+<%= mailer_graf do %>
+  For further item and shipping details, please refer to the order form below. Please note that at this point, no further changes to the order can be made.
+<% end %>
+
+<%= render 'buyer_order_details', order: @order %>
+
+<%= render '/shared_mailer/footer' %>

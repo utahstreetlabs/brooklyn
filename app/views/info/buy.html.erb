@@ -1,0 +1,78 @@
+<div id="main-content" class="span16">
+  <h1>How to Buy on Copious</h1>
+  <div class="selling-container" style="margin-top: 6px;">
+    <%= link_to 'Learn about selling', info_path(:sell), class: "selling" %>
+    <div class="point-arrow-border"></div>
+    <div class="point-arrow"></div>
+  </div>
+
+  <% unless logged_in? %>
+    <div class="top-message">
+      <h3>Get Started &amp; find the stuff you love.</h3>
+      <%= link_to_facebook_connect %>
+    </div>
+  <% end %>
+
+  <ul class="how-to-buy-container">
+    <li>
+      <div class="image-container">
+        <%= image_tag 'landing/seller/seller-landing.jpg', style: "width: 450px;" %>
+      </div>
+      <div class="copy-container" style="width: 471px; margin-top: 1px; padding-right: 0px;">
+        <h2 style="margin-bottom: 12px; margin-top: 6px;">Thou shall covet <br/> thy neighbor's closet</h2>
+        <h3>It's ok. We get it.</h3>
+        <span class="copy" style="width: 89%;">
+          Because your sellers are either digging into their own designer wardrobes, or busy creating their favorite
+          treasures, the Copious community is the perfect place to satisfy your envious heart's desires. With name
+          brands a-plenty and high-quality, one-of-a-kind items just a click away, you'll get your wish fulfillment
+          on...and then some.
+        </span>
+      </div>
+    </li>
+    <li>
+      <div class="image-container">
+        <%= image_tag 'landing/howto/htb.jpg', style: "width: 450px;" %>
+      </div>
+      <div class="copy-container" style="width: 464px;">
+        <h2 style="margin-top: 46px;">Never buy from strangers again</h2>
+        <h3>Because getting scammed sucks.</h3>
+        <span class="copy">
+          Each seller on Copious shares their online profiles from Facebook and/or Twitter so you’re never in the
+          dark about who you’re transacting with. We’ll show you exactly who and by how many degrees of separation
+          you’re connected to your seller of choice. Maybe it’s your second cousin’s girlfriend's college roommate.
+          Or maybe it’s someone right around the corner. Now, before you buy, you can get advice about any seller
+          from people you can trust -- the ones in your very own social network.
+        </span>
+      </div>
+    </li>
+    <li>
+      <%= image_tag 'landing/howto/hts-shield.png', style: "float: right; margin-right: 92px; margin-top: 9px;" %>
+      <div class="copy-container">
+        <h2>Hit the &quot;Buy&quot;, <br/> not the &quot;Panic&quot; Button</h2>
+        <h3>We're watching everyone's back</h3>
+        <span class="copy">
+          Once you buy, you’ll be able to rest easy knowing you’re protected from potential fraud. We process your
+          card upfront but your funds go into a trusted third-party account and are only distributed to the seller
+          once you’re fully satisfied with the item.
+        </span>
+      </div>
+    </li>
+    <li>
+      <%= image_tag 'landing/howto/hts-shipping.png', style: "float: left; margin-left: 7px; margin-top: 50px;" %>
+      <div class="copy-container">
+        <h2>Signed, Tracked &amp; Delivered</h2>
+        <h3>Everything tracked like nature intended it.</h3>
+        <span class="copy">
+          Every item purchased on Copious receives an email confirmation along with a tracking number that allows
+          you to track the progress of your item during every step of the shipping and handling process. So sit back,
+          track and await the arrival your goodies...worry free.
+        </span>
+      </div>
+    </li>
+  </ul>
+
+  <div class="top-message">
+    <h3>Or, perhaps you have something to sell?</h3>
+    <%= link_to 'Create a Listing', listings_path, id: "sell_button", class: "button primary large", method: :POST %>
+  </div>
+</div>

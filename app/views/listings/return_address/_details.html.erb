@@ -1,0 +1,16 @@
+<div data-role="return-address">
+  <ul class="margin-bottom">
+    <% if listing.return_address %>
+      <li>
+        <p class="kill-margin-bottom strong"><%= listing.return_address.name %></p>
+      </li>
+      <li class="address-info margin-bottom">
+        <p><%= postal_address listing.return_address %></p>
+      </li>
+    <% else %>
+      <li>
+        <p class="kill-margin-bottom strong"><%= t '.no_return_address' %></p>
+      </li>
+    <% end %>
+  </ul>
+</div>

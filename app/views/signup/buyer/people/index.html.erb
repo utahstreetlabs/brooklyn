@@ -1,0 +1,20 @@
+<%
+title 'Follow some people'
+signup_buyer_flow_step 3
+javascript 'signup_buyer'
+hide_footer
+%>
+
+<div class="message-container">
+  <% if @followees.any? %>
+    <h1 class="margin-top margin-bottom-double">You're now following <%= our_pluralize @followees.count, 'friend', emphasis: true %> <span class="weak">(you can unfollow them anytime)</span></h1>
+    <div class="following-container">
+      <% @followees.each do |followee| %>
+        <div class="avatar-container">
+          <%= user_avatar(followee, 50, 50, height: 50, width: 50, class: 'avatar') %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <%= signup_buyer_complete_button class: 'right' %>
+</div>

@@ -1,0 +1,5 @@
+<% if buyer == current_user %>
+  The <%= link_to_listing listing %> you bought from <%= link_to_user_profile seller %> was delivered
+<% else %>
+  Your <%= link_to_listing listing %> was delivered to <%= link_to_user_profile buyer %>
+<% end %>

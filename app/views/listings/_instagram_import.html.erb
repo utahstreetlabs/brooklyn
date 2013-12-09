@@ -1,0 +1,8 @@
+<% instagram_import_button_options ||= {} %>
+
+<%= content_tag :li, id: "instagram-import-#{photo['id']}", class: "instagram-import" do %>
+  <div class="instagram-import-image">
+    <%= listing_instagram_photo_tag(photo, :low_resolution) %>
+  </div>
+  <div class="instagram-import-wrap"><%= instagram_import_button listing, photo, instagram_import_button_options %></div>
+<% end %>

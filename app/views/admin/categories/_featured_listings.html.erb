@@ -1,0 +1,25 @@
+<% if features.any? %>
+  <p>Reorder by dragging and dropping in the list.</p>
+
+  <%= bootstrap_table condensed: true, data: {role: 'sortable-table'} do %>
+    <tbody>
+      <% features.each do |feature| %>
+        <%= content_tag(:tr, id: "featured-listing-#{feature.listing.id}",
+            data: {role: 'featured-listing', :'reorder-url' => reorder_admin_category_featured_path(category, feature)}) do %>
+        <td class="span2"><%= listing_photo_tag(feature.listing.photos.first, :small) if feature.listing.photos.first %></td>
+        <td class="span6"><%= link_to_listing(feature.listing) %></td>
+        <td>
+          <%= bootstrap_button_group do %>
+            <%= bootstrap_button nil, admin_category_featured_path(category.slug, feature),
+                condition: :danger, size: :mini, icon: :remove, inverted_icon: true, rel: :tooltip,
+                title: "Remove from featured category: #{category.name}",
+                data: {method: :delete, action: :delete, confirm: 'Are you sure you want to remove this listing from being featured for the category?'} %>
+            <% end %>
+          <% end %>
+        </td>
+      <% end %>
+    </tbody>
+  <% end %>
+<% else %>
+  <p>No categories have been added to the list yet. <%= link_to 'Find one to add', admin_listings_path %>.</p>
+<% end %>

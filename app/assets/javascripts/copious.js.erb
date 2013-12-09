@@ -1,0 +1,134 @@
+window.copious = window.copious || {}
+COPIOUS = function() {
+  return {
+    namespace: function(name) {
+      if (!COPIOUS.hasOwnProperty(name)) {
+        COPIOUS[name] = {};
+      }
+    }
+  }
+}();
+
+jQuery(function ($) {
+
+  $.fn.exists = function() { return this.length > 0 }
+
+  $.subscribe = function(obj, topic, callback) {
+    function wrapper(event, payload) {
+      return (obj === null || obj === payload.sender) ? callback(event, payload.data) : true;
+    }
+    $(document).bind('pubsub:' + topic, wrapper);
+  },
+
+  $.publish = function(obj, topic, data) {
+    var payload = { sender: obj, data: data };
+    $(document).trigger('pubsub:' + topic, payload);
+  },
+
+  $.poll = function(url, backoff, settings) {
+    var success = settings.success;
+    var poller = this;
+
+    function doIt() {
+      debug.debug('polling url: ' + url);
+      $.ajax(url, settings);
+    }
+
+    settings.success = function(data, textStatus, jqXHR) {
+      if (!success(data, textStatus, jqXHR)) {
+        if (backoff.length > 0) {
+          var timeoutId = window.setTimeout(doIt, backoff.shift());
+        } else {
+          // indicate that all attempts have been tried without success
+          $.publish(poller, 'poll:exhausted');
+        }
+      }
+    }
+    doIt();
+    return poller;
+  }
+
+  COPIOUS.util = function() {
+    return {
+      regExpEscape: function(str) {
+        return str.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+      },
+
+      htmlEncodeChar: function(c) {
+        var div = document.createElement('div');
+        div.innerText = div.textContent = c; // innerText and textContent for different browsers
+        c = div.innerHTML;
+
+        // Special character cases
+        if (c === ' ')
+          c = '&nbsp;';
+        else if (c === "'")
+          c = '&apos;';
+        else if (c === '"')
+          c = '&quot;';
+
+        return c;
+      },
+
+      strSplice: function(str, strInsert, pos) {
+        return (str.slice(0, pos) + strInsert + str.slice(pos));
+      },
+
+      strReplaceAt: function(str, strReplace, pos, len) {
+        if (typeof len === 'undefined' || len === null || len < 1) len = 1;
+        return str.substring(0, pos) + strReplace + str.substring(pos + len);
+      }
+    }
+  }();
+
+  $("[data-role^=flash]").each(function(){
+    var $f = $(this);
+    if($f.children().length > 0) {
+      $f.show();
+    }
+  });
+
+  $('form#create_listing select#category').live('change', function() {
+    var category = $(this).find("option:selected").val();
+    if (category != "") {
+      window.location = $(this).closest('form').attr('action') + '?category=' + category;
+    }
+  });
+
+  $('form#browse_listings select#category').live('change', function() {
+    var category = $(this).find("option:selected").val();
+    if (category != "") {
+      window.location = $(this).closest('form').attr('action') + '/browse/' + category;
+    }
+  });
+
+  $('.toggle-all-checkboxes').change( function(){
+    var inputs = $(this).parents('form:first').find('input:checkbox');
+    if( $(this).is(':checked') ) {
+      inputs.attr('checked', 'checked');
+    } else {
+      inputs.removeAttr('checked');
+    }
+  });
+
+  $.fn.loader = function() {
+    this.html('<%= image_tag "icons/ajax-loader.gif", class: "loader" %>')
+  }
+
+  function jsLog(page, action, args) {
+    args = args || {};
+    args.page = page;
+    args.action = action;
+    $.post("/errors/javascript", args)
+  }
+
+  window.onerror = function(errorMessage, url, lineNumber) {
+    debug.log(errorMessage + " at " + url + ":" + lineNumber);
+    jsLog(location.toString(), 'error', {
+      errorMessage: errorMessage,
+      url: url,
+      lineNumber: lineNumber
+    });
+    return true;
+  }
+});

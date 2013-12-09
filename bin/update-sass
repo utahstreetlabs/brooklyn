@@ -1,0 +1,2 @@
+#!/bin/bash
+sass --update --force public/stylesheets/sass/base.sass:public/stylesheets/base.css

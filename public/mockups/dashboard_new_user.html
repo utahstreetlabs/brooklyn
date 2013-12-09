@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Copious: Dashboard</title>
+    <link rel="icon" type="image/ico" href="/favicon.ico">
+    <meta name="csrf-param" content="authenticity_token"/>
+<meta name="csrf-token" content="ib0oHeVPm8/xSVdSJRVtU7i1FPWxnaPZ81j7TIFOvsg="/>
+    <link href="/stylesheets/base.css?1307982955" media="screen" rel="stylesheet" type="text/css" />
+    
+  </head>
+  <body class="dashboard_show">
+    <div id="header-wrapper">
+      <div id="header">
+        <h2 id="main_logo">
+          <a href="/dashboard">Copious</a>
+        </h2>
+        <nav class="main-nav">
+            <form accept-charset="UTF-8" action="/listings" id="search_listings" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+              <div id="search_box">
+                <input id="search" name="search" placeholder="Search products..." type="text" />
+                <a class="search_clear" href="#"></a>
+                <button type="submit" class="button" id="searchButton">Search</button>
+              </div>
+</form>            <a href="/listings" class="button" id="browse_button">Browse</a>
+            <ul id="browse_button_resultlist" style="display: none;">
+              <li><a href="/listings/for/handbags">Handbags</a></li>
+              <li><a href="/listings">All</a></li>
+            </ul>
+              <a href="#" class="button" id="sell_button">Sell</a>
+              <ul id="browse_button_resultlist" style="display: none;">
+                <li><a href="/listings/new?category=handbags">Handbags</a></li>
+              </ul>
+        </nav>
+
+        <div id="account">
+               <a href="/dashboard" class="profile_pic"><img alt="" class="avatar" height="30" src="/uploads/development/user/profile_photo/18/px_30x30_187589_17002493_8287357_n.jpg" width="30"></img></a>
+               <a href="/dashboard" class="display_name">Jeff Croft</a>
+               |
+              <a href="/dashboard/notifications">
+                Notifications
+                <span id="notification-count">0</span>
+</a>               |
+              <a href="#" id="account_button">Account &#x25BE;</a>
+              <ul class="copious_browsewidget_resultlist">
+                <li><a href="/profiles/jeff-croft">Profile</a></li>
+                <li><a href="/profile/edit">Account settings</a></li>
+                <li><a href="/logout">Log out</a></li>
+              </ul>
+        </div>
+      </div>
+    </div>
+    <div id="content-wrapper">
+      
+<div class="messages">
+  <ul id="flash" style="display:none">
+  </ul>
+</div>
+
+
+
+<div id="sidebar">
+  <div class="profile">
+    <section class="profile-picture">
+      <a href="/profiles/jeff-croft"><img alt="" height="70" src="/uploads/development/user/profile_photo/18/px_70x70_187589_17002493_8287357_n.jpg" width="70"></img></a>
+      <h4>Jeff Croft</h4>
+    </section>
+    <section>
+      <h5>Products</h5>
+      <div class="meta">
+        <table>
+          <tr>
+            <td><a href="/dashboard/for_sale">For sale:</a></td>
+            <td class="numeric">0</td>
+          </tr>
+          <tr>
+            <td><a href="/dashboard/sold">Sold:</a></td>
+            <td class="numeric">0</td>
+          </tr>
+          <tr>
+            <td><a href="/dashboard/bought">Bought:</a></td>
+            <td class="numeric">0</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+    
+    <section>
+      <h5>Your social networks</h5>
+      <div class="service">
+        <a href="http://www.facebook.com/" target="_blank"><img alt="Facebook_32" src="/images/social_networks/facebook_32.png?1304016329" /></a>
+        <a href="http://www.facebook.com/profile.php?id=17002493" target="_blank">Jeff Croft</a>
+        0 friends
+      </div>
+
+      
+    </section>
+    <section>
+      <h5>0 Following
+        <span><a href="/dashboard/followees" class="ajax-overlay-trigger" id="#followees_all" rel="#ajax-overlay">View all</a></span>
+      </h5>
+      <ul class="avatar-list">
+      </ul>
+    </section>
+    <section>
+      <h5>0 Followers
+        <span><a href="/dashboard/followers" class="ajax-overlay-trigger" id="#followers_all" rel="#ajax-overlay">View all</a></span>
+      </h5>
+      <ul class="avatar-list">
+      </ul>
+    </section>
+      <section>
+        <h5>Administration</h5>
+        <p>
+          <a href="/admin/dashboard">Admin Dashboard</a>
+        </p>
+      </section>
+  </div>
+</div>
+
+<div id="main-content">
+
+<!-- THIS IS THE RELEVANT BITS FOR THIS PAGE -->
+<div id="new-user-welcome">
+  <div id="nux-intro">
+    <h3>Welcome to the Copious beta.</h3>
+    <p><strong>Copious</strong> is a marketplace for real people&mdash;not anonymous profiles&mdash;to buy and sell their goods. We're currently in beta, so please excuse our dust. And most importantly, please let us know what you'd like to see. <a href="#">Send feedback</a></p>
+  </div>
+  <div id="nux-search">
+    <h5>Find a hidden treasure.</h5>
+    <p>Find deals on stuff you love and share them with your friends.</p>
+    <form accept-charset="UTF-8" action="/listings" method="get">
+      <div>
+        <input id="search" name="search" placeholder="Search..." type="text" />
+        <a class="search_clear" href="#"></a>
+        <button type="submit" class="button" id="searchButton">Search</button>
+      </div>
+    </form>
+  </div>
+  <div id="nux-sell">
+    <h5>Have something to sell?</h5>
+    <p>List your stuff for sale on Copious now!</p>
+    <a href="#"class="button positive">Sell</a>
+  </div>
+  <div id="nux-network">
+    <h5>Build your network!</h5>
+    <p>See what your friends and tastemakers are up to on Copious.</p>
+    <a href="#"class="button positive">Find your friends</a>
+  </div>
+</div>
+<!-- END RELEVANT BITS -->
+
+
+<h5>News feed</h5>
+
+<div class="news-feed">
+    <p>No activity yet.</p>
+</div>
+
+</div>
+
+<div id="ajax-overlay" style="display: none;">
+  <div class="content-wrap"></div>
+  <a href="#" class="button close-button">Close</a>
+</div>
+
+    </div>
+    <div id="footer-wrapper">
+  <hr />
+  <div id="footer">
+    <ul class="menu">
+      <li><a href="http://help.copious.com">Help</a></li>
+      <li><a href="http://corporate.copious.com/about-us">About Us</a></li>
+      <li><a href="http://corporate.copious.com/jobs">Jobs</a></li>
+      <li><a href="http://corporate.copious.com/blog">Blog</a></li>
+      <li><a href="http://twitter.com/shopcopious" target="_blank">Twitter</a></li>
+      <li><a href="http://www.facebook.com/pages/Copious/201076446577603" target="_blank">Facebook</a></li>
+    </ul>
+
+    <ul class="disclaimer">
+      <li>© 2011 Utah Street Labs, Inc. All rights reserved.</li>
+      <li><a href="http://corporate.copious.com/terms">Terms of Use</a></li>
+      <li><a href="http://corporate.copious.com/privacy">Privacy</a></li>
+      <li><a href="http://corporate.copious.com/transaction-policy">Transaction Policy</a></li>
+    </ul>
+  </div>
+</div>
+
+    <div id="login-overlay" style="display: none;">
+      <div id="main-content" class="welcome">
+  <h2>Welcome to Copious</h2>
+  <p class="promo">
+    <strong>Copious</strong> is the cat's pajamas and you should totally join it. It's a social marketplace&mdash;the more social connections you make, the better Copious will be.
+  </p>
+</div>
+
+<div id="sidebar" class="login">
+    <h5>Welcome back Jeff!</h5>
+
+  
+<div class="messages">
+  <ul id="login-flash" style="display:none">
+  </ul>
+</div>
+
+
+  <form accept-charset="UTF-8" action="/login" id="login-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="ib0oHeVPm8/xSVdSJRVtU7i1FPWxnaPZ81j7TIFOvsg=" /></div>
+    <fieldset><ol>
+      <li class="text" id="field_email">
+        <label for="email">Email</label>
+        <input id="email" maxlength="255" name="email" type="text" value="jeff@jeffcroft.com" />
+</li>      <li class="password" id="field_password">
+        <label for="password">Password</label>
+        <input id="password" maxlength="64" name="password" type="password" />
+</li></ol></fieldset>    <div class="buttons"><button cancel_text="Forgot your password?" cancel_url="/password_resets/new" class="positive" data-disable-with="Submitting ..." save_text="Log in" type="submit">Log in</button>
+<div><a href="/password_resets/new">Forgot your password?</a></div></div>
+</form></div>
+
+    </div>
+    <div id="fb-root"></div>
+
+    <script src="/javascripts/jquery/jquery.js?1306348169" type="text/javascript"></script>
+<script src="/javascripts/jquery/jquery-ui.js?1305743856" type="text/javascript"></script>
+<script src="/javascripts/jquery/jquery_ujs.js?1306944197" type="text/javascript"></script>
+<script src="/javascripts/jquery/jquery.tools.min.js?1304612110" type="text/javascript"></script>
+<script src="/javascripts/jquery/jquery.masonry.min.js?1304016329" type="text/javascript"></script>
+<script src="/javascripts/jquery/jquery.html5-placeholder-shim.js?1304016329" type="text/javascript"></script>
+<script src="/javascripts/modernizr-1.7.min.js?1304016329" type="text/javascript"></script>
+<script src="/javascripts/selectivizr.js?1305743856" type="text/javascript"></script>
+<script src="/javascripts/amplify.min.js?1303947090" type="text/javascript"></script>
+<script src="/javascripts/application.js?1305828420" type="text/javascript"></script>
+<script src="/javascripts/ba-debug.min.js?1303947090" type="text/javascript"></script>
+<script src="/javascripts/google_analytics.js?1307982955" type="text/javascript"></script>
+<script src="/javascripts/copious/jquery.searchboxwidget.js?1304378940" type="text/javascript"></script>
+<script src="/javascripts/copious/jquery.browsewidget.js?1307982955" type="text/javascript"></script>
+<script src="/javascripts/copious/header.js?1304378940" type="text/javascript"></script>
+<script src="/javascripts/copious/facebook.js?1307982955" type="text/javascript"></script>
+<script src="/javascripts/copious/login.js?1307982955" type="text/javascript"></script>
+<script src="/javascripts/copious/modal_overlay.js?1306944197" type="text/javascript"></script>
+<script src="/javascripts/copious/ajax_content_overlay.js?1307982955" type="text/javascript"></script>
+    
+      <script type="text/javascript">
+//<![CDATA[
+
+        $(function() {
+              jQuery(function ($) {
+        COPIOUS.ga_account = 'UA-23540971-1';
+      });
+
+        });
+
+//]]>
+</script>  </body>
+</html>

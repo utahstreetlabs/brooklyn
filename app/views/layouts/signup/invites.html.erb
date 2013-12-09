@@ -1,0 +1,19 @@
+<%
+  stylesheet 'signup'
+%>
+<%= render '/layouts/top' %>
+
+<h1 class="section-title">Invite Your Friends</h1>
+
+<div class="invite-friends-header">
+  <div class="invite-copy">
+    Give your friends <%= number_to_invite_credit_currency Credit.invitee_credit_amount %> credit on Copious.<br />
+      And you'll make <%= number_to_invite_credit_currency Credit.amount_for_accepted_invite %> credit with each friend who joins and buys.
+  </div>
+</div>
+
+<%= yield %>
+
+<%= link_to 'Skip this step', signup_onboard_path, :class => "skip-this-step" %>
+
+<%= render '/layouts/bottom' %>

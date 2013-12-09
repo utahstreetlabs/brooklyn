@@ -1,0 +1,50 @@
+#= require spec_helper
+#= require controls/listings/hot_or_not_modal
+
+describe 'Hot or not modal', ->
+  subject = null
+  server = null
+  modal = null
+  hotButton = null
+  notButton = null
+
+  beforeEach ->
+    $('body').html(JST['templates/controls/listings/hot_or_not_modal']())
+    server = new MockServer
+    hotButton = $('[data-action=listing-hot]')
+    notButton = $('[data-action=listing-not]')
+    modal = $('#hot-or-not-modal').modal('show')
+    subject = modal.hotOrNotModal('instance')
+
+  describe 'hotting and notting', ->
+    suggestion1 = {
+      hotButton: '<a data-action="listing-hot">boiling</button>',
+      notButton: '<a data-action="listing-not">freezing</button>',
+      photo: '<img src="potato.jpg">'
+    }
+    suggestions = [suggestion1]
+    responseData = {status: 'success', data: {suggestions: suggestions}}
+
+    it 'updates the modal after hot', ->
+      server.respondWith('/listings/asdf-7/hot', data: responseData)
+      hotButton.click()
+      server.respond()
+      expect($('[data-action=listing-hot]')).to.contain('boiling')
+      expect($('[data-action=listing-not]')).to.contain('freezing')
+      expect($('img').attr('src')).to.eq('potato.jpg')
+
+    it 'updates the modal after not', ->
+      server.respondWith('/listings/asdf-7/not', data: responseData)
+      notButton.click()
+      server.respond()
+      expect($('[data-action=listing-hot]')).to.contain('boiling')
+      expect($('[data-action=listing-not]')).to.contain('freezing')
+      expect($('img').attr('src')).to.eq('potato.jpg')
+
+    it 'closes the modal if enough listings have been liked', ->
+      expect(modal).to.be.visible
+      server.respondWith('/listings/asdf-7/hot', data: {status: 'success', data: {likes_count: HotOrNotModal.LIKES_NEEDED_TO_CLOSE}})
+      hotButton.click()
+      server.respond()
+      expect($('#hot-or-not-modal')).to.not.be.visible
+

@@ -1,0 +1,16 @@
+<% if suggestions && suggestions.any? %>
+  <div id="invite-friends" class="section-new replacing-actions">
+    <h3>Invite Your Friends</h3>
+    <div class="help_text">Share your finds with your Facebook Friends</div>
+    <%= invite_suggestions suggestions do %>
+      <% if pileon_suggestion %>
+        <%= invite_friend_pileon(inviter_profiles(pileon_suggestion).first, pileon_suggestion, invite_suggestion_class: "rep-action") %>
+        <% suggestions.delete(pileon_suggestion) %>
+      <% end %>
+      <% suggestions.each do |profile| %>
+        <%= invite_friend(profile, invite_suggestion_class: "rep-action") %>
+      <% end %>
+    <% end %>
+    <%= link_to 'Invite more friends from Twitter, email and Facebook', connect_invites_path, :class => "show-more" %>
+  </div>
+<% end %>

@@ -1,0 +1,139 @@
+en:
+  settings:
+    email:
+      show:
+        choices:
+          follow_me: 'Someone starts following me'
+          listing_like: 'Someone likes my listing'
+          listing_share_facebook: 'My listing is shared on Facebook'
+          listing_share_twitter: 'My listing is shared on Twitter'
+          listing_comment: 'Someone comments on my listing'
+          listing_comment_reply: 'Someone replies to my comment'
+          listing_mentioned: 'Someone mentions me on a listing'
+          invite_accept: 'A friend accepts my invitation to Copious'
+          friend_join: 'Someone I know on Facebook or Twitter joins Copious'
+          listing_feature: 'My listing is featured on Copious'
+          follower_list: 'Someone I follow creates a new listing'
+          connection_digest: "There's bi-weekly digests of my feed"
+          site_news: "There's occasional news or updates about Copious"
+          collection_follow: 'Someone starts following my collection'
+          listing_save: 'Someone saves one of my listings to their collection'
+    seller:
+      identity:
+        show:
+          title: 'Create Your Payout Account'
+          header: 'Create Your Payout Account'
+          progress_bar:
+            step1: '1. Verify Identity'
+            step2: '2. Add Deposit Account'
+          help_link: 'here'
+          instructions_html: '<p>To get paid, please create your Payout Account by entering your information. For your safety, we will need to verify your identity, but this information will never be public.</p><p>Learn more about your Payout Account %{help_link}.</p>'
+          field:
+            name:
+              label: 'Legal Name'
+              help: 'Example: Katherine instead of Kate or William instead of Bill'
+            street_address:
+              label: 'Street Address'
+              help: 'Example: 1234 Main Street, Apartment 6'
+            postal_code:
+              label: 'ZIP Code'
+              example: 'Example: 12345 or 12345-6789'
+            phone_number:
+              label: 'Phone Number'
+              example: 'Example: 123-456-7890'
+            born_on:
+              label: 'Date of Birth'
+            tax_id:
+              label: 'Social Security Number'
+              explanation: 'We need this to verify your identity, but it will be kept protected and private, even from us.'
+          button:
+            save: 'Continue to final step'
+        failure:
+          title: 'Create Your Payout Account'
+          header: 'Create Your Payout Account'
+          progress_bar:
+            step1: '1. Verify Identity'
+            step2: '2. Add Deposit Account'
+          instructions:
+            text_html: "We still can't verify your identity. Please contact %{help_link} so we can assist you."
+      accounts:
+        new:
+          title: 'Create Your Payout Account'
+          header: 'Create Your Payout Account'
+          progress_bar:
+            step1: '1. Verify Identity'
+            step2: '2. Add Deposit Account'
+          instructions:
+            fees_link: 'fees'
+            text_html: '<p>Please provide us with your deposit account information so you can get paid.</p><p>To get paid within 48 hours of completing a sale, connect your bank account. There are no additional %{fees_link}. Getting paid via PayPal could take up to 4 days.</p>'
+        new_account:
+          selector:
+            label: 'Account Type'
+            bank_account: 'Bank Account'
+            paypal: 'PayPal'
+        funds_waiting:
+          deposit_funds:
+            paypal:
+              instructions_html: 'You have %{amount} waiting. Click to release your payment to your PayPal account.<br>Your payment will automatically release for all future sales.'
+              sucks_html: 'Because your deposit account is PayPal, it can take up to 72 hours.<br>If you want to get paid faster, use your bank account for your deposit account.'
+              button:
+                release: 'Release payment'
+                add_bank_account: 'Add bank account'
+            bank_account:
+              instructions_html: 'You have %{amount} waiting. Click to release your payment to your bank account.<br>Your payment will automatically release for all future sales.'
+              button: 'Release payment'
+          connect_bank_account: 'You have %{amount} waiting. To get paid, finish creating your Payout Account.'
+        index:
+          title: 'Payout Account Information'
+          header: 'Payout Account Information'
+          account:
+            default: '(Default)'
+            button:
+              edit: 'Edit'
+              delete: 'Delete'
+              default: 'Make default'
+            confirm:
+              delete: 'Are you sure you want to delete this account?'
+          accounts:
+            button:
+              add_another_account: 'Add another deposit account'
+        bank:
+          new:
+            field:
+              name:
+                label: 'Deposit Account Name'
+                example: "Example: My Bank Account, Jane Doe's Account, Jane Doe, etc."
+              number:
+                label: 'Account Number'
+              routing_number:
+                label: 'Routing Number'
+                example: 'Example: 123456789'
+              default:
+                label: 'Make default deposit account'
+            button:
+              save: 'Create Payout Account'
+        paypal:
+          new:
+            field:
+              email:
+                label: 'E-mail Address'
+                example_html: 'Please enter the e-mail address affiliated with your PayPal account.<br>Example: example@copious.com'
+              email_confirmation:
+                label: 'Confirm E-mail Address'
+              default:
+                label: 'Make default deposit account'
+            button:
+              save: 'Create Payout Account'
+          edit:
+            title: 'Edit Your PayPal Deposit Account'
+            header: 'Edit Your PayPal Deposit Account'
+            field:
+              email:
+                label: 'E-mail Address'
+                example_html: 'Please enter the e-mail address affiliated with your PayPal account.<br>Example: example@copious.com'
+              email_confirmation:
+                label: 'Confirm E-mail Address'
+              default:
+                label: 'Make default deposit account'
+            button:
+              save: 'Save edits'

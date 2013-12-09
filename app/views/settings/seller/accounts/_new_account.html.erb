@@ -1,0 +1,19 @@
+<%= content_tag_hidden_if hidden, :div, id: 'new-account', class: 'margin-top-double span12 kill-margin-left' do %>
+  <%= form_tag '', id: 'account_selector' do %>
+    <%= label_tag :account_type, t('.selector.label') %>
+    <%= select_tag :account_type,
+                   options_for_select([[t('.selector.bank_account'), DepositAccount::BANK],
+                                       [t('.selector.paypal'), DepositAccount::PAYPAL]],
+                   params[:account_type] ) %>
+  <% end %>
+
+  <%= content_tag_hidden_unless params[:account_type] == DepositAccount::BANK, :div, id: DepositAccount::BANK,
+                                data: {role: 'new-account'} do %>
+    <%= render 'settings/seller/accounts/bank/new', account: bank_account %>
+  <% end %>
+
+  <%= content_tag_hidden_unless params[:account_type] == DepositAccount::PAYPAL, :div,
+                                id: DepositAccount::PAYPAL, data: {role: 'new-account'} do %>
+    <%= render 'settings/seller/accounts/paypal/new', account: paypal_account %>
+  <% end %>
+<% end %>

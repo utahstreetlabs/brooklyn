@@ -1,0 +1,4 @@
+<p>
+  <%= bootstrap_button %Q/Reactivate "#{listing.title}"/, reactivate_admin_listing_path, condition: :primary,
+        data: {method: :post, action: :reactivate} %>
+</p>

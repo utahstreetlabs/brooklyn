@@ -1,0 +1,17 @@
+<% avatar_img_options ||= {height: 50, width: 50} %>
+<% invite_button_options ||= {} %>
+<% invite_suggestion_class ||= "ra-action" %>
+
+<%= content_tag :li, id: "invite-suggestion-#{invitee.id}", class: "invite-suggestion rep-action #{invite_suggestion_class} pileon" do %>
+  <div class="avatar-container">
+    <%= link_to_profile_avatar inviter, img: avatar_img_options, class: 'inviter-avatar' %>
+    <div class="icon-container">
+      <%- image_tag 'icons/invite-pileon.png', :class => 'pileon-icon' %>
+    </div>
+    <%= link_to_profile_avatar invitee, img: avatar_img_options, class: 'invitee-avatar' %>
+  </div>
+  <span class="invite-name"><%= link_to_profile inviter %></span> invited <span class="invite-name"><%= link_to_profile invitee %></span> to join Copious. Give them another reason to join!
+  <%= link_to_delete_invite_suggestion(invitee.id) %>
+  <span class="invite-wrap"><%= invite_button invitee, invite_button_options %></span>
+<% end %>
+

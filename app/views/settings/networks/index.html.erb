@@ -1,0 +1,16 @@
+<%
+title 'Account Settings: Linked Networks'
+javascript 'settings_networks'
+mp_view_event 'network settings'
+%>
+
+<h2>Linked Networks</h2>
+
+<% Network.active.each do |network| %>
+  <%# show a profile block for each connected profile in this network %>
+  <% if identity = current_user.identity_for(network) %>
+    <%= render 'profile', network: network, profile: identity.profile %>
+  <% else %>
+    <%= render 'profile', network: network, profile: nil %>
+  <% end %>
+<% end %>

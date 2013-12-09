@@ -1,0 +1,10 @@
+<tr data-listing="<%= listing.id %>">
+  <td class="product-image-dashboard">
+    <% if listing.photos.any? %><%= listing_photo_tag(listing.photos.first, :medium) %><% end %>
+  </td>
+  <td><%= link_to listing.title, listing_path(listing) %></td>
+  <td class="numeric"><%= number_to_currency listing.price %></td>
+  <td class="numeric" data-role="shipping"><%= listing.free_shipping? ? 'Free' : number_to_currency(listing.shipping)  %></td>
+  <td><%= date listing.created_at %></td>
+  <td><%= seller_listing_next_steps listing %></td>
+</tr>

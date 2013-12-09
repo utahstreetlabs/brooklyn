@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <%= base_stylesheet(media:'all') %>
+</head>
+
+<body class="printable">
+<div id="logo-bar">
+  <%= image_tag 'layout/copious-mainlogo.png' %>
+</div>
+
+<div id="printable-content">
+  <%= yield %>
+</div>
+</body>
+</html>

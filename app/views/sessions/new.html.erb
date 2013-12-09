@@ -1,0 +1,59 @@
+<%
+hide_masthead
+hide_footer
+body_class(params[:source] == 'bookmarklet' ? 'login_bookmarklet' : 'login')
+stylesheet 'homepage_logged_out'
+%>
+
+<div class="container">
+  <div class="section top-piece">
+    <%= image_tag 'layout/Logo-58-black.png', class: 'copious-logo' %>
+    <h1 class="margin-top hidden-phone page-title">Log In</h1>
+  </div>
+</div>
+<div class="container">
+  <div class="span4 section offset1">
+    <div class="section sns-connect">
+      <%= link_to_facebook_connect class: 'signup button xlarge primary facebook' %><br/>
+      <%= link_to_twitter_connect class: 'button primary xlarge' %>
+      <div>
+        <%= check_box_tag(:remember_me, '1', true, class: 'margin-top', id: 'network-login-remember-me') %>
+        <%= label_tag(:remember_me, 'Remember Me', class: 'checkbox margin-top weak') %>
+      </div>
+    </div>
+  </div>
+  <div class="divider-vertical hidden-phone"></div>
+  <div class="span4 section">
+    <%= form_for @login, url: login_url(secure: true), html: {:class => 'login'} do |f| %>
+      <%= f.fieldset do %>
+        <%= f.field :email, :class => 'text', container: :div do %>
+          <%= f.label :email, 'Email', class: 'hidden-phone' %>
+          <%= f.email_field :email, maxlength: 255, id: :email, type: :email, class: 'full-width hide-placeholder', placeholder: 'Email' %>
+        <% end %>
+        <%= f.field :password, container: :div do %>
+          <%= f.label :password, class: 'hidden-phone' %>
+          <%= f.password_field :password, maxlength: 64, id: :password, class: 'full-width hide-placeholder', placeholder: 'Password' %>
+        <% end %>
+        <%= f.hidden_field :facebook_token, value: '' %>
+        <%= f.hidden_field :facebook_signed, value: '' %>
+        <% if @login.errors[:base].any? %>
+          <%= content_tag :p, data: {role: 'login-error' }, class: 'login-error margin-bottom' do %>
+            <%= @login.errors[:base].first %>
+          <% end %>
+        <% end %>
+        <%= f.save_button 'Log in', data: {action: "auth-update"}, class: 'button primary xlarge full-button margin-top-half' %>
+        <%= f.field :remember_me, :class => 'email-checkbox margin-top', container: :div do %>
+          <%= f.check_box :remember_me, id: 'remember_me_unpw' %>
+          <%= f.label :remember_me, 'Remember Me', class: 'checkbox weak' %>
+          <%= content_tag :div, id: 'reset-password-container' do %>
+            <%= link_to 'Forgot Password?', new_password_reset_path, class: 'hidden-phone' %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="login-container hidden-phone">
+    <span class="already-registered">Need an account? Connect with your Facebook or Twitter account to get started.</span>
+  </div>
+  <%= link_to 'Forgot Password?', new_password_reset_path, class: 'hidden-desktop margin-bottom' %>
+</div>

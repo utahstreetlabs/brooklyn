@@ -1,0 +1,86 @@
+<div id="root">
+  <div id="content-wrapper">
+    <div class="row">
+      <div id="main-content">
+        <div id="browse-nav">
+
+          <div id="browse-tabs-container">
+
+            <div id="category-container" class="browse-tab dropdown" data-role="search-facet">
+              <button class="dropdown-toggle btn" data-toggle="dropdown" name="button" type="button">
+                <div data-role="dropdown-title">All Categories<b class="caret"></b></div>
+              </button>
+
+              <ul id="category-dropdown" class="search-facet dropdown-menu" data-role="dropdown-menu">
+                <li class="facet">
+                  <a href="/category/one" data-role="facet-change" data-title="Accessories">
+                    <span class="facet-name">Accessories</span><span class="facet-count"></span>
+                  </a>
+                </li>
+                <li class="facet">
+                  <a href="/category/two" data-role="facet-change" data-title="Art">
+                    <span class="facet-name">Art</span><span class="facet-count"></span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div id="price-container" class="browse-tab dropdown" data-role="search-facet">
+              <button class="dropdown-toggle btn" data-toggle="dropdown" name="button" type="button">
+                <div data-role="dropdown-title">All Prices<b class="caret"></b></div>
+              </button>
+
+              <ul id="price-dropdown" class="search-facet dropdown-menu" data-role="dropdown-menu">
+                <li class="facet">
+                  <a href="/price/one" data-role="facet-change" data-title="Under $25">
+                    <input data-role="facet-checkbox" data-url="/price/one" id="Under__25" name="Under $25"
+                     type="checkbox" value="0">
+                    <span class="facet-name">Under $25</span><span class="facet-count"></span>
+                  </a>
+                </li>
+                <li class="facet">
+                  <a href="/price/one" data-role="facet-change" data-title="$25-$50">
+                    <input data-role="facet-checkbox" data-url="/price/two" id="_25-_50" name="$25-$50"
+                     type="checkbox" value="0">
+                    <span class="facet-name">$25-$50</span><span class="facet-count"></span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div id="sort-container" class="browse-tab dropdown" data-role="search-facet">
+              <button class="dropdown-toggle btn" data-toggle="dropdown" name="button" type="button">
+                <div data-role="dropdown-title">Most Recent<b class="caret"></b></div>
+              </button>
+
+              <ul id="sort-dropdown" class="search-facet dropdown-menu" data-role="dropdown-menu">
+                <li class="selected">
+                  <a href="/sort/one" data-role="facet-change">Most Recent</a>
+                </li>
+                <li>
+                  <a href="/sort/two" data-role="facet-change">Most Popular</a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+          <div id="browse-details-container">
+            <h2 class="browse-title">
+              <span id="title-container" class="category-title"></span>
+              <span class="result-text">
+                <span id="items-found-number" class="items-found-number"></span>
+              </span>
+            </h2>
+            <div id="selection-container" class="tags-container" data-role="search-facet" style="display:none;">
+              <span class="tag-title">Your Selections:</span>
+            </div>
+          </div>
+
+        </div>
+
+        <ul class="search-results"></ul>
+      </div>
+    </div>
+  </div>
+</div>

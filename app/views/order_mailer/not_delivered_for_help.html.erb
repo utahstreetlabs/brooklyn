@@ -1,0 +1,17 @@
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  The buyer has indicated that this order has not been delivered. Please investigate.
+<% end %>
+
+<%= mailer_header do %>
+  Order Details:
+<% end %>
+
+<%= mailer_graf do %>
+  1. Order #: <%= mailer_link_to @order.reference_number, admin_order_url(@order) %>
+  2. Listing name: <%= mailer_link_to @order.listing.title, listing_url(@order.listing) %>
+  3. Seller name: <%= mailer_link_to @order.listing.seller.name, public_profile_url(@order.listing.seller) %>
+<% end %>
+
+<%= render '/shared_mailer/footer' %>

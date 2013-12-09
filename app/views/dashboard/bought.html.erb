@@ -1,0 +1,32 @@
+<%
+title "Items you've bought"
+javascript 'dashboard'
+suppress_right_sidebar
+%>
+
+<h2>Items you've bought</h2>
+
+<div class="section">
+  <% if @listings.any? %>
+    <table>
+      <thead>
+        <tr>
+          <th><%= sortable :title, 'Item', :default => true %></th>
+          <th><%= sortable :total_price, 'Price / Credit Applied' %></th>
+          <th><%= sortable :purchased, 'Purchased' %></th>
+          <th><%= sortable :seller, 'Seller' %></th>
+          <th><%= sortable :status, 'Status / Next Step' %></th>
+        </tr>
+      </thead>
+      <tbody data-role="dashboard-listings">
+        <% @listings.each do |listing| %>
+          <%= render 'bought_listing', :listing => listing %>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>You haven't bought anything yet.</p>
+  <% end %>
+</div>
+
+<%= paginate @listings %>

@@ -1,0 +1,18 @@
+window._gaq ||= []
+_gaq.push(['_setAccount', GA_ACCOUNT])
+_gaq.push(['_trackPageview'])
+
+<% if feature_enabled?(:client, :google_analytics) %>
+`(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();`
+<% end %>
+
+jQuery ->
+  $('body').delegate '.social-action', 'click', ->
+    $this = jQuery(this)
+    _gaq.push ['_trackSocial', $this.data('network'), $this.data('social-action')]
+    true
+

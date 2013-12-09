@@ -1,0 +1,76 @@
+en:
+  controllers:
+    external:
+      not_saved: 'Your changes were not saved. See the errors below.'
+    listings:
+      search_error: 'There was an error performing your search. Please try again later.'
+      created: 'Your listing was created.'
+      not_saved: 'Your changes were not saved. See the errors below.'
+      updated: 'Your changes to the listing were saved.'
+      deactivated: 'The listing has been deactivated.'
+      reactivated: 'The listing has been reactivated.'
+      activate_failed: 'There was an error activating this listing. Please try again in a couple minutes, or email %{support} for assistance.'
+      suspended: 'The listing has been suspended.'
+      sold: 'The listing has been sold.'
+      canceled: 'The listing has been canceled.'
+      cancel_failed: "There was an error canceling this listing. Please try again in a couple minutes, or email %{support} for assistance."
+      shipped: 'The order has been marked as shipped.'
+      ship_failed: 'There was an error marking this listing shipped. Please try again in a couple minutes, or email %{support} for assistance.'
+      not_delivered: 'Our support team has been notified and is looking into this issue. Please contact us at %{support_link} if you have questions.'
+      completed: 'The order has been completed.'
+      shipping_address_changed: 'Shipping address changed.'
+      shipping_address_unchangable: 'Shipping address cannot be changed.'
+      flagged: 'Thank you. <br/> This listing has been flagged for review.'
+      featured: 'The feature settings for this listing were saved.'
+      featured_error: 'There was an error saving the feature settings for this listing.'
+      could_not_like: 'Oops!  Something went wrong posting your like of that listing.  Try again?'
+      could_not_unlike: 'Oops!  Something went wrong removing your like of that listing.  Try again?'
+      price_alert_expired: 'Sorry, this offer is gone. Get alerts for future sales by saving things you like to collections.'
+      comments:
+        deleted: 'This comment has been removed.'
+        email_resent: 'The comment email was sent.'
+        flags:
+          created: 'Thank you. The comment has been flagged for immediate review.'
+          unflagged: 'All flags have been removed from this comment.'
+        replies:
+          deleted: 'This comment has been removed.'
+          email_resent: 'The reply email was sent.'
+          flags:
+            created: 'Thank you. The comment has been flagged for immediate review.'
+            unflagged: 'All flags have been removed from this comment.'
+      shipping_label:
+        email_buyer_link: "e-mail the buyer"
+        invalid_shipping_address_html: "The shipping address can’t be verified. Please %{email_buyer_link} to ask that he or she edit the address."
+        error_creating: "There was an error creating your shipping label. Please try again in a few minutes."
+        error_downloading: "There was an error downloading your shipping label. Please try again in a few minutes."
+    purchase:
+      card_not_validated: 'We are unable to validate your credit card. Please correct the information below and try to submit your payment again.'
+      payment_rejected: 'We are unable to validate your credit card. Please correct the information below and try to submit your payment again.'
+      payment_declined: 'We are unable to process your payment with the credit card you provided. Please enter a different credit card.'
+      create_failed: "Oops! It looks like someone got to this before you. Come back in a few minutes in case they don't follow through!"
+      ship_to_failed: "Oops!  There was an error contacting our payment processor.  Try again?"
+      shipping_address_created: 'Your shipping address was saved.'
+      created: 'Thank you. Your order has been placed. An email confirmation has been sent to you.'
+      sell_failed: "There was an error placing this order. Please try again in a couple minutes, or email %{support} for assistance."
+      canceled: 'Your order was canceled.'
+      cancel_order_failed: "There was an error canceling your order. Please try again in a couple minutes, or email %{support} for assistance."
+      no_longer_active:
+        cancelled: "The seller has removed the listing, so your order has been canceled."
+        sold: "Shoot, that listing was already sold. Fortunately there's lots more where that came from!"
+      invalid_credit_amount: "Invalid credit amount."
+      minimum_charge_required: "We require a minimum charge of %{amount} to validate your card and verify your identity for the seller. Please enter a new amount."
+      not_enough_credit: "You tried to use more credit than you have available.  Please enter a new amount."
+      credit_applied: "Credit applied"
+      credit_removed: "Credit removed"
+      no_shipping_address: "Whoops - you need to select a shipping address. Please try again."
+      reserved_time: 'Reserved Time'
+      reserved_time_expired: 'Your reserved time has expired.'
+      order:
+        invalid_status:
+          payment: "Hm, this order appears to be in the wrong state. Please go back to the listing page and try again."
+          sell: "Hm, this order appears to be in the wrong state. Please go back to the listing page and try again."
+        nil:
+          payment: "Shoot! Looks like you took a little too long to complete your purchase."
+          sell: "Shoot! Looks like you took a little too long to complete your purchase. Don't worry: you haven't been charged!"
+    listing_sources:
+      create_error: 'We were not able to fetch the product information.'

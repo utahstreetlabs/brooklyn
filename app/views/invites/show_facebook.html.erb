@@ -1,0 +1,34 @@
+<%# not in use as of 9/16/11, will likely use in modal with facebooker
+
+   Note that to properly detect the facebook account the user is
+   currently logged in to we need to have already logged in with the
+   jsapi (and therefore set a cookie). This means we'll need to use a
+   modal dialog or something similar to pop up personalized invitations.
+%>
+
+<div id="main-content" class="span11">
+  <h1>Welcome, <%= @profile.first_name %></h1>
+  <div class="section">
+    <% @inviters.each do |inviter| %>
+      <%= link_to_profile_avatar inviter %>
+    <% end %>
+    <div class="invite-text">
+      <%= t('invites.who_invited_me', who: @inviters.map(&:first_name).to_sentence, count: @inviters.count) %><br/>
+      Join and see what all the hub-bub is about.
+    </div>
+    <div class="connect-container">
+      <%= link_to_facebook_connect(label: t("shared.messages.signup.facebook"), class: "button positive facebook signup") %>
+    </div>
+  </div>
+</div>
+
+<% if @friends.any? %>
+  <div id="sidebar" class="grid5 last">
+    <div class="section">
+      <h3>Your friends on Copious!</h3>
+      <% @friends.each do |friend| %>
+        <%= link_to_profile_avatar(friend) %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

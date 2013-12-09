@@ -1,0 +1,55 @@
+class ConnectBox
+  HOST: '<%= Brooklyn::Application.config.js_sdk.host %>'
+
+  constructor: (@element, options) ->
+    @redirect = options.redirect if options.redirect?
+    @signupFlow = if options.signupFlow?
+      if options.signupFlow in ['b', 's'] then options.signupFlow else 'b'
+    @rememberMe = options.rememberMe? and options.rememberMe not in [false, 'off', 'no', 0]
+
+    @element.on 'click', '[name=remember_me]', () => this.updateRememberMeFromCheckBox()
+
+  authUrl: (network) ->
+    url = "//#{@HOST}/auth/#{network}"
+    params = {}
+    params.r = @redirect if @redirect?
+    params.s = @signupFlow if @signupFlow?
+    params.remember_me = if @rememberMe then 1 else 0
+    qs = ("#{key}=#{encodeURIComponent(val)}" for key, val of params)
+    url += "?#{qs.join('&')}" if qs.length > 0
+    url
+
+  updateRememberMeFromCheckBox: () ->
+    @rememberMe = $('[name=remember_me]', @element).attr('checked')
+    this.updateAuthUrlsFromLinks()
+
+  updateAuthUrlsFromLinks: () ->
+    $('[data-action=auth]').each (el) =>
+      $link = $(el)
+      $link.attr('href', this.authUrl($link.data('network')))
+
+  render: () ->
+    code = """
+<div>
+  <a href="#{this.authUrl('facebook')}" data-network="facebook" data-action="auth" style="background-color: #1E83FF; border-width: 1px; border-style: solid; border-color: #0069EA #005ED1 #0052B7 #005ED1; padding: 10px 0px 10px 0px; font-family: freight-sans-pro, 'FreightSans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif; font-size: 16px; font-family: font-weight: 500; color: #FFFFFF; text-shadow: 0 1px 1px rgba(0,0,0,0.25); vertical-align: middle; white-space: nowrap; -webkit-border-radius: 1px; -moz-border-radius: 1px; border-radius: 1px; -webkit-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.3),0 1px 2px rgba(0, 0, 0, 0.08),inset -1px -1px 0 rgba(255, 255, 255, 0.2); -moz-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.3),0 1px 2px rgba(0, 0, 0, 0.08),inset -1px -1px 0 rgba(255, 255, 255, 0.2); box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.3),0 1px 2px rgba(0, 0, 0, 0.08),inset -1px -1px 0 rgba(255, 255, 255, 0.2); margin-bottom: 12px; display: inline-block; width: 100%; text-decoration: none; text-align: center;"><img alt="Connect with Facebook" src="<%= asset_path('social_networks/loh-facebook-icon.png') %>" style="height: 20px; width: 20px; vertical-align: text-bottom;"> Connect with Facebook</a><br>
+  <a href="#{this.authUrl('twitter')}" data-network="twitter" data-action="auth" style="background-color: #1FCEFF; border-width: 1px; border-style: solid; border-color: #00B8EB #00A4D2 #0090B8 #00A4D2; padding: 10px 0px 10px 0px; font-family: freight-sans-pro, 'FreightSans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif; font-size: 16px; font-weight: 500; color: #FFFFFF; text-shadow: 0 1px 1px rgba(0,0,0,0.25); vertical-align: middle; white-space: nowrap; -webkit-border-radius: 1px; -moz-border-radius: 1px; border-radius: 1px; -webkit-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.3),0 1px 2px rgba(0, 0, 0, 0.08),inset -1px -1px 0 rgba(255, 255, 255, 0.2); -moz-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.3),0 1px 2px rgba(0, 0, 0, 0.08),inset -1px -1px 0 rgba(255, 255, 255, 0.2); box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.3),0 1px 2px rgba(0, 0, 0, 0.08),inset -1px -1px 0 rgba(255, 255, 255, 0.2); display: inline-block; width: 100%; text-decoration: none; text-align: center;"><img alt="Connect with Twitter" src="<%= asset_path('social_networks/loh-twitter-icon.png') %>" style="height: 20px; width: 20px; vertical-align: text-bottom;"> Connect with Twitter</a>
+  <div style="text-align: left;">
+    <input #{'checked="checked"' if @rememberMe} name="remember_me" type="checkbox" value="1" style="width: auto; line-height: normal; cursor: pointer;font-family: freight-sans-pro, 'FreightSans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;">
+    <label for="remember_me" style="display: inline-block; margin-top: 16px; font-family: freight-sans-pro, 'FreightSans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;">Remember Me</label>
+  </div>
+  <div style="text-align: left;">
+    <p style="font-family: freight-sans-pro, 'FreightSans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif; color: #999999;">Already registered? &nbsp; <a href="//#{@HOST}/login">Log In</a></p>
+  </div>
+</div>
+"""
+    @element.html(code)
+
+$.domReady ->
+  $('.copious-connect-box').each (el) ->
+    $box = $(el)
+    options = {
+      redirect: $box.data('redirect'),
+      signupFlow: $box.data('signup-flow'),
+      rememberMe: $box.data('remember-me')
+    }
+    new ConnectBox($box, options).render()

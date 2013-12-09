@@ -1,0 +1,22 @@
+<%
+title 'Trending'
+mp_view_event 'trending'
+body_class 'homepage_logged_in'
+javascript 'homepage_logged_in'
+stylesheet 'homepage_logged_in'
+%>
+
+<div id="main-content" class="span16" style="margin-bottom: 20px;">
+  <div id="listings">
+    <% if @popular_feed %>
+      <div class="search-results-container">
+        <% if @popular_feed.any? %>
+          <%= content_tag :ul, { class: 'search-results row' }.merge(results_tag_params) do %>
+            <%= safe_join(feed_cards(@popular_feed)) %>
+          <% end %>
+          <%= infinite_scroll_widgets %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

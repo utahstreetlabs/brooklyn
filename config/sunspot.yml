@@ -1,0 +1,48 @@
+base: &base
+  solr:
+    hostname: localhost
+    port: 8983
+    log_level: WARNING
+  auto_commit_after_request: false
+
+development:
+  solr:
+    hostname: localhost
+    port: 8984
+    log_level: INFO
+  <<: *base
+
+test:
+  <<: *base
+
+integration:
+  <<: *base
+
+staging:
+  solr:
+    hostname: staging2.copious.com
+    port: 8983
+    log_level: WARNING
+  master_solr:
+    hostname: staging.copious.com
+    port: 8983
+    log_level: WARNING
+  <<: *base
+
+demo:
+  solr:
+    hostname: demo1.copious.com
+    port: 8983
+    log_level: WARNING
+  <<: *base
+
+production:
+  solr:
+    hostname: solrslave.copious.com
+    port: 8983
+    log_level: WARNING
+  master_solr:
+    hostname: solrmaster.copious.com
+    port: 8983
+    log_level: WARNING
+  <<: *base

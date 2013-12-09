@@ -1,0 +1,6 @@
+<%= bootstrap_form_for tag, url: url do |f| %>
+  <%= f.text_field :name, 'Name', maxlength: 128 %>
+  <%= f.check_box :internal, 'Internal' %>
+  <%= f.submit %>
+  <%= f.cancel cancel_url %>
+<% end %>

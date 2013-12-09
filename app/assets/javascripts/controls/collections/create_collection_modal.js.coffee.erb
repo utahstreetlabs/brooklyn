@@ -1,0 +1,32 @@
+# The first step of the create collection modal flow, where the user specifies the name of the collection to be created.
+#
+# The modal can be triggered by any number of controls, each of which is tracked as a distinct action source. rather
+# than looking through the DOM hierarchy for the action source, we let the trigger control specify it manually by
+#  setting the modal's +source+ data attribute. This attribute is cleared when the modal is hidden.
+class CreateCollectionModal
+  constructor: (@element) ->
+    @element.on 'jsend:success', (e, data) =>
+      @element.modal('hide')
+      return unless data.id? and data.dropdownMenu?
+      $(document).trigger('collectionDropdown:refresh', data.dropdownMenu)
+
+    @element.on 'hidden', =>
+      @element.removeData('source')
+
+    @element.find('[data-save=modal]').on 'click.save.modal', (event) =>
+      unless @element.find('#collection_name').val()
+        @element.remotemodal('instance').showModalError('<%= I18n.t('create_collection.modal.name_error') %>')
+        false
+
+jQuery ->
+  # plugin api
+  $.fn.createCollectionModal = (option) ->
+    $(this).each ->
+      $element = $(this)
+      data = $element.data('createCollectionModal')
+      unless data?
+        $element.data('createCollectionModal', (data = new CreateCollectionModal($element)))
+
+  # data api
+  $(document).on 'shown', '#collection-create-modal', ->
+    $(this).createCollectionModal()

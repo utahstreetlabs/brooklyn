@@ -1,0 +1,6 @@
+<%= word_wrap(%Q[#{raw order.buyer.name}
+#{raw order.shipping_address.line1}])%><%= "
+#{raw order.shipping_address.line2}" if order.shipping_address.line2.present? %><%= word_wrap(%Q[
+#{raw order.shipping_address.city}, #{raw order.shipping_address.state} #{raw order.shipping_address.zip}
+#{raw order.shipping_address.phone}
+#{raw order.buyer.email}]) %>

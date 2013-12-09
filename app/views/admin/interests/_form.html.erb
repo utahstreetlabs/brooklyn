@@ -1,0 +1,20 @@
+<%= bootstrap_form_for interest, url: url, html: {multipart: true} do |f| %>
+  <%= f.text_field :name, 'Name', maxlength: 255 %>
+  <%= f.control_group do %>
+    <%= f.control_label :gender, 'Gender' %>
+    <%= f.controls do %>
+      <%= f.radio_button :gender, 'All', '' %>
+      <%= f.radio_button :gender, 'Male', true %>
+      <%= f.radio_button :gender, 'Female', false %>
+    <% end %>
+  <% end %>
+  <%= f.file_field :cover_photo, 'Cover photo' %>
+  <%= f.hidden_field :cover_photo_cache %>
+  <%= f.control_group do %>
+    <%= f.controls do %>
+      <%= f.check_box :onboarding, 'Add to onboarding?' %>
+    <% end %>
+  <% end %>
+  <%= f.submit %>
+  <%= f.cancel cancel_url %>
+<% end %>

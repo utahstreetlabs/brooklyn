@@ -1,0 +1,88 @@
+<% title "Admin: #{@tag.name}" %>
+
+<%= bootstrap_breadcrumb [
+  ['Admin', admin_dashboard_path],
+  ['Tags', admin_tags_path],
+  @tag.name
+] %>
+
+<%= bootstrap_table condensed: true do %>
+  <tr>
+    <td class="span4">Created at</td>
+    <td><%= datetime @tag.created_at %></td>
+  </tr>
+  <tr>
+    <td>Last updated at</td>
+    <td><%= datetime @tag.updated_at %></td>
+  </tr>
+  <tr>
+    <td>Slug</td>
+    <td><%= @tag.slug %></td>
+  </tr>
+  <tr>
+    <td>Internal tag?</td>
+    <td><%= yes_no @tag.internal %></td>
+  </tr>
+  <tr>
+    <td>Listing count (primary only)</td>
+    <td><%= @listing_counts.fetch(@tag.id, 0) %></td>
+  </tr>
+  <tr>
+    <td>Total listing count for subtags</td>
+    <td><%= (@tag.subtags.map { |t| @listing_counts.fetch(t.id, 0) }).sum %></td>
+  </tr>
+  <tr>
+    <td>Browse URL</td>
+    <td><%= link_to 'browse', browse_for_sale_path(path_tags: @tag.slug) %></td>
+  </tr>
+<% end %>
+
+<h2>Sub-tags</h2>
+
+<% if @subtags.any? %>
+  <%= bootstrap_table condensed: true, data: {role: 'subtags'} do %>
+    <thead>
+      <tr>
+        <th class="span5">Name</th>
+        <th style="text-align:center" class="span2"># Listings</th>
+        <th class="span2"></th>
+      </tr>
+    </thead>
+    <tbody class="subtag">
+      <% @subtags.each do |subtag| %>
+        <%= content_tag :tr, data: {subtag: subtag.id} do %>
+          <td><%= subtag.name %></td>
+          <td style="text-align:center"><%= @listing_counts.fetch(subtag.id, 0) %></td>
+          <td>
+            <%= bootstrap_button_group pull: :right do %>
+              <%= bootstrap_button nil, promote_admin_tag_path(subtag.id), condition: :warning, size: :mini, icon: :tag,
+                    inverted_icon: true, rel: :tooltip, title: "Promote #{subtag.name} to a primary tag",
+                    data: {method: :post, confirm: 'Are you sure you want to make this tag a primary tag?'} %>
+              <%= bootstrap_button nil, admin_tag_path(subtag.id), condition: :danger, size: :mini, icon: :remove,
+                    inverted_icon: true, rel: :tooltip, title: "Delete #{subtag.name}",
+                    data: {method: :delete, confirm: 'Are you sure you want to delete this tag?'} %>
+            <% end %>
+          </td>
+        <% end %>
+      <% end %>
+    </tbody>
+  <% end %>
+<% else %>
+  <p>None</p>
+<% end %>
+
+<%= bootstrap_form_tag merge_admin_tag_path, method: :post, inline: true do %>
+  <%= label_tag :tag_name, 'Tag name' %>
+  <%= text_field_tag :tag_name %>
+  <%= bootstrap_submit_tag "Merge into #{@tag.name}" %>
+<% end %>
+
+<h2>Featured Listings</h2>
+
+<div id="featured-listings" data-role="featured-listings">
+  <%= render 'featured_listings', tag: @tag, features: @features %>
+</div>
+
+<p>
+  <%= bootstrap_button 'Edit', edit_admin_tag_path(@tag.id) %>
+</p>

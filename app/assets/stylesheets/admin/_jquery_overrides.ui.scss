@@ -1,0 +1,8 @@
+@import "variables";
+
+.ui-resizable-handle { z-index: $zin-resizable; }
+
+.ui-selectable-helper { z-index: $zin-jq-selectable; }
+
+.ui-slider .ui-slider-handle { z-index: $zin-jq-slider-handle; }
+.ui-slider .ui-slider-range { z-index: $zin-jq-slider-range; }

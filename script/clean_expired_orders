@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+ENV['RAILS_ENV'] ||= 'development'
+require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
+
+require 'optparse'
+require 'resque'
+
+timeout = 15
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: clean_expired_orders.rb [options]"
+
+  opts.on("-t", "--timeout TIMEOUT", "Minutes after which pending orders should be removed.") do |t|
+    timeout = t
+  end
+end.parse!
+
+Resque.enqueue(ExpireOrders, timeout)

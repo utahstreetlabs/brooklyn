@@ -1,0 +1,2 @@
+<%
+body = %Q[Order ##{@payment.reference_number} has completed successfully. Please settle the order by transferring #{number_to_currency @payment.amount} to the PayPal account of #{@payment.recipient_name} at #{@payment.paypal_email}. You can perform the transfer at https://paypal.com/ and mark the order paid at #{admin_payments_paypal_index_url}.]%><%= word_wrap body %>

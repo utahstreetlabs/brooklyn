@@ -1,0 +1,12 @@
+<%= word_wrap %Q[
+
+Nice work, #{@listing.seller.firstname.html_safe}.  You posted something so great, we decided to show it to everyone on Copious. *cue the fireworks*
+
+Visit your listing here: #{rewrite_mailer_url listing_url(@listing)}
+
+Take advantage of your popularity and post more items to sell:
+#{rewrite_mailer_url new_listing_path}
+
+Keep up the good work, partner.] %>
+
+<%= render '/shared_mailer/footer' %>

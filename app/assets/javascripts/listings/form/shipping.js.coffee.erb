@@ -1,0 +1,34 @@
+jQuery ->
+  $basicRadio = $('#listing_shipping_option_code')
+  $shippingAlert = $('#shipping-alert-container')
+
+  $('#field_shipping_option_code label').on 'click', ->
+    $shippingAlert.addClass('alert-error', 500).removeClass('alert-error', 500)
+
+  # only those shipping options are available that can be covered out of the listing proceeds. whenever the proceeds
+  # amount changes, enable the affordable options and disable the rest. if a no-longer-affordable option is selected,
+  # reset the selection to basic shipping.
+  window.pricingBox.on 'change:cost', () ->
+    proceeds = window.pricingBox.get('cost')
+    $('[data-role=shipping-option]').each () ->
+      $shippingOption = $(this)
+      $radio = $('input[type=radio]', $shippingOption)
+      rate = window.pricingBoxView.toFloat($shippingOption.data('rate'))
+      if (proceeds >= rate)
+        $radio.removeAttr('disabled')
+      else
+        $radio.attr('disabled', 'disabled')
+        if $radio.is(':checked')
+          $radio.removeAttr('checked')
+          $basicRadio.attr('checked', 'checked')
+    showShippingAlert()
+
+  showShippingAlert = () ->
+    # Check if any fields are disabled.  If so show shipping notice.
+    if $('input[disabled]').filter('[name="listing[shipping_option_code]"]').length
+      copious.flash.alert('<%= I18n.t("listings.new_pricing_fields.shipping.method.alert") %>', $shippingAlert.attr('id'))
+    else
+      copious.flash.clear($shippingAlert.attr('id'))
+
+  # Check shipping fields on load.
+  showShippingAlert()

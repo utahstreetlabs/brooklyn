@@ -1,0 +1,81 @@
+<h1 class="kill-margin-top">
+  <%= t('.title') %><br>
+  <% if listing.order.handling_remaining > 1.day %>
+    <%= t('.subtitle.handling_remaining', handling_days: count_of_days_in_words(listing.order.handling_remaining)) %>
+  <% else %>
+    <%= t('.subtitle.handling_expired') %>
+  <% end %>
+</h1>
+
+<% unless listing.order.handling_remaining > 1.day %>
+  <p><%= t('.handling_expired', handling_days: count_of_days_in_words(listing.order.handling_duration)) %>
+<% end %>
+
+<div class="span8 kill-margin-left margin-bottom">
+  <h5 class="margin-bottom-half"><%= t('.shipping_address.header') %></h5>
+  <ul class="buyer-shipping-info margin-bottom">
+    <li><p class="kill-margin-bottom strong"><%= listing.buyer.name %></p></li>
+    <li class="address-info margin-bottom"><p><%= postal_address listing.order.shipping_address %></p><li>
+  </ul>
+</div>
+
+<div class="span8 margin-bottom">
+  <h5 class="margin-bottom-half"><%= t('.return_address.header') %></h5>
+  <%= render '/listings/return_address/details', listing: listing %>
+  <% unless listing.order.shipping_label %>
+    <%= bootstrap_button listing.return_address ? t('.return_address.change') : t('.return_address.choose'),
+          '#', toggle_modal: :return_address_change %>
+    <%= bootstrap_modal :return_address_change, t('.return_address.modal.header'),
+          remote: true, refresh: '[data-role=return-address]' do %>
+      <%= render '/listings/return_address/edit_modal', listing: listing, ship_from: ship_from,
+                 new_address: new_address %>
+    <% end %>
+  <% end %>
+</div>
+
+<h1 class="full-width block-element margin-top pull-left">
+  <% if listing.order.shipping_label %>
+    <%= content_tag :span, data: {role: 'download-label'} do %>
+      <%= t('.instructions.header.whats_next', expires_in_days: count_of_days_in_words(listing.order.shipping_label.expires_in)) %>
+    <% end %>
+  <% else %>
+    <%= content_tag :span, data: {role: 'generate-label'} do %>
+      <%= t('.instructions.header.not_generated') %>
+    <% end %>
+  <% end %>
+</h1>
+<ol class="full-width pull-left block-element instruction">
+  <li class="clear full-width margin-bottom-double">
+    <% if listing.order.shipping_label %>
+      <p class="h3-like"><%= t('.instructions.step1.download.text_html', expires_in_days: count_of_days_in_words(listing.order.shipping_label.expires_in)) %></p>
+      <%= link_to_download_shipping_label t('.instructions.step1.download.button.enabled'), listing %>
+    <% else %>
+      <p class="h3-like"><%= t('.instructions.step1.generate.text') %></p>
+      <div class="well warning full-width pull-left">
+        <%= link_to_generate_shipping_label t('.instructions.step1.generate.button.enabled'), listing, disabled: !listing.return_address.present? %>
+        <% unless listing.return_address.present? %>
+          <p class="color-header kill-margin-bottom"><%= t('.instructions.step1.generate.return_address_required') %></p>
+        <% end %>
+        <p class="color-header kill-margin-bottom"><%= t('.instructions.step1.generate.expiration_hint_html', expires_in_days: count_of_days_in_words(ShippingLabel.default_expire_after)) %></p>
+      </div>
+    <% end %>
+  </li>
+  <li class="clear margin-bottom-double">
+    <p class="h3-like"><%= t(".instructions.step2.#{listing.shipping_option.code}_html") %></p>
+    <%= image_tag listing.shipping_option.step2_image_url %>
+  </li>
+  <li class="clear margin-bottom-double">
+    <p class="h3-like"><%= t('.instructions.step3_html') %></p>
+    <%= image_tag listing.shipping_option.step3_image_url %>
+  </li>
+</ol>
+
+<div class="block-element full-width pull-left margin-bottom margin-top">
+  <p class="h3-like"><%= t('.signoff_html', buyer_name: listing.order.buyer.firstname) %></p>
+</div>
+
+<p class="help_text"><%= t('.questions.text_html', help_link: link_to(t('.questions.help_link'), Brooklyn::Application.config.urls.prepaid_shipping_help, target: '_blank')) %></p>
+
+<% if listing.shipping_option.pickup_schedulable? %>
+  <p class="help_text clear"><%= t('.schedule_pickup.text_html', schedule_link: link_to(t('.schedule_pickup.schedule_link'), Brooklyn::Application.config.urls.prepaid_shipping_schedule_pickup, target: '_blank')) %></p>
+<% end %>

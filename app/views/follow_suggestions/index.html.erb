@@ -1,0 +1,6 @@
+<p>Here are some people we think you'll like.</p>
+<%= follow_suggestions @suggested_users, id: 'who-to-follow-more' do %>
+  <% @suggested_users.each do |suggestion| %>
+    <%= follow_suggestion suggestion, @connections[suggestion.person_id] %>
+  <% end %>
+<% end %>

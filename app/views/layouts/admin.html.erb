@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Copious<% if content_for? :title %>: <%= yield :title %><% end %></title>
+    <link rel="icon" type="image/ico" href="/favicon.ico">
+    <%= stylesheet_link_tag 'admin' %>
+    <%= yield :stylesheet_includes %>
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <%= csrf_meta_tag %>
+  </head>
+  <%= content_tag :body, :class => body_class do %>
+    <%= bootstrap_navbar fixed_top: true do %>
+      <%= link_to 'Copious Admin', admin_dashboard_path, :class => 'brand' %>
+      <%= bootstrap_nav_links :class => 'pull-right' do %>
+        <%= bootstrap_nav_link raw('Go to live site &raquo;'), root_path %>
+      <% end %>
+    <% end %>
+    <div class="container">
+      <div class="row">
+        <div id="sidebar" class="span3">
+          <%= bootstrap_nav_list do %>
+            <%= bootstrap_nav_list_section 'General', [
+              ['Dashboard', admin_dashboard_path],
+              ['Feature flags', admin_feature_flags_path],
+              ['Categories', admin_categories_path],
+              ['Tags', admin_tags_path],
+              ['Feature Lists', admin_feature_lists_path],
+              ['Offers', admin_offers_path],
+              ['A/B Tests', admin_vanity_path],
+            ] %>
+            <%= bootstrap_nav_list_section 'Interests', [
+              ['All interests', admin_interests_path],
+              #['Onboarding interests', admin_onboarding_interests_path]
+            ] %>
+            <% users_items = [['All users', admin_users_path]]
+               users_items << ['Autofollowed users', admin_users_autofollows_path] if can?(:manage, UserAutofollow)
+            %>
+            <%= bootstrap_nav_list_section 'Users', users_items %>
+            <%= bootstrap_nav_list_section 'Collections', [
+              ['All Collections', admin_collections_path]
+            ]%>
+            <%= bootstrap_nav_list_section 'Listings', [
+              ['All listings', admin_listings_path],
+              ['Listings bullpen', admin_listings_bullpen_index_path],
+            ] %>
+            <%= bootstrap_nav_list_section 'Order management', [
+              ['All orders', admin_orders_path],
+              ['Cancelled orders', cancelled_admin_orders_path],
+              ['Handling expired orders', handling_expired_admin_orders_path]
+            ] %>
+            <%= bootstrap_nav_list_section 'Payments', [
+              ['PayPal transfers', admin_payments_paypal_index_path]
+            ] %>
+            <%= bootstrap_nav_list_section 'Facebook', [
+              ['Announcements', admin_facebook_announcements_path],
+              ['Price alerts', admin_facebook_price_alerts_path],
+            ] %>
+            <%= bootstrap_nav_list_section 'Scores', [
+              ['Interests', admin_scores_interests_path],
+            ] %>
+          <% end %>
+        </div>
+        <div id="main-content" class="span9">
+          <%= flash_messages %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+    <%= jquery %>
+    <%= javascript_include_tag 'bootstrap', 'admin' %>
+    <%= yield :script_includes %>
+    <% if content_for? :script %>
+      <%= javascript_tag do %>
+        $(function() {
+        <%= yield :script %>
+        });
+      <% end %>
+    <% end %>
+  <% end %>
+</html>

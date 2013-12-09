@@ -1,0 +1,20 @@
+<%= mailer_graf do %>
+  You can ship the item:
+<% end %>
+
+<ul style="padding-left: 16px !important;">
+  <% Brooklyn::Carrier.available.each do |carrier| %>
+    <li>
+      <%= mailer_graf do %>
+        <%= mailer_link_to "via #{carrier.name}", carrier.url %>
+      <% end %>
+    </li>
+  <% end %>
+  <li>
+    <%= mailer_graf do %>
+      <%= mailer_link_to 'or via your Paypal Multi-order shipping dashboard.',
+      'https://www.paypal.com/us/cgi-bin/webscr?cmd=_bulk-ship'%>
+      Just click "File" then "Create new order" and enter the fields above.
+    <% end %>
+  </li>
+</ul>

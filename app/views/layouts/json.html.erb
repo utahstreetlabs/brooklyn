@@ -1,0 +1,8 @@
+<%
+# Wrapper for JSON objects send over iframe transport. Without this
+# wrapper, HTML embedded in JSON gets truncated to empty newlines.
+# This technique is currently used in listing page photo uploads.
+-%>
+<textarea data-type='application/json'>
+<%= yield %>
+</textarea>

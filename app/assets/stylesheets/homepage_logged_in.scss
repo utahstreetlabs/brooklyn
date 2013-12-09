@@ -1,0 +1,19 @@
+@import "includes";
+
+.homepage_logged_in {
+  #main-content.span12 {
+    #new-user-welcome {
+      margin-left: 0px !important;
+      #nux-intro {
+        margin-left: 0px !important;
+      }
+    }
+    .top-message {
+      @extend .span12;
+      float: left;
+    }
+  }
+  .carousel-title {
+    margin-top: -20px;
+  }
+}

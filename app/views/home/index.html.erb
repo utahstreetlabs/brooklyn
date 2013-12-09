@@ -1,0 +1,66 @@
+<%
+hide_masthead
+hide_footer
+body_class('logged_out_home')
+stylesheet 'homepage_logged_out'
+mp_view_event 'homepage'
+%>
+
+<div class="loh-modal-container clear">
+  <div class="loh-modal">
+    <div class="section">
+      <%= image_tag 'layout/Logo-40-white.png', class: 'copious-logo hidden-phone' %>
+      <%= image_tag 'layout/Logo-58-black.png', class: 'copious-logo hidden-desktop' %>
+      <h1 class="big hero hidden-phone">DISCOVER THE THINGS YOU LOVE. SELL THE STUFF YOU DON’T.</h1>
+      <h1 class="kill-margin-top hidden-desktop">DISCOVER THE THINGS YOU LOVE. SELL THE STUFF YOU DON’T.</h1>
+      <%#  not showing it or the new LOH for now %>
+      <%#= signup_credit_cta if feature_enabled? :credits, :sign_up %>
+    </div>
+    <div class="section sns-connect">
+      <%= link_to_facebook_connect class: 'signup button xlarge primary facebook', primary: true %><br/>
+      <%= link_to_twitter_connect class: 'signup button xlarge primary', primary: true %>
+      <div>
+        <%= check_box_tag(:remember_me, '1', true, class: 'margin-top', id: 'network-login-remember-me') %>
+        <%= label_tag(:remember_me, 'Remember Me', class: 'checkbox margin-top weak') %>
+      </div>
+      <div class="login-container">
+        <p class="hidden-phone">Already registered? &nbsp; <%= link_to 'Log In', login_path %></p>
+        <p class="hidden-desktop margin-top-half margin-bottom">Been here before? Connect above or <%= link_to 'Log In with your username', login_path %></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer-wrapper" class="hidden-phone">
+    <div id="footer-content">
+      <ul class="copious-social">
+        <li class="footer-facebook">
+          <%= link_to 'Friend us on Facebook', 'http://www.facebook.com/pages/Copious/201076446577603', :target => '_blank' %>
+        </li>
+        <li class="footer-pinterest">
+          <%= link_to 'Join us on Pinterest', 'http://pinterest.com/copious/', :target => '_blank' %>
+        </li>
+        <li class="footer-twitter">
+          <%= link_to 'Follow us on Twitter', 'https://twitter.com/#!/ShopCopious', :target => '_blank' %>
+        </li>
+      </ul>
+      <% if footer_menu_active? -%>
+        <ul class="menu">
+          <li><%= link_to 'Create a Listing', new_listing_path %></li>
+          <li><%= link_to 'Blog', 'http://corporate.copious.com/blog' %></li>
+          <li><%= link_to 'About', 'http://corporate.copious.com/about-us' %></li>
+          <li><%= link_to 'Press', 'http://corporate.copious.com/news' %></li>
+          <li><%= link_to 'Contact', 'http://corporate.copious.com/contact-us' %></li>
+          <li><%= link_to_terms 'Terms' %></li>
+          <li><%= link_to_privacy_policy 'Privacy' %></li>
+          <li><%= link_to_transaction_policy 'Transaction Policy' %></li>
+          <span>© <%= Date.today.year %> Utah Street Labs, Inc.</span>
+        </ul>
+      <% end -%>
+    </div>
+    <% if content_for? :sponsors %>
+      <div class="sponsors">
+        <%= yield :sponsors %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+en:
+  profiles:
+    collections:
+      index:
+        title: "User Profile for %{user}: Collections"
+        empty: "%{user} has not created any collections yet."
+      show:
+        title: "User Profile for %{user}: %{collection}"
+        button:
+          edit:
+            label: 'Edit'
+          follow:
+            label: 'Follow'
+        empty: "%{name} has not saved any listings to this collection yet."
+    followers:
+      title: "User Profile for %{user}: Followers"
+      empty: "%{user} does not have any followers yet."
+    following:
+      collections:
+        title: "User Profile for %{user}: Followed collections"
+        empty: "%{user} is not following any collections yet."
+      people:
+        title: "User Profile for %{user}: Followed people"
+        empty: "%{user} is not following anyone yet."
+    tabs:
+      listings_html:
+        one: '<span data-role="profile-listings-count">1</span> Listing'
+        other: '<span data-role="profile-listings-count">%{count}</span> Listings'
+      collections_html:
+        one: '<span data-role="profile-collections-count">1</span> Collection'
+        other: '<span data-role="profile-collections-count">%{count}</span> Collections'
+      likes_html:
+        one: '<span data-role="profile-likes-count">1</span> Love'
+        other: '<span data-role="profile-likes-count">%{count}</span> Loves'
+      following:
+        label_html: '<span data-role="profile-following-count">%{count}</span> Following'
+        collections:
+          one: "1 Collection"
+          other: "%{count} Collections"
+        people:
+          one: "1 Person"
+          other: "%{count} People"
+      followers_html:
+        one: '<span data-role="profile-followers-count">1</span> Follower'
+        other: '<span data-role="profile-followers-count">%{count}</span> Followers'
+      feedback: 'Feedback'

@@ -1,0 +1,43 @@
+<% hide_footer if feature_enabled?('hamburger') && hamburger_active? %>
+<!DOCTYPE html>
+<html>
+  <%= head_tag do %>
+    <meta charset="utf-8">
+    <title>Copious<% if content_for? :title %>: <%= yield :title %><% end %></title>
+    <link rel="icon" type="image/ico" href="/favicon.ico">
+    <% if params[:controller].match('signup/buyer') || !logged_in? %>
+      <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0"/>
+    <% end %>
+    <% if @profile && @profile.network %>
+      <meta content="<%= @profile.username %>" name="<%= @profile.network %>-id">
+    <% end %>
+    <%= notification_count_poller_meta_tag %>
+    <%= story_count_poller_meta_tag %>
+    <%= feature_flag_meta_tags %>
+    <%= typekit_tags %>
+    <%= csrf_meta_tag %>
+    <%= gatekeeper_meta_tags(force_auth: session.delete(:force_auth)) %>
+    <%= render 'layouts/stylesheets' %>
+    <%= yield :doc_header %>
+  <% end %>
+
+  <%# Logged-in attribute must be on body to apply conditional styling to descendants on load with CSS %>
+  <body class="<%= body_class %>" style="<%= body_style %>"
+        data-page-source="<%= page_source %>" data-logged-in="<%= logged_in? %>">
+    <%= facebook_jssdk %>
+    <%= gatekeeper_js unless logged_in? %>
+    <div id="root" class="<%= hamburger_classes(%W(page-body)) %>">
+      <% if feature_enabled?('hamburger') && hamburger_active? %>
+        <%= render 'layouts/hamburger/masthead' %>
+      <% else %>
+        <%= render 'layouts/masthead' %>
+      <% end %>
+      <%= render 'shared/messages' %>
+      <%= welcome_header(@welcome_header) if @welcome_header %>
+      <%= sticky_logged_out_header unless current_user || masthead_hidden? %>
+      <div id="content-wrapper"<%= raw %Q{ class="#{@content_class}"} if @content_class %>>
+        <%# XXX: probably should be outside #content-wrapper but when I move it there it's hidden by the masthead %>
+        <% if feature_enabled?('hamburger') && hamburger_active? %>
+          <%= hamburger_tray(logged_in? && current_user) %>
+        <% end %>
+        <div class="row">

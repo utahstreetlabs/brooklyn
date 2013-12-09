@@ -1,0 +1,15 @@
+<%= render '/shared_mailer/header', user: @user %>
+
+<%= mailer_graf do %>
+  Hi <%= @user.firstname %>,
+<% end %>
+
+<%= mailer_graf do %>
+  Your deposit of <%= number_to_currency @payment.order.listing.proceeds %> for the sale of <%= mailer_link_to @payment.order.listing.title, listing_url(@payment.order.listing) %> has been rejected by your bank. This can happen if there is an issue with account data provided. Don't worry. Please contact us at <%= mailer_mail_to Brooklyn::Application.config.email.to.help %> and we'll help make it right.
+<% end %>
+
+<%= mailer_graf(styles: 'margin-bottom: 0px;') do %>
+  Thank you,
+<% end %>
+
+<%= render '/shared_mailer/footer' %>

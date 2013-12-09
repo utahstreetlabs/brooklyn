@@ -1,0 +1,113 @@
+#= require bootstrap-slider
+#= require copious/plugin
+#= require controls/collections/collection_dropdown
+#= require controls/multi_selector
+#= require controls/collections/multi_collection_selector
+#= require controls/collections/want_manager
+#= require controls/modal_loader
+#= require controls/modal_alert
+
+# A component to manage listing saves
+#
+# The save manager will display a list of collections the user owns
+# with selected elements for each collection a listing is currently
+# saved in. The user can select and deselect collections in the list
+# and the listing will be saved to and removed from collections as
+# appropriate when the save manager is saved.
+#
+# Events:
+#
+# +listingStats:replaced+ triggered when saves are successfully completed
+
+class SaveManager
+  constructor: (@element) ->
+    @url = @element.data('url')
+    @source = @element.data('source')
+    @content = @element.find('[data-role=modal-content]')
+    @spinner = @element.find('[data-role=spinner]')
+    @commentInput = @element.find('[data-role=comment]')
+    if @url?
+      @loader = new ModalLoader(@element)
+      @loader.load().then =>
+        this._initContent()
+    else
+      this._initContent()
+
+    @element.find('[data-save=modal]').on 'click.save.modal', (event) =>
+      $multiSelector = $('[data-role=multi-collection-selector]', @content).multiSelector('instance')
+      unless $multiSelector.anySelected()
+        @element.data("remotemodal").showModalError('<%= I18n.t('save_modal.collection_error') %>')
+        false
+
+    @element.on 'keypress', '[name=comment]', (e) ->
+      submitOnEnter($(this), e)
+
+    @element.on 'jsend:success', (e, data) =>
+      $(document).one 'remotemodal:followupShown.saveManager', ->
+        $(document).trigger 'saveManager:saved', [data]
+      $saveButton = $("[data-target=##{$(@element).attr('id')}]")
+      $saveButton.replaceWith(data.saveButton)
+      $(document).trigger "listingStats:replaced", [data.listingId, data.stats] if data.stats?
+      @commentInput.val('')
+
+  _initContent: () =>
+    @newCollectionInput = $('[data-role=name-input]', @content).newCollectionInput()
+    $selector = this._initSelector()
+    new CollectionModal(@element, selector: $selector)
+    @priceAlert = @element.find('input[name=price_alert]')
+    @priceAlert.slider(
+      min: <%= PriceAlert::Discounts::NONE %>
+      max: <%= PriceAlert::Discounts::ANY %>
+      step: <%= PriceAlert::Discounts::STEP %>
+      value: @priceAlert.val() or <%= PriceAlert::Discounts::ANY %>
+      tooltip: 'hide'
+      formater: (value) =>
+        if value is 0
+          '<%= I18n.t "listings.save_to_collection.modal.price_alert.0" %>'
+        else if value is 25
+          '<%= I18n.t "listings.save_to_collection.modal.price_alert.25" %>'
+        else if value is 50
+          '<%= I18n.t "listings.save_to_collection.modal.price_alert.50" %>'
+        else if value is 75
+          '<%= I18n.t "listings.save_to_collection.modal.price_alert.75" %>'
+        else
+          '<%= I18n.t "listings.save_to_collection.modal.price_alert.100" %>'
+    )
+
+  _initSelector: () =>
+    $collectionDropdown = $('[data-role=collections-list]', @content)
+    $collectionMultiSelector = $('[data-role=multi-collection-selector]', @content)
+    if $collectionDropdown.exists()
+      $collectionDropdown.collectionDropdown()
+      $collectionDropdown
+    else if $collectionMultiSelector.exists()
+      $collectionMultiSelector.multiCollectionSelector()
+      $collectionMultiSelector.on 'newCollectionInput:creationFailed', (e, data) =>
+        @element.modalAlert('error', data.errors.name.join('<br>'))
+      $collectionMultiSelector
+
+jQuery ->
+  $.fn.saveManager = copious.plugin.componentPlugin(SaveManager, 'saveManager')
+
+  $(document).on 'show', '[data-role=save-manager]', ->
+    $(this).saveManager()
+
+  $(document).on 'hide', '[data-role=save-manager]', ->
+    $(document).trigger 'saveManager:close'
+
+  $(document).on 'hidden', '[data-role=save-manager]', ->
+    $(document).trigger 'saveManager:closed'
+
+  $(document).on 'hide', '[data-role=save-manager-success-modal]', ->
+    $(document).trigger 'saveManager:success'
+
+  $(document).on 'hidden', '[data-role=save-manager-success-modal]', ->
+    $(document).trigger 'saveManager:succeeded'
+
+  $(document).on 'submit', '[data-role=save-manager] [data-role^=save-to-collection-form]', ->
+    $(document).trigger 'saveManager:save'
+
+  $(document).on 'listingModal:show', =>
+    $visibleSaveModals = $('[data-role=save-manager]:visible, [data-role=save-manager-success-modal]:visible')
+    if $visibleSaveModals.exists()
+      $visibleSaveModals.modal('hide')

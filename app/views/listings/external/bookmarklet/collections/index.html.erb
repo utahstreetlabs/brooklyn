@@ -1,0 +1,8 @@
+<%
+hide_masthead
+hide_footer
+title t('.title')
+javascript 'listings_external_collections'
+%>
+
+<%= save_external_listing_to_collection_contents(@listing, @collections, @price_alert) %>

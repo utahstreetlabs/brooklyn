@@ -1,0 +1,85 @@
+<%
+title @listing.title
+javascript 'listings_show'
+fb_head_prefix
+stylesheet 'product_listing'
+%>
+
+<% if @listing.sold? && (buyer? || seller?) %>
+  <section id="order-box" class="span12">
+    <%= listing_order_box @listing, current_user %>
+  </section>
+<% end %>
+
+<% if seller? %>
+  <section id="seller-box" class="span12">
+    <%= listing_seller_box @listing %>
+  </section>
+<% end %>
+
+<div id="left-col" class="span3">
+  <section id="listed-by">
+    <h2><%= t '.listed_by.header' %></h2>
+    <%= listing_listed_by @listing.seller, current_user %>
+  </section>
+  <% if @listing.more_from_this_seller_count > 0 %>
+    <div id="more-from-seller" class="clear">
+      <h2 class="sub-header"><%= t '.more_from_seller.header', name: @listing.seller.name %></h2>
+      <%= listing_more_from_seller @listing %>
+    </div>
+  <% end %>
+</div>
+<div id="center-col" class="span6">
+  <h1 id="listing-title"><%= @listing.title %></h1>
+  <section id="photos">
+    <%= listing_photos @listing, @photos %>
+  </section>
+  <section id="love-and-comments">
+    <div id="love-and-comments-action">
+      <%= listing_love_button_container @listing, @like %>
+      <%= listing_comment_box @listing, current_user %>
+    </div>
+    <%= listing_comment_feed @feed, current_user %>
+  </section>
+  <section>
+    <div id="love-box">
+      <h2 class="sub-header"><%= t '.love_box.header' %></h2>
+      <%= listing_love_box @likes_summary, current_user %>
+    </div>
+  </section>
+</div>
+<div id="right-col" class="span3">
+  <section id="price-box">
+    <%= listing_price_box @listing, current_user %>
+    <div id="price-box-save-to-collection">
+      <%= save_listing_to_collection_button_and_modal @listing, current_user.collections, @listing.saved_by?(current_user),
+            class: 'full-width' if logged_in? && feature_enabled?('collections.save_listing') %>
+    </div>
+  </section>
+  <section id="description" class="clear">
+    <h2><%= t '.description.header' %></h2>
+    <%= listing_description @listing %>
+  </section>
+  <section id="details" class="clear">
+    <h2><%= t '.details.header' %></h2>
+    <%= listing_details @listing %>
+  </section>
+  <section id="share-box" class="clear">
+    <h2><%= t '.share_box.header'%></h2>
+    <%= listing_share_box @listing, @photos.first %>
+  </section>
+  <% if logged_in? %>
+    <section id="report-box" class="clear">
+      <%= listing_report_box @listing, current_user %>
+    </section>
+  <% end %>
+  <% if admin? %>
+    <section id="admin-box" class="clear">
+      <h2><%= t '.admin_box.header' %></h2>
+      <%= listing_admin_box @listing %>
+      <%= feature_listing_button_and_modal(@listing, @listing.features.any?, button_options: {overlay: true, size: :small}) %>
+    </section>
+  <% end %>
+</div>
+
+<%= listing_og_meta_tags @listing, @photos, @likes_summary %>

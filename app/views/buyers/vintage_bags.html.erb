@@ -1,0 +1,159 @@
+<%
+hide_masthead
+%>
+<div class="masthead">
+  <div class="container">
+    <div class="row">
+      <div class="menu-global">
+        <h2><a href="/">Copious</a></h2>
+        <ul class="menu-account">
+          <li><%= link_to 'Sign Up', signup_path %></li>
+          <li><%= link_to 'Log In', login_path %></li>
+        </ul>
+      </div><!-- .menu-global -->
+    </div><!-- .row -->
+  </div><!-- .container -->
+</div><!-- .masthead -->
+    <div id="main-content" class="buyers">
+      <div class="full-wrapper">
+        <div class="middle-container">
+          <div class="top-navigation">
+            <h1 class="page-title">Welcome to Copious</h1>
+            <h2>Buy and sell Vintage Bags.</h2>
+            <div class="follow-search-results">
+              <a class="button follow-search" href="/for-sale/handbags">See All Vintage Bags</a>
+              <div class="point-arrow-border"></div>
+              <div class="point-arrow"></div>
+            </div>
+          </div>
+          <div class="slides-wrapper">
+            <div id="slides" class="slides">
+              <div class="slides_container">
+                <%#     Slide 1     %>
+                <div class="product-slide">
+                  <div class="price">$25.00</div>
+                  <a href="/listings/vintage-tan-purse">
+                    <img src="/assets/landing/buyer/tanBag.jpg" class="product-slide-photo">
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="lister">
+              <a href="/profiles/fiona-sprinkle" class="profile">
+                <img class="seller-thumbnail" width="50" height="50" title="Fiona Sprinkle" src="/assets/landing/buyer/profile-fiona.png" alt="Fiona Sprinkle">
+              </a>
+              <a href="/listings/vintage-tan-purse">
+                <h3>Tan Bag</h3>
+              </a>
+            </div>
+          </div>
+
+          <div class="product-card-section-container">
+            <ul class="product-card-section">
+              <li>
+                <a href="/listings/vintage-meyers-usa-black-sling">
+                  <div class="product-cardBig">
+                    <div class="lead">
+                      <img src="/assets/landing/buyer/vintageMeyers.jpg">
+                      <div class="hover-data">
+                        <div class="clickable">
+                          <div class="price">$20.00</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                <div class="lister">
+                  <a href="/profiles/maja-brugos" class="profile">
+                    <img class="seller-thumbnail" width="35" height="35" title="Maja Brugos" src="/assets/landing/buyer/profile-brugos.jpg" alt="Maja Brugos">
+                  </a>
+                  <a href="/listings/vintage-meyers-usa-black-sling">
+                    <h3>Meyers Black Leather Pouch</h3>
+                  </a>
+                </div>
+              </li>
+              <li>
+                <a href="/listings/vintage-studded-patent-leather-handbag">
+                  <div class="product-cardBig">
+                    <div class="lead">
+                      <img src="/assets/landing/buyer/vintageStuddedBag.jpg">
+                      <div class="hover-data">
+                        <div class="clickable">
+                          <div class="price">$45.00</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                <div class="lister">
+                  <a href="/profiles/dana-zuber" class="profile">
+                    <img class="seller-thumbnail" width="35" height="35" title="Dana Zuber" src="/assets/landing/buyer/profile-dana.jpg" alt="Dana Zuber">
+                  </a>
+                  <a href="/listings/vintage-studded-patent-leather-handbag">
+                    <h3>Black Studded Patent Leather Handbag</h3>
+                  </a>
+                </div>
+              </li>
+              <li>
+                <a href="/listings/vintage-50-s-bag-by-dorian">
+                  <div class="product-cardBig">
+                    <div class="lead">
+                      <img src="/assets/landing/buyer/vintage50sBag.jpg">
+                      <div class="hover-data">
+                        <div class="clickable">
+                          <div class="price">$50.00</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                <div class="lister">
+                  <a href="/profiles/maja-brugos" class="profile">
+                    <img class="seller-thumbnail" width="35" height="35" title="Maja Brugos" src="/assets/landing/buyer/profile-brugos.jpg" alt="Maja Brugos">
+                  </a>
+                  <a href="/listings/vintage-50-s-bag-by-dorian">
+                    <h3>Vintage 50s Bag by Dorian</h3>
+                  </a>
+                </div>
+              </li>
+              <li>
+                <a href="/listings/red-leather-vintage-handbag">
+                  <div class="product-cardBig">
+                    <div class="lead">
+                      <img src="/assets/landing/buyer/large_redhandbag.jpg">
+                      <div class="hover-data">
+                        <div class="clickable">
+                          <div class="price">$17.00</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                <div class="lister">
+                  <a href="/profiles/brittany-esser" class="profile">
+                    <img class="seller-thumbnail" width="35" height="35" title="Brittany Esser" src="/assets/landing/buyer/profile-brit.jpg" alt="Brittany Esser">
+                  </a>
+                  <a href="/listings/red-leather-vintage-handbag">
+                    <h3>Red Leather Vintage Handbag</h3>
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="full-wrapper2">
+        <div class="middle-container">
+          <div class="join-now-cta-container">
+            <h3 class="cta join-now">Sign up and get <span class="dollar-sign">$</span><span class="strong">5</span> off your first purchase.</h3>
+            <div class="connect-container">
+              <%= link_to_facebook_connect %><BR>
+              <span class="left-line">&mdash;&mdash;&mdash;&mdash;</span>
+              <%= link_to 'or Connect with Twitter', auth_path(:twitter, buyer_signup: true), class: 'twitter signup'%>
+              <span class="right-line">&mdash;&mdash;&mdash;&mdash;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

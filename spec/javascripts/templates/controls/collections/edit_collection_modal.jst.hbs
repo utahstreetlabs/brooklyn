@@ -1,0 +1,18 @@
+<li id="collection-card-1" data-source="null" data-collection="1" data-card="collection">
+  <button name="button" data-toggle="modal" data-target="#edit-collection-1-modal" data-action="edit-collection">Edit</button>
+  <div id="edit-collection-1-modal" class="modal" data-role="collection-edit-modal" data-refresh="[data-collection='1']">
+    <a data-dismiss="modal"></a>
+    <h1>Edit Collection</h1>
+    <div class="modal-header"></div>
+    <div class="modal-body"></div>
+    <div class="modal-footer">
+      <a data-toggle="modal" data-target="#delete-collection-1-modal" data-action="delete-collection" href="#">Delete</a>
+    </div>
+  </div>
+  <div id="delete-collection-1-modal" class="modal" data-role="collection-edit-modal-delete">
+    <a data-remote="true" data-refresh="[data-role=collection-cards]" data-method="delete" data-link="remote" data-action="delete-collection" href="/collections/181">Delete</a>
+    <div class="modal-header"></div>
+    <div class="modal-body"></div>
+    <div class="modal-footer"></div>
+  </div>
+</li>

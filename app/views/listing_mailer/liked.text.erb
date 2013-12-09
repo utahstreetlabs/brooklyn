@@ -1,0 +1,29 @@
+<%
+out = %Q[#{raw @listing.seller.firstname},
+
+#{raw @liker.name} just loved #{raw @listing.title}.
+
+#{raw @liker.name}:]
+
+if @liker.bio.present?
+  out << %Q[
+
+#{mailer_format_text @liker.bio}]
+end
+
+out << %Q[
+  
+#{@liker.visible_listings_count} listings, #{@liker.likes_count} loves, #{@liker.registered_followers.total_count} followers]
+
+if @listing.seller.following?(@liker)
+  out << %Q[
+
+View #{raw @liker.firstname}'s profile at #{rewrite_mailer_url public_profile_url(@liker)}]
+else
+  out << %Q[
+
+Follow them to see what else they love at #{rewrite_mailer_url public_profile_url(@liker)}]
+end
+%><%= word_wrap out %>
+
+<%= render '/shared_mailer/footer' %>

@@ -1,0 +1,37 @@
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  Hi <%= @user.firstname %>,
+<% end %>
+
+<%= mailer_graf do %>
+  Congratulations! <%= mailer_link_to @order.buyer.name, public_profile_url(@order.buyer) %> has purchased <%= mailer_link_to @order.listing.title, listing_url(@order.listing) %>. If you'd like to get in touch about this purchase more directly, feel free to e-mail <%= @order.buyer.firstname %> at <%= mailer_mail_to @order.buyer.email %>.
+<% end %>
+
+<%= mailer_graf do %>
+  You have agreed to ship the following item within <%= count_of_days_in_words @order.listing.handling_duration %>:
+<% end %>
+
+<%= render 'seller_order_details', order: @order %>
+
+<%= mailer_subheader do %>
+  Buyer
+<% end %>
+
+<%= render 'shipping_address', order: @order %>
+
+<%= render 'shipping_suggestions' %>
+
+<%= mailer_graf do %>
+  To ensure that you're paid on time, you must <%= mailer_link_to "enter a tracking number", listing_url(@order.listing) %>. Payment will be released to your Payout Account within 72 hours. If you have yet to create your Payout Account, click <%= mailer_link_to 'here', settings_seller_identity_url %> to get started.
+<% end %>
+
+<%= mailer_graf do %>
+  Ready for another go? <%= mailer_link_to 'List more', new_listing_url %> of your items just as easily on Copious.
+<% end %>
+
+<%= mailer_graf(styles: 'margin-top: 28px; margin-bottom: 0px;') do %>
+  Peace, love and selling,
+<% end %>
+
+<%= render '/shared_mailer/footer' %>

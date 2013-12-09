@@ -1,0 +1,14 @@
+<%
+hide_masthead
+hide_footer
+title t('.title')
+javascript 'listings_external_bookmarklet_complete'
+%>
+<div style="width: 480px; height: 527px; margin: 0 auto; text-align: center; display: table-cell; vertical-align: middle;">
+  <fieldset class="fieldset-border">
+    <h1 class="page-title alert-success-message" style="margin-bottom: 10px;">Success!</h1>
+  </fieldset>
+  <%= content_tag :div, data: {role: "external-listing"} do %>
+    <%= link_to_listing @listing, text: 'See it now', target: "_blank", class: 'btn xlarge btn-block' %>
+  <% end %>
+</div>

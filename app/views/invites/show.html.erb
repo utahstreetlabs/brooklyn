@@ -1,0 +1,28 @@
+<%
+hide_masthead
+hide_footer
+%>
+
+<div id="main-content" class="span16">
+  <div class="invite-text-container">
+    <div class="invite-text section">
+      <div class="invite-top-section">
+        <%= image_tag 'layout/Logo-58-black.png', class: 'copious-logo' %>
+        <h1 data-role="invite-salutation">You've been exclusively invited.<br> How fancy.</h1>
+        <p class="body-copy">Your friend thinks you’ll love shopping and selling on Copious (and we agree). </p>
+        <p class="body-copy">When you accept this invitation, we’ll give you <span class="incentive-dollars"><%= number_to_invite_credit_currency Credit.invitee_credit_amount %></span> in credit to shop.</p>
+        <%# leaving it here because we'll a/b test this pretty soon and want to save the variables %>
+        <p class="body-copy" style="display: none;">The first <%= pluralize Invite.max_creditable_acceptances, 'friend' %> invitees to sign up will earn <span class="incentive-dollars"><%= number_to_invite_credit_currency Credit.invitee_credit_amount %></span> in credit to shop on Copious</p>
+      </div>
+
+    <div class="sns-connect">
+      <%= link_to_facebook_connect(class: 'button primary large facebook signup full-width margin-bottom-half',
+                                   primary: true) %>
+      <br>
+      We promise we'll never post without your permission.
+      <div class="connect-alternative">
+        or sign up with <%= link_to 'Twitter', auth_path(:twitter, buyer_signup: true) %>.
+      </div>
+    </div>
+  </div>
+</div>

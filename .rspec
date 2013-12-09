@@ -1,0 +1,2 @@
+--colour --format progress --format ParallelSpecs::SpecRuntimeLogger --out tmp/parallel_profile.log
+

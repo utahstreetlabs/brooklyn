@@ -1,0 +1,8 @@
+<h3>Invite Your Friends</h3>
+<p>Copious is a marketplace for friends. Invite yours.</p>
+
+<%= invite_suggestions @suggestions, id: 'invite-friends-more' do %>
+  <% @suggestions.each do |profile| %>
+    <%= invite_friend(profile) %>
+  <% end %>
+<% end %>

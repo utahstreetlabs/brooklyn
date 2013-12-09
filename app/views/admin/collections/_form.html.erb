@@ -1,0 +1,5 @@
+<%= bootstrap_form_for collection, url: url do |f| %>
+  <%= f.text_field :name, 'Name', maxlength: 128, required: true %>
+  <%= f.submit %>
+  <%= f.cancel cancel_url %>
+<% end %>

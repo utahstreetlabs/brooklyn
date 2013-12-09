@@ -1,0 +1,5 @@
+<%= base_stylesheet %>
+<%= yield :stylesheet_includes %>
+<%= stylesheet_link_tag('browser_specific') %>
+<%= stylesheet_link_tag('responsive') %>
+<%= stylesheet_link_tag('logged_out') unless logged_in? %>

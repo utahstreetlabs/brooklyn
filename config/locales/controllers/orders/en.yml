@@ -1,0 +1,6 @@
+en:
+  controllers:
+    orders:
+      settle_paypal: 'Your payment is being released.'
+      settle_bank_account: 'Your payment has been released.'
+      error_settling: "Oops! There was an error releasing your payment. Please contact %{help_link} for assistance."

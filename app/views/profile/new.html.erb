@@ -1,0 +1,10 @@
+<%
+title t(".title")
+deactivate_masthead
+mp_view_event 'create profile'
+hide_footer
+%>
+
+<%= adwords_tracking_pixel(:signup) %>
+
+<%= render partial: 'shared/profile_form', locals: { user: @user, path: profile_path(secure: true) } %>

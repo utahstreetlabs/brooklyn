@@ -1,0 +1,27 @@
+<%
+title 'Follow your friends'
+signup_buyer_flow_step 3
+javascript 'signup_buyer'
+hide_footer
+%>
+
+<%= content_tag(:div, data: {message: t('onboarding_follow.requests.message', follower: current_user.name), role: 'follow-box'}, class: 'message-container') do %>
+  <h1><%= t('onboarding_follow.title') %></h1>
+  <%= dot_spinner %>
+  <p><%= t('onboarding_follow.description') %></p>
+<% end %>
+
+<%= content_tag(:div, data: {role: 'multi-friend-selector'}, id: 'signup_follow_container', class: 'scrollable') do %>
+  <%= form_tag(complete_signup_buyer_friends_path, class: 'invite-friends-list', id: 'follow-friends-form') do %>
+    <%= content_tag(:div, nil, data: {role: 'selectables'}) %>
+  <% end %>
+<% end %>
+
+<%= content_tag(:div, class: 'select-all-container') do %>
+  <%= check_box_tag('select_all', 'select_all', data: {role: 'select-all-suggestions'}) +
+  label_tag('select_all', t('invite_modal.buttons.select_all')) %>
+<% end %>
+
+<div class="follow-friends-container">
+  <%= signup_buyer_follow_button class: 'right' %>
+</div>

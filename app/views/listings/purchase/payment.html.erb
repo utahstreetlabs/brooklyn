@@ -1,0 +1,124 @@
+<%
+title "Buy #{@listing.title} in #{@listing.category.name}: Payment"
+javascript 'listings_purchase_payment'
+purchase_flow_step 3
+mp_view_event 'enter payment info'
+%>
+
+<%= render partial: 'reserved_time_box', locals: {listing: @listing } %>
+
+<h1 id="title">Enter your payment information</h2>
+
+<div id="payment" class="section">
+  <%= form_for @purchase, url: sell_listing_purchase_path do |f| %>
+    <%= f.fieldset :div =>  'Credit Card Information', class: 'margin-bottom-double' do %>
+      <%= f.field :cardholder_name, :class => 'text',
+                  error: {class: 'error span5 kill-margin-left inline-block-element pull-right'} do %>
+        <%= f.label :cardholder_name, 'Cardholder Name' %>
+        <%= f.text_field :cardholder_name, :maxlength => 80, :class => 'span6 margin-bottom' %>
+      <% end %>
+
+      <%= f.field :card_number, :class => 'text inline-block-element kill-margin-left full-width',
+                  error: {class: 'error span5 kill-margin-left inline-block-element pull-right'} do %>
+        <%= f.label :card_number, 'Credit Card Number' %>
+        <%= f.text_field :card_number, :maxlength => 19, :class => 'span6 margin-bottom' %>
+        <span class="help_text">Example: 1234 1234 1234 1234 (please include the spaces)</span>
+      <% end %>
+
+      <%= f.field :expires_on,
+                  error: {class: 'error span5 kill-margin-left inline-block-element pull-right'} do %>
+        <%= f.label :expires_on, 'Expiration Date' %>
+        <%= f.date_select :expires_on, {start_year: Date.current.year, end_year: Date.current.year + 10,
+                                        discard_day: true, order: [:month, :year], add_month_numbers: true,
+                                        use_short_month: true},
+                          class: 'span3 pull-left inline-block-element margin-bottom' %>
+      <% end %>
+
+      <%= f.field :security_code, :class => 'text',
+                  error: {class: 'mail_error_message error span5 kill-margin-left inline-block-element pull-right'} do %>
+        <%= f.label :security_code, 'Security Code' %>
+        <%= f.text_field :security_code, :maxlength => 4, :class => 'span2 kill-margin-bottom' %>
+        <%= link_to '?', '#', id: 'security-code-popover', class: 'popover-element',
+                    data: {content: "#{image_tag('misc/securitycode.jpg').html_safe}",
+                           :'original-title' => 'Where to find your security code', html: true} %>
+      <% end %>
+    <% end %>
+
+    <%= f.fieldset :div =>  'Billing Address', class: 'margin-bottom' do %>
+      <%= f.field :bill_to_shipping, :class => 'text margin-bottom',
+                  error: {class: 'span5 kill-margin-left pull-right'} do %>
+        <%= f.check_box :bill_to_shipping %>
+        <%= f.label :bill_to_shipping, 'Same as shipping address', :class => 'radio' %>
+      <% end %>
+
+      <%= f.field :line1, :class => 'text',
+                  error: {class: 'span5 kill-margin-left pull-right'} do %>
+        <%= f.label :line1, 'Street Address' %>
+        <%= f.text_field :line1, :maxlength => 80, :class => 'span6' %>
+        <%= f.text_field :line2, :maxlength => 80, :class => 'span6 margin-bottom' %>
+      <% end %>
+
+      <%= f.field :city, :class => 'text',
+                  error: {class: 'span5 kill-margin-left pull-right'} do %>
+        <%= f.label :city, 'City' %>
+        <%= f.text_field :city, :maxlength => 80, :class => 'span6 margin-bottom' %>
+      <% end %>
+
+      <%= f.field :state, :class => 'text margin_bottom',
+                  error: {class: 'span5 kill-margin-left pull-right'} do %>
+        <%= f.label :state, 'State', :class => 'big-label' %>
+        <%=  f.subregion_select :state, 'US' %>
+      <% end %>
+
+      <%= f.field :zip, :class => 'text',
+                  error: {class: 'span5 kill-margin-left pull-right'},
+                  help: {text: 'Example: 12345 or 12345-6789', class: 'full-width'} do %>
+        <%= f.label :zip, 'Zip Code' %>
+        <%= f.text_field :zip, :maxlength => 80, :class => 'span2 margin-bottom' %>
+      <% end %>
+
+      <%= f.field :phone, :class => 'text',
+                  error: {class: 'span5 kill-margin-left pull-right'},
+                  help: {text: 'Example: 123-456-7890', class: 'full-width'} do %>
+        <%= f.label :phone, 'Phone Number' %>
+        <%= f.text_field :phone, :maxlength => 80, :class => 'span3 margin-bottom' %>
+      <% end %>
+    <% end %>
+
+    <%= f.buttons save_text: 'Submit Payment', class: 'button primary xlarge pull-left span6 kill-margin-left' %>
+  <% end %>
+
+  <p class="smalltype weak clear margin-top-half pull-left">Please press "Submit Payment" only once.</p>
+  <h2 class="margin-top pull-left clear">By pressing "Submit Payment" you are purchasing<br> this item from the seller. </h2>
+</div>
+
+<% content_for :sidebar do %>
+  <%= purchase_order_details(@listing, edit_link: true, remaining_credit: true) do %>
+    <div id="shipping-address-details">
+      <div class="label margin-bottom">
+        Shipping Address
+        <%= link_to 'Edit', shipping_listing_purchase_path(@listing), class: 'edit' %>
+      </div>
+      <div class="shipping-address-container">
+        <span class="ship-to-address"><%= postal_address @listing.order.shipping_address, name: true %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<%= form_tag sell_listing_purchase_url, :id => 'sell', :style => 'display: none' do %><% end %>
+
+<div id="payment-error" style="display: none" class="overlay">
+  <p>
+    Whoops! There's been an error with your payment: you'll need to purchase the item again. <br />Don't worry - we haven't charged you!
+  </p>
+</div>
+
+<% doc_header do %>
+  <%= tag :meta, property: 'copious:shipping:line1', content: @listing.order.shipping_address.line1 %>
+  <%= tag :meta, property: 'copious:shipping:line2', content: @listing.order.shipping_address.line2 %>
+  <%= tag :meta, property: 'copious:shipping:city', content: @listing.order.shipping_address.city %>
+  <%= tag :meta, property: 'copious:shipping:state', content: @listing.order.shipping_address.state %>
+  <%= tag :meta, property: 'copious:shipping:zip', content: @listing.order.shipping_address.zip %>
+  <%= tag :meta, property: 'copious:shipping:phone', content: @listing.order.shipping_address.phone %>
+<% end %>

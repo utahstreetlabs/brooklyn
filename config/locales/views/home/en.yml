@@ -1,0 +1,27 @@
+en:
+  home:
+    feed:
+      section_title: Recent Activity on Copious
+      select_interests:
+        button:
+          label: Customize
+        modal:
+          title: What do you like?
+          description: Pick a few things to personalize what you see.
+          header: Pick a few interests to start building your feed.
+          counter_html: '<span data-role="counter">%{count}</span> more to go'
+          save:
+            label: Continue
+            loading_html: Building your feed now, please wait&hellip;
+            fail: Something went wrong, please try again.
+            success_html: Success! You're seconds away from your customized feed&hellip;
+    trending:
+      section_title: Trending Now on Copious
+    featured:
+      section_title: Trending Now on Copious
+    logged_in:
+      feed:
+        network: Your Feed
+        everything: Everything
+      recommended:
+        section_title: Recommended

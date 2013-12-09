@@ -1,0 +1,12 @@
+<%= form_for order.shipment, :url => order_ship_path(order), :remote => true, :html => {:method => :POST} do |f| %>
+  <%= hidden_field_tag :source, source %>
+  <%= f.fieldset do %>
+    <%= f.field :tracking_number, :class => 'text' do %>
+      <%= f.label :carrier_name, 'Carrier', :class => 'inline-label' %>
+      <%= carrier_selector %>
+      <%= f.label :tracking_number, 'Tracking Number', :class => 'inline-label' %>
+      <%= f.text_field :tracking_number, :size => 22 %>
+    <% end %>
+  <% end %>
+  <%= f.buttons :save_text => 'Submit', :disable_with => 'Submitting ...', :'data-save' => 'modal' %>
+<% end %>

@@ -1,0 +1,17 @@
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  Hi <%= @user.firstname %>,
+<% end %>
+
+<%= mailer_graf do %>
+  Feel like you could use a little inspiration?  Copious is about discovery as well as sharing.  Follow members on Copious and get a first glimpse into favorites through automatic updates of who they are following and the products they like.
+<% end %>
+
+<%= mailer_button 'Sign in and start following', dashboard_url %>
+
+<%= mailer_graf(styles: 'margin-bottom: 0px;') do %>
+  Happy following,
+<% end %>
+
+<%= render '/shared_mailer/footer' %>

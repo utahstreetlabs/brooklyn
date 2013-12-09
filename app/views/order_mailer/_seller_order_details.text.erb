@@ -1,0 +1,9 @@
+<%= text = <<EOT
+Order Details:
+
+Order Date: #{date(order.created_at)}
+Listing Title: #{order.listing.title}
+Order Total (You Earn): #{number_to_currency order.listing.proceeds}
+EOT
+text << mailer_order_details_tracking_number_text(order, tracking_number: tracking_number) if defined?(tracking_number)
+word_wrap text %>

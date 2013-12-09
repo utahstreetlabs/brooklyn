@@ -1,0 +1,33 @@
+<%= word_wrap %Q[You’ve officially published your first listing on Copious. Congratulations!
+
+Below are the final steps to help maximize your selling success.
+
+
+Be proud of your listing.
+----------------
+
+Spread the word. Share it on Facebook, Twitter, Tumblr and Pinterest (or just email it).
+
+Share what you're selling
+
+#{rewrite_mailer_url listing_url(@listing)}
+
+
+Get your friends on the bandwagon.
+------------------
+
+They can support you and browse great finds, and you can both earn Copious credit.
+
+Invite your friends #{rewrite_mailer_url connect_invites_url}
+
+
+Do it again.
+------------------
+
+And again, and again.
+
+Create another listing at #{rewrite_mailer_url new_listing_url}
+
+Happy selling,] %>
+
+<%= render '/shared_mailer/footer' %>

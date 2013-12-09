@@ -1,0 +1,29 @@
+<%
+out = %Q[#{raw @followee.firstname},
+
+You have a new follower on Copious.
+
+#{raw @follower.name}:]
+
+if @follower.bio.present?
+  out << %Q[
+
+#{mailer_format_text @follower.bio}]
+end
+
+out << %Q[
+
+#{@follower.visible_listings_count} listings, #{@follower.likes_count} loves, #{@follower.registered_followers.total_count} followers]
+
+if @followee.following?(@follower)
+  out << %Q[
+
+View #{raw @follower.firstname}'s profile at #{rewrite_mailer_url public_profile_url(@follower)}]
+else
+  out << %Q[
+
+Follow them to see what else they love at #{rewrite_mailer_url public_profile_url(@follower)}]
+end
+%><%= word_wrap out %>
+
+<%= render '/shared_mailer/footer' %>

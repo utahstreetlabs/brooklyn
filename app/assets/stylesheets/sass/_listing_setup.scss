@@ -1,0 +1,696 @@
+#content-wrapper.listings-form {
+  h1 {
+    margin-top: 0px;
+    display: block; }
+  form {
+    fieldset {
+      border-bottom: 1px solid $border-lightest;
+      padding: 16px 0px;
+      margin-bottom: 20px;
+      .import-section {
+        float: left;
+        width: 100%;
+        margin-bottom: 18px;
+        #upload-computer, #upload-instagram .button {
+          display: inline-block;
+          margin: 0px 16px 16px 0px;
+          width: 300px;
+        }
+      }
+    }
+    div.form-input-container {
+      width: 646px !important;
+      float: left;
+      margin-right: 16px;
+      padding: 10px;
+      left: 0px;
+      top: 0px; }
+    div.form-helper-container {
+      float: left;
+      width: 272px;
+      padding: 10px; }
+
+    // - Description box
+    #field_description {
+      .wysiwyg {
+        @include border-radius(3px);
+        -webkit-box-shadow: inset 0 1px 1px transparentize($black, .3);
+        -moz-box-shadow: inset 0 1px 1px transparentize($black, .3);
+        box-shadow: inset 0 1px 1px transparentize($black, .3);
+        color: $gray;
+        margin-bottom: 9px;
+      }
+    }
+    // - Tags
+    #field_tags {
+      position: relative;
+      min-height: 104px;
+      div.tagsinput {
+        .tag-interaction {
+          margin: 3px 15px;
+        }
+        #lsting_tags_addTag {
+          display: block;
+          float: left;
+        }
+        .tags_clear {
+          clear: both;
+          width: 100%;
+          height: 0px;
+        }
+      }
+      .help_text.span6 {
+        position: absolute;
+        top: 68px;
+      }
+    }
+
+    // shipping
+    #field_who_pays_for_shipping {
+      margin-bottom: 20px;
+    }
+    .shipping-options {
+      margin-right: 16px;
+      vertical-align: top;
+    }
+    .container-well {
+      .well {
+        @include border-radius(1px);
+        -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px;
+        -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px;
+        h6 {
+          padding-bottom: 4px;
+          color: $color-text-light;
+          font-weight: 500;
+        }
+        .inline-block-element {
+          width: 294px; /* span5 */
+        }
+        &:hover {
+          @include transition(all);
+          border-color: $color-hover-list;
+          -webkit-box-shadow: $color-hover-list 0px 1px 2px;
+          -moz-box-shadow: $color-hover-list 0px 1px 2px;
+          box-shadow: $color-hover-list 0px 1px 2px;
+        }
+        &.selected {
+          background-color: $color-hover-list;
+          -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+          -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+          box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+          h4, p, .meta {
+            color: white;
+            text-shadow: 0px 1px 0px $grayLight;
+          }
+          p {
+            text-shadow: 0px 1px 0px $color-text-light;
+          }
+          h6 {
+            color: $grayLightest;
+          }
+        }
+      }
+    }
+
+    // PRICE BOX STYLING
+    fieldset.old-pricing {
+      #listing_total_price, #listing_proceeds {
+        display: inline-block; }
+      .right-pane {
+        margin: 0px 10px; } }
+    // - Shipping options
+    #field_charge_shipping {
+      margin-bottom: 0;
+      padding-bottom: 0; }
+    // - Shipping
+    #field_shipping {
+      width: 500px;
+      padding-bottom: 5px;
+    }
+    input#listing_shipping:disabled {
+      background-color: $white; }
+    .pricing-fieldset, .pricing-fieldset-new {
+      position: relative;
+    }
+    // - Buyer Fees
+    .buyer-fees-container {
+      div.buyer-fees {
+        @extend .span10;
+        margin: 0px 0px 16px;
+        padding: 10px;
+        background-color: #CDEFFE;
+        padding-right: 36px;
+        border: 1px solid #99E1F1;
+        color: #2783C1;
+        border-right: 0px;
+        z-index: $zin-buyer-fees;
+        position: relative;
+        p {
+          color: #2783C1;
+          font-weight: 600;
+        }
+        div.label {
+          font-weight: normal !important;
+          display: block;
+          margin-left: 0px;
+          width: 520px; }
+        div.arrow-container-border {
+          position: absolute;
+          top: -1px;
+          right: -90px;
+          border-width: 36px 45px;
+          border-style: solid;
+          border-color: transparent transparent transparent #99E1F1;
+          width: 0px;
+          height: 0px;}
+        div.arrow-container {
+          position: absolute;
+          top: -1px;
+          right: -88px;
+          border-width: 36px 45px;
+          border-style: solid;
+          border-color: transparent transparent transparent #CDEFFE;
+          width: 0px;
+          height: 0px;
+          };
+          } } }
+
+  // overlay width
+  #ajax-overlay {
+    .content-wrap {
+      width: 900px !important;
+      float: left;
+      position: relative; } }
+
+  .update-photo-form {
+    position: absolute;
+    left: -2000px;
+  }
+}
+
+// COLLECTION
+#listing_add_to_collection_slug {
+  @extend .span6;
+  margin-left: 0;
+}
+
+
+// TAGS
+
+#listing_tags_tagsinput {
+  @extend .row;
+  padding-left: 361px;
+}
+#listing_tags_addTag {
+  margin-left: -361px;
+}
+#listing_tags_tag {
+  @extend .span6;
+}
+
+#product-photos {
+  clear: both;
+}
+
+
+// PRICE, OPTIONAL ELEMENTS IN HORIZONTAL FORMAT
+
+#field_size_name, #field_brand_name, #field_price, #field_original_price {
+  display: inline-block;
+}
+#field_size_name {
+  margin-right: 40px;
+}
+#field_price {
+  margin-right: 66px;
+}
+.pricing-fieldset li {
+  margin-bottom: 24px;
+}
+
+.buyer-fees-container {
+  margin-bottom: 26px;
+}
+
+#statusMessage {
+  margin: 0 364px 0 0;
+}
+
+.listing_edit {
+  .error, .valid {
+    margin: 3px 30px 0 0;
+  }
+}
+
+#field_description {
+  .validlist {
+    margin-top: -160px;
+  }
+  .error {
+    margin-top: -160px;
+  }
+}
+
+.pricing-fieldset-new {
+  .validlist, .errorlist {
+    position: absolute;
+    width: 187px;
+  }
+}
+
+.number-input {
+  .validlist, .errorlist {
+    margin-left: 10px;
+  }
+}
+
+
+#field_original_price, #field_price {
+  clear: none;
+}
+
+//Override for default bootstrap
+#shipping-alert-container {
+  display: inline;
+  margin-left: 0px;
+  li {
+    margin: 0px;
+  }
+}
+
+.field-shipping_option_code {
+  li {
+    position: relative;
+  }
+  input {
+    position: absolute;
+    left: 0;
+    top: 3px;
+  }
+  .radio {
+    position: relative;
+    padding-left: 23px;
+  }
+}
+
+
+// CREATE EXTERNAL LISTING
+/* all create external forms */
+.listings_external_new_bookmarklet, .listings_external_bookmarklet_complete, .listings_bookmarklet_show.modal-open, .listings_external_create, .listings_external_create_bookmarklet, .listings_external_new, .info_extras_show, .listings_external_create {
+  .photo-container {
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    overflow: hidden;
+    border: 1px solid $border-color-light;
+    @include border-radius(3px);
+  }
+  /* photo selector UI */
+  .photo-list {
+    margin: 0 0 16px;
+    li {
+      margin: 0 20px 20px 0;
+      clear: none;
+      display: inline-block;
+      img {
+        height: 100px;
+        width: auto;
+      }
+    }
+  }
+}
+
+/* for create external listing page */
+.listings_external_new, .info_extras_show, .listings_external_create {
+  overflow-x: hidden;
+  .page-title {
+    margin-top: 10px;
+    @extend .hero;
+  }
+  /* photo selector UI */
+  .photo-list {
+    text-align: center;
+    width: 700px;
+    float: none;
+    margin: 0 auto 20px;
+  }
+  .photo-list li {
+    @include transition(all);
+    &:hover {
+      .photo-container {
+        border-color: $linkColor;
+      }
+      @include box-shadow(0 0 0 1px $linkColor);
+    }
+    &.selected {
+      background-color: $linkColor;
+      .photo-container {
+        border-color: $linkColor;
+      }
+      width: 100px;
+      height: 100px;
+      margin: 0 20px 20px 0;
+      position: relative;
+      @include border-radius(3px 3px 0 0);
+      @include box-shadow(0 0 0 3px $linkColor);
+      &:after {
+        content: 'SELECTED';
+        font-family: $styledFontFamily;
+        font-size: 14px;
+        font-weight: 900;
+        line-height: 16px;
+        color: white;
+        text-align: center;
+        letter-spacing: 1px;
+        background: $linkColor;
+        position: absolute;
+        bottom: -22px;
+        left: -3px;
+        width: 106px;
+        height: 16px;
+        padding: 3px 0;
+        @include border-radius(0 0 3px 3px);
+      }
+    }
+    &:nth-child(6n) {
+      margin-right: 0;
+    }
+  }
+  fieldset {
+    width: 700px; /* span9 */
+    padding-bottom: 15px;
+    margin: 0 auto 20px;
+    &.fieldset-border {
+      border-bottom: 1px dotted $border-color;
+    }
+  }
+  .control-group {
+    width: 540px; /* span7 */
+    margin: 0 auto 25px;
+  }
+  #listing_price {
+    width: 510px; /* 540 - .input-prepend */
+  }
+  #listing_description {
+    width: 540px;
+    height: 80px;
+  }
+  #listing_save {
+    width: 415px;
+    height: 40px;
+    padding: 10px 45px;
+  }
+  .btn.large { /* cancel button */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 40px;
+    line-height: 20px;
+  }
+}
+
+/* for bookmarklet window view only */
+.listings_external_new_bookmarklet, .listings_external_bookmarklet_complete, .listings_bookmarklet_show.modal-open, .listings_external_create, .listings_external_create_bookmarklet, .listings_external_bookmarklet_collections_index, .login_bookmarklet {
+  #content-wrapper, #content-wrapper > .row, .messages {
+    width: 480px !important;
+    min-width: 480px !important;
+    .span12 {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+  #content-wrapper {
+    margin-top: 0;
+    padding-bottom: 40px;
+  }
+  fieldset {
+    padding: 0;
+    padding-bottom: 15px;
+    &.fieldset-border {
+      margin-bottom: 30px;
+      border-bottom: 1px dotted $border-color;
+    }
+  }
+  .photo-list {
+    width: 480px;
+    text-align: center;
+    margin-bottom: 0;
+    .selected {
+      margin-right: 0;
+    }
+    li img {
+      width: auto;
+    }
+  }
+  .photo-container {
+    min-width: 108px;
+    width: auto;
+  }
+  .section-title {
+    /* hide the "Add Details" subheader for the create external listing window */
+    display: none;
+  }
+  #listing_price {
+    width: 450px; /* 480 - 30 */
+  }
+  #listing_description {
+    width: 480px;
+    height: 80px;
+  }
+  #listing_save {
+    width: 100%;
+    padding: 10px 45px;
+    height: 44px;
+  }
+
+  /* Add to Collections window */
+  .hidden-modal {
+    /* since the Add to Collections and Save Modal come from the same helper function, .hidden-modal
+    hides the content not needed for the Save Modal */
+    display: block;
+    .page-title { /* to have the .fieldset-border styling */
+      border-bottom: 1px dotted $border-color;
+      padding-bottom: 25px;
+      margin-bottom: 30px;
+    }
+  }
+  .alert-success-message {
+    color: $green;
+  }
+  .product-image-container {
+    display: none;
+  }
+  .listing-save-to-collection {
+    max-width: 480px;
+    margin-bottom: 20px;
+  }
+  .price-alert-container {
+    /* match the spacing in add external bookmarklet window */
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    #redirect {
+      width: 480px; /* for slider's width */
+    }
+  }
+  .slider.slider-horizontal {
+    width: 480px !important; /* need to override js's inline styling of width: 300px; */
+    .slider-track {
+      width: 460px;
+    }
+  }
+  .slider-labels {
+    margin-top: 3px;
+    .off-25 {
+      margin-left: 94px;
+    }
+    .off-50 {
+      margin-left: 89px;
+    }
+    .off-75 {
+      margin-left: 88px;
+    }
+    .off-none {
+      margin-left: 79px;
+    }
+  }
+  input[type="submit"].btn { /* save button */
+    width: 383px;
+    height: 44px;
+  }
+  .btn.large, .btn.xlarge { /* skip button, see it now button */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 44px;
+    line-height: 20px;
+  }
+}
+
+// BOOKMARKLET LOGGED OUT VIEW
+/* same as the responsive view of the login page. had to copy the styling here because the
+   bookmarklet window is larger than 490px and the media query doesn't kick in */
+.login_bookmarklet {
+  padding-top: 70px; /* push the content down a bit for bookmarklet popup */
+  .container {
+    width: $mobileContentWidth;
+    min-width: $mobileContentWidth;
+  }
+  .hidden-phone {
+    display: none;
+  }
+  // some pages do not have #main-content {padding: 0px 5px};
+  .row {
+    padding: 0px 5px;
+    .row {
+      padding: 0px;
+      min-width: $mobileContentWidth;
+      width: $mobileContentWidth;
+    }
+    .offset1, .span4 { /* login page */
+      margin-left: 0;
+    }
+  }
+  .copious-logo {
+    width: 180px;
+    height: auto;
+    margin: 10px 0px 20px !important;
+  }
+  .sns-connect {
+    > .signup {
+      width: 100%;
+    }
+    .twitter.signup {
+      margin-left: 0px;
+      margin-top: 12px;
+    }
+  }
+  .top-piece {
+    text-align: center;
+    margin-bottom: 10px;
+    padding-right: 0 !important; /* override .login .top-piece*/
+    .home_signup & {
+      margin-bottom: 0px;
+    }
+    #signup-modal & {
+      text-align: center;
+      width: $mobileWidth;
+      margin: 0 auto 10px;
+      float: none;
+    }
+  }
+  .remember-me {
+    margin-left: 0px;
+    margin-bottom: 20px;
+  }
+  .bottom-piece .already-registered {
+    margin: 0px 0px 10px;
+    padding-left: 0px;
+    text-align: left;
+  }
+}
+
+/*    XXXXXXXXXXXXX DELETE after the new external listing flow is shipped   XXXXXXXXXXXXXXXXXXXXXXX   */
+.listings_bookmarklet_show.modal-open {
+  width: 604px; /* bookmarklet popup window size */
+  #signup-modal {
+    width: 480px;
+    margin-left: -240px;
+    left: 50%;
+    top: 10%;
+    .signup {
+      width: 294px;
+    }
+    .facebook {
+      margin-bottom: 8px;
+    }
+  }
+  .span11 {
+    width: 100%;
+  }
+  .remember-me {
+    margin-left: 78px;
+  }
+  .already-registered {
+    margin: 16px auto;
+    width: 294px;
+    padding-left: 0;
+    float: none;
+  }
+}
+
+
+// BOOKMARKLET ERROR PAGE
+.listings_external_create {
+  fieldset {
+    width: 480px;
+  }
+  .masthead, #footer {
+    display: none;
+  }
+  .help-inline {
+    margin-top: -40px;  /* XXX DELETE ONCE STANDARDIZED */
+  }
+}
+
+// INFO/EXTRAS
+.info_extras_show {
+  p {
+    font-family: $sansserifFontFamily;
+    font-size: 14px;
+    color: #808386;
+  }
+  #bookmarklet-instructions {
+    margin-bottom: 20px;
+  }
+  #bookmarklet-button {
+    margin-top: 9px;
+  }
+}
+
+// COLLECTION MULTIPICKER
+/* for external listing pages */
+.listings_setup, .listings_external_new_bookmarklet, .listings_external_create, .listings_external_create_bookmarklet, .listings_external_new, .listings_external_bookmarklet_collections_index {
+  .well-small {
+    width: 100%;
+    max-width: 540px;
+    height: 201px;
+    border-bottom: 1px solid $border-color-light;
+    margin-bottom: 30px; /* matching .control-group's margin-bottom */
+  }
+  .well-header.well-header-small {
+    margin: -10px -11px 0;
+    padding: 10px;
+    width: 540px;
+    height: 145px;
+    border-bottom-color: $border-color-light;
+  }
+  .well-footer.well-footer-small {
+    box-sizing: content-box;
+    height: 54px;
+    padding: 10px;
+    margin: 0 -10px -10px;
+  }
+  .add-new-collection-input {
+    width: 446px;
+  }
+}
+
+/* for bookmarklet create external listing window only */
+.listings_external_new_bookmarklet, .listings_external_create_bookmarklet, .listings_external_bookmarklet_collections_index {
+  .add-new-collection-input {
+    width: 386px;
+  }
+  .well-header.well-header-small {
+    width: 480px;
+  }
+}
+
+/* for create internal listing page */
+.listings_setup {
+  .well-small, .well-header.well-header-small {
+    width: 460px;
+    max-width: 460px; /* span6 */
+  }
+  .add-new-collection-input {
+    width: 366px;
+  }
+}

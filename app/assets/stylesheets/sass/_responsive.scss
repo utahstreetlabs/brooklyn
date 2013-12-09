@@ -1,0 +1,669 @@
+// RESPONSIVE
+// --------------------------------------------------------------
+.container-fluid {
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 976px;
+}
+.hidden-modal {
+  display: none;
+}
+
+// up to landscape iPhone
+@media (max-width: 490px) {
+  // we need this because the entire site isn't responsive yet
+  .row {
+    width: 100%;
+    min-width: 960px;
+  }
+  .hidden-phone {
+    display: none !important;
+  }
+  // overriding bootstrap-responsive default of padding: 0 20px
+  body {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  #content-wrapper {
+    padding-bottom: 0 !important;
+    min-width: $gridRowWidth;
+  }
+
+  // HEADER BAR
+  // =================================================
+  .masthead {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 8px;
+    width: 100%;
+    min-width: $gridRowWidth;
+    #header-navbar {
+      width: 100%;
+      .header-home {
+        display: inline-block;
+      }
+      .avatar {
+        margin-top: 3px;
+      }
+    }
+    // logo
+    .brand {
+      float: none;
+    }
+    .dropdown-menu li a {
+      @include border-radius(0px);
+      &:hover {
+        background: transparent;
+        color: $color-text !important;
+        text-shadow: none !important;
+        font-weight: normal !important;
+      };
+    }
+  }
+
+  .nav-collapse {
+    &.collapse {
+    height: 0 !important;
+      &.in {
+        height: auto !important;
+      }
+    }
+  }
+
+  // dropdown menu
+  .navbar {
+    .nav {
+      > li > a {
+        padding: 6px 0;
+        text-shadow: none;
+        font-weight: 600;
+        color: $color-text-dark;
+        &:hover {
+          background-color: white;
+          color: $color-text-dark;
+        }
+      }
+    }
+  }
+
+  // FORM ELEMENTS
+  // =================================================
+  // INPUT FIELDS
+  input[type="text"], input[type="password"], input[type="email"] {
+    width: 300px !important;
+    &.hide-placeholder {
+      &::-webkit-input-placeholder { color: $grayLighter; }
+      &:-moz-placeholder           { color: $grayLighter; }
+    }
+  }
+
+
+  // BUTTONS
+  // =================================================
+  // usually .large are for form submit buttons
+  .button.primary.large {
+    width: 100%;
+  }
+
+  // TYPOGRAPHY
+  // =================================================
+  // will have to standardize these soon with ems
+  h1 {
+    font-size: 25px;
+    line-height: 35px;
+    margin-bottom: 16px;
+  }
+
+  .h3-like {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  // LOGGED OUT HOMEPAGE, FORGOT PASSWORD, ONBOARDING, INVITES LANDING PAGE
+  // =======================================================================
+  .logged_out_home, .password_resets_new, .signup_buyer_profiles_new, .signup_buyer_interests_index, .signup_buyer_people_index, .login, .home_signup, [class^="offers_"], .invites_show, .login_bookmarklet, .listings_bookmarklet_show, .server-error-page {
+    background: white !important;
+    // these need to be caged under those body classes because the whole isn't responsive yet
+    #content-wrapper {
+      width: $mobileWidth !important;
+      min-width: $mobileWidth !important;
+      max-width: $mobileWidth !important;
+      padding: 0px 5px;
+    }
+    .row, #main-content {
+      min-width: $mobileContainerWidth;
+      width: $mobileContainerWidth;
+    }
+    #main-content {
+      padding: 0px 5px;
+    }
+    .row {
+      margin-left: 0;
+      > [class*="span"] {
+        display: block;
+        float: none;
+        width: auto;
+        margin: 0px;
+      }
+      & > [class*="offset"] {
+        margin-left: 0px;
+      }
+      // for login, signup pages
+      .container {
+        width: $mobileContentWidth;
+        min-width: $mobileContentWidth;
+        margin: 0px;
+      }
+    }
+    #signup-modal { /* for bookmarklet popup window */
+      width: $mobileLandscapeWidth;
+      margin-left: -240px; /* $mobileWidth / 2 */
+      .row {
+        margin: 0 auto; /* center it */
+      }
+      .sns-connect .signup {
+        width: 100%;
+        &.facebook {
+          margin-bottom: 10px;
+        }
+      }
+    }
+    .masthead {
+      min-width: $mobileWidth !important;
+    }
+    // OFFER LANDING PAGE
+    .invite-text-container {
+      position: static;
+      width: $mobileWidth;
+      padding: 0;
+      margin: 0;
+    }
+    .invite-text {
+      width: 100%;
+    }
+  }
+  // get rid of bg image
+  .loh-bg {
+    display: none !important;
+  }
+  .loh-modal-container {
+    position: static;
+    padding: 0px;
+    width: $mobileContentWidth;
+    .loh-modal {
+      width: 100%;
+      position: static;
+      padding: 0px;
+      left: 0px;
+      top: 0px;
+      margin: 0px;
+      @include disable-box-shadow;
+      .section, .section:first-child {
+        padding: 0px;
+        background: white;
+        width: 100%;
+        height: auto;
+        text-align: center;
+      }
+      &:after {
+        display: none;
+      }
+    }
+  }
+  .login-container, .sns-connect {
+    .logged_out_home &, .login & {
+      position: static;
+      top: 0px;
+      margin-bottom: 20px;
+      .checkbox {
+        color: $color-text-dark;
+      }
+    }
+  }
+  .login-containers {
+    .button.primary.large {
+      padding: 10px 0 !important;
+    }
+    .checkbox {
+      font-size: 14px;
+      font-weight: 400;
+    }
+    .login-divider {
+      width: 300px;
+      margin: 16px auto;
+    }
+    i {
+      left: 40%;
+      font-size: 14px;
+    }
+  }
+  .login-container {
+    margin-bottom: 16px;
+  }
+  .sns-login-container {
+    margin-bottom: 0;
+  }
+  .copious-logo {
+    .login &, .home_signup &, .logged_out_home &, .login_bookmarklet & {
+      // need to override the _homepage_logged_out.scss:13
+      width: 180px;
+      height: auto;
+      margin: 10px 0px 20px !important;
+    }
+  }
+
+  // LOGIN, SIGN UP
+  // =================================================
+  .logged_out_home, .login, .home_signup, .login_bookmarklet {
+    // some pages do not have #main-content {padding: 0px 5px};
+    .row {
+      padding: 0px 5px;
+      .row {
+        padding: 0px;
+        min-width: $mobileContentWidth;
+        width: $mobileContentWidth;
+      }
+      .offset1, .span4 { /* login page */
+        margin-left: 0;
+      }
+    }
+    .sns-connect {
+      > .signup {
+        width: 100%;
+      }
+      .twitter.signup {
+        margin-left: 0px;
+        margin-top: 12px;
+      }
+    }
+  }
+  .top-piece {
+    text-align: center;
+    margin-bottom: 10px;
+    padding-right: 0 !important; /* override .login .top-piece*/
+    .home_signup & {
+      margin-bottom: 0px;
+    }
+    #signup-modal & {
+      text-align: center;
+      width: $mobileWidth;
+      margin: 0 auto 10px;
+      float: none;
+    }
+  }
+  .remember-me {
+    margin-left: 0px;
+    margin-bottom: 20px;
+  }
+  .bottom-piece .already-registered {
+    margin: 0px 0px 10px;
+    padding-left: 0px;
+    text-align: left;
+  }
+  .login_bookmarklet {
+    padding-top: 50px; /* push the content down a bit for bookmarklet popup */
+  }
+
+  // ONBOARDING
+  // =================================================
+  .message-container {
+    margin-bottom: 16px;
+    .like-button-container {
+      float: none;
+    }
+  }
+  .create-account-wrapper {
+    width: $mobileContentWidth;
+    // null the .offset2
+    // found out that even bootstrap-responsive doesn't have a set rule for offsets.
+    margin-left: 0px !important;
+  }
+  .create-account-container {
+    width: auto;
+    .profile-form {
+      width: auto;
+    }
+    > img {
+      float: none;
+      margin: 0px auto 16px;
+    }
+    .avatar {
+      float: none;
+      width: 96px;
+      display: block;
+      margin: 0px auto 16px;
+    }
+    img {
+      width: 90px;
+      height: auto;
+    }
+  }
+  // INTEREST CARDS
+  .interest-card {
+    width: 142px;
+    .interest-image-container {
+      width: 142px;
+      height: 142px;
+    }
+    &:hover {
+      .interest-image-container {
+        width: 146px;
+        height: 146px;
+      }
+    }
+    &.selected {
+      .interest-image-container {
+        width: 148px;
+        height: 148px;
+      }
+      .interest-state {
+        background-position: 33px -886px;
+      }
+    }
+  }
+  // PEOPLE PAGE
+  .user-list-container {
+    // null the .span8
+    width: $mobileContentWidth;
+    margin-left: 0px;
+    margin-top: 25px;
+    .user {
+      width: $mobileContentWidth;
+      .avatar {
+        width: 30px;
+        height: 30px;
+        padding: 1px;
+      }
+      .user-container {
+        width: 255px;
+        margin-top: 3px;
+        h3 {
+          padding: 0px;
+          margin: 0px;
+        }
+      }
+      .data-container, .likes-data {
+        width: $mobileContentWidth;
+        .thumbnail {
+          padding: 1px;
+          img {
+            width: 65px;
+            height: 65px;
+          }
+        }
+      }
+    }
+  }
+  .following-container {
+    width: 100%;
+  }
+  .user-strip {
+    display: block;
+    float: left;
+    width: 100%;
+    max-width: $mobileContentWidth;
+    > li {
+      width: 100%;
+      max-width: $mobileContentWidth;
+      margin-bottom: 32px;
+    }
+    li > .pull-left {
+      width: 100%;
+      margin-bottom: 6px;
+    }
+    li > .pull-right {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .avatar {
+      img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+    h4 {
+      margin: 0;
+      line-height: 30px;
+    }
+    .thumbnails {
+      margin-top: 0;
+      // until we get rid of border, let's shrink it to 1px
+      .thumbnail {
+        padding: 1px;
+      }
+      li {
+        margin-right: 8px;
+        opacity: 1;
+        img {
+          width: 65px;
+          height: 65px;
+        }
+      }
+    }
+    .nav-stats {
+      float: left;
+      width: 170px;
+      margin: 3px 0 3px -3px;
+      > li {
+        display: inline;
+        float: left;
+        padding-left: 21px;
+        margin-left: 10px;
+        &:hover {
+          padding-left: 21px !important;
+          > a > span, > div > a {
+            color: $linkColor !important;
+            font-weight: 400 !important;
+          }
+        };
+      }
+      // getting rid of :hover states for .nav-stats for mobile
+      // less than ideal format, but until we go progressive enhancement, will have to live with it...
+      .stats-sale, .stats-sale:hover {
+        background-position: -58px -462px;
+      }
+      .stats-like, .stats-like:hover {
+        background-position: -58px -290px;
+      }
+      .stats-following, .stats-following:hover {
+        background-position: -57px -346px;
+      }
+      .stats-followers, .stats-followers:hover {
+        background-position: -60px -405px;
+      }
+    }
+    .follow-button {
+      float: right;
+      margin: 0;
+    }
+  }
+  // INVITE LANDING PAGE, OFFER PAGE
+  // =================================================
+  .invites_show {
+    .invite-text-container {
+      padding: 0px;
+      margin: 0px auto;
+      width: 100%;
+      position: static;
+      padding: 0px;
+      left: 0px;
+      top: 0px;
+      margin: 0px;
+      @include disable-box-shadow;
+    }
+  }
+}
+
+
+// sizing for all devices EXCEPT mobile (iphone)
+@media (min-width: 491px) {
+  // @include gridFluid($gridColumnWidth, $gridGutterWidth);
+  .hidden-desktop {
+    display: none !important;
+  }
+  /* we are not fully responsive yet.
+  This is to prevent the page from breaking when the window is minimized by the user */
+  .row-fluid {
+    min-width: 976px;
+    & > [class*="span"] {
+    }
+  }
+  .navbar {
+    .nav-collapse {
+      clear: none;
+      height: 44px !important;
+      overflow: visible !important;
+    }
+    .nav {
+      margin-bottom: 0;
+    }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      float: left;
+      li + li a {
+        margin-bottom: 0;
+      }
+      a {
+        @include border-radius(0px);
+      }
+    }
+  }
+  .navbar-form, .navbar-search {
+    border: none;
+    padding: 0;
+  }
+}
+
+// overriding bootstrap's default
+@media (min-width: 491px) and (max-width: 767px) {
+  .hidden-phone {
+    display: block;
+  }
+}
+
+// up to iphone (excludes iPad)
+@media (max-width: 767px) {
+  body {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .row {
+    margin-left: 0;
+  }
+  .navbar .nav {
+    margin-bottom: 0;
+  }
+  .navbar-search {
+    padding: 0;
+    margin: 0;
+    border: none;
+  }
+  .navbar .dropdown-menu {
+    position: absolute;
+    float: left;
+    display: none;
+    min-width: 160px;
+    padding: 4px 0;
+    margin: 0;
+    border: 1px solid $border;
+    border-top-width: 0;
+    margin-top: -1px;
+    background-color: white;
+    &:before, &:after {
+      display: block;
+    };
+  }
+  input[class*="span"], select[class*="span"], textarea[class*="span"], .uneditable-input {
+    /* this is because of the .listings_external_new_bookmarklet */
+    display: inline-block;
+    width: $mobileLandscapeWidth;
+  }
+}
+
+// ipad only
+@media (min-width: 768px) and (max-width: 1024px) {
+}
+
+// up to iPad
+@media (max-width: 1024px) {
+  .progress-bar-container {
+    margin-left: 0;
+    left: 211px;
+  }
+  /* prevent buttons from the purchase flow to extend out as 100%  */
+  .password_resets_new, .listings_purchase_shipping, .listings_purchase_credit, .listings_purchase_payment, .listings_purchase_create_shipping_address, .listings_purchase_sell {
+    .button.primary.large {
+      width: auto;
+    }
+  }
+  /* homepage collection carousel */
+  #collection-carousel .carousel-control {
+    &.left {
+      left: 0;
+      @include border-radius(0 3px 3px 0);
+    }
+    &.right {
+      right: 0;
+      @include border-radius(3px 0 0 3px);
+    }
+    &:hover {
+      @include opacity(1);
+    }
+  }
+}
+
+// desktop and up
+@media (min-width: 1025px) {
+  #hb-masthead .container, .feed-header-container, .home-user-container, #content-wrapper {
+    min-width: 940px;
+  }
+  /* LIH, search&browse */
+  .search-results-new.row, .users-results.row {
+    min-width: 960px;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px){ /* desktop users. accountable for 65% of our users */
+}
+
+// large desktop
+@media (min-width: 1241px) {
+  #hb-tray {
+    left: -270px;
+  }
+  #hb-tray.hb-auto {
+    left: 0px;
+    margin-left: 0px;
+    /* list of pages that do not use hamburger */
+    .password_resets_new &, .password_resets_create &, .login &, .home_signup & {
+      left: -270px;
+    }
+  }
+  .hb-auto {
+    margin-left: 270px;
+    /* list of pages that do not use hamburger */
+    .password_resets_new &, .password_resets_create &, .login &, .home_signup & {
+      margin-left: 0;
+    }
+  }
+}
+
+// larger desktop
+@media (min-width: 1281px) { /* larger desktop users. accountable for 35% of our users */
+}
+
+
+// 500 page served in bookmarklet window (width: 604px)
+@media (max-width: 605px) {
+  .server-error-page {
+    #error-message h3 {
+      margin-top: 20px;
+    }
+    #error-message-bg {
+      display: none;
+    }
+  }
+}

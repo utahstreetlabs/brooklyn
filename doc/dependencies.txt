@@ -1,0 +1,377 @@
+SyslogLogger 2.0, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/SyslogLogger-2.0/README.txt
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/SyslogLogger-2.0/README.txt
+actionmailer 3.1.12, MIT
+actionpack 3.1.12, MIT
+active_shipping 0.9.13.6.copious, MIT
+active_utils 1.0.1, MIT
+activemerchant 1.20.0, MIT
+activemodel 3.1.12, MIT
+activerecord 3.1.12, MIT
+activeresource 3.1.12, MIT
+activesupport 3.1.12, MIT
+activevalidators 1.9.0.3.copious, MIT
+acts_as_list 0.1.8, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/acts_as_list-0.1.8/README.md
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/acts_as_list-0.1.8/README.md
+addressable 2.2.8, Apache 2.0
+airbrake 3.1.2, MIT
+akami 1.2.0, MIT
+anchor 1.4.0, other
+  license files:
+  readme files:
+arel 2.2.3, MIT
+asset_sync 0.5.0, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/asset_sync-0.5.0/README.md
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/asset_sync-0.5.0/README.md
+attr_required 0.0.5, MIT
+attribute_normalizer 1.1.0, MIT
+awesome_print 1.1.0, MIT
+backbone-rails 0.9.2, MIT
+balanced 0.3.11.copious.1, MIT
+bartt-ssl_requirement 1.3.1, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/bartt-ssl_requirement-1.3.1/README
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/bartt-ssl_requirement-1.3.1/README
+bcrypt-ruby 3.0.1, MIT
+bootstrap-datepicker-rails 0.6.16, MIT
+bootstrap-sass 2.3.0.0, Apache 2.0
+bootstrap-slider-rails 2.0.0.1, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/bootstrap-slider-rails-2.0.0.1/README.md
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/bootstrap-slider-rails-2.0.0.1/README.md
+braintree 2.13.1, MIT
+bson 1.6.1, Apache 2.0
+bson_ext 1.6.1, other
+  license files:
+  readme files:
+builder 3.0.4, MIT
+bundler 1.2.4, MIT
+cancan 1.6.7, MIT
+capybara 2.0.2, MIT
+carmen 1.0.0.beta2, MIT
+carmen-rails 1.0.0.beta3, MIT
+carrierwave 0.5.8.copious.2, MIT
+chai-jquery-rails 0.0.3, MIT
+childprocess 0.3.9, MIT
+chromedriver-helper 0.0.2, MIT
+coffee-rails 3.1.1, MIT
+coffee-script 2.2.0, MIT
+coffee-script-source 1.2.0, other
+  license files:
+  readme files:
+colorize 0.5.8, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/colorize-0.5.8/README.rdoc
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/colorize-0.5.8/README.rdoc
+crack 0.3.2, MIT
+database_cleaner 0.7.0, MIT
+date_validator 0.6.3, MIT
+diff-lcs 1.1.3, MIT
+erubis 2.7.0, MIT
+escape 0.0.4, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/escape-0.0.4/Readme
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/escape-0.0.4/Readme
+excon 0.16.7, MIT
+execjs 1.2.13, MIT
+factory_girl 2.3.2, MIT
+factory_girl_rails 1.4.0, MIT
+faraday 0.8.4, MIT
+faraday_middleware 0.9.0, MIT
+fattr 2.2.0, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/fattr-2.2.0/LICENSE
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/fattr-2.2.0/README
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/fattr-2.2.0/README.erb
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/fattr-2.2.0/README
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/fattr-2.2.0/README.erb
+ffi 1.6.0, LGPL-3
+flyingdog 3.0.0, other
+  license files:
+  readme files:
+fog 1.7.0, MIT
+foreigner 1.2.1, MIT
+formatador 0.2.4, MIT
+ga_cookie_parser 0.1.0, MIT
+growl 1.0.3, MIT
+growl-rspec 0.0.1, MIT
+guard 0.8.8, MIT
+guard-rspec 0.5.8, MIT
+gyoku 0.4.6, MIT
+handlebars_assets 0.4.4, MIT
+hashie 1.2.0, MIT
+highline 1.6.8, ruby
+hike 1.2.1, MIT
+httmultiparty 0.3.10, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/httmultiparty-0.3.10/README.md
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/httmultiparty-0.3.10/README.md
+httparty 0.10.0, MIT
+httpclient 2.2.5, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/httpclient-2.2.5/README.txt
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/httpclient-2.2.5/README.txt
+httpi 1.1.1, MIT
+i18n 0.6.4, MIT
+instagram 0.8.5.copious, MIT
+jquery-rails 1.0.19, MIT
+jsend-rails 1.0.0, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/jsend-rails-1.0.0/README.md
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/jsend-rails-1.0.0/README.md
+json 1.7.7, Ruby
+json_pure 1.6.3, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/json_pure-1.6.3/COPYING
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/json_pure-1.6.3/COPYING-json-jruby
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/json_pure-1.6.3/README-json-jruby.markdown
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/json_pure-1.6.3/README.rdoc
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/json_pure-1.6.3/README-json-jruby.markdown
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/json_pure-1.6.3/README.rdoc
+kaminari 0.13.0, MIT
+konacha 2.3.0, MIT
+ladon 4.2.0, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/ladon-4.2.0/README.md
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/ladon-4.2.0/README.md
+lagunitas 2.7.0, other
+  license files:
+  readme files:
+launchy 2.0.5, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/launchy-2.0.5/LICENSE
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/launchy-2.0.5/README
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/launchy-2.0.5/README
+libv8 3.3.10.4, other
+  license files:
+  readme files:
+license_finder 0.3.0, MIT
+log_weasel 0.1.0, MIT
+mail 2.4.4, MIT
+metaclass 0.0.1, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/metaclass-0.0.1/README.md
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/metaclass-0.0.1/README.md
+mime-types 1.21, GPLv2
+mocha 0.13.2, MIT
+modernizr_rails 2.5.3, MIT
+mogli 0.0.44, other
+  license files:
+  readme files:
+money 3.7.1, MIT
+mongo 1.6.1, Apache 2.0
+multi_json 1.0.4, MIT
+multi_xml 0.5.2, MIT
+multipart-post 1.1.5, MIT
+mysql2 0.3.10, MIT
+net-scp 1.0.4, MIT
+net-ssh 2.6.1, MIT
+nokogiri 1.5.6, MIT
+nori 1.1.3, MIT
+oauth 0.4.5, MIT
+oauth2 0.5.2, MIT
+omniauth 1.0.3, MIT
+omniauth-facebook 1.2.0, MIT
+omniauth-instagram 1.0.0, MIT
+omniauth-oauth 1.0.1, MIT
+omniauth-oauth2 1.0.0, MIT
+omniauth-tumblr 1.1, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/omniauth-tumblr-1.1/README.md
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/omniauth-tumblr-1.1/README.md
+omniauth-twitter 0.0.9, MIT
+options 2.3.0, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/options-2.3.0/README
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/options-2.3.0/README.erb
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/options-2.3.0/README
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/options-2.3.0/README.erb
+parallel 0.5.11, MIT
+parallel_tests 0.6.16, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/parallel_tests-0.6.16/Readme.md
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/parallel_tests-0.6.16/Readme.md
+polyglot 0.3.3, MIT
+pr_geohash 1.0.0, MIT
+progress_bar 0.4.0, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/progress_bar-0.4.0/LICENSE
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/progress_bar-0.4.0/README.mkd
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/progress_bar-0.4.0/README.mkd
+pyramid 1.6.0, other
+  license files:
+  readme files:
+rack 1.3.10, MIT
+rack-cache 1.2, MIT
+rack-mount 0.8.3, MIT
+rack-multipart_related 0.2.0.copious.1, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rack-multipart_related-0.2.0.copious.1/README.md
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rack-multipart_related-0.2.0.copious.1/README.md
+rack-oauth2 0.14.4.copious.1, MIT
+rack-protection 1.2.0, MIT
+rack-ssl 1.3.3, MIT
+rack-test 0.6.2, MIT
+rails 3.1.12, other
+  license files:
+  readme files:
+rails-dev-tweaks 0.6.1, MIT
+railties 3.1.12, MIT
+rake 10.0.3, MIT
+rb-fsevent 0.9.0, MIT
+rcov 0.9.11, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rcov-0.9.11/LICENSE
+  readme files:
+rdoc 3.12.2, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rdoc-3.12.2/LICENSE.rdoc
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rdoc-3.12.2/README.rdoc
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rdoc-3.12.2/test/README
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rdoc-3.12.2/README.rdoc
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rdoc-3.12.2/test/README
+recaptcha 0.3.4, MIT
+redhook 2.0.0, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/redhook-2.0.0/README.md
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/redhook-2.0.0/README.md
+redis 3.0.2, MIT
+redis-namespace 1.2.1, MIT
+redis-objects 0.5.2, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/redis-objects-0.5.2/README.rdoc
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/redis-objects-0.5.2/README.rdoc
+resque 1.23.0, MIT
+resque-pool 0.3.0, MIT
+resque-retry 0.2.2, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-retry-0.2.2/LICENSE
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-retry-0.2.2/README.md
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/resque-retry-0.2.2/README.md
+resque-scheduler 1.9.9, MIT
+resque-unique-job 0.0.1, MIT
+risingtide 0.6.0, other
+  license files:
+  readme files:
+rmagick 2.13.2, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rmagick-2.13.2/README-Mac-OSX.txt
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rmagick-2.13.2/README.html
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rmagick-2.13.2/README-Mac-OSX.txt
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rmagick-2.13.2/README.html
+rpx_now 0.6.24, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rpx_now-0.6.24/Readme.md
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rpx_now-0.6.24/Readme.md
+rsolr 1.0.6, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rsolr-1.0.6/LICENSE
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rsolr-1.0.6/README.rdoc
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/rsolr-1.0.6/README.rdoc
+rspec 2.12.0, MIT
+rspec-core 2.12.2, MIT
+rspec-expectations 2.12.1, MIT
+rspec-mocks 2.12.2, MIT
+rspec-rails 2.12.2, MIT
+rubicon 2.0.0, other
+  license files:
+  readme files:
+ruby-graphviz 1.0.0, MIT
+ruby-hmac 0.4.0, MIT
+rubyzip 0.9.9, ruby
+rufus-scheduler 2.0.16, MIT
+sass 3.2.5, MIT
+sass-rails 3.1.7, MIT
+savon 1.1.0, MIT
+seed-fu 2.1.0, MIT
+selenium-webdriver 2.31.0, Apache 2.0
+sendgrid 1.0.1, MIT
+session_off 0.4, Apache 2.0
+simple_oauth 0.2.0, MIT
+sinatra 1.3.3, MIT
+sinon-chai-rails 1.0.3, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sinon-chai-rails-1.0.3/README.md
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/sinon-chai-rails-1.0.3/README.md
+sinon-rails 1.4.2.1, MIT
+spork 0.9.0.rc9, MIT
+sprockets 2.0.4, MIT
+stamps 0.2.0.copious.7, MIT
+state_machine 1.1.0, MIT
+sunspot 1.3.0, MIT
+sunspot_rails 1.3.0, MIT
+therubyracer 0.9.9, MIT
+thor 0.14.6, MIT
+thrift 0.9.0, Apache 2.0
+thrift_client 0.9.0, Apache 2.0
+tilt 1.3.6, MIT
+timecop 0.3.5, MIT
+treetop 1.4.12, MIT
+trollop 1.16.2, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/trollop-1.16.2/README.txt
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/trollop-1.16.2/README.txt
+tumblife 0.3.1, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/tumblife-0.3.1/README.rdoc
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/tumblife-0.3.1/README.rdoc
+twitter 2.2.0, MIT
+typhoeus 0.2.4.2.copious, MIT
+tzinfo 0.3.37, MIT
+uglifier 1.2.1, MIT
+useragent 0.4.10, MIT
+vanity 1.8.0.copious.1, MIT
+vegas 0.1.11, MIT
+viva-app_config 1.2.0, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/viva-app_config-1.2.0/README.rdoc
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/viva-app_config-1.2.0/README.rdoc
+wasabi 2.5.0, MIT
+webmock 1.7.8, MIT
+websocket 1.0.7, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/websocket-1.0.7/README.md
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/websocket-1.0.7/README.md
+weighted_randomizer 0.1.2, MIT
+xpath 1.0.0, other
+  license files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/xpath-1.0.0/README.md
+  readme files:
+    ~/.rvm/gems/ruby-1.9.3-p0@brooklyn/gems/xpath-1.0.0/README.md
+yajl-ruby 1.1.0, MIT

@@ -1,0 +1,54 @@
+<%= render '/layouts/top' %>
+
+<div id="sidebar" class="span3">
+  <div class="section profile-picture">
+    <%= user_avatar_medium current_user, :class => ' text-adjacent' %>
+    <h4><%= current_user.name %></h4>
+    <span class="joined kill-margin"> Joined <%= date current_user.registered_at %></span>
+    <% if feature_enabled?(:feedback) %>
+      <%= content_tag :div, id: 'feedback-summary' do %>
+        <%= feedback_summary current_user %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="section market-place">
+    <h2 class="sub-header">Marketplace</h2>
+    <%= link_to '+ Create a Listing', listings_path, id: "sell_button", class: "button button-block", method: :POST %>
+    <ul class="nav nav-vertical-list less-spacing">
+      <%= nav_li 'For sale:', for_sale_dashboard_path do %>
+        <%= @listing_counts.fetch(:active, 0) %>
+      <% end %>
+      <%= nav_li 'Inactive:', inactive_dashboard_path do %>
+        <%= @listing_counts.fetch(:inactive, 0) %>
+      <% end %>
+      <%= nav_li 'Draft:', draft_dashboard_path do %>
+        <%= @listing_counts.fetch(:incomplete, 0) %>
+      <% end %>
+      <%= nav_li 'Suspended:', suspended_dashboard_path do %>
+        <%= @listing_counts.fetch(:suspended, 0) %>
+      <% end %>
+      <%= nav_li 'Sold:', sold_dashboard_path do %>
+        <%= @listing_counts.fetch(:sold, 0) %>
+      <% end %>
+      <%= nav_li 'Bought:', bought_dashboard_path do %>
+        <%= @listing_counts.fetch(:bought, 0) %>
+      <% end %>
+      <% if current_user.balanced_account? %>
+        <ul class="nav nav-vertical-list less-spacing margin-top">
+          <%= nav_li 'Transaction History', dashboard_transactions_path %>
+        </ul>
+      <% end %>
+    </ul>
+  </div>
+  <div class='section networks'>
+    <h2 class="sub-header">Your Social Networks</h2>
+    <%= social_networks current_user.person.network_profiles %>
+  </div>
+</div>
+
+<div id="main-content" class="span9">
+  <%= yield %>
+</div>
+
+<%= render 'shared/ajax_overlay' %>
+<%= render '/layouts/bottom' %>

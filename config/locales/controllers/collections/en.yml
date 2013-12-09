@@ -1,0 +1,14 @@
+en:
+  controllers:
+    collections:
+      listings:
+        no_collection: "Oops, something's wrong with that collection. Please try again."
+        no_listing: "Oops, something's wrong with that listing. Please try again."
+      follow:
+        no_collection: "Oops, something's wrong with that collection. Please try again."
+      saved: 'Your collection has been updated.'
+      deleted: 'Your collection has been successfully deleted.'
+      edit:
+        success_modal:
+          title: "Collection Updated"
+          more_from_seller: "Other listings you might be interested in."

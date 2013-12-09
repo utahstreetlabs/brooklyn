@@ -1,0 +1,1 @@
+class InterestFollow < Follow; end

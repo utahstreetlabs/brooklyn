@@ -1,0 +1,15 @@
+en:
+  shared:
+    profile_form:
+      title: "Create your Copious Profile"
+      create_profile_html: "Create a profile to get started."
+      profile: "Profile"
+      tags: "Tags"
+      people: "People"
+      email: "E-mail"
+      confirm_password: "Confirm Password"
+      help_text: "Enter a valid e-mail address (we won't share it)"
+      password: "Password"
+      create_your_profile: "Create Your Profile"
+      email_error_message: "You must enter your email address."
+      interests: "Interests"

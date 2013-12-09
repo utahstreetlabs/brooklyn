@@ -1,0 +1,16 @@
+#= require jquery/jquery.tagsinput
+
+jQuery () ->
+  $("#listing_tags").tagsInput ({
+    defaultText: ""
+    autocomplete_url: "<%= Brooklyn::Application.routes.url_helpers.autocomplete_tags_path %>"
+    unique: false
+  })
+  # The typeahead lib stops propogation of the "enter" keypress.  Instead of
+  # overriding it, I'm hooking into the input field change to trigger an event.
+  # The delay here is because there's a slight lag between the event keypress and
+  # the field being populated.
+  $('#listing_tags_tag').on 'change', (event) ->
+    delay = () ->
+      $('#listing_tags_tag').blur().focus()
+    setTimeout delay, 20

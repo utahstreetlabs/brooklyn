@@ -1,0 +1,17 @@
+@mixin glassy {
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, transparentize($white, .2)), color-stop(0.4, transparentize($white, .2)), color-stop(0.5, transparentize($white, 0)));
+  background-image: -moz-linear-gradient(top, transparentize($white, .2) 0%, transparentize($white, .2) 40%, transparentize($white, 0) 50%);
+  // filter:  progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff33', EndColorStr='#ffffff00')
+  // -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff33', EndColorStr='#ffffff00}')"
+}
+
+@mixin bevel($color: $white, $weight: 2) {
+  @if darken($color, 50%) == $black {
+    $bevel_color: transparentize($white, .3 * $weight);
+    @include text-shadow(0 1px 1px $bevel_color);
+  }
+  @else {
+    $bevel_color: transparentize($black, .2 * $weight);
+    @include text-shadow(0 -1px 1px $bevel_color);
+  }
+}

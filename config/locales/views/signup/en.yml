@@ -1,0 +1,18 @@
+en:
+  signup:
+    buyer:
+      profiles:
+        new:
+          title: "Create your Copious Profile"
+
+      interests:
+        index:
+          title: "Choose your interests"
+          description: "Select a few things you like, so we can suggest popular collections and interesting people for you to follow."
+
+  new_profile:
+    modal:
+      title: Welcome!
+      personalized_title: Welcome %{username}!
+      save:
+        label: Continue

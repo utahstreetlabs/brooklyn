@@ -1,0 +1,35 @@
+WINDOW_OPEN_RETRY_SECS = 1
+
+class window.Popup
+  constructor: (path, features) ->
+    @path = path
+    @features = features
+    @originUrl = "#{window.location.protocol}//#{window.location.host}"
+    @destinationUrl = 'http://<%= Brooklyn::Application.config.bookmarklet.domain %>'
+    @trackedWindows = {}
+    if window.addEventListener
+      window.addEventListener('message', this.onMessage, false)
+    else if window.attachEvent
+      window.attachEvent('message', this.onMessage, false)
+
+  openUniquePopup: (success) =>
+    @success = success
+    this.checkIfOpen()
+
+  sendData: (data) =>
+    @popUp.postMessage(data, @destinationUrl) if @popUp
+
+  checkIfOpen: =>
+    unless @trackedWindows[@originUrl]
+      @popUp ?= window.open("#{@destinationUrl}#{@path}", @originUrl, @features)
+      @popUp.postMessage('ping', @destinationUrl)
+      setTimeout(this.checkIfOpen, WINDOW_OPEN_RETRY_SECS * 1000)
+
+  onMessage: (e) =>
+    if e.origin == @destinationUrl
+      if e.data == 'ready'
+        @trackedWindows[@originUrl] = true
+        @success()
+      else if e.data == 'close'
+        @popUp.close() if @popUp
+

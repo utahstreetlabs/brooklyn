@@ -1,0 +1,10 @@
+<% title "Admin: Edit #{@interest.name_was}" %>
+
+<%= bootstrap_breadcrumb [
+  ['Admin', admin_dashboard_path],
+  ['Interests', admin_interests_path],
+  [@interest.name_was, admin_interest_path(@interest.id)],
+  'Edit'
+] %>
+
+<%= render 'form', interest: @interest, url: admin_interest_path(@interest.id), cancel_url: admin_interests_path %>

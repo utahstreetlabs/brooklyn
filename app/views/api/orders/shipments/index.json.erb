@@ -1,0 +1,16 @@
+{ 
+  "shipment": {
+    "order": {
+      "reference": <%= raw  @listing.order.reference_number.to_json %>,
+      "link": <%= raw api_order_url(@shipment.order.reference_number).to_json %>
+    },
+    "carrier": <%= raw @shipment.carrier_name.to_json %>,
+    "tracking_number": <%= raw @shipment.tracking_number.to_json %>
+    <% if @shipment.created_at%>
+      ,"shipping_time": <%= raw @shipment.created_at.to_time.to_i.to_json %>
+    <% end %>
+    <% if @shipment.delivered_at %>
+      ,"delivery_time": <%= @shipment.delivered_at.to_time.to_i.to_json %>
+    <% end %>
+  }
+}

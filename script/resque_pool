@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Load RVM into the shell
+source "$HOME/.rvm/scripts/rvm"
+
+# head to the parent directory of this script
+cd $(dirname $0)/../
+
+# Start the resque scheduler
+bundle exec resque-pool --environment $RAILS_ENV

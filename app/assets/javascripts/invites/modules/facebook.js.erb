@@ -1,0 +1,98 @@
+/*
+ * when the page is first rendered, we have a search form, an empty container for friend boxes, and an invite form.
+ *
+ * when the user searches for friends by name, the results are formatted as friend boxes and inserted into the friend
+ * box container. also some status text is revealed showing selection state.
+ *
+ * when the user rolls over a friend box, it gains highlight state. when the user clicks a friend box, it gains
+ * select state and the status text is updated with the new count of selected friends. when the user clicks a selected
+ * friend box, it loses select state and the status text is again updated.
+ *
+ * the invite form's button is disabled until at least one friend box is selected.
+ *
+ * when the user submits the invite form, an input is added to the form for reach selected friend box.
+ */
+jQuery(function($) {
+  var $search = $('#fb-friend-search');
+  var $searchForm = $('form', $search);
+  var $statusText = $('#status-text', $search);
+  var $numSelected = $('#num-selected', $statusText);
+  var $friendBoxes = $('#friend-boxes');
+  var friendBoxSelector = '.friend-box';
+  var selectedMax = $friendBoxes.data('max');
+  var selectedCount = 0;
+  var $invite = $('#fb-friend-invite');
+  var $inviteForm = $('form', $invite);
+  var $inviteButton = $('[data-action="invite"]', $inviteForm);
+
+  $.remoteForm.initRemoteForm($search);
+  $inviteButton.attr('disabled', true);
+
+  // lots of stuff to do before sending the search request
+  $searchForm.bind('ajax:before', function() {
+    selectedCount = 0;
+    $friendBoxes.trigger('friend:selected', [selectedCount]);
+    $statusText.hide();
+    $friendBoxes.html('');
+  });
+
+  // update the friend boxes container and show the status text when the search form returns successfully
+  $searchForm.bind('jsend:success', function(e, data) {
+    if (data.results) {
+      $friendBoxes.html(data.results);
+      $statusText.show();
+      var scrollable = $friendBoxes.closest('.scrollable').data('scrollable');
+      if (scrollable) scrollable.refresh();
+    }
+  })
+
+  // toggle the highlight state of a friend box when rolling over it
+  $(friendBoxSelector, $friendBoxes).live('mouseenter mouseleave', function() {
+    $(this).toggleClass('friend-box-highlight');
+  });
+
+  // toggle the select state of a friend box and update the status text when rolling over the box
+  $(friendBoxSelector, $friendBoxes).live('click', function() {
+    var $box = $(this);
+    if ($box.hasClass('friend-box-selected')) {
+      $box.removeClass('friend-box-selected');
+      $friendBoxes.trigger('friend:selected', [{count: --selectedCount}]);
+      if (selectedCount == 0) {
+        $inviteButton.attr('disabled', true);
+      }
+    } else {
+      if (selectedCount < selectedMax) {
+        $box.addClass('friend-box-selected');
+        $friendBoxes.trigger('friend:selected', [{count: ++selectedCount}]);
+        $inviteButton.removeAttr('disabled');
+      }
+    }
+    // prevent the event from bubbling up so the above only happens once per click
+    return false;
+  });
+
+  // update the status text whenever the selected count changes
+  $friendBoxes.bind('friend:selected', function(e, data) {
+    $numSelected.html(data.count);
+  });
+
+  $inviteButton.on('click', function() {
+    // Before sending the request, make sure we have the right permissions.
+    fbEnsurePermission('publish_stream').
+      done(function() { $inviteForm.submit(); }).
+      fail(function() { copious.flash.alert('<%= I18n.t("controllers.invites.facebook.error_permissions") %>') });
+    return false;
+  });
+
+  // add inputs to the form for each selected friend box when the form is submitted
+  $inviteForm.bind('submit', function() {
+    var $friendBoxes = $(friendBoxSelector, $friendBoxes);
+    $friendBoxes.each(function() {
+      var $box = $(this);
+      if ($box.hasClass('friend-box-selected')) {
+        var input = $("<input>").attr("type", "hidden").attr("name", "invite[id][]").val($box.data('profile'));
+        $inviteForm.append($(input));
+      }
+    });
+  });
+});

@@ -1,0 +1,80 @@
+<%= bootstrap_form_for offer, url: url, html: {multipart: true} do |f| %>
+  <%= f.text_field :name, 'Offer Name', required: true, maxlength: 255 do %>
+    Appears in <em>Details</em> of <em>My Credits</em>.
+  <% end %>
+  <%= f.text_field :descriptor, 'Offer Descriptor', required: true, maxlength: 255 do %>
+    Appears in notifications, credit reminder emails, message blocks.
+  <% end %>
+  <%= f.text_field :ab_tag, 'A/B Experiment (optional)', maxlength: 255 do %>
+    Use Vanity test ID if applicable. Leave blank otherwise. e.g. <tt>ten_for_50</tt>
+  <% end %>
+  <%= f.text_field :uuid, 'Slug', required: true, maxlength: 64, disabled: offer.persisted? do %>
+    Does this offer need a custom URL, e.g. Instyle magazine? If so, enter the part after <tt>http://copious.com/offers/</tt> here. Leave blank otherwise to have an offer ID assigned by the system.
+  <% end %>
+  <%= f.text_field :destination_url, 'Destination URL (optional)', maxlength: 255 do %>
+    Where the user goes after completing offer acceptance. Defaults to logged in home if left blank. Use <tt>https:</tt> if you want to go to a logged in page.
+  <% end %>
+  <%= f.text_field :info_url, 'Info URL (optional)' do %>
+    More information link for signup offers. Leave blank otherwise.
+  <% end %>
+  <%= f.text_field :available, 'Number Available', required: true, maxlength: 40 %>
+  <%= f.text_field :amount, 'Dollar Value', required: true, maxlength: 40,
+                   value: number_to_unitless_currency(f.object.amount) %>
+  <%= f.text_field :minimum_purchase, 'Minimum Purchase', required: true, maxlength: 40,
+                   value: number_to_unitless_currency(f.object.minimum_purchase) do %>
+    How much needs to be spent for the credits to be applicable.
+  <% end %>
+  <%= f.text_field :seller_slugs, 'Seller Slugs (optional)', maxlength: 255 do %>
+    If this offer is limited to a selected group of sellers, enter their slugs separated by commas, e.g. <tt>jim-rose</tt>. Otherwise, defaults to all sellers.
+  <% end %>
+  <%= f.text_field :tag_slugs, 'Tag Slugs (optional)', maxlength: 255 do %>
+    <p>If this offer is limited to a select group of tags, enter the slugs separated by commas, e.g. <tt>leopard-print</tt>. Otherwise, defaults to all listings.</p>
+    <p>NOTE - If multiple sellers and/or tags are selected, it's the union of the two sets, not the intersection. So Linda's Stuff and leopard print are all of Linda's listings AND all leopard print listings.</p>
+  <% end %>
+  <%= f.text_field :duration, 'Credit Duration', required: true do %>
+    Minutes after accepting the offer that the credits expire. 1 day = 1440 minutes.
+  <% end %>
+  <%= f.datetime_select :expires_at, 'Offer Expiration (optional)', start_year: Date.current.year,
+      ampm: true, prompt: true do %>
+    Time (<%= Time.zone.name %>) at which the offer expires and credits can no longer be earned. Credits will expire according to their settings.
+  <% end %>
+  <%= f.text_field :landing_page_headline, 'Offer Landing Page Headline', maxlength: 255 do %>
+    Shown on landing page. e.g. <tt>Congratulations and Welcome to Copious.</tt>
+  <% end %>
+  <%= f.text_area :landing_page_text, 'Offer Landing Page Text' do %>
+    This is the main body text. Make sure to include any offer specifics. Use <tt><span style="white-space:nowrap">%{amount}</span></tt> to have the amount dynamically inserted and <tt><span style="white-space:nowrap">%{sellers}</span></tt> for a list of seller names.
+  <% end %>
+  <%= f.file_field :landing_page_background_photo, 'Offer Landing Page Background Photo' do %>
+    <%= image_tag(@offer.landing_page_background_photo.px_70x70.url) if @offer.landing_page_background_photo? %>
+    Upload a new background image. The image will be resized to 1400px by 900px.
+  <% end %>
+  <%= f.hidden_field :landing_page_background_photo_cache %>
+  <%= f.text_field :fb_story_name, 'Facebook Feed Story Name', maxlength: 255 do %>
+    The linked name of the story posted to the user's Facebook feed.
+  <% end %>
+  <%= f.text_field :fb_story_caption, 'Facebook Feed Story Caption', maxlength: 255 do %>
+    The subtitle text in the Facebook feed story.
+  <% end %>
+  <%= f.text_area :fb_story_description, 'Facebook Feed Story Description' do %>
+    The text block that appears in the Facebook feed story.
+  <% end %>
+  <%= f.file_field :fb_story_image, 'Facebook Feed Story Image', required: !@offer.fb_story_image? do %>
+    <%= image_tag(@offer.fb_story_image.px_70x70.url) if @offer.fb_story_image? %>
+    Upload a feed image. The image must be at least 50px by 50px and have a maximum aspect ratio of 3:1.
+  <% end %>
+  <%= f.hidden_field :fb_story_image_cache %>
+  <%= f.toggle_group :eligibility, 'Who can qualify for this offer?' do %>
+    <%= f.check_box :new_users, 'New users', data: {toggle: 'cc-checkbox', href: '#collapse-new-users'} %>
+    <%= content_tag_hidden_unless @offer.new_users?, :div, id: 'collapse-new-users' do %>
+      <%= f.check_box :signup, 'Signup offer (visible in logged out message blocks)' %>
+    <% end %>
+    <%= f.check_box :existing_users, 'Existing users',
+                    data: {toggle: 'cc-checkbox', href: '#collapse-existing-users'} %>
+    <%= content_tag_hidden_unless @offer.existing_users?, :div, id: 'collapse-existing-users' do %>
+      <%= f.check_box :no_purchase_users, 'Users who have not made a purchase' %>
+      <%= f.check_box :no_credit_users, 'Users who have a $0 credit balance' %>
+    <% end %>
+  <% end %>
+  <%= f.submit %>
+  <%= f.cancel admin_offers_path %>
+<% end %>

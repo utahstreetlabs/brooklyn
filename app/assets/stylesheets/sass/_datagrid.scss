@@ -1,0 +1,13 @@
+th .datagrid-header-selected {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+th .datagrid-header-asc {
+  background-image: image-url("datagrid/up_arrow.gif"); }
+
+th .datagrid-header-desc {
+  background-image: image-url("datagrid/down_arrow.gif"); }

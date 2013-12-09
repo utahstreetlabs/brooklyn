@@ -1,0 +1,119 @@
+<% title "Admin: #{@interest.name}" %>
+
+<%= bootstrap_breadcrumb [
+  ['Admin', admin_dashboard_path],
+  ['All interests', admin_interests_path],
+  @interest.name
+] %>
+
+<div class="row">
+  <%= content_tag :div, data: {role: :cover_photo}, class: 'span3' do %>
+    <%= image_tag(@interest.cover_photo? ? @interest.cover_photo.px_220x220.url :
+                  'icons/profile_photo/px_190x190___default__.png', height: 220, width: 220) %>
+  <% end %>
+
+  <div class="span9">
+    <%= bootstrap_table condensed: true do %>
+      <tr>
+        <td class="span4">Created at</td>
+        <td><%= datetime @interest.created_at %></td>
+      </tr>
+      <tr>
+        <td>Last updated at</td>
+        <td><%= datetime @interest.updated_at %></td>
+      </tr>
+      <tr>
+        <td>Gender</td>
+        <td><%= admin_interest_gender @interest.gender %></td>
+      </tr>
+      <tr>
+        <td>Suggested user count</td>
+        <td><%= @interest.suggested_user_count %></td>
+      </tr>
+      <tr>
+        <td>Autofollow collection count</td>
+        <td><%= @interest.autofollows.count %></td>
+      </tr>
+      <tr>
+        <td>Onboarding?</td>
+        <td><%= yes_no @interest.onboarding? %></td>
+      </tr>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span9">
+    <%= bootstrap_button_group do %>
+      <%= bootstrap_button 'Edit', edit_admin_interest_path(@interest.id), icon: 'edit' %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span9">
+    <h2>Autofollow collections</h2>
+
+    <% if @collections.any? %>
+      <%= bootstrap_table condensed: true do %>
+        <tbody>
+          <% @collections.each do |collection| %>
+            <%= content_tag :tr, data: {collection: collection.id, role: 'collection'} do %>
+              <td>
+                <% if collection.listings.last && collection.listings.last.photos.any? %>
+                  <%= link_to(listing_photo_tag(collection.listings.last.photos.first, :small),
+                    public_profile_collection_path(collection.user, collection)) %>
+                <% end %>
+              </td>
+              <td><%= collection.name %></td>
+              <td><%= collection.user.name %></td>
+              <td>Followers: <%= collection.follower_count %></td>
+              <td>
+                <%= bootstrap_button_group do %>
+                  <%= bootstrap_button nil, admin_interest_collection_path(@interest, collection.id),
+                        condition: :danger, size: :mini, icon: :remove, inverted_icon: true, rel: :tooltip,
+                        title: "Remove #{collection.name}",
+                        data: {method: :delete, action: :delete, confirm: 'Are you sure you want to remove this collection?'} %>
+                <% end %>
+              </td>
+            <% end %>
+          <% end %>
+        </tbody>
+      <% end %>
+    <% else %>
+      <p>No collections have been added to the list yet. <%= link_to 'Find one to add', admin_collections_path %>.</p>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span9">
+    <h2>Suggested users</h2>
+
+    <% if @users.any? %>
+      <p>Reorder by dragging and dropping in the list.</p>
+
+      <%= bootstrap_table condensed: true, data: {role: 'sortable-table'} do %>
+        <tbody>
+          <% @users.each do |user| %>
+            <%= content_tag :tr, data: {user: user.id, role: 'user',
+                  :'reorder-url' => reorder_admin_interest_user_path(@interest, user.id)} do %>
+              <td class="span2"><%= user_avatar_medium(user) %></td>
+              <td class="span6"><%= user.name %></td>
+              <td>
+                <%= bootstrap_button_group do %>
+                  <%= bootstrap_button nil, admin_interest_user_path(@interest, user.id),
+                        condition: :danger, size: :mini, icon: :remove, inverted_icon: true, rel: :tooltip,
+                        title: "Remove #{user.name}",
+                        data: {method: :delete, action: :delete, confirm: 'Are you sure you want to remove this user?'} %>
+                <% end %>
+              </td>
+            <% end %>
+          <% end %>
+        </tbody>
+      <% end %>
+    <% else %>
+      <p>No users have been added to the list yet. <%= link_to 'Find one to add', admin_users_path %>.</p>
+    <% end %>
+  </div>
+</div>

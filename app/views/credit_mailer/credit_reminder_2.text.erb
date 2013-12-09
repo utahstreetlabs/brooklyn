@@ -1,0 +1,14 @@
+<%=
+offer_text = " #{@credit.offer.descriptor}" if @credit.offer
+word_wrap %Q[
+Hi #{@user.firstname},
+
+You're almost out of time to spend the #{@credit_amount} in credit you earned#{offer_text}. There are only #{@hours_remaining} left!
+
+Don't walk away empty-handed.
+
+Get something you love at #{rewrite_mailer_url root_url}.
+
+Happy hunting,] %>
+
+<%= render '/shared_mailer/footer' %>

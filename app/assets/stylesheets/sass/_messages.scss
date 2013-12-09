@@ -1,0 +1,398 @@
+.messages {
+  position: fixed;
+  width: inherit;
+  top: 70px;
+  left: 50%;
+  margin-left: -470px;
+  z-index: $zin-modal-content;
+  /* freezing till the tutorial bar comes back */
+  /*&.ff-tutorial-bar {
+    min-height: 20px;
+  }*/
+  .hamburger-opened & {
+    margin-left: -335px;
+  }
+}
+
+.homepage_logged_in { /* cage the min-height to feed page only cuz tutorial only seen there */
+  .messages.ff-tutorial-bar {
+    &.contains-tutorial-bar {
+      /* freezing till the tutorial bar comes back */
+      //min-height: 350px;
+    }
+  }
+}
+
+// erase this once the backend is ready to generate this in .messages
+div.block-message-notice {
+  background-color: #f5fbff;
+  margin-bottom: 16px;
+  padding: 16px;
+  color: #123456;
+  border: 3px solid #c7ebff;
+  span.block-message-text {
+    display: block; }
+  h3 {
+    color: #123456;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: -1px; }
+  h4 {
+    margin-top: 23px;
+    display: inline-block;
+    color: #123456; }
+  a.button.primary.facebook {
+    display: inline-block;
+    margin-left: 16px;
+    top: -2px;
+    img {
+      width: 21px;
+      height: 21px; } } }
+
+.bottom-position {
+  margin-top: 40px;
+  margin-bottom: 0px; }
+
+
+// TOP-MESSAGE BOX
+.top-message {
+  @extend .span12;
+  padding: 9px 16px 12px;
+  margin: 0px 0px 16px;
+  border: 1px solid #A0E8F8;
+  @include border-radius(5px);
+  -webkit-box-shadow: rgba(255,255,255,0.5) -1px -1px 0px inset, white 1px 1px 0px inset, #dddddd -1px -1px 2px inset, #EAEAEA 0px 1px 3px 1px;
+  -moz-box-shadow: rgba(255,255,255,0.5) -1px -1px 0px inset, white 1px 1px 0px inset, #dddddd -1px -1px 2px inset, #EAEAEA 0px 1px 3px 1px;
+  box-shadow: rgba(255,255,255,0.5) -1px -1px 0px inset, white 1px 1px 0px inset, #dddddd -1px -1px 2px inset, #EAEAEA 0px 1px 3px 1px;
+  background-color: transparentize(#CDEFFE, .5);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#E6F7FF), color-stop(25%, #E6F7FF), to(#D2F1FF));
+  background-image: -webkit-linear-gradient(#E6F7FF, #E6F7FF 29%, #D2F1FF);
+  background-image: -moz-linear-gradient(top, #E6F7FF, #E6F7FF 25%, #D2F1FF);
+  background-image: -ms-linear-gradient(#E6F7FF, #E6F7FF 25%, #D2F1FF);
+  background-image: -o-linear-gradient(#E6F7FF, #E6F7FF 25%, #D2F1FF);
+  background-image: linear-gradient(#E6F7FF, #E6F7FF 25%, #D2F1FF);
+  background-repeat: no-repeat;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#E6F7FF', endColorstr='#D2F1FF', GradientType=0);
+  h3 {
+    padding-top: 0px;
+    line-height: 25px;
+  }
+  h2 {
+    margin-top: 10px;
+  }
+  form {
+    margin-bottom: 5px;
+  }
+}
+
+.row > .top-message {
+  margin-left: 16px;
+}
+
+
+// 404 PAGE
+.home_not_found, .root_show {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  @include gradient-radial(#EDE4D1, #F3EAE4);
+}
+// 500 PAGE
+.server-error-page {
+  background-color: #ECE9E6;
+}
+#error-message {
+  background-image: image-url("error/404.png");
+  background-repeat: no-repeat;
+  background-position: center 58px;
+  min-height: 630px;
+  width: 850px;
+  position: relative;
+  left: 50%;
+  margin-left: -425px;
+  padding-bottom: 360px;
+  text-align: center;
+  h3 {
+    padding: 0;
+  }
+  .server-error-page & {
+    background-image: image-url("error/500.png");
+    background-position: center 91px;
+  }
+}
+#error-message-bg {
+  position: fixed;
+  width: 100%;
+  height: 550px;
+  left: 0;
+  right: 0;
+  top: 50%;
+  margin-top: -348px;
+  background-image: image-url("error/500-bg.gif");
+  z-index: -1;
+}
+
+// general styling
+.warning {
+  color: #9B7F0B;
+  background-color: #FCF4CB;
+  border: 1px solid #EAD88B;
+}
+
+
+// BANNERS
+.promo-banner {
+  position: relative;
+  width: $gridRowWidth;
+  margin: -5px 0px 30px 16px;
+  #main-content.span12 & {
+    margin-left: 0px;
+  }
+  .text-link {
+    color: $white;
+    font-style: italic;
+    opacity: 0.8;
+  }
+  &:hover {
+    .text-link {
+      opacity: 1;
+    }
+  }
+}
+
+.top-cta {
+  display: block;
+  width: 100%;
+  padding: 15px 20px 20px;
+  margin-bottom: 16px;
+  background: #EEF8FB;
+  @include border-radius(3px);
+  > h1 {
+    font-size: 26px;
+    font-weight: 500;
+    margin: 0px 0px 10px;
+  }
+  > p {
+    margin-bottom: 16px;
+  }
+}
+
+
+// INVITE BANNER
+.invite-banner {
+  width: 604px;
+  height: 100px;
+  padding: 16px 25px;
+  background: #ECF7FA;
+  @include new-button-shadow;
+  margin: -20px auto 16px;
+  text-align: center;
+  &.ff-tutorial-bar {
+    margin-top: 0;
+  }
+  p {
+    font-family: $sansserifFontFamily;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 400;
+    color: $new-text-gray;
+    margin-bottom: 8px;
+    strong {
+      font-weight: 600;
+      color: $new-header;
+    }
+  }
+  .xlarge {
+    min-width: 200px;
+  }
+  .invite-banner-content {
+    background-image: image-url("icons/invite-banner-graphic.png");
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+    padding-left: 70px;
+    width: 100%;
+    height: 70px;
+  }
+}
+
+// AFFIX
+//------------------------------------------------------------------------------------
+.affix-container {
+  /* set the height of this cuz once .sticky-strip gets sticky, it loses its height
+     pushing all the content up. */
+  &.tutorial {
+    /* freezing till the tutorial bar comes back */
+    display: none;
+    //min-height: 40px;
+  }
+}
+
+// animation/ix for sticky-strip
+.sticky-strip {
+  .tutorial & { /* for tutorial */
+    height: 327px;
+    background-color: #2C2C32;
+    &.affix-top { /* expand when on top of the screen */
+      overflow: hidden;
+      width: 100%; /* for ff only */
+      @include box-shadow($header-shadow);
+      .tutorial-example-love, .tutorial-example-comment, .tutorial-example-invite {
+        margin-top: 0px;
+      }
+    }
+    &.affix { /* collapse */
+      height: 45px;
+      overflow: hidden;
+      @include box-shadow($header-shadow-less);
+      .tutorial-example-love, .tutorial-example-comment, .tutorial-example-invite {
+        margin-top: -180px;
+      }
+      .sticky-strip-header-container {
+        display: none;
+      }
+      &:hover {
+        -webkit-transition: 0.5s;
+        height: 226px;
+        overflow: hidden;
+        .tutorial-example-love, .tutorial-example-comment, .tutorial-example-invite {
+          -webkit-transition: 0.5s;
+          margin-top: 0;
+        }
+      };
+    }
+  }
+}
+
+// TUTORIAL
+.tutorial-example-love, .tutorial-example-comment, .tutorial-example-invite {
+  position: relative;
+  height: 180px;
+  background: #232328;
+}
+
+.sticky-strip-content {
+  /* need to make the width of the screen variable responsive, cuz width needs to be defined to have this centered */
+  width: $gridRowWidth; /* 940px */
+  margin: 0 auto;
+}
+
+.sticky-strip {
+  z-index: $zin-checkout-right-pane;
+  .strip-header {
+    font-weight: 400;
+    font-size: 24px;
+    color: white;
+    margin: 8px 0px;
+    display: inline-block;
+  }
+  .strip-text {
+    color: #9ba0a3; /* gray for text on sticky */
+    font-size: 14px;
+  }
+}
+
+.tutorial-steps {
+  width: 100%;
+  min-height: 44px;
+  li {
+    float: left;
+    width: 33%;
+    margin-right: 2px;
+    background-color: #15151A;
+    &:hover {
+      @extend .suggestion;
+    };
+  }
+  li:last-child {
+    margin-right: 0;
+  }
+}
+
+.tutorial-header {
+  font-family: $styledFontFamily;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 25px;
+  text-align: center;
+  color: #939397; /* for non-suggest state*/
+  padding: 9px 10px 9px 0;
+  @include box-shadow(0 3px 4px rgba(0,0,0,0.14));
+  .suggestion & {
+    color: white; /* for suggested state */
+    @include text-shadow(shadow);
+    @include box-shadow(0 3px 4px rgba(0,0,0,0.68));
+  }
+  .steps {
+    font-family: $styledFontFamily;
+    margin-right: 19px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .complete & { /* complete state */
+    .steps {
+      @extend .image-replacement;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background: image-url("icons/tutorial/green-check.png") 0 100% no-repeat;
+      margin-right: 13px;
+      vertical-align: text-bottom;
+    }
+  }
+}
+
+.tutorial-example {
+  width: 232px;
+  height: 144px;
+  margin: 0 auto;
+  background-image: image-url("icons/tutorial/tutorial-card.jpg");
+  background-repeat: no-repeat;
+  @include opacity(0.5);
+  .suggestion &, .complete & {
+    @include opacity(1);
+  }
+  .tutorial-example-invite & {
+    background-image: image-url("icons/tutorial/tutorial-invitecard.jpg");
+  }
+  .tutorial-invite.primary { /* active invite button for last step of tutorial */
+    position: absolute;
+    left: 39px;
+    right: 39px;
+    bottom: 36px;
+    padding: 13px;
+    @include border-radius(0 0 3px 3px);
+    &:after {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background: image-url("icons/tutorial/arrow-w-l.png") 0 100% no-repeat;
+      position: absolute;
+      right: -32px;
+      top: 12px;
+    }
+  }
+}
+.circle-highlight {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #806B82; /* dark purple */
+  @include border-radius(100%);
+  @include box-shadow(0 2px 3px rgba(0,0,0,0.35));
+  // positioning for each steps
+  .tutorial-example-love & {
+    bottom: 14px;
+    left: 70px;
+  }
+  .tutorial-example-comment & {
+    bottom: 14px;
+    left: 187px;
+  }
+  .suggestion & {
+    border-color: #a14a9c; /* light purple */
+  }
+}

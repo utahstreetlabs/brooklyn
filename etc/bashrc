@@ -1,0 +1,114 @@
+# utilities for managing copious processes
+#
+# to install, run
+#
+# echo "if [[ -s `pwd`/etc/bashrc ]]; then source `pwd`/etc/bashrc ; fi" >> ~/.bashrc
+#
+#
+# to get a working copious app, run
+#
+# copious
+#
+#
+# to restart it, run
+#
+# copious-restart
+#
+#
+# to update services from github and restart them, run
+#
+# copious-update-services
+#
+
+source $(dirname $BASH_SOURCE)/secrets.sh
+
+copious() {
+  foreman start &
+  foreman start -f Procfile.support &
+  copious-services
+}
+
+copious-platform-osx-start() {
+  (ulimit -n 1024 && /usr/local/bin/redis-server /usr/local/etc/redis.conf >& /usr/local/var/log/redis.log &)
+  (/usr/local/bin/mongod run --config /usr/local/etc/mongod.conf >& /usr/local/var/log/mongodb/output.log &)
+  /usr/local/bin/mysql.server start
+  /usr/local/bin/riak start
+}
+
+copious-platform-osx-stop() {
+  /usr/local/bin/riak stop
+  killall epmd
+  /usr/local/bin/mysql.server stop
+  killall mongod
+  killall redis-server
+}
+
+copious-services() {
+  foreman start -f Procfile.services &
+}
+
+copious-kill-services() {
+  kill %?Procfile.services
+  wait %?Procfile.services
+}
+
+copious-kill-support() {
+  kill %?Procfile.support
+  wait %?Procfile.support
+}
+
+copious-kill() {
+  copious-kill-services
+  copious-kill-support
+}
+
+copious-restart() {
+    copious-kill-services
+    copious-kill-support
+    kill %foreman
+    wait %foreman
+    sleep 2
+    copious
+}
+
+copious-update-services() {
+    copious-kill-services
+    (
+    for service in lagunitas anchor rubicon pyramid flyingdog mendocino risingtide
+    do
+        cd ../$service
+        echo "Updating $service"
+        git checkout staging
+        git pull upstream staging
+        git submodule init
+        git submodule update
+        git push origin staging
+        bundle install
+    done
+    )
+    sleep 2 # wait for services to die - wait in kill-services doesn't appear
+            # to be enough
+    copious-services
+}
+
+copious-test-services() {
+  foreman start -f Procfile.test &
+}
+
+copious-kill-test-services() {
+    kill $(pidof ruby)
+}
+
+copious-prod-mysql() {
+    if [[ ! $(ps axo pid,command | grep -v grep | grep "ssh edb1" ) ]]; then
+        ssh edb1.copious.com -L 33069:localhost:3306 -N &
+        sleep 5
+    fi
+    # set -f to disable glob expansion in the data string we read from
+    # stdin so * isn't expanded in queries like SELECT * FROM orders.
+    # re-enable expansion after running mysql
+    set -f
+    read data
+    echo $data | mysql --protocol=TCP --port=33069 --user=$MYSQL_PROD_USERNAME --password=$MYSQL_PROD_PW utah_production
+    set +f
+}

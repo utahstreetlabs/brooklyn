@@ -1,0 +1,8 @@
+<% photos.each do |photo| %>
+  <li class="btn-photo" data-reorder-url="<%= listing_photo_reorder_path(listing, photo) %>">
+    <%= listing_photo_tag(photo, :small, :id => "thumbnail-#{photo.id}", :class => 'listing-photo')%>
+    <%= link_to_delete_listing_photo(listing, photo) %>
+    <%= link_to_edit_listing_photo(t('.edit_button'), listing, photo) %>
+    <% if photo.position == 1 %><span class="cover-photo"><%= t '.cover_photo_label' %></span><% end %>
+  </li>
+<% end %>

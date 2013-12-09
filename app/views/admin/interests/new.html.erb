@@ -1,0 +1,9 @@
+<% title "Admin: New interest" %>
+
+<%= bootstrap_breadcrumb [
+  ['Admin', admin_dashboard_path],
+  ['All interests', admin_interests_path],
+  'New interest'
+] %>
+
+<%= render 'form', interest: @interest, url: admin_interests_path, cancel_url: admin_interests_path %>

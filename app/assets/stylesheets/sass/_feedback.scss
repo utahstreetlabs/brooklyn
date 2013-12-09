@@ -1,0 +1,81 @@
+[class^="profiles_feedback_"] {
+  h2 {
+    padding-bottom: 0px;
+  }
+  .table {
+    th:hover {
+      border-color: $white #DADADA #DADADA $white;
+      background-image: none;
+      background-color: #F0F0F0;
+    }
+    .meta {
+      float: left;
+      color: $color-text;
+      font-weight: 400;
+      line-height: 20px;
+      clear: both;
+    }
+  }
+  .nav.nav-tabs {
+    opacity: 0.5;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+// have the current tabs in full opacity
+.feedback-tabs {
+  opacity: 1 !important;
+}
+
+// dashboard feedback pages
+[class^="feedback-outcome-"] {
+  @extend .span3;
+  margin-left: 0px !important;
+  background-repeat: no-repeat;
+  background-image: image-url("layout/icons-sprites.png");
+  padding-left: 30px;
+  font-weight: 600;
+  color: $color-header;
+}
+.feedback-outcome-successful {
+  background-position: 0px -561px;
+}
+.feedback-outcome-fail {
+  background-position: 0px -586px;
+}
+
+
+.feedback-rating {
+  color: $green;
+  font-weight: 600;
+}
+
+#feedback-summary {
+  float: left;
+  clear: both;
+  display: block;
+  margin: 10px 0px;
+  a {
+    font-size: 16px;
+    float: left;
+    font-weight: 400;
+    padding-left: 30px;
+    background-repeat: no-repeat;
+    background-image: image-url("layout/icons-sprites.png");
+    background-position: -52px -611px;
+  }
+  .profile-picture & {
+    width: 146px;
+    clear: none;
+    margin: 5px 0px 0px;
+    a {
+      font-size: 14px;
+      line-height: 18px;
+      font-weight: 500;
+      padding-left: 22px;
+      background-position: -56px -711px;
+    }
+  }
+}

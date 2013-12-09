@@ -1,0 +1,5 @@
+{
+  "categories": [
+    <%= raw @categories.map { |c| render(partial: 'summary', locals: { category: c }) }.join(',') %>
+  ]
+}

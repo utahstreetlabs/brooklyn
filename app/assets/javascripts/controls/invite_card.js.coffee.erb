@@ -1,0 +1,26 @@
+# NOTE: flip behavior is disabled as per https://www.pivotaltracker.com/story/show/45652601
+
+jQuery ->
+  $('body').on 'click', '[data-card=fb-feed-dialog-invite] [data-action=fb-feed-dialog-share]', () ->
+    copious.track('invite_card click', {source: this, share_channel: 'facebook_feed'})
+    false
+
+  $('body').on 'click', '[data-card=fb-facepile-invite] [data-action=fb-facepile-cta]', (e) ->
+    copious.track('invite_card click', {source: this, share_channel: 'facebook_request'})
+
+    $card = $(this).closest('[data-card=fb-facepile-invite]')
+    $button = $(e.currentTarget)
+
+#    $button.flipButton()
+
+    # when the cta on the back of the card is clicked, reset the card to the front
+#    $button.flipButton('flipToFront') if $button.flipButton('isBacksideDisplayed')
+
+    modal = new Copious.InviteModal $($button.data('target')),
+      url: '<%= Brooklyn::Application.routes.url_helpers.feed_facebook_facepile_invites_requests_path %>',
+      source: 'invite_card',
+      afterInvited: (data) ->
+        if data.creditAmount?
+          $('[data-role=credit-amount]', $card).html(data.creditAmount)
+#        $button.flipButton('flipToBack')
+

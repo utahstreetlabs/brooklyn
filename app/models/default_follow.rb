@@ -1,0 +1,1 @@
+class DefaultFollow < Follow; end

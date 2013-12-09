@@ -1,0 +1,14 @@
+<% 
+message = t('.header.message_html', collection_link: mailer_header_link_to(@collection.name,
+            public_profile_collection_url(@collection.owner, @collection)), follower: @follower.name) %>
+
+<%= render partial: '/shared_mailer/new_responsive_header', locals: {user: @collection.owner, message: message} %>
+
+<% if @listing %>
+  <%= mailer_user_listing_social_action @follower, :follow, @listing, {collection_name: @collection.name} %>
+<% end %>
+<%= mailer_user_info @follower %>
+<%= mailer_user_stats_and_listings @follower, @follower_listing_infos %>
+<%= mailer_user_follow_action @owner, @follower %>
+
+<%= render '/shared_mailer/new_responsive_footer' %>

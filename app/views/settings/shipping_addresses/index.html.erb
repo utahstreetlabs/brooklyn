@@ -1,0 +1,52 @@
+<%
+title 'Account Settings: Shipping Addresses'
+javascript 'settings_shipping_addresses'
+mp_view_event 'shipping settings'
+%>
+
+<h2>Shipping Addresses</h2>
+<div id="edit-addresses" class="section">
+  <ul class="errorlist">
+    <% postal_address_errors(current_user).each do |error_message| %>
+      <li><%= error_message %></li>
+    <% end %>
+  </ul>
+  <% if current_user.shipping_addresses.any? %>
+    <% current_user.sorted_shipping_addresses.each do |address| %>
+      <%= form_for current_user, url: settings_shipping_address_path(address.id), :class => 'clear span5' do |f| %>
+        <%= content_tag :div, id: "edit-address-#{address.id}", class: 'edit-address row' do %>
+          <div class="address span4">
+            <%= label_tag "address_id_#{address.id}", address_label_name(address) %>
+            <%= postal_address address %><br/>
+            <ul class="menu">
+              <li><%= link_to 'Edit', '#', class: 'edit' %></li>
+              <% unless address.default? %>
+                <li><%= link_to_make_default_address(address) %></li>
+              <% end %>
+              <li><%= link_to_delete_address(address) %></li>
+            </ul>
+          </div>
+          <div class="fields span9">
+            <%= f.fields_for :postal_addresses, address do |address_fields| %>
+              <%= render partial: 'shared/shipping_address_fields', locals: {f: address_fields} %>
+              <%= f.buttons save_text: 'Save Changes', cancel_url: '#', cancel_options: {class: 'cancel button soft'} %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <%= content_tag :div, class: 'container clear' do %>
+    <%= link_to 'Add a shipping address', '#', :id => 'show-new-address', :class => "button large" %>
+  <% end %>
+  <div id="new-address">
+    <%= form_for current_user, url: settings_shipping_addresses_path, method: :POST do |f| %>
+      <%= f.fields_for :postal_addresses, PostalAddress.new_shipping_address do |f| %>
+        <%= render partial: 'shared/shipping_address_fields', locals: {f: f} %>
+        <%= f.hidden_field :ref_type, value: 'shipping' %>
+      <% end %>
+      <%= f.buttons save_text: 'Save New Address', cancel_url: '#', cancel_options: {class: 'cancel'} %>
+    <% end %>
+  </div>
+</div>
+

@@ -1,0 +1,13 @@
+// CSS Transitions
+// Currently only works in Webkit
+//  - expected in CSS3, FireFox 3.6/7 and Opera Presto 2.3
+//  - we'll be prepared.
+
+// One or more transition-delays in seconds
+//  - for multiple, use a comma-delimited list
+//    - these delays will effect the properties in the same list position
+@mixin transition-delay($delay: $transition_delay) {
+  transition-delay: $delay;
+  -webkit-transition-delay: $delay;
+  -moz-transition-delay: $delay;
+  -o-transition-delay: $delay; }

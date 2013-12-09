@@ -1,0 +1,21 @@
+<%
+javascript 'invites_modules_email'
+%>
+<%= form_for invite, as: :invite, url: url do |f| %>
+  <div class="email-invites invite-section">
+    <%= f.field :to, container: :div do %>
+      <%= f.label :to, t('.send_to') %><br />
+      <%= f.text_area :to, placeholder: t('.placeholder'), class: 'email-addresses' %>
+    <% end %>
+    <%= link_to t('.import_contacts_html'), new_email_account_path,
+          class: 'contact-import button large', title: 'Import Contacts', id: 'import_contacts' %>
+  </div>
+  <div class="email-invite-message invite-section">
+    <%= f.field :message, container: :div do %>
+      <%= f.label :message, t('.message') %><br />
+      <%= f.text_area :message, value: t('.message_value',
+            credit_amount: (smart_number_to_currency(Credit.invitee_credit_amount))) %>
+    <% end %>
+    <%= f.buttons save_text: 'Send Invites', :class => "large button primary" %>
+  </div>
+<% end %>

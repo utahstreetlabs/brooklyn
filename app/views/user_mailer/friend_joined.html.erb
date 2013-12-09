@@ -1,0 +1,21 @@
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  Hi <%= @follower.firstname %>,
+<% end %>
+
+<%= mailer_graf do %>
+  <%= mailer_link_to @friend.name, public_profile_url(@friend) %> just joined Copious. Don't shop online alone when you can bring your friends along. Do you want to follow them back?
+<% end %>
+
+<%= mailer_graf do %>
+  <%= mailer_user_profile_photo @friend %>
+<% end %>
+
+<%= mailer_follow_button @friend, @follower %>
+
+<%= mailer_graf(styles: 'margin-bottom: 0px;') do %>
+  Happy following,
+<% end %>
+
+<%= render '/shared_mailer/footer' %>

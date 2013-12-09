@@ -1,0 +1,24 @@
+#= require controls/creatable-bootstrap-combobox
+# Combobox with typeahed (currently used on the listing form)
+
+class TypeAheadCombo
+  constructor: (@element, createPrefix, classes, typeaheadURL, allowCreate = false) ->
+    @element.combobox(
+      createPrefix: createPrefix
+      menu: "<ul class=\"typeahead typeahead-long dropdown-menu #{classes}\"></ul>"
+      template: '<div class="combobox-container"><input type="text" /><span class="add-on btn dropdown-toggle" data-dropdown="dropdown"><span class="caret"/><span class="combobox-clear"><i class="icon-remove"/></span></span></div>'
+      lookAheadSource: typeaheadURL
+      placeholder: '<%= I18n.t('listings.form.combo_placeholder') %>'
+      allowCreate: allowCreate
+    )
+
+
+window.Copious ?= {}
+window.Copious.TypeAheadCombo = TypeAheadCombo
+
+$('body').on 'click', (event) ->
+  # Prevents click handler from triggering when typeahead lib is trying to open.
+  unless(
+    event.target.localName is "input" ||
+    event.target.className.match(/(toggle)|(caret)|(icon-remove)|(combobox-clear)/))
+      $('.typeahead.dropdown-menu').hide()

@@ -1,0 +1,22 @@
+#= require copious/plugin
+
+# A component to manage a listing want
+class WantManager
+  constructor: (@element) ->
+    @closeButton = @element.find('[data-dismiss=modal]')
+    @skipButton = @element.find('[data-action=want-skip]')
+    this._initContent()
+
+  _initContent: () =>
+    @closeButton.off 'click.dismiss.modal'
+    @closeButton.on 'click', =>
+      @skipButton.click()
+      false
+
+jQuery ->
+  $.fn.wantManager = copious.plugin.componentPlugin(WantManager, 'wantManager')
+
+  $(document).on 'shown', '[data-role=want-modal]', ->
+    $(this).wantManager()
+
+  window.Copious.WantManager = WantManager

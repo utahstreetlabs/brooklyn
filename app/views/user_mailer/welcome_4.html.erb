@@ -1,0 +1,21 @@
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  Hi <%= @user.firstname %>,
+<% end %>
+
+<%= mailer_graf do %>
+  Whether you want to start selling your exclusive line of wool scarves or are just ready to unload an unwanted wedding gift, Copious is the place to start.  Listing is free.
+<% end %>
+
+<%= mailer_graf do %>
+  Your goods are just 30 seconds away from reaching your fellow Copious friends and a community of over three million strong. What are you waiting for?
+<% end %>
+
+<%= mailer_button 'Sign in and start listing', new_listing_url %>
+
+<%= mailer_graf(styles: 'margin-bottom: 0px;') do %>
+  Happy selling,
+<% end %>
+
+<%= render '/shared_mailer/footer' %>

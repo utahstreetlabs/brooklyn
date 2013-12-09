@@ -1,0 +1,7 @@
+<%= word_wrap %Q[Listing: #{raw @offer.listing.title}
+Seller: #{raw @offer.listing.seller.name}
+Offerer: #{raw @offer.user.name}
+List price: #{number_to_currency @offer.listing.price}
+Offer price: #{number_to_currency @offer.amount}
+Valid for: #{count_of_days_in_words @offer.duration}
+Message: #{mailer_format_text @offer.message}] %>

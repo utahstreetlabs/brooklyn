@@ -1,0 +1,14 @@
+<%
+message_classes = ['messages']
+message_classes << 'contains-tutorial-bar' if @tutorial_bar
+message_classes << 'ff-tutorial-bar' if feature_enabled?(:onboarding, :tutorial_bar)
+%>
+
+<%= content_tag :div, class: class_attribute(message_classes) do %>
+  <%= tutorial_bar(@tutorial_bar, @tutorial_bar.options) if @tutorial_bar && !@tutorial_bar.steps.all?(&:complete?) %>
+
+  <% session[:messages].each do |key| %>
+    <%= render "/shared/messages/#{key}" if show_message?(key) %>
+  <% end %>
+  <%= flash_messages(hide: session.delete(:hide_global_flash)) %>
+<% end %>

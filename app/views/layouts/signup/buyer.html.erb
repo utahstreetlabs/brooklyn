@@ -1,0 +1,13 @@
+<%
+  deactivate_masthead
+  deactivate_hamburger
+  stylesheet 'signup'
+%>
+
+<%= render '/layouts/top' %>
+
+<div id="main-content" class="span12" style="margin-bottom: 20px;">
+  <%= yield %>
+</div>
+
+<%= render '/layouts/bottom' %>

@@ -1,0 +1,39 @@
+<div class="create-account-wrapper">
+  <h1><%= t('.create_profile_html', user: current_user.name)%></h1>
+  <div class="create-account-container">
+    <%= user_avatar_xlarge user %>
+
+    <div class="profile-form">
+      <%= form_for(user, as: :user, url: path, html: {method: :POST, data: {role: 'new-profile-form'}}) do |f| %>
+        <%= hidden_field_tag :d %>
+        <%= f.fieldset do %>
+          <%= f.field :email, class: 'text margin-bottom', error: {text: t('.email_error_message'), id: 'email_error'} do %>
+            <%= f.label(:email, t(".email")) %>
+            <%= f.text_field(:email, maxlength: 255, :class => 'span6 required email') %>
+          <% end %>
+          <%= f.field :password, class: 'password' do %>
+            <%= f.label(:password, t(".password")) %>
+            <%= f.password_field(:password, maxlength: 64, :class => 'span6 required password') %>
+          <% end %>
+
+          <% if feature_enabled?(:signup, :recaptcha) && user.person.for_network(:twitter).present? %>
+            <%= recaptcha_tags(display: {theme: 'white', tabindex: 10}, :ssl => true) %>
+            <span class="meta">
+              <%= t("shared.signup.why_captcha") %>
+            </span>
+          <% end %>
+
+          <%= f.buttons save_text: t(".create_your_profile"), bigger: true %>
+
+          <% if @profile and @profile.feed_postable? %>
+            <li class="hidden-phone">
+              <%= check_box_tag :publish, 1, (@profile.network == :facebook) %>
+              <%= label_tag :publish, t("profile.signup.publish.#{@profile.network}"), class: 'meta checkbox' %>
+            </li>
+            <span id="is_<%= @profile.network %>_profile"></span>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

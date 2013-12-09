@@ -1,0 +1,40 @@
+<%
+title 'Account Settings: Email Settings'
+mp_view_event 'email settings'
+%>
+
+<h2>Change Email Address</h2>
+<div class="section">
+  <p class="invade-top">Your email address is set to <%= current_user.email %></p>
+
+  <%= form_for current_user, url: settings_email_path do |f| %>
+    <%= f.field :email, container: :div do %>
+      <%= f.label :email, 'New Email' %>
+      <%= f.text_field :email, maxlength: 255, value: '', :class => 'span5' %>
+    <% end %>
+    <%= f.field :email_confirmation, container: :div do %>
+      <%= f.label :email_confirmation, 'Confirm New Email' %>
+      <%= f.text_field :email_confirmation, maxlength: 255, value: '', :class => 'span5' %>
+   <% end %>
+    <%= f.buttons save_text: 'Save New Email' %>
+  <% end %>
+</div>
+
+<h2>Email Settings</h2>
+<div class="section">
+  <p class="invade-top">Choose when and how often Copious sends you emails. We don't like spam either.</p>
+
+  <%= form_tag update_prefs_settings_email_path, method: :PUT do %>
+    <ul>
+      <h6>Email me when:</h6>
+      <% settings_email_choices.each_pair do |key, label| %>
+        <li>
+          <%= hidden_field_tag "user[email_prefs][#{key}]", '0', id: '' %>
+          <%= check_box_tag "user[email_prefs][#{key}]", '1' , current_user.allow_email?(key) %>
+          <%= label_tag "user[email_prefs][#{key}]", label, :class => 'checkbox' %>
+        </li>
+      <% end %>
+    </ul>
+    <%= buttons save_text: 'Save Changes' %>
+  <% end %>
+</div>

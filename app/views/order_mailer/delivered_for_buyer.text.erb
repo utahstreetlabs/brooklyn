@@ -1,0 +1,16 @@
+<%= word_wrap(%Q[
+You should have received your purchase of #{@order.listing.title}.  Remember to take a look at the item in the next #{tx_review_period_in_words @order} to ensure that everything is as described.  If there is a problem, please notify us (#{listing_url(@order.listing)}).  We will follow our Transaction Policy (#{Brooklyn::Application.config.urls.transaction_policy}) to address any issues.
+
+If everything is OK, ensure the seller is paid quickly by completing the order here: #{listing_url(@order.listing)}
+])%>
+
+<%= render 'buyer_order_details', order: @order %>
+
+<%= word_wrap(%Q[
+What else?
+
+1. Try following #{@order.listing.seller.name} (#{public_profile_url(@order.listing.seller)}), so you can get a first look at what they have to sell in the future.
+2. Take the plunge and sell something yourself! #{dashboard_url} It's easy, safe and fun, and only takes a couple of minutes.
+]) %>
+
+<%= render '/shared_mailer/footer' %>

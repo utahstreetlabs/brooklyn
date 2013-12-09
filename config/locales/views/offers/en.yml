@@ -1,0 +1,7 @@
+en:
+  offers:
+    show:
+      headline: 'Congratulations and Welcome to Copious!'
+      text:
+        with_sellers_html: '<p>Be yourself! Use your existing Facebook or Twitter profile to sign up.</p><p>Join Copious and get <span class="incentive-dollars">%{amount}</span> to spend on listings from %{sellers}.</p>'
+        without_sellers_html: '<p>Be yourself! Use your existing Facebook or Twitter profile to sign up.</p><p>Join Copious and get <span class="incentive-dollars">%{amount}</span> to spend.</p>'

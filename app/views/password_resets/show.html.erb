@@ -1,0 +1,18 @@
+<% title 'Reset your password' %>
+
+<h3>Reset your password</h3>
+
+<%= form_for(@user, :url => password_reset_url(@user.reset_password_token, secure: true), :html => {:method => :put}) do |f| %>
+  <%= f.fieldset do %>
+    <%= f.field :password, :class => 'password' do %>
+      <%= f.label :password, 'New password' %>
+      <%= f.password_field :password, :maxlength => 64 %>
+    <% end %>
+    <%= f.field :password_confirmation, :class => 'password' do %>
+      <%= f.label :password_confirmation, 'Confirm new password' %>
+      <%= f.password_field :password_confirmation, :maxlength => 64 %>
+    <% end %>
+  <% end %>
+
+  <%= f.buttons :save_text => 'Change my password', :cancel_url => root_path %>
+<% end %>

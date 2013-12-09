@@ -1,0 +1,10 @@
+<%= word_wrap(%Q[Your order for #{@order.listing.title} has been cancelled and the funds returned to the buyer. The details of your cancelled order are below - please do not ship it to the buyer. If this cancellation is in error, please contact our customer service at #{Brooklyn::Application.config.email.to.help}.
+]) %>
+
+<%= render '/order_mailer/seller_order_details', order: @order %>
+
+Buyer shipping information:
+
+<%= render '/order_mailer/shipping_address', order: @order %>
+
+<%= render '/shared_mailer/footer' %>

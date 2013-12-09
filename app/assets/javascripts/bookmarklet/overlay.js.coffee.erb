@@ -1,0 +1,190 @@
+<%
+  environment.context_class.instance_eval do
+    include Brooklyn::Urls
+  end
+%>
+
+POPUP_WIDTH = 600
+POPUP_HEIGHT = 700
+
+OVERLAY_TEMPLATE = """
+  <div id='copious-scrim'></div>\n
+  <div id='copious-header'>\n
+  <img id='copious-logo' src=<%= absolute_url('/assets/layout/Logo-22-black.png',
+    root_url: Brooklyn::Application.config.action_controller.asset_host || Rails.application.routes.url_helpers.root_url) %>>\n
+  <a href='javascript:void(0)' id='copious-overlay-close'>&times;</a>\n
+  </div>\n
+  <div id='copious-image-picker'>\n
+  {[ if(images.length > 0) { ]}\n
+  {[ for(var i = 0, len = images.length; i < len; i++) { ]}\n
+  <div class='copious-image-choice' data-role='image-choice'>\n<div class='copious-image-wrapper'>\n
+  <img src='{{ images[i].src }}' style='margin-top: {{ images[i].top }}px;'>\n
+  </div>\n
+  <span class='copious-image-dimensions'>{{ images[i].width }} &times; {{ images[i].height }}</span>\n
+  <a class='copious-image-pick-choice copious-popup-opener' data-role='copious-popup-opener'
+    data-src='{{ images[i].src }}' href='javascript:void(0)'>\n
+  <span>+ Add</span>\n
+  </a>\n
+  </div>\n
+  {[ } ]}\n
+  {[ } else { ]}\n
+  <a class='copious-no-images copious-popup-opener' data-src='' href='#'>\n
+  <span><%= I18n.t('listings.bookmarklet.overlay.no_images') %></span>\n
+  </a>\n
+  {[ } ]}\n
+  </div>
+"""
+
+CSS = """
+#copious-overlay{text-align:left;font-family:&#x27;Helvetica Neue&#x27;, &#x27;Helvetica&#x27;,
+Arial, Verdana, sans-serif}#copious-overlay div,#copious-overlay span,#copious-overlay applet,#copious-overlay object,
+#copious-overlay iframe,#copious-overlay h1,#copious-overlay h2,#copious-overlay h3,#copious-overlay h4,
+#copious-overlay h5,#copious-overlay h6,#copious-overlay p,#copious-overlay blockquote,#copious-overlay pre,
+#copious-overlay a,#copious-overlay abbr,#copious-overlay acronym,#copious-overlay address,#copious-overlay big,
+#copious-overlay cite,#copious-overlay code,#copious-overlay del,#copious-overlay dfn,#copious-overlay em,
+#copious-overlay img,#copious-overlay ins,#copious-overlay kbd,#copious-overlay q,#copious-overlay s,
+#copious-overlay samp,#copious-overlay small,#copious-overlay strike,#copious-overlay strong,#copious-overlay sub,
+#copious-overlay sup,#copious-overlay tt,#copious-overlay var,#copious-overlay b,#copious-overlay u,#copious-overlay i,
+#copious-overlay center,#copious-overlay dl,#copious-overlay dt,#copious-overlay dd,#copious-overlay ol,
+#copious-overlay ul,#copious-overlay li,#copious-overlay fieldset,#copious-overlay form,#copious-overlay label,
+#copious-overlay legend,#copious-overlay table,#copious-overlay caption,#copious-overlay tbody,#copious-overlay tfoot,
+#copious-overlay thead,#copious-overlay tr,#copious-overlay th,#copious-overlay td,#copious-overlay article,
+#copious-overlay aside,#copious-overlay canvas,#copious-overlay details,#copious-overlay embed,#copious-overlay figure,
+#copious-overlay figcaption,#copious-overlay footer,#copious-overlay header,#copious-overlay hgroup,
+#copious-overlay menu,#copious-overlay nav,#copious-overlay output,#copious-overlay ruby,#copious-overlay section,
+#copious-overlay summary,#copious-overlay time,#copious-overlay mark,#copious-overlay audio,
+#copious-overlay video{margin:0;padding:0;border:0;font:inherit;font-size:100%;vertical-align:baseline}
+#copious-overlay table{border-collapse:collapse;border-spacing:0}#copious-overlay caption,#copious-overlay th,
+#copious-overlay td{text-align:left;font-weight:normal;vertical-align:middle}#copious-overlay q,
+#copious-overlay blockquote{quotes:none}#copious-overlay q:before,#copious-overlay q:after,
+#copious-overlay blockquote:before,#copious-overlay blockquote:after{content:&quot;&quot;;content:none}
+#copious-overlay a img{border:none}#copious-overlay img{display:inline !important;}
+#copious-overlay a:visited, #copious-overlay a, #copious-overlay a span {font-family:'Helvetica Neue', 'Helvetica', Arial, Verdana, sans-serif}
+#copious-overlay #copious-scrim{position:fixed;z-index:2000000000;top:0;right:0;bottom:0;left:0;background-color:rgba(255,255,255,0.9)}
+#copious-overlay #copious-header{position:fixed;background-color:#f2f2f2;padding:0px;top:0;left:0;right:0;z-index:2000000001; height: 50px; border-bottom: 1px solid #D4D4D4}
+#copious-overlay #copious-overlay-close{font-size:30px;color:#aaa;opacity:1;line-height:45px;float:right;text-decoration:none; width: 40px; height: 50px;
+padding: 0px 5px; text-align: center; border-left: 1px solid #D4D4D4;}
+#copious-overlay #copious-overlay-close:hover {color: #555;}
+#copious-overlay #copious-overlay-close:hover {text-decoration:none}
+#copious-overlay #copious-image-picker{position:fixed;top:100px;left:80px; right: 80px; z-index:2000000001; text-align: center;max-width: 1260px; margin: 0 auto;}
+#copious-overlay .copious-image-choice{width:200px;height:200px;background-color:#fff;text-align:center;
+display:inline-block;position:relative;margin-right:50px;margin-bottom:50px; border: 1px solid #d4d4d4; float: left;}
+#copious-overlay .copious-image-choice .copious-image-wrapper{width:200px;height:200px;position:relative;overflow:hidden}
+#copious-overlay .copious-image-choice img{max-height:200px;max-width:200px}
+#copious-overlay .copious-image-dimensions{position:absolute;bottom:-25px;text-align:center;display:block;width:200px;
+color:#777;font-size:14px}
+#copious-overlay .copious-image-choice-container {width: auto;}
+#copious-overlay #copious-logo {position: absolute; top:13px; left: 50%; margin-left: -50px;}
+#copious-overlay .copious-image-pick-choice{opacity: 0;position:absolute;z-index:2000000002;top:0;right:0;bottom:0;
+left:0;background-color:rgba(255,255,255,0.4);text-align:center}
+#copious-overlay .copious-image-choice:hover .copious-image-pick-choice,#copious-overlay .copious-image-choice.hover
+ .copious-image-pick-choice{opacity: 1; -webkit-transition: 0.25s; -moz-transition: 0.25s; -ms-transition: 0.25s; -o-transition: 0.25s; transition: 0.25s;}
+ #copious-overlay .copious-image-pick-choice span{width:120px}#copious-overlay
+ .copious-image-pick-choice span,#copious-overlay .copious-no-images span{color:#fff;
+background-color:#4b63ae;padding:15px 20px;font-size:20px;line-height:1.4;display:inline-block;
+margin-top:65px;text-decoration:none;font-weight:500;-webkit-border-radius:4px; -moz-border-radius: 4px;border-radius: 4px;}#copious-overlay
+ .copious-no-images{display:block;margin-left:-100px;text-decoration:none;text-align:center}#copious-overlay
+ .copious-no-images span{margin-left:auto;margin-right:auto}#copious-overlay .copious-image-pick-choice a:hover{text-decoration:none}
+"""
+
+class window.Overlay
+  constructor: ->
+    @scraper = new ContentScraper()
+    @content = {
+      price: @scraper.price(),
+      title: @scraper.title(),
+    }
+    @images = @scraper.images()
+
+  postData: =>
+    data = {}
+    # We just send one image for now, but this might change in the future.
+    parsedImages = {}
+    parsedImages[@selectedImage.src] = { width: @selectedImage.width, height: @selectedImage.height }
+    data['images'] = parsedImages
+    data['price'] = @content['price'] if @content['price']
+    data['title'] = @content['title'] if @content['title']
+    data['url'] = window.location.href
+    @popUp.sendData(JSON.stringify(data))
+    this.dismiss()
+
+  dismiss: =>
+    return @containerDiv.parentNode.removeChild(@containerDiv) if @containerDiv && @containerDiv.parentNode
+
+  open: =>
+    @containerDiv = document.createElement('div')
+    @containerDiv.id = 'copious-overlay'
+    @overlayTemplate = this.tmpl(OVERLAY_TEMPLATE)
+    @containerDiv.innerHTML = @overlayTemplate({
+      images: @images
+    })
+    document.body.appendChild(@containerDiv)
+    $("#copious-overlay-close").on 'click', this.dismiss
+    $("#copious-scrim").on 'click', this.dismiss
+    bookmarklet = this
+    for i in $('[data-role=copious-popup-opener]')
+      $(i).on 'click', (event) ->
+        dataSrc = this.getAttribute('data-src')
+        f = bookmarklet.images.filter (e) ->
+          dataSrc == e.src
+        bookmarklet.selectedImage = f[0]
+        bookmarklet.popUp.openUniquePopup(bookmarklet.postData) if bookmarklet.selectedImage
+        if event.stopImmediatePropagation
+          event.stopImmediatePropagation()
+
+  render: =>
+    if document.getElementById('copious-overlay')
+      return
+    stylesheet = document.createElement('style')
+    stylesheet.type = 'text/css'
+    stylesheet.innerHTML = CSS
+    document.head.appendChild(stylesheet)
+    this.open()
+    popUpFeatures = "status=no,resizable=no,scrollbars=yes,directories=no,location=no,toolbar=no," +
+      "menubar=no,width=#{POPUP_WIDTH},height=#{POPUP_HEIGHT}"
+    @popUp = new Popup('/listings/from/bookmarklet', popUpFeatures)
+
+  tmpl: (text, data, objectName) =>
+    templateSettings = {
+      evaluate: /\{\[([\s\S]+?)\]\}/g,
+      interpolate: /\{\{([\s\S]+?)\}\}/g,
+      escape: /<\%-([\s\S]+?)\%>/g,
+    }
+    noMatch = /.^/
+    escapes = {
+      "\\": "\\",
+      "'": "'",
+      "r": "\r",
+      "n": "\n",
+      "t": "\t",
+      'u2028': "\u2028",
+      'u2029': "\u2029"
+    }
+    escaper = /\\|\'|\r|\n|\t|\u2028|\u2029/g
+    unescaper = /\\(\\|\'|r|n|t|u2028|u2029)/g
+    for k,v of escapes
+      escapes[v] = k
+    templateSettings.variable = objectName
+    source = "__p+='" + text.replace(escaper, (match) ->
+      return "\\#{escapes[match]}"
+    )
+    source = source.replace(templateSettings.escape || noMatch, (match, code) ->
+      return "\'+\n_.escape(#{unescape(code)})+\n\'"
+    )
+    source = source.replace(templateSettings.interpolate || noMatch, (match, code) ->
+      return "\'+\n(#{unescape(code)})+\n\'"
+    )
+    source = source.replace(templateSettings.evaluate || noMatch, (match, code) ->
+      return "\';\n#{unescape(code)}\n;__p+=\'"
+    ) + "\';\n"
+    unless templateSettings.variable
+      source = "with(obj||{}){\n#{source}}\n"
+    source = "var __p=\'\';var print=function(){__p+=Array.prototype.join.call(arguments, \'\')};\n" +
+      "#{source}return __p;\n"
+    render = new Function("obj", source)
+    if data
+      return render(data)
+    template = (data) ->
+      return render.call(this, data)
+    template.source = "function(" + (templateSettings.variable || "obj") + "){\n#{source}}"
+    return template

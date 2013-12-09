@@ -1,0 +1,25 @@
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  Hi <%= @inviter.firstname %>,
+<% end %>
+
+<%= mailer_graf do %>
+  <%= mailer_link_to @invitee[:name], public_profile_url(@invitee[:slug]) %> just accepted your invitation to join Copious. Your network is growing!
+<% end %>
+
+<%= mailer_graf do %>
+  Remember: You’ll receive <%= smart_number_to_currency Brooklyn::Application.config.credits.inviter.amount %> in credit once <%= @invitee[:firstname] %> makes a first purchase. The more you share, love and follow, the more great items your friends will see.
+<% end %>
+
+<%= mailer_graf do %>
+  For more chances to earn credit, invite more friends.
+<% end %>
+
+<%= mailer_button "Invite more friends", dashboard_url(more_invites: 1) %>
+
+<%= mailer_graf(styles: 'margin-bottom: 0px;') do %>
+  Sharing is caring,
+<% end %>
+
+<%= render '/shared_mailer/footer' %>

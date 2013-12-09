@@ -1,0 +1,41 @@
+<div style="display: block;" data-role="save-manager" class="modal remotemodal"
+     data-url="/save_modal">
+  <div data-role="modal-content">
+    <form method="post" data-role="save-to-collection-form" data-remote="true" class="listing-save-to-collection">
+      <div data-role="collections-list">
+        <a data-toggle="dropdown" href="javascript:void(0)">
+          <div data-role="dropdown-title">default</div>
+        </a>
+        <ul class="dropdown-menu" data-role="dropdown-menu">
+          <li data-collection-id="things-that-are-awesome">
+            <a href="/path/to/things-that-are-awesome">Things That Are Awesome</a>
+          </li>
+          <li data-collection-type="have" data-collection-id="things-i-have">
+            <a href="/path/to/things-i-have">Things I Have</a>
+          </li>
+          <li data-collection-type="want" data-collection-id="things-i-want">
+            <a href="/path/to/things-i-want">Things I Want</a>
+          </li>
+          <li data-role="divider" class="divider"></li>
+          <li>
+            <div class="input-append" data-role="name-input">
+              <input type="text" placeholder="New collection" name="add_collection_input[]" data-role="collection-name">
+              <a data-disable-with="Adding…" data-action="add-collection" href="javascript:void(0)">Add</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <label for="comment_label" class="big-label">Add a comment</label>
+      <textarea placeholder="Add a comment…" name="comment" id="comment" data-role="comment"></textarea>
+      <label data-role="have" style="display:none">
+        <input type="checkbox"> I have this
+      </label>
+      <label data-role="want" style="display:none">
+        <input type="checkbox"> I want this
+      </label>
+      <input type="hidden" value="default" name="collection_ids[]" data-role="collection-id">
+      <input type="hidden" name="source">
+      <input type="hidden" name="page_source" value="listings_show">
+    </form>
+  </div></div><div class="modal-footer"><button type="button" name="button" data-save="modal" class="button primary large">Save</button></div></div>
+</div>

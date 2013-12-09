@@ -1,0 +1,11 @@
+en:
+  admin:
+    feature_lists:
+      reorder:
+        header: 'Reorder by dragging and dropping in the list.'
+        remove:
+          title: "Remove from featured list: %{name}"
+          confirm: 'Are you sure you want to remove this listing from being featured for this list?'
+        none:
+          header_html: 'No listings have been featured on the list yet.&nbsp;'
+          find: 'Find one to add.'

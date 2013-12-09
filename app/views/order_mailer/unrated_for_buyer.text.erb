@@ -1,0 +1,8 @@
+<%= word_wrap(%Q[
+Please remember to rate your recent order on Copious. Your two cents can help the whole community learn & become even more awesome.
+
+To rate your order, please go here:
+#{listing_url(@order.listing)}.
+]) %>
+
+<%= render '/shared_mailer/footer' %>

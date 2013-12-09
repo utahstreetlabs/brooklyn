@@ -1,0 +1,10 @@
+<%= bootstrap_form_for order.shipment, url: ship_admin_order_path(order), remote: true, html: {method: :post} do |f| %>
+  <%= f.control_group :carrier_name do %>
+    <% Brooklyn::Carrier.available.each do |carrier| %>
+      <%= f.radio_button :carrier_name, carrier.name, carrier.key %>
+    <% end %>
+  <% end %>
+  <%= f.text_field :tracking_number, 'Tracking number', maxlength: 22 do %>
+    <p class="help-block">e.g. 1Z12345E0205271688</p>
+  <% end %>
+<% end %>

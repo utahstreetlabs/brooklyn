@@ -1,0 +1,11 @@
+hasBrowserSupport = ->
+  # For now, we disable the bookmarklet for all versions of Internet Explorer.
+  return false if document.documentMode
+  return typeof window.postMessage != "undefined"
+
+$.domReady ->
+  if hasBrowserSupport()
+    new Overlay().render()
+  else
+    alert "The Copious bookmarklet requires HTML5 which is not supported by this version of your browser."
+

@@ -1,0 +1,9 @@
+<% title t('.title') %>
+
+<h2><%= t('.header') %></h2>
+
+<%= seller_info_settings_progress_bar :step1 %>
+
+<div class="section">
+  <%= t('.instructions.text_html', help_link: mail_to(Brooklyn::Application.config.email.to.help)) %>
+</div>

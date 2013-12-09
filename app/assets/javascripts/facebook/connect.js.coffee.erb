@@ -1,0 +1,4 @@
+jQuery ->
+  window.COPIOUSFB.postInit ->
+    FB.getLoginStatus (response) ->
+      window.location.href = '<%= Network::Facebook.auth_callback_path %>' if response.status == "connected"

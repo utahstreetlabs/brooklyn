@@ -1,0 +1,7 @@
+<%
+title "Selling feedback for #{profile_user.display_name}"
+%>
+
+<%= profile_tabs profile_user %>
+
+<%= render 'feedback', feedbacks: @feedback, type: :selling %>

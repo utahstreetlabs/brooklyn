@@ -1,0 +1,21 @@
+<%
+  first ||= false
+  mediaforge_retargetting_js(price: listing.price, orderNumber: listing.id)
+%>
+<%= adwords_tracking_pixel(first ? :firstlisting : :newlisting) %>
+
+<%= bootstrap_modal :active_listing_cta, "Success! Your item is now listed.", show_save: false, show_close: false,
+                    hidden: false, custom_links: listing_state_action_buttons(listing) do %>
+  <p>Promote your listing by sharing it with friends and followers across the web.</p>
+  <div data-role="active-listing-cta" class="modal-share-container">
+    <%= listing_photo_tag listing.photos.first, :small, class: 'listing-photo thumbnail text-adjacent' %>
+    <h3>
+      <%= listing.title %>
+    </h3>
+    <ul>
+    <% Network.shareable.each do |network| %>
+      <%= render partial: '/listings/seller/active_cta_network', locals: {listing: listing, network: network} %>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

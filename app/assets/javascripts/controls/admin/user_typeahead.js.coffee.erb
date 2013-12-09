@@ -1,0 +1,50 @@
+#= require underscore
+#= require copious/jsend
+#= require copious/plugin
+
+class AdminUserTypeahead
+  @URL: '<%= Brooklyn::Application.routes.url_helpers.typeahead_admin_users_path %>'
+
+  constructor: (@queryInput, options = {}) ->
+    @slugInput = options.slugInput
+    @form = @queryInput.closest('form')
+    @slugsByItem = {}
+
+    # When matches are returned from the remote source, map them to display strings of the form
+    # "Karen O <karen@yeahyeahyeahs.com>" ('items' in Bootstrap typeahead parlance) and store the match slugs in a
+    # table where they can be looked up by display item. Then, when an item is selected from the dropdown, use it
+    # to look up and set the slug.
+    @queryInput.typeahead(
+      source: (query, process) =>
+        this.clearSlug()
+        $.jsend.get(AdminUserTypeahead.URL, {query: query, page: 1, per: 8, sort: 'name'}).then (data) =>
+          items = []
+          _.each data.matches, (match) =>
+            item = "#{match.name} &lt;#{match.email}&gt;"
+            @slugsByItem[item] = match.slug
+            items.push(item)
+          process(items)
+      matcher: (item) =>
+        # override built-in behavior that does string matching for a local source
+        true
+      sorter: (items) =>
+        # override built-in behavior since items are sorted remotely
+        items
+      updater: (item) =>
+        this.setSlug(@slugsByItem[item])
+        # escaped characters are not unescaped for rendering inside text inputs
+        item.replace('&lt;', '<').replace('&gt;', '>')
+    )
+
+    @form.on 'submit', =>
+      if @queryInput.val() is ''
+        this.clearSlug()
+
+  setSlug: (slug) =>
+    @slugInput.val(slug)
+
+  clearSlug: =>
+    this.setSlug('')
+
+jQuery ->
+  $.fn.adminUserTypeahead = copious.plugin.componentPlugin(AdminUserTypeahead, 'adminUserTypeahead')

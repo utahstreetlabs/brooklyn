@@ -1,0 +1,36 @@
+<%
+title 'Account Settings: Manage Invites'
+%>
+
+<h2>Manage Invites</h2>
+<div class="section">
+  <%= invite_acceptance_progress_bar current_user %>
+</div>
+
+<div class="section">
+  <h2 class="inline">Your Invites</h2>
+  <%= link_to 'Invite More People', connect_invites_url, id: "invites_button", class: "button invite-more primary right-button" %>
+
+  <%= datagrid @invites, disable_total_results: true, disable_search: true do |t| %>
+    <%= t.thead do |thead| %>
+      <%= thead.th :name, title: 'Friend Invited' %>
+      <%= thead.th :created_at, title: 'Date Sent', default: true %>
+      <%= thead.th :status, title: 'Status' %>
+      <%= thead.th :credit_amount, title: 'Credit Earned' %>
+    <% end %>
+    <%= t.tbody class: 'invite' do |tbody, invite| %>
+      <%= tbody.td do %>
+        <%= invite.name %>
+      <% end %>
+      <%= tbody.td do %>
+        <%= invite.created_at ? (date invite.created_at) : 'n/a' %>
+      <% end %>
+      <%= tbody.td do %>
+        <%= t ".status.#{invite.status}" %>
+      <% end %>
+      <%= tbody.td do %>
+        <%= number_to_currency invite.credit_amount %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

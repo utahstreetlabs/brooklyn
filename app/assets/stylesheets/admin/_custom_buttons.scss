@@ -1,0 +1,69 @@
+.btn-green_light,
+.btn-green_light:hover,
+.btn-yellow_light,
+.btn-yellow_light:hover {
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+}
+.btn-red-light.active,
+.btn-yellow_light.active {
+  color: rgba(255, 255, 255, 0.75);
+}
+.btn-green_light {
+  background-color: #5bb75b;
+  background-image: -moz-linear-gradient(top, #62c462, #51a351);
+  background-image: -ms-linear-gradient(top, #62c462, #51a351);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#51a351));
+  background-image: -webkit-linear-gradient(top, #62c462, #51a351);
+  background-image: -o-linear-gradient(top, #62c462, #51a351);
+  background-image: linear-gradient(top, #62c462, #51a351);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#62c462', endColorstr='#51a351', GradientType=0);
+  border-color: #51a351 #51a351 #387038;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}
+.btn-green_light:hover,
+.btn-green_light:active,
+.btn-green_light.active,
+.btn-green_light.disabled,
+.btn-green_light[disabled] {
+  background-color: #51a351;
+}
+.btn-green_light:active,
+.btn-green_light.active {
+  background-color: #408140 \9;
+}
+.btn-yellow_light {
+  background-color: #faa732;
+  background-image: -moz-linear-gradient(top, #fbb450, #f89406);
+  background-image: -ms-linear-gradient(top, #fbb450, #f89406);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbb450), to(#f89406));
+  background-image: -webkit-linear-gradient(top, #fbb450, #f89406);
+  background-image: -o-linear-gradient(top, #fbb450, #f89406);
+  background-image: linear-gradient(top, #fbb450, #f89406);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fbb450', endColorstr='#f89406', GradientType=0);
+  border-color: #f89406 #f89406 #ad6704;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}
+.btn-yellow_light:hover,
+.btn-yellow_light:active,
+.btn-yellow_light.active,
+.btn-yellow_light.disabled,
+.btn-yellow_light[disabled] {
+  background-color: #f89406;
+}
+.btn-yellow_light:active,
+.btn-yellow_light.active {
+  background-color: #c67605 \9;
+}
+
+// used on listings bullpen
+.label-undetermined-access-seller {
+  background-color: #29BFD3;
+}
+.label-undetermined-access-seller:hover {
+  background-color: #009aaf;
+}

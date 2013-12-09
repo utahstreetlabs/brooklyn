@@ -1,0 +1,35 @@
+<div id="hb-masthead">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="pull-left">
+          <div id="hb-hamburger">
+            <a class="btn btn-navbar" id="hb-button" data-toggle="hamburger">
+              <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+            </a>
+            <div id="hb-counter">
+              <span id="hb-masthead-total-pill" data-role="total-pill" style="display:none">0</span>
+              <span data-invisible="true" data-poller="false" data-role="story-pill" id="hb-masthead-story-pill"
+                    style="display:none">0</span>
+              <span data-invisible="true" data-poller="true" data-role="notification-pill"
+                    id="hb-masthead-notification-pill" style="display:none">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ul id="hb-tray" class="hb-tray nav nav-tabs copious-tabs nav-stacked">
+  <li id="search-tab">
+    <form accept-charset="UTF-8" action="/listings" method="get">
+      <input id="search" name="search" placeholder="Search" type="text">
+      <div id="spinner" class="spinner" id="spinner_loading" style="display: none;">
+        <div class="circleG" id="circleG_1"></div>
+        <div class="circleG" id="circleG_2"></div>
+        <div class="circleG" id="circleG_3"></div>
+      </div>
+    </form>
+  </li>
+</ul>

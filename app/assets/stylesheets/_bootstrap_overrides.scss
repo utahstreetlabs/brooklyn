@@ -1,0 +1,731 @@
+// this page is to override bootstrap's styling
+
+// MIXIN
+// only here cuz the .carousel-control needs this mixin
+// --------------------------------------------------------------
+@mixin gradient-vertical-three-colors($startColor: #00b3ee, $midColor: #7a43b6, $colorStop: 50%, $endColor: #c3325f) {
+  background-color: mix($midColor, $endColor, 80%);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), color-stop($colorStop, $midColor), to($endColor));
+  background-image: -webkit-linear-gradient($startColor, $midColor $colorStop, $endColor);
+  background-image: -moz-linear-gradient(top, $startColor, $midColor $colorStop, $endColor);
+  background-image: -o-linear-gradient($startColor, $midColor $colorStop, $endColor);
+  background-image: linear-gradient($startColor, $midColor $colorStop, $endColor);
+  background-repeat: no-repeat;
+  // commenting out cuz this is not working properly. will figure it out asap and update it
+  //filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($startColor)}', endColorstr='#{ie-hex-str($endColor)}', GradientType=0); // IE9 and down, gets no color-stop at all for proper fallback
+}
+
+
+
+// RESET
+// --------------------------------------------------------------
+body {
+  font-weight: 400;
+}
+
+a {
+  &:hover {
+    color: $linkColor;
+    text-decoration: none;
+  }
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+// typography
+body, span, p, input, select, textarea {
+  font-family: $sansserifFontFamily;
+}
+h1, h2, h3, h4, h5, h6, label, .label, button {
+  font-family: $styledFontFamily;
+}
+
+ul, ol {
+  list-style: none;
+  margin: 0px;
+}
+
+*{
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke: 1px transparent;
+  text-rendering: optimizeLegibility;
+}
+
+
+// LAYOUT, GRID
+// --------------------------------------------------------------
+
+
+// HEADER
+// --------------------------------------------------------------
+.navbar-inner {
+  padding: 0;
+}
+.dropdown-menu {
+  border: none;
+}
+.dropdown-menu a, .dropdown-menu > li > a {
+  color: $linkColor;
+}
+
+/* IX for horizontal browse dropdown menu */
+.dropdown-menu li > a:hover,
+.dropdown-menu li > a:focus,
+.dropdown-submenu:hover > a {
+  color: $linkColor;
+  background-image: none;
+  background: lighten($linkColor, 25%);
+}
+.dropdown-menu li.selected > a:hover,
+.dropdown-menu li.selected > a:focus {
+  background: $linkColor;
+}
+
+
+.nav .nav-header {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0px;
+  color: $new-text-gray;
+  padding: 7px 18px;
+  text-transform: capitalize;
+  margin: 4px 0px;
+  &.faux-nav-header {
+    padding: 2px;
+  }
+}
+
+.navbar .nav {
+  margin-right: 0px;
+}
+
+.nav li + .nav-header {
+  margin-top: 4px;
+}
+
+
+// FORM ELEMENTS
+// --------------------------------------------------------------
+input, select, textarea {
+  width: 300px; /* .span4 */
+}
+
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+input,
+.uneditable-input {
+  display: inline-block;
+  height: $baseLineHeight * 1.6 + 2; /* 34px */
+  padding: ($baseLineHeight / 4) + 1;  /* 6px */
+  margin-bottom: 16px;
+  font-size: 14px;
+  line-height: $baseLineHeight;
+  font-weight: 400;
+  color: $text-input;
+  background: white;
+  border: 1px solid $border-color;
+  @include border-radius(3px);
+  @include box-shadow(inset 0 1px 2px rgba(0,0,0,0.08));
+  .number-input & {
+    @include number-input;
+  }
+  &:focus {
+    outline-width: 1px;
+  }
+}
+
+/* input append */
+.input-append input,
+.input-append select,
+.input-append .uneditable-input {
+  border-right: 0;
+  @include border-radius(3px 0 0 3px);
+}
+
+
+input[type="checkbox"], input[type="radio"], .radio, .checkbox {
+  font-family: $sansserifFontFamily;
+  font-size: $baseFontSize;
+  height: auto;
+  padding-left: 0px;
+  margin: 0px 7px 0px 0px;
+  vertical-align: text-top;
+}
+
+input[type="checkbox"] {
+  margin-top: 2px; /* for vertically centering the checkbox */
+}
+
+input[disabled], select[disabled], textarea[disabled], input[readonly], select[readonly], textarea[readonly], .uneditable-input {
+  border-color: $border-color-light;
+  background-color: $button-actioned-bg-color;
+  cursor: not-allowed;
+  color: $text-lightest;
+}
+
+.label {
+  padding: 0px;
+  vertical-align: baseline;
+  text-shadow: none;
+  @include border-radius(0px);
+  background-color: transparent;
+  &:hover {
+    color: $grayDark;
+  };
+}
+
+/* .nav overrides */
+
+/* for profile page dropdown tab */
+.copious-tabs.nav-tabs > li > button.dropdown-toggle {
+  font-size: inherit;
+  @include null-button-styling;
+  padding: 0 20px 8px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.nav-tabs > li > a, .nav-tabs > li > button.dropdown-toggle,.nav-sort > li > a {
+  color: $text;
+  padding: 0 20px 8px;
+  margin: 0;
+  line-height: inherit;
+  border: none;
+  @include border-radius(0);
+}
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover, .nav-tabs > .active > a:focus {
+  background-color: transparent;
+  border: none;
+}
+
+/* for profile page following tab */
+.nav-tabs .active .dropdown-toggle {
+  padding: 0;
+}
+.nav-tabs .dropdown-toggle .caret {
+  margin-top: 0;
+  margin-left: 6px;
+  border-top-color: inherit;
+}
+.nav-tabs li.dropdown:hover {
+  @extend .open;
+}
+.nav-tabs .open .dropdown-toggle, .nav > li.dropdown.open.active > a:hover, .nav > li.dropdown.open.active > a:focus {
+  /* disable the background and text color change on hover */
+  color: $text;
+  background-color: transparent;
+  border-color: transparent;
+}
+.nav li.dropdown.open .caret, .nav li.dropdown.open.active .caret, .nav li.dropdown.open a:hover .caret, .nav li.dropdown.open a:focus .caret, .nav-tabs .active .dropdown-toggle .caret {
+  /* disable the caret color change */
+  border-top-color: $linkColor;
+}
+.nav-tabs .open .dropdown-toggle, .nav > li.dropdown.open.active > a:hover, .nav > li.dropdown.open.active > a:focus,
+.nav-tabs .active .dropdown-toggle, .nav > li.dropdown.active > a:hover, .nav > li.dropdown.active > a:focus {
+  color: $linkColor;
+}
+/* profile page following dropdown menu */
+.nav-tabs .dropdown-menu {
+  background-color: $white;
+  @include border-radius(0 0 3px 3px);
+  li {
+    font-size: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    &:hover {
+      border: none;
+    }
+    a {
+      font-weight: 500;
+    }
+  }
+}
+
+.nav > li > a:hover {
+  background-color: transparent;
+}
+
+.radio input[type="radio"], .checkbox input[type="checkbox"] {
+  margin-left: 0px;
+  /* XXX DELETE  below is the bootstrap's default. let's go back to that soon */
+  .well & {
+    margin-left: -20px;
+  }
+}
+
+.accordion-group {
+  @include border-radius(0px);
+  border: none;
+  .accordion-heading, .accordion-toggle {
+    padding-left: 0px;
+  }
+  .accordion-heading .accordion-toggle {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+}
+.accordion-inner {
+  border-top-width: 0px;
+}
+
+.faux-accordion {
+  padding: 6px 0px;
+}
+
+.container-well {
+  @extend .well;
+  background-color: white;
+  @include border-radius(1px);
+}
+.well {
+  padding: $gridGutterWidth; /* 20px */
+  border: none;
+  @include disable-box-shadow;
+  &.well-border {
+    background-color: $white;
+    border: 1px solid $border-color-light;
+  }
+  .listing-modal-body-content & {
+    float: left;
+    background-color: $white;
+    padding: 0;
+    width: 300px;
+  }
+}
+.well-small {
+  padding: 10px;
+}
+
+.input-prepend {
+  // overriding bootstrap's margin-bottom: 5px. need it cuz form li needs more margin than that;
+  // currently for create a listing page only
+  .listings_setup & {
+    margin-bottom: 16px;
+  }
+  .add-on {
+    @include border-radius(3px 0 0 3px);
+    font-family: $sansserifFontFamily;
+    font-size: 16px;
+    font-weight: 600;
+    color: $text-color-dark;
+    background: $white;
+    border-color: $border-color;
+    padding: 6px 10px;
+    height: 34px;
+    vertical-align: top;
+  }
+  input {
+    @include border-radius(0 3px 3px 0);
+  }
+}
+
+/* currently for make an offer modal only */
+.form-horizontal {
+  .control-label {
+    width: 150px;
+    padding-top: 8px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .controls {
+    margin-left: 170px;
+  }
+}
+.control-group {
+  margin-bottom: 25px;
+  #search-form & {
+    margin-bottom: 0;
+  }
+}
+.control-group.error .help-inline {
+  color: $color-alert;
+}
+
+/* for want modal. XXX CONSOLIDATE must standardize to this form structure */
+.controls {
+  input, select, textarea {
+    margin-bottom: 0;
+  }
+}
+
+// HTML5 invalid states
+/* prevent required fields to have error color on focus */
+input:focus:required,
+textarea:focus:required,
+select:focus:required {
+  color: $gray;
+  border: 1px solid $border;
+  &:focus {
+    border-color: $linkColor !important;
+    outline: 1px auto $linkColor;
+    /* need !important cuz html5 */
+    @include box-shadow(inset 0px 0px 3px 2px transparentize($linkColor, .95) !important);
+    @include box-shadow(0px 0px 3px transparentize($linkColor, .4) !important);
+  }
+}
+
+
+// BUTTONS
+// --------------------------------------------------------------
+.btn {
+  color: $text-color-dark;
+  background-image: none;
+  @include disable-box-shadow;
+  @include disable-text-shadow;
+  &:hover {
+    color: $text-color-dark;
+    @include transition(all);
+    background-color: $new-button-bg-hover;
+    text-decoration: none;
+    color: $white;
+    background-position: 0px 0px;
+    text-shadow: none;
+  };
+  &:active {
+    @include disable-box-shadow;
+  }
+  &.disabled, .btn[disabled] {
+    background-color: $new-button-bg;
+    background-image: none;
+    color: $new-button-text;
+    @include opacity(1);
+  }
+  // overriding tab-focus
+  &:focus {
+    outline: none;
+  }
+}
+
+.btn-navbar .icon-bar {
+  background-color: white;
+  width: 25px;
+  margin: 0px;
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.3);
+  + .icon-bar {
+    margin-top: 3px;
+  }
+}
+
+// need to use type selector to successfully override vendor code
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+input[type="file"]::-webkit-file-upload-button, button {
+  border: 0px;
+}
+
+// MODAL
+// --------------------------------------------------------------
+.modal {
+  top: 50%;
+  margin-top: -250px;
+}
+.modal-body {
+  padding: $gridGutterWidth; /* 20px */
+  position: static;
+}
+
+// IMAGE
+// --------------------------------------------------------------
+img {
+  max-width: none;
+}
+
+
+// THUMBNAILS
+// --------------------------------------------------------------
+.thumbnails {
+  margin-left: 0px;
+}
+.thumbnail, a.thumbnail {
+  @include border-radius(0px);
+  &:hover {
+    @include disable-box-shadow;
+  }
+}
+
+
+// CAROUSEL
+// --------------------------------------------------------------
+.carousel {
+  margin-top: 10px;
+  margin-bottom: 0px;
+  .listing-modal-footer &, &#collection-carousel {
+    margin: 0;
+  }
+}
+.carousel-inner {
+  width: 100%;
+  position: relative; /* for carousel arrows */
+  #collection-carousel & {
+    padding-top: 1px;
+  }
+  .thumbnails li {
+    margin-right: 13px;
+  }
+  /* XXX DELETE CONSOLIDATE too much nesting here. refactor once we standardize the format of carousels */
+  .listing-modal-footer & {
+    margin: 0 auto;
+    padding: 0 0 0 1px;
+    .thumbnails {
+      padding: 2px;
+      width: 784px;
+      margin-left: -1px;
+      li {
+        margin-bottom: 15px;
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+        @include opacity(0.85);
+        img {
+          border-color: $header-color;
+          @include border-radius(3px);
+        }
+        &:hover {
+          cursor: pointer;
+          @include box-shadow(0 0 0 1px $linkColor);
+          @include border-radius(3px);
+          @include opacity(1);
+          img {
+            border-color: $linkColor;
+          }
+        }
+        &.selected {
+          position: relative;
+          @include box-shadow(0 0 0 2px $linkColor);
+          @include border-radius(3px);
+          @include opacity(1);
+          img {
+            border-color: $linkColor;
+          }
+          &:after {
+            content: '';
+            display: inline-block;
+            border-bottom: 7px solid $linkColor;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid transparent;
+            position: absolute;
+            top: -19px;
+            left: 42px;
+          }
+        }
+      }
+    }
+  }
+}
+.carousel-control {
+  @extend .btn;
+  /* need these to successfully override bootstrap's default */
+  background-color: $button-bg-color;
+  height: 40px;
+  margin-top: -27px;
+  padding: 0 6px;
+  border: 1px solid transparent;
+  font-family: $styledFontFamily;
+  line-height: 40px;
+  font-size: 43px;
+  font-weight: 500;
+  @include border-radius(3px);
+  @include opacity(1);
+  left: -60px;
+  top: 150px;
+  &.right {
+    right: -60px;
+  }
+  &:hover { /* same as .btn:hover */
+    color: $text-color-dark;
+    @include transition(all);
+    text-decoration: none;
+    @include gradient-vertical-three-colors($startColor: #F2F2F2, $midColor: darken(#F2F2F2, 3%), $colorStop: 70%, $endColor: darken(#F2F2F2, 8%)); /* $midColor: #EAEAEA, $endColor: #E0E0E0 */
+    // gradient mixin's output for IE is not working properly
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F2F2F2', endColorstr='#E0E0E0', GradientType=0);
+    border-color: darken(#F2F2F2, 12%);
+  }
+  .listing-modal-navigation-container & {
+    top: 40%;
+    left: 0;
+    &.right {
+      left: auto;
+      right: 0;
+    }
+  }
+  &:hover, &:focus { /* same as .btn:hover */
+    color: $text-color-dark;
+  }
+}
+
+// FLASH MESSAGES
+// --------------------------------------------------------------
+.alert {
+  font-size: $baseFontSize;
+  @include border-radius(2px);
+  width: 100%;
+  margin: 0 auto -45px;
+  z-index: $zin-messages;
+  .modal-body & {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+}
+// for now, the backend has the notice tied up with success for some reason.
+// (the blue shows up for success flash messages as well)
+// since it's not the right time to blow things up, we'll just keep it the way
+// it is. just for now.
+.alert-info, .alert-success {
+  color: #2783C1;
+  background-color: #CDEFFE;
+  border: 1px solid #99E1F1;
+}
+.alert-warning {
+  color: #9B7F0B;
+  background-color: #FCF4CB;
+  border: 1px solid #EAD88B;
+}
+.alert-danger, .alert-error {
+  color: $color-alert;
+  background-color: #F5DCDC;
+  border: 1px solid #EFBBBB;
+}
+
+// POP OVER
+// --------------------------------------------------------------
+.popover.right .arrow {
+  border-right: 10px solid $border-darker;
+  border-left: 10px solid transparent;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  left: -14px;
+  &:before {
+    content: '';
+    display: inline-block;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-right: 10px solid $white;
+    border-top: 10px solid transparent;
+    position: relative;
+    left: -9px;
+    top: -10px;
+  }
+}
+.popover-title {
+  background-color: white;
+  padding: 11px 15px;
+}
+.popover-inner {
+  padding: 1px;
+  background-color: $border;
+}
+.popover-content {
+  padding: 0px;
+}
+
+// PAGINATION
+// --------------------------------------------------------------
+.pagination {
+  a:hover {
+    background-color: transparent;
+  };
+}
+
+
+// TOOLTIP
+// --------------------------------------------------------------
+.tooltip-inner {
+  max-width: 300px;
+  background-color: transparent;
+  color: $color-text;
+  padding: 0px;
+}
+// to successfully override, I need to word out those classes
+.tooltip.top .tooltip-arrow {
+  bottom: -7px;
+  border-width: 8px 8px 0;
+  border-top-color: $white;
+}
+.tooltip.in {
+  @include opacity(1);
+}
+
+
+// AFFIX
+// --------------------------------------------------------------
+.affix-top { /* initial state */
+}
+.affix { /* sticky state */
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255,255,255,0.75);
+}
+
+
+// BADGE JEWEL
+// --------------------------------------------------------------
+/* for hamburger jewels */
+.badge-important {
+  background-color: rgb(231, 59, 56);
+  @include border-radius(3px);
+  @include disable-text-shadow;
+  #notifications-tab &, #feed-tab &, .hb-collapse & {
+    margin-top: 4px;
+    padding-left: 7px;
+    padding-right: 7px;
+    font-size: 14px;
+    font-weight: 600;
+    color: $white !important;
+  }
+  .hb-collapse & {
+    position: absolute;
+    right: -46px;
+    bottom: -25px;
+    display: block !important;
+    z-index: 999999;
+  }
+  #hamburger-counter & {
+    position: absolute;
+    right: -7px;
+    top: 0;
+    font-size: 11px;
+    padding: 2px 3px;
+  }
+}
+
+
+// RESPONSIVE
+// --------------------------------------------------------------
+.container-fluid {
+  padding: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 976px;
+}
+/*
+@media (min-width: 1200px) {
+  // @include gridFluid($fluidGridColumnWidth, $fluidGridGutterWidth);
+}
+*/

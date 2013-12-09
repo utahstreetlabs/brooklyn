@@ -1,0 +1,39 @@
+base: &base
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  pool: 5
+  username: utah 
+  password: ''
+  # 'localhost' forces mysql to look for a mysql.sock on the filesystem
+  # We want to force mysql to connect over the network for cases where we
+  # use haproxy, so we use 127.0.0.1 here.
+  host: 127.0.0.1 
+  timeout: 5000
+
+development:
+  database: utah_development
+  <<: *base
+
+test: &test
+  database: utah_test<%= ENV['TEST_ENV_NUMBER'] %>
+  <<: *base
+
+integration: &integration
+  <<: *test
+
+staging:
+  database: utah_staging
+  host: staging.copious.com
+  <<: *base
+
+demo:
+  database: utah_demo
+  host: demo1.copious.com
+  <<: *base
+
+production:
+  database: utah_production
+  password: ''
+  host: db1.copious.com
+  <<: *base

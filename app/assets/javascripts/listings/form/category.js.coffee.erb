@@ -1,0 +1,23 @@
+class CategoryConditions
+   constructor: ->
+     @conditions = JSON.parse($('#categoryConditions').html())
+     @disabledOption = "<option><%= I18n.t("listings.category_dependent_fields.html.condition.blank_html") %></option>"
+
+   optionsForCategory: (id) =>
+     @conditions[id]
+
+   createDomForOptions: (categoryId) =>
+     output = [@disabledOption]
+     $.each this.optionsForCategory(categoryId), (key, value) ->
+       output.push("<option value=#{value[0]}>#{value[1]}</option>")
+     $('#listing_dimensions_condition').html(output.join('')).removeAttr('disabled')
+
+jQuery ->
+  categories = new CategoryConditions
+
+  $('#listing_category_id').on 'change', ->
+    categoryId = $(this).val()
+    if categoryId
+      categories.createDomForOptions categoryId
+    else
+      $('#listing_condition').html(categories.disabledOption).attr('disabled','disabled')

@@ -1,0 +1,209 @@
+#= require copious/feature_flags
+#= require controls/flash
+#= require controls/profile/new_profile_modal
+
+initializeFacebook = ->
+  # bail if the module has already been loaded
+  return if COPIOUSFB.apiInitialized
+  debug.debug 'Initializing Facebook'
+
+  class CopiousFb
+    @AUTH_URL = '<%= Network::Facebook.auth_callback_path %>'
+    @SCOPE = '<%= Network::Facebook.scope %>'
+    @APP_ID = '<%= Brooklyn::Application.config.networks.facebook.app_id %>'
+
+    constructor: ->
+      @channelPort = if window.location.port is '' then '' else ":#{window.location.port}"
+      @channelUrl = "//#{window.location.hostname}#{@channelPort}/facebook/connect.html"
+      @auth =
+        status: null
+        token: null
+        signed: null
+
+      FB.init(
+        appId: CopiousFb.APP_ID,
+        status: true, # check login status
+        cookie: true, # enable cookies to allow the server to access the session
+        xfbml: true,  # parse XFBML
+        oauth: true, # enables OAuth 2.0
+        channelUrl: @channelUrl, # Path to your Channel File,
+        frictionlessRequests: true
+      )
+
+      FB.Event.subscribe 'edge.create', (targetUrl) =>
+        _gaq.push ['_trackSocial', 'facebook', 'like', targetUrl]
+
+      FB.Event.subscribe 'edge.remove', (targetUrl) =>
+        _gaq.push ['_trackSocial', 'facebook', 'unlike', targetUrl]
+
+      # Triggered by +FB.init+ when the +status+ option is set to +true+. This allows us to know the user's auth status
+      # as soon as the FB api is initialized rather than having to make a separate roundtrip call using
+      # +FB.getLoginStatus'.
+      #
+      # Triggers +facebook:connected+ on the document if the user is logged into FB and has authenticated the Copious
+      #   app.
+      # Triggers +facebook:not_authorized+ on the document if the user is logged into FB but has not authenticated the
+      #   Copious app.
+      #
+      # Note that the status change event does not appear to be fired if the user is not logged in to FB. Therefore
+      # a component cannot listen for +facebook:unknown+ to determine unambiguously that the user is not logged into
+      # FB. This is a limitation of checking login status on page load rather than checking synchronously.
+      #
+      # https://developers.facebook.com/docs/reference/javascript/FB.getLoginStatus/
+      FB.Event.subscribe 'auth.statusChange', (response) =>
+        this._updateAuthState(response)
+        $(document).trigger "facebook:#{@auth.status}"
+
+    # Returns whether or not the user is logged into FB (as determined directly with a +FB.getLoginStatus+ call,
+    # indirectly as a result of a +FB.login+ call to send the user through the FB OAuth dialog, or a
+    # +auth.statusChange+ fired when the FB API is initialized).
+    isLoggedIn: =>
+      @auth.status is 'connected' or @auth.status is 'not_authorized'
+
+    # Returns whether or not the user has authenticated the Copious app. Implies that the user is logged in, since
+    # we wouldn't know connection state otherwise.
+    hasAuthenticatedApp: =>
+      @auth.status is 'connected'
+
+    # Prompts the user to authenticate the Copious app using the FB OAuth dialog. If the user is already logged into FB,
+    # this is effectively a no-op. Otherwise the dialog requires the user to log in. Then, if the user has never
+    # authenticated the Copious app, or if we are asking for additional permissions, he must do that before the OAuth
+    # dialog is dismissed.
+    #
+    # If the user logs into FB, redirects the browser to the Copious authentication flow (via +enterAuthFlow+). Does
+    # nothing if the user cancels login.
+    #
+    # https://developers.facebook.com/docs/reference/javascript/FB.login/
+    # https://developers.facebook.com/docs/reference/javascript/FB.getLoginStatus/
+    logIn: (options = {}) =>
+      FB.ui({
+        method: 'permissions.oauth',
+        perms: CopiousFb.SCOPE,
+        display: 'popup',
+      }, (response) =>
+        this._updateAuthState(response)
+        if this.isLoggedIn()
+          CopiousFb.enterAuthFlow({authUrl: options.authUrl, status: response.status})
+      )
+
+    _updateAuthState: (response) =>
+      @auth.status = response.status
+      if response.authResponse?
+        @auth.token = response.authResponse.accessToken
+        @auth.signed = response.authResponse.signedRequest
+
+    # Redirects the browser to the entry point of the Copious authentication flow.
+    @enterAuthFlow: (options = {}) ->
+      if copious.featureEnabled('onboarding.create_profile_modal') and options.status is 'connected'
+        $('#new-profile-modal').newProfileModal()
+      else
+        window.location.href = if options.authUrl? then options.authUrl else CopiousFb.AUTH_URL
+
+    @appRequest: (options) ->
+      dfd = new $.Deferred()
+      FB.ui $.extend({method: 'apprequests'}, options), (response) =>
+        # see http://developers.facebook.com/blog/post/569/ for what the requests v2 response object looks like
+        if response and response.request?
+          dfd.resolve(response)
+        else
+          dfd.reject(response)
+      dfd
+
+    # XXX: it's not clear that any of the following methods are actually used.
+
+    @ensureLoggedIn: ->
+      dfd = new $.Deferred()
+
+      authResponse = FB.getAuthResponse()
+      if authResponse?
+        dfd.resolve()
+      else
+        FB.login (response) ->
+          if response.authResponse?
+            dfd.resolve()
+          else
+            dfd.reject()
+            debug.log "Rejected promise: FB.login does not contain authResponse."
+
+      dfd.promise()
+
+    @ensureGranted: (permission) ->
+      dfd = new $.Deferred()
+
+      FB.api '/me/permissions', (permsResponse) ->
+        if permsResponse? and permsResponse['data'][0][permission]?
+          dfd.resolve()
+        else
+          # We don't use FB.login because the response from that only tells us if we've authorized the app, not which
+          # permissions were granted. So we use make a +permissions.request+ call, which will return which of a set of
+          # requested permissions were actually granted by the call.
+          FB.ui({
+            method: 'permissions.request',
+            perms: permission,
+            display: 'dialog',
+          }, (response) ->
+            if response.perms is not ""
+              dfd.resolve()
+            else
+              dfd.reject()
+              debug.log "Rejected promise: permission #{permission} not granted by permissions.request."
+          )
+
+      dfd.promise()
+
+    @ensurePermission: (permission) ->
+      dfd = new $.Deferred()
+
+      loginPromise = CopiousFb.ensureLoggedIn()
+      loginPromise.done ->
+        grantedPromise = CopiousFb.ensureGranted(permission)
+        grantedPromise.done ->
+          dfd.resolve()
+        grantedPromise.fail ->
+          dfd.reject()
+          debug.log "Rejected promise: grantedPromise failed."
+      loginPromise.fail ->
+        dfd.reject()
+        debug.log "Rejected promise: loginPromise failed."
+
+      dfd.promise()
+
+  jQuery ->
+    # not using a plugin so as to not introduce a dependency on the plugin module whose async loading may screw up the
+    # timing of the loading of this module
+
+    window.CopiousFb = CopiousFb
+    window.copiousFb = new CopiousFb()
+
+    # data api
+
+    # Causes the FB OAuth dialog to be presented.
+    $(document).on 'click', '[data-action=auth-facebook]', ->
+      copiousFb.logIn(authUrl: $(this).data('auth-url'))
+
+    # Adds the user's current FB credentials to the Copious login form so that the credentials stored in Rubicon can
+    # be updated after login if necessary.
+    #
+    # See: https://developers.facebook.com/roadmap/offline-access-removal
+    # and: http://developers.facebook.com/blog/post/2011/05/13/how-to--handle-expired-access-tokens/
+    $(document).on 'click', '[data-action=auth-update]', ->
+      # XXX: why are we updating the token if it's not authorized?
+      if copiousFb.auth.token? and copiousFb.isLoggedIn()
+        $form = $(this).parents("form:first")
+        $form.find("#login_facebook_token").val(copiousFb.auth.token)
+        $form.find("#login_facebook_signed").val(copiousFb.auth.signed)
+
+  # module loading stuff below
+
+  _.each COPIOUSFB.postInitQueue, (callback) -> callback()
+
+  COPIOUSFB.postInit = (callback) -> callback()
+
+  COPIOUSFB.apiInitialized = true
+
+COPIOUSFB ?= {}
+
+if COPIOUSFB.alreadyLoaded
+  initializeFacebook()
+else
+  COPIOUSFB.initialize = initializeFacebook

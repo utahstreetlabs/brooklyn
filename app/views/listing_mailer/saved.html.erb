@@ -1,0 +1,13 @@
+<% 
+message = t('.header.message_html', listing: @listing.title, collection_link: mailer_header_link_to(@collection.name,
+             public_profile_collection_url(@collection.owner, @collection)), saver: @saver.name)
+%>
+
+<%= render partial: '/shared_mailer/new_responsive_header', locals: {user: @listing.seller, message: message} %>
+
+<%= mailer_user_listing_social_action @saver, :save, @listing %>
+<%= mailer_user_info @saver %>
+<%= mailer_user_stats_and_listings @saver, @saver_listing_infos %>
+<%= mailer_user_follow_action @listing.seller, @saver %>
+
+<%= render '/shared_mailer/new_responsive_footer' %>

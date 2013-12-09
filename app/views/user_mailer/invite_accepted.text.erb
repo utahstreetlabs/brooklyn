@@ -1,0 +1,7 @@
+<%= word_wrap %Q[Congratulations #{@inviter.firstname.html_safe}, your Copious network is growing! #{@invitee[:name]} just accepted your invitation to join Copious. And remember, you receive $5 once they make their first purchase, so share things they might find interesting.
+
+Since you can never bring too many friends shopping, go ahead and invite some more at #{rewrite_mailer_url dashboard_url(more_invites: 1)}
+
+Happy shopping,] %>
+
+<%= render '/shared_mailer/footer' %>

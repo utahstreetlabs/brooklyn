@@ -1,0 +1,15 @@
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  There's a new secret seller listing request.
+<% end %>
+
+<%= mailer_graf do %>
+  Seller: <%= mailer_link_to @item.seller.name, public_profile_url(@item.seller) %><br>
+  Title: <%= @item.title %><br>
+  Description: <%= mailer_format_html @item.description %><br>
+  Condition: <%= t(@item.condition, scope: 'models.secret_seller_item.attributes.condition') %><br>
+  Price: <%= number_to_currency @item.price %><br>
+<% end %>
+
+<%= render '/shared_mailer/footer' %>

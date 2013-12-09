@@ -1,0 +1,22 @@
+base: &base
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  pool: 5
+  username: utah
+  password:
+  host: localhost
+  timeout: 5000
+
+development:
+  database: utah_development
+  <<: *base
+
+test: &test
+  database: utah_test
+  <<: *base
+
+staging:
+  database: utah_staging
+  host: staging.copious.com
+  <<: *base

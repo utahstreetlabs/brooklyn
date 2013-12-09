@@ -1,0 +1,5 @@
+<% if seller == current_user %>
+  Your <%= link_to_listing listing %> was suspended
+<% else %>
+  <%= link_to_listing listing %> was suspended
+<% end %>

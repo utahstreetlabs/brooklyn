@@ -1,0 +1,111 @@
+// JQUERY TOOLS OVERLAY
+// This file contains styles for jquery tools overlay
+
+.overlay, .listing-overlay-remote {
+  min-width: 400px;
+  max-width: 50%;
+  display: none;
+  background-color: $white;
+  padding: 20px;
+  border: 1px solid $border;
+  font-family: $styledFontFamily;
+  a.close {
+    float: right;
+    //padding-right: 20px
+    background: image-url("icons/hide.png") no-repeat right top;
+    color: $border;
+    margin-right: -10px;
+    margin-top: -7px;
+    cursor: pointer;
+    opacity: 0.5;
+    border: 0px;
+    box-shadow: none; }
+  a.close:hover,
+  a.close.hover,
+  a.close:focus,
+  a.close.focus {
+    opacity: 1;
+    border: 0px;
+    box-shadow: none; }
+  h4 {
+    font-size: 20px;
+    font-weight: 600; }
+  p {
+    font-weight: 500; }
+  #new_buyer_rating, #new_seller_rating {
+    margin-left: 0px;
+    font-family: $styledFontFamily;
+    font-weight: 500;
+    font-size: 15px;
+    color: $gray;
+    .radios.field-flag {
+      ul {
+        li {
+          float: left;
+          clear: both;
+          margin-bottom: 7px; } } } }
+  form {
+    fieldset {
+      margin-bottom: 0px;
+      padding-bottom: 0px;
+      margin-top: 15px; } } }
+
+.overlay.scroll {
+  overflow-y: scroll;
+  height: 80%; }
+
+#ajax-form-overlay {
+  .buttons, form {
+    margin-bottom: 0px; } }
+
+.overlay.wide {
+  max-width: 60%;
+  min-width: 920px;
+  div.content-wrap {
+    padding-bottom: 0px; } }
+
+div.overlay-close {
+  position: absolute;
+  right: 14px;
+  top: 10px;
+  opacity: 0.2;
+  img {
+    width: 12px;
+    height: 12px; } }
+
+div.overlay-close:hover,
+div.overlay-close.hover,
+div.overlay-close:focus,
+div.overlay-close.focus {
+  opacity: 1; }
+
+
+// CREATE A LISTING PAGE INSTAGRAM OVERLAY
+// -----------------------------------------
+.overlay-header {
+  margin: 0px;
+  padding: 8px 20px 0px;
+  position: fixed;
+  // these positional values should be passed on from #ajax-overlay
+  // if we could reposition the #ajax-overlay, it'd be best to subtract 58px (top value)
+  // from it, so the header can sit on top of the modal screen
+  //top: 58px;
+  height: 50px;
+  //left: 354px;
+  //right: 0px;
+  //width: 957px;
+  background: white;
+  border-bottom: 1px solid $border-lightest;
+  @include box-shadow(0px 1px 2px #EFEFEF);
+}
+
+.overlay-footer {
+  margin: 0px;
+  position: fixed;
+  //left: 354px;
+  //bottom: 55px;
+  background: white;
+  //width: 957px;
+  padding: 9px 20px;
+  border-top: 1px solid #EFEFEF;
+}

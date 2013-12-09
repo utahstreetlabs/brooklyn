@@ -1,0 +1,20 @@
+<%
+title 'Forgotten password'
+deactivate_masthead
+hide_footer
+%>
+<div class="span16">
+  <h3>Forgot your password?</h3>
+
+  <%= form_for(@user, :url => password_resets_path) do |f| %>
+
+    <%= f.fieldset do %>
+      <%= f.field :email, :class => 'text' do %>
+        <%= f.label :email, 'Email' %>
+        <%= f.text_field :email, :maxlength => 255, :class => 'span6' %>
+      <% end %>
+    <% end %>
+
+    <%= f.buttons :save_text => 'Send me reset password instructions', :cancel_url => root_path, cancel_options: {class: 'button soft'} %>
+  <% end %>
+</div>

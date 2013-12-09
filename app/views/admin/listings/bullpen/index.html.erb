@@ -1,0 +1,54 @@
+<% title "Listings bullpen" %>
+
+<%= bootstrap_breadcrumb [['Admin', admin_dashboard_path], 'Listings bullpen'] %>
+
+<% if bullpen.any? %>
+  <%= bootstrap_table condensed: true do %>
+    <tbody>
+      <% bullpen.each do |entry| %>
+        <%= content_tag :tr, data: {listing: entry.id, role: 'listing'} do %>
+          <td class="span4">
+            <%= link_to listing_photo_tag(entry.photo, :medium, size: '300x300'), listing_path(entry) %>
+          </td>
+          <td class="span4">
+            <ul class="unstyled">
+              <li>Title: <%= link_to_listing entry, truncate: 60 %></li>
+              <li>
+                Seller: <%= link_to_user_profile entry.seller %>
+              </li>
+              <li>Price: <%= number_to_currency entry.total_price %></li>
+              <li>Listed <%= datetime entry.activated_at %></li>
+            </ul>
+          </td>
+          <td class="span1">
+            <%= bootstrap_toolbar data: {role: 'approval-toolbar'} do %>
+              <%= bootstrap_button_group do %>
+                <%= bootstrap_button approve_admin_listings_bullpen_path(entry.id), icon: 'plus-sign',
+                      inverted_icon: true, condition: :green_light, rel: 'tooltip', title: 'Approve',
+                      data: {method: :post, remote: true, link: :remote, format: :json,
+                        role: 'approval-toolbar-button', action: 'approve'} %>
+                <%= bootstrap_button disapprove_admin_listings_bullpen_path(entry.id), icon: 'minus-sign',
+                      inverted_icon: true, condition: :yellow_light, rel: 'tooltip', title: 'Disapprove',
+                      data: {method: :post, remote: true, link: :remote, format: :json,
+                        role: 'approval-toolbar-button', action: 'disapprove'} %>
+              <% end %>
+            <% end %>
+            <p>
+              <% if entry.limited_listing_access? %>
+                <%= bootstrap_label :'limited-access-seller', 'Limited access seller' %>
+              <% elsif entry.undetermined_listing_access? %>
+                <%= bootstrap_label :'undetermined-access-seller', 'Undetermined access seller' %>
+              <% end %>
+            </p>
+            <p>
+              <%= pluralize entry.for_sale_count, 'listing' %>
+            </p>
+          </td>
+        <% end %>
+      <% end %>
+    </tbody>
+  <% end %>
+  <%= bootstrap_paginate bullpen %>
+<% else %>
+  <p>No listings to approve</p>
+<% end %>

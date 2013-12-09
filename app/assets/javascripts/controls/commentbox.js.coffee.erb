@@ -1,0 +1,623 @@
+#= require constants
+#= require controls/typeahead_manager
+
+#######################################################################################################################
+# This component implements the (fairly specific) requirements of the listing comment box for typeahead.
+#
+# It's likely that over time the typeahead-specific elements of this component should be separated out into a more
+# composable piece that can be used here and elsewhere, but at the moment this widget is the only use case for the
+# ability to do typeahead inside a larger textbox.
+#
+# The main entry point is the `Commentbox` class, which is instantiated using the lazy jquery wrapper pattern when a
+# commentbox first receives focus.  An instance of the `Commentbox` class should exist for every actual comment textbox
+# in the page (ie, on search & browse and feed views).
+#
+# `Commentbox` also acts as the input handler, composing together the other components, which are a state manager
+# (`CommentboxState`), data sources (subclasses of `TypeaheadManager`) and view renderer (`PlainTypeaheadRenderer`).
+# The `Commentbox` instance wraps the text input that is being applied to in order to make room for additional dom
+# elements in the subcomponents while allowing a single place to capture bubbled events without letting them go all
+# the way up to the document.  This approach is used to allow multiple instances in the same page.
+#
+# The instance then sets up event handlers at this level during construction, but delegates the majority of the work
+# to the other classes based on what is required.
+#######################################################################################################################
+
+KEYCHAR_HASHTAG = '#'
+KEYCHAR_MENTION = '@'
+KEYCHARS = [KEYCHAR_HASHTAG, KEYCHAR_MENTION]
+# Assumes spaces in keywords are replaced with underscores
+# Match the first keyword and exclude the keyChar along with the rest of the string
+KEYCHAR_REGEXP = new RegExp("([^#{KEYCHARS.join('')}\\s]+).*", 'i')
+
+SELECTOR_WRAPPER = '.commentbox_wrapper'
+SELECTOR_MENU_OPTION = '.commentbox_menu_item[data-category="data"]'
+SELECTOR_ACTIVE_MENU_OPTION = '.commentbox_menu_item.active[data-category="data"]'
+SELECTOR_LOAD_MENU_OPTION = '[data-category="load"]'
+SELECTOR_FB_MENU_OPTION = '[data-category="fb"]'
+SELECTOR_HIGHLIGHT = '.commentbox_highlight'
+SELECTOR_ACTIVE_HIGHLIGHT = '.commentbox_highlight.active'
+
+MARKUP_HIGHLIGHT_START = '<span class="commentbox_highlight">'
+MARKUP_ACTIVE_HIGHLIGHT_START = '<span class="commentbox_highlight active">'
+MARKUP_HIGHLIGHT_END = '</span>'
+
+HASHTAG_TYPE_TAG = 'tag'
+MENTION_TYPE_FB_FRIEND = 'fb'
+MENTION_TYPE_COPIOUS_FOLLOWER = 'cf'
+
+PROFILE_TYPEAHEAD_URL = '<%= Brooklyn::Application.routes.url_helpers.typeahead_public_profile_index_path %>'
+HASHTAG_TYPEAHEAD_URL = '<%= Brooklyn::Application.routes.url_helpers.typeahead_tags_path %>'
+FB_MENTION_REQUEST_URL = '<%= Brooklyn::Application.routes.url_helpers.invites_facebook_u2u_index_path %>'
+CONNECTED_URL = '<%= Brooklyn::Application.routes.url_helpers.profile_networks_connected_path %>'
+
+#: XXX: translations
+LOAD_MSG = 'Loading...'
+FB_CONNECT_MSG = 'Message Facebook Friends: '
+CONNECT_BUTTON_TEXT = 'Connect'
+
+CONNECT_BUTTONS = {
+  facebook: $('<button/>', {
+      type: 'button',
+      class: 'commentbox_fb_connect signup button btn-block primary facebook'
+    }).text(CONNECT_BUTTON_TEXT)
+}
+
+FB_GRAPH_URL = 'https://graph.facebook.com'
+
+PROFILE_WIDTH = 30
+PROFILE_HEIGHT = 30
+
+keyFn = (o) -> o.name.toLowerCase()
+
+compareFn = (a, b) ->
+  aname = a.name.toLowerCase()
+  bname = b.name.toLowerCase()
+  return -1 if aname < bname
+  return 1 if aname > bname
+  return -1 if a.type < b.type
+  return 1 if a.type > b.type
+  return -1 if a.id < b.id
+  return 1 if a.id > b.id
+  0
+
+profileResultMapper = (r) -> {id: r.id, name: r.name, type: MENTION_TYPE_COPIOUS_FOLLOWER, imgUrl: r.imgUrl}
+hashtagResultMapper = (r) -> {id: r.slug, name: r.name, type: HASHTAG_TYPE_TAG}
+hashtagCreator = (n) ->
+  if n?
+    {id: n.replace(/_/g, '-'), name: n.replace(/_/g, ' '), type: HASHTAG_TYPE_TAG}
+  else
+    null
+
+# Only fetch the fb friend list once and share it across multiple comment boxes in a singe page
+fbFriends = null
+loadFbFriends = (manager, renderer = null) ->
+  if fbFriends
+    manager.insertMany(fbFriends)
+  else
+    COPIOUSFB.postInit ->
+      FB.api('/me/friends', (response) =>
+        return unless response?
+        if response.error?
+          return unless renderer? and response.error.type is 'OAuthException' and response.error.code is 2500
+          $.jsend.get(CONNECTED_URL, {networks: ['facebook']}).then((data) =>
+            return unless data?
+            renderer.updateNetworkMenuOptions(data.networks, manager)
+          )
+        else
+          fbFriends = ({id: f.id, name: f.name, type: MENTION_TYPE_FB_FRIEND} for f in response.data)
+          manager.insertMany(fbFriends)
+      )
+
+class MentionTypeaheadManager extends Copious.TypeaheadManager
+  constructor: ->
+    super(keyFn, compareFn, PROFILE_TYPEAHEAD_URL, profileResultMapper)
+
+  preloadMentions: (renderer) ->
+    loadFbFriends(this, renderer)
+
+class HashtagTypeaheadManager extends Copious.TypeaheadManager
+  constructor: ->
+    super(keyFn, compareFn, HASHTAG_TYPEAHEAD_URL, hashtagResultMapper, hashtagCreator)
+
+class Commentbox
+  constructor: (@element) ->
+    # Since the back-end relies on the data sent by the client to recognize, save, create, and render keywords,
+    # keywordData cannot be missing any keywords or data. Therefore, keywordData may contain data for keywords
+    # that do not exist in the text or extra data on keywords.
+    @keywordData = {}
+    # can't figure out how to static init an object using constants as the keys, so we just assign after
+    @managers = {}
+    @managers[KEYCHAR_MENTION] = new MentionTypeaheadManager
+    @managers[KEYCHAR_HASHTAG] = new HashtagTypeaheadManager
+    $wrapper = $('<div/>', class: 'commentbox_wrapper')
+    @element.wrap($wrapper)
+    # jQuery makes a copy of $wrapper to add to the page, so we need to grab the one on the page.
+    @wrapped = @element.closest('.commentbox_wrapper')
+    @input = $('<input>', {class: 'commentbox_input', type: 'hidden', name: 'comment[keywords]'})
+    @element.after(@input)
+    @form = @element.closest('form')
+    @renderer = new PlainTypeaheadRenderer(@element, this, {
+      menuOffset: {top: @element.innerHeight(), left: 0}
+    })
+    @state = new CommentboxState(this, @renderer)
+    @allowEvents = true
+    this._registerEventHandlers()
+    @managers[KEYCHAR_MENTION].preloadMentions(@renderer)
+
+  # delegate to the element to provide a jquery-ish event facade
+  trigger: (event, extra) -> @element.trigger(event, extra)
+  on: (event, fn) -> @element.on(event, fn)
+
+  getText: -> @element.val() || ''
+
+  getCaretPos: ->
+    textbox = @element.get(0)
+    return if textbox.selectionStart?
+      textbox.selectionStart
+    else if document.selection?
+      @element.focus()
+      sel = document.selection.createRange()
+      selLength = document.selection.createRange().text.length
+      sel.moveStart 'character', -@element.val().length
+      sel.text.length - selLength
+    else
+      0
+
+  getKeyword: (text, keycharPos) ->
+    return null unless text? and keycharPos? and keycharPos >= 0
+    text.substring(keycharPos + 1).replace(KEYCHAR_REGEXP, "$1")
+
+  handleUnfocus: -> @state.handleUnfocus()
+
+  _updateSuggestions: ->
+    if @state.typeaheadMode
+      keyword = @state.content.keyword.replace('_', ' ')
+      @managers[@state.typeaheadChar].processSuggestions(keyword, (suggestions) =>
+        if suggestions.length > 0
+          @renderer.populateMenu(suggestions, $.extend({}, {char: @state.typeaheadChar}))
+          @renderer.showMenu(@wrapped.width())
+        else
+          @renderer.hideMenu()
+      )
+
+  _shouldSubmit: (keyCode) ->
+    return false unless keyCode is KEYCODE_ENTER
+    (@state.typeadheadMode and not @renderer.menuShowing()) or not @state.typeaheadMode
+
+  _prepareSubmit: -> @input.val(JSON.stringify(@keywordData))
+
+  _getKeywordData: (keyword) -> @keywordData[keyword]
+
+  _storableKeyword: (keyword) -> if keyword? then keyword.replace(/[ ]/g, '_') else null
+
+  _storeKeywordData: (keyword, obj) -> @keywordData[keyword] = obj if obj?
+
+  _selectFromRenderer: (replaceKeyword = true, options = {}) ->
+    typeaheadChar = options.char or @state.typeaheadChar
+    keyword = options.keyword or @state.content.keyword
+
+    selection = @renderer.selectedObject() or
+      (@managers[typeaheadChar] and @managers[typeaheadChar].createFn(keyword))
+    return unless selection?
+    storedKeyword = this._storableKeyword(selection.name)
+    @renderer.replaceActiveKeyword(keyword, storedKeyword, @state.content.keycharPos, true) if replaceKeyword
+    this._storeKeywordData(storedKeyword, selection)
+
+  _registerEventHandlers: ->
+    @element.on('click', =>
+      @state.handleTextboxClick(this.getText(), this.getCaretPos())
+    )
+    @wrapped.on('mouseenter', SELECTOR_MENU_OPTION, (event) => @renderer.handleMouseEnter(event.target))
+    @wrapped.on('mouseup', SELECTOR_ACTIVE_MENU_OPTION, =>
+      this._selectFromRenderer()
+      @state.handleMenuClick(this.getText(), this.getCaretPos())
+    )
+
+    # these are events that we want to trap and potentially block
+    # events occur in the order: keydown, keypress (1+ times), keyup
+    # use keydown to block special key presses
+    @element.on('keydown', (event) =>
+      @allowEvents = true
+      keyCode = event.which
+      if this._shouldSubmit(keyCode)
+        this._prepareSubmit()
+        return true
+      if @state.typeaheadMode
+        switch keyCode
+          when KEYCODE_TAB, KEYCODE_ENTER
+            this._selectFromRenderer()
+          when KEYCODE_UPARROW, KEYCODE_DOWNARROW
+            @renderer.moveMenuSelection(keyCode)
+      @allowEvents = @state.handleKeyDown(keyCode, this.getText(), this.getCaretPos())
+    )
+    # keypress gets repeated.  not all browsers fire this event for special keys.
+    @element.on('keypress', (event) =>
+      return false unless @allowEvents
+      keyCode = event.which
+      # Handle key presses here only. Necessarily to handle correctly on different browsers.
+      # (e.g. Chrome does not fire keypress with up key, but FF does with keyCode 0)
+      return true if keyCode is 0
+      @allowEvents = @state.handleKeyPress(keyCode, this.getText(), this.getCaretPos())
+    )
+    # use keyup to check result after the key has been released
+    @element.on('keyup', (event) =>
+      return false unless @allowEvents
+      # No need to update input for non-char keys because it should be carried over from keydown
+      @allowEvents = @state.handleKeyUp(this.getText(), this.getCaretPos())
+    )
+    @element.on('commentbox:prefix:updated', (event, extra) =>
+      if extra.prefix? and extra.prefix.length > 0
+        this._updateSuggestions()
+      else
+        @renderer.hideMenu()
+    )
+    @element.on('commentbox:typeahead:exit', (event, extras) =>
+      return unless extras.char is KEYCHAR_HASHTAG
+      keywordKey = this._storableKeyword(extras.keyword)
+      this._selectFromRenderer(false, extras) unless this._getKeywordData(keywordKey)?
+    )
+
+    # this event is triggered on successful comment submission
+    @form.on('jsend:success', (event, data) =>
+      if data.mentions? and typeof data.mentions is 'object'
+        data.ids = ((val.id if val.id?) for key, val of data.mentions)
+
+        if data.ids.length > 0
+          @renderer.showFbRequestDialog(data)
+    )
+
+
+class TypeaheadRenderer
+  constructor: (@textbox, @commentbox, options) ->
+    @options = $.extend({}, $.fn.commentbox.defaults, options)
+    @connectButtons = {}
+    @menu = $('<div/>', {class: 'commentbox_menu'})
+      .append($('<ul/>', {class: 'commentbox_menu_list'}))
+      .hide()
+    @textbox.after(@menu)
+    @menu.css(@options.menuOffset)
+    @commentbox.on('commentbox:typeahead:exit', (event, extra) =>
+      this.hideMenu()
+    )
+
+  menuOptions: -> @menu.find(SELECTOR_MENU_OPTION)
+  activeMenuItem: -> @menu.find(SELECTOR_ACTIVE_MENU_OPTION)
+  menuLoadMessage: -> @menu.find(SELECTOR_LOAD_MSG)
+
+  handleMouseEnter: (item) ->
+    this.activeMenuItem().removeClass('active')
+    $(item).addClass('active')
+
+  setCaretPos: (newPos) ->
+    textbox = @textbox.get(0)
+    if textbox.selectionStart?
+      textbox.setSelectionRange(newPos, newPos)
+      true
+    else if textbox.createTextRange?
+      # XXX: apparently this is supported in almost no browsers.  should we be using createRange?
+      range = textbox.createTextRange()
+      range.move('character', newPos)
+      range.select()
+      true
+    else
+      false
+
+  # isComplete indicates that a complete keyword is being passed in
+  #  if true, a trailing space will also be inserted
+  #  if false, it is assumed that the keyword is only being manipulated and the user is still typing
+  replaceActiveKeyword: (oldKeyword, newKeyword, keycharPos, isComplete = true) ->
+    text = @textbox.val()
+    insertPos = keycharPos + 1
+    newKeyword = newKeyword + ' ' if isComplete
+    @textbox.val(COPIOUS.util.strReplaceAt(text, newKeyword, insertPos, oldKeyword.length))
+    # Calling @textbox.val() moves the caret to the end of all text, so put it at the end of the new keyword
+    this.setCaretPos(insertPos + newKeyword.length)
+
+  removePreviousUnderscore: (caretPos) ->
+    text = @textbox.val().substring(0, caretPos)
+    pos = text.lastIndexOf('_')
+    if pos isnt -1
+      @textbox.val(COPIOUS.util.strReplaceAt(text, '', pos))
+      this.setCaretPos(caretPos - 1)
+
+  populateMenu: (items, menuOptions = {}, emptyList = true) ->
+    $list = @menu.find('.commentbox_menu_list')
+    $list.empty() if emptyList
+    $list.append((this._newMenuItem(i) for i in items[0...@options.maxMenuOptions])...)
+    this.menuOptions().first().addClass('active') if (this.activeMenuItem().length is 0 and emptyList)
+
+    this._insertLoadingItem($list) if @options.menu.loading
+    this._insertFbItem($list) if @options.menu.facebook and menuOptions.char is KEYCHAR_MENTION
+
+  menuShowing: -> @menu.is(':visible')
+
+  showMenu: (menuWidth) ->
+    @menu.css('width', menuWidth) if menuWidth?
+    @menu.show()
+
+  hideMenu: ->
+    @menu.hide()
+    this.menuOptions().remove()
+
+  selectedObject: ->
+    $item = this.activeMenuItem()
+    return null unless $item? and ($item.attr('data-category') is 'data')
+    _.reduce(['id', 'name', 'type'], ((obj, key) => obj[key] = $item.attr("data-#{key}"); obj), {})
+
+  moveMenuSelection: (keyCode) ->
+    if this.menuShowing()
+      $activeMenuItem = this.activeMenuItem()
+      $targetMenuItem = if keyCode is KEYCODE_UPARROW
+        $target = $activeMenuItem.prev(SELECTOR_MENU_OPTION)
+        if $target.length > 0  then $target else this.menuOptions().last()
+      else
+        $target = $activeMenuItem.next(SELECTOR_MENU_OPTION)
+        if $target.length > 0  then $target else this.menuOptions().first()
+      $activeMenuItem.removeClass('active')
+      $targetMenuItem.addClass('active')
+
+  showFbRequestDialog: (data) ->
+    # Currently the request dialog is only shown for mentioned FB users who are not registered on Copious
+    # Eventually we want to make an FB request for Copious users who are connected to FB as well
+    requestOptions =
+      to: data.ids.join(','),
+      message: "#{data.currentUser or 'Your friend'} mentioned you on #{data.listingTitle or 'a listing'}"
+    options =
+      url: FB_MENTION_REQUEST_URL
+      afterRequest: () ->
+
+    FB.ui $.extend(method: 'apprequests', requestOptions), (response) =>
+      if response and response.request?
+        params =
+          request_id: response.request,
+          to: response.to.toString(),
+          source: 'comment_mention'
+        $.jsend.post(options.url, params).then(options.afterRequest)
+
+  updateNetworkMenuOptions: (networks, manager) ->
+    return unless networks? and manager?
+    for key, val of networks
+      if val
+        @options.menu[key] = true
+        @connectButtons[key] = CONNECT_BUTTONS[key]
+        @connectButtons[key].manager = manager
+
+  _newMenuItem: (item) ->
+    $contentContainer = $('<div/>', {
+      class: 'commentbox_menu_item_content_container'
+    }).append($('<span/>', {
+      class: 'commentbox_menu_item_text'
+    }).html(item.name))
+    $li = $('<li/>', {
+      class: 'commentbox_menu_item',
+      'data-category': 'data',
+      'data-type': item.type,
+      'data-name': item.name,
+      'data-id': item.id
+    }).append($contentContainer)
+
+    if item.type is 'cf' or item.type is 'fb'
+      this._insertProfileImage($li, item.id, item.type, item.imgUrl)
+      this._insertSocialIcon($contentContainer, item.type)
+
+    $li
+
+  _insertProfileImage: ($el, id, type, url) ->
+    $el.prepend($('<img/>', {
+      class: 'avatar text-adjacent',
+      src: (
+        if type is 'cf' then url or ''
+        else if type is 'fb' then "#{FB_GRAPH_URL}/#{id}/picture?width=#{PROFILE_WIDTH}&height=#{PROFILE_HEIGHT}"
+        else '')
+    }))
+
+  _insertSocialIcon: ($el, type) ->
+    $el.append($('<div/>', {
+      class: "commentbox_social_icon " +
+              (if type is 'cf' then '' # XXX: No copious icon, use styled text or leave blank?
+              else if type is 'fb' then 'connected-network facebook'
+              else ''),
+    }))
+
+  _insertLoadingItem: ($list) ->
+    $li = $('<li/>', {
+      class: 'commentbox_menu_item',
+      'data-category': 'load'
+    }).append($('<span/>', {
+      class: 'commentbox_menu_item_text'
+    }).html(LOAD_MSG))
+    $list.append($li)
+
+  _insertFbItem: ($list) ->
+    $li = $('<li/>', {
+      class: 'commentbox_menu_item',
+      'data-category': 'fb'
+    }).append(
+      $('<span/>', {
+      class: 'commentbox_menu_item_text'
+      }).append(FB_CONNECT_MSG)
+    ).append(@connectButtons.facebook)
+
+    # Necessary to init button each time as attached events are lost after removing and appending the button
+    this._initFbConnectButton(@connectButtons.facebook)
+    $list.prepend($li)
+
+  _initFbConnectButton: (button, renderer) ->
+    button.click =>
+      COPIOUSFB.postInit =>
+        FB.login((response) =>
+          if response? and response.status is 'connected'
+            @options.menu.facebook = false
+            @connectButtons.facebook = null
+            loadFbFriends(button.manager, this)
+        )
+
+
+class PlainTypeaheadRenderer extends TypeaheadRenderer
+  # over time this entire implementation disappeared...
+
+
+class CommentboxState
+  constructor: (@commentbox, @renderer) ->
+    @typeaheadMode = false # true when caret pos between keychar (non-inclusive) and end of keyword (inclusive)
+    @typeaheadChar = null
+    @input = {keyCode: null, charStr: null}
+    @content = {text: null, caretPos: null, keycharPos: null, keyword: null}
+
+  handleMenuClick: (text, caretPos) ->
+    this._updateContent(text, caretPos)
+    this.exitTypeaheadMode()
+
+  handleTextboxClick: (text, caretPos) ->
+    # Store previous state info for actions based on changes and differences in state, such as saving keywords
+    prevContent = @content
+    prevTypeaheadChar = @typeaheadChar
+    this._updateContent(text, caretPos)
+    this.refreshTypeaheadMode({char: prevTypeaheadChar, content: prevContent})
+
+  handleUnfocus: -> this.exitTypeaheadMode()
+
+  handleKeyDown: (keyCode, text, caretPos, fireEvent = true) ->
+    @input = {keyCode: keyCode, charStr: String.fromCharCode(keyCode)}
+    # prevent event bubbling for menu manipulation
+    fireEvent = not (
+      @typeaheadMode and (
+        keyCode in [KEYCODE_TAB, KEYCODE_ENTER, KEYCODE_ESC] or
+        (keyCode in [KEYCODE_UPARROW, KEYCODE_DOWNARROW] and @renderer.menuShowing())))
+    this.exitTypeaheadMode() if keyCode in [KEYCODE_TAB, KEYCODE_ENTER, KEYCODE_ESC]
+    this._updateContent(text, caretPos)
+    fireEvent
+
+  handleKeyPress: (keyCode, text, caretPos, fireEvent = true) ->
+    @input = {keyCode: keyCode, charStr: String.fromCharCode(keyCode)}
+    this._updateContent(text, caretPos, @input.charStr)
+    if @typeaheadMode
+      if @input.charStr in KEYCHARS
+        this.exitTypeaheadMode()
+      else if keyCode is KEYCODE_SPACE
+        # Use text and caretPos arguments instead of @content to check the state before modification
+        if text.charCodeAt(caretPos - 1) is KEYCODE_UNDERSCORE
+          # to allow spaces in keywords, we exit typeahead only on a double space
+          this.exitTypeaheadMode({rmTrailingUnderscore: true})
+        else
+          # replace spaces with underscores as the user types
+          @renderer.replaceActiveKeyword(@content.keyword, "#{@content.keyword}_", @content.keycharPos, false)
+          fireEvent = false
+      else
+        @commentbox.trigger('commentbox:prefix:updated', {char: @typeaheadChar, prefix: @content.keyword})
+    else
+      this.enterTypeaheadMode() if @input.charStr in KEYCHARS
+    fireEvent
+
+  # keyup doesn't always get an accurate keycode, so we get it from the last keypress or keydown event that we stored.
+  handleKeyUp: (text, caretPos, fireEvent = true) ->
+    # Store previous state info for actions based on changes and differences in state, such as saving keywords
+    prevContent = @content
+    prevTypeaheadChar = @typeaheadChar
+    this._updateContent(text, caretPos)
+    if @typeaheadMode
+      switch @input.keyCode
+        when KEYCODE_LEFTARROW, KEYCODE_RIGHTARROW
+          this.refreshTypeaheadMode({char: prevTypeaheadChar, content: prevContent})
+        when KEYCODE_BACKSPACE, KEYCODE_DELETE
+          @commentbox.trigger('commentbox:prefix:updated', {char: @typeaheadChar, prefix: @content.keyword})
+          this.refreshTypeaheadMode()
+    else
+      switch @input.keyCode
+        when KEYCODE_LEFTARROW, KEYCODE_UPARROW, KEYCODE_RIGHTARROW, KEYCODE_DOWNARROW, KEYCODE_BACKSPACE, \
+            KEYCODE_DELETE
+          this.refreshTypeaheadMode()
+        when KEYCODE_HASHTAG, KEYCODE_MENTION
+          @typeaheadChar = @input.charStr
+    fireEvent
+
+  checkTypeaheadMode: ->
+    return false if @content.keycharPos < 0
+    (@content.keyword? and
+      @content.keycharPos < @content.caretPos <= (@content.keycharPos + @content.keyword.length + 1))
+
+  refreshTypeaheadMode: (prevState = {}) ->
+    newTypeaheadMode = this.checkTypeaheadMode()
+    unless newTypeaheadMode is @typeaheadMode
+      @typeaheadChar = if @content.keycharPos < 0 then null else @content.keyword.charAt(0)
+      if newTypeaheadMode
+        this.enterTypeaheadMode()
+      else
+        this.exitTypeaheadMode({typeaheadChar: prevState.char, content: prevState.content})
+
+  enterTypeaheadMode: ->
+    @typeaheadMode = true
+
+  exitTypeaheadMode: (options = {}) ->
+    if @typeaheadMode
+      if options.rmTrailingUnderscore
+        @renderer.removePreviousUnderscore(@content.caretPos)
+        this._updateContent(@commentbox.getText(), @commentbox.getCaretPos(), @input.charStr)
+
+      keyword = if options.content? then options.content.keyword else @content.keyword
+      char = options.typeaheadChar or @typeaheadChar
+      @typeaheadChar = null
+      @typeaheadMode = false
+      @commentbox.trigger('commentbox:typeahead:exit', {char: char, keyword: keyword})
+
+  _getKeycharPos: (text, caretPos) ->
+    searchable = text.substring(0, caretPos + 1)
+    position = Math.max((searchable.lastIndexOf(c) for c in KEYCHARS)...)
+    # Do not recognize keychar position if keychar is found at end of searchable, which implies that the caret is
+    # to the left of a keychar and we are not in typeahead mode. Necessary to be consistent with getKeyword()
+    position = -1 if position is searchable.length - 1 and position isnt 0
+    @typeaheadChar = searchable[position]
+    position
+
+  _updateContent: (text, caretPos, charStr = null) ->
+    # charStr is the character entered from keypress event and does not exist in the textbox yet
+    if charStr?
+      text = COPIOUS.util.strSplice(text, charStr, caretPos)
+      caretPos = caretPos + charStr.length
+    keycharPos = this._getKeycharPos(text, caretPos)
+    keyword = @commentbox.getKeyword(text, keycharPos)
+    @content = {text: text, caretPos: caretPos, keycharPos: keycharPos, keyword: keyword}
+
+
+jQuery ->
+  $.fn.commentbox = (option) ->
+    $(this).each ->
+      $element = $(this)
+      cb = $element.data('commentbox')
+      unless cb
+        $element.data('commentbox', (cb = new Commentbox($element)))
+        # Set focus because setting up typeahead rebuilds the DOM, which removes focus
+        # Focus is set here instead of in constructor because we must wait for cb to be assigned
+        # Apply focus in timeout function to run it "in parallel" instead of "in sequence"
+        # Needs to be run "in parallel" to avoid a Firefox quirk that prevents assigning focus after DOM change
+        setTimeout(->
+          $element.focus()
+        , 0)
+
+        $(document).click(
+          (event) ->
+            # Cannot exit typeahead mode on blur event because it fires before all click events
+            # So if a menu option is clicked, we cannot tell because we have already exited typeahead mode on blur
+            unless document.activeElement is $element.get(0)
+              cb.handleUnfocus()
+        )
+
+  $.fn.commentbox.defaults = {
+    menuOffset: {top: 0, left: 0}
+    maxMenuOptions: 4
+    menu: {loading: false, facebook: false}
+    queryLimit: 20
+  }
+
+  $(document).on 'focus', '[data-control=commentbox]', -> $(this).commentbox()
+
+# TODO: (but liveable in v1)
+#   * strip underscores from backend searches (on delete)
+#   * users not logged into fb
+#   * "loading..." and stale data ?
+#   * DRY up selectors
+#   * when in typeahead mode and press up/down arrow, show menu if not visible
+#   * update menu options on textbox resize
+#   * update suggestions when press space
+#   * enter typeahead mode only if keyword is at beginning of text or if character before keyword is whitespace
+#   * fix error if no matches when typing first letter after first keychar and no matches

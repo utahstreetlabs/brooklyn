@@ -1,0 +1,27 @@
+<div id="ship-from" class="section">
+  <% if ship_from.master_addresses.any? %>
+    <%= form_for ship_from, as: :ship_from, url: listing_return_address_path(listing), remote: true, html: {method: :PUT} do |f| %>
+      <%= f.fieldset do %>
+        <% ship_from.master_addresses.each do |a| %>
+          <%= f.field :address_id, id: "field-address-id-#{a.id}" do %>
+            <%= f.radio_button :address_id, a.id %>
+            <%= f.label "address_id_#{a.id}", a.name %>
+            <%= postal_address a %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% else %>
+    <p><%= t('.no_return_address') %></p>
+  <% end %>
+</div>
+
+<h3>Add a New Return Address</h3>
+
+<%= content_tag :div, id: "new-address", class: 'section', :'data-active' => new_address.errors.any? do %>
+  <div>
+    <%= form_for new_address, as: :new_address, :url => listing_return_address_path(listing), remote: true, html: {method: :POST} do |f| %>
+      <%= render partial: 'shared/shipping_address_fields', locals: {f: f} %>
+    <% end %>
+  </div>
+<% end %>

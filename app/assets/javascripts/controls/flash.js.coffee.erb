@@ -1,0 +1,80 @@
+window.copious ||= {}
+
+jQuery ->
+  # Update the flash message.
+  # Flash messages are built on bootstrap alerts. These functions
+  # swap out the contents of elements with data-role=flash-*
+  # (where * is the flash type, one of alert, notice or info).
+  # To replace the flash elements entirely, see the bootstrapAlert
+  # functions below.
+  #
+  # This should be used when you'd simply like to "flash" a string
+  # to the user.
+  copious.flash =
+    message: (type, message, id) ->
+      id = "##{id}" if id
+      parent = $(id || "[data-role=flash-#{type}]")
+      display = $('<div></div>')
+      display.html(message)
+      parent.append(display)
+      parent.show()
+      copious.flash.afterFlashDuration =>
+        # Check class of alert as it may have changed
+        unless copious.flash.isStickyAlert(parent)
+          copious.flash.fade(parent)
+    notice: (message, id) ->
+      copious.flash.message('notice', message, id)
+    alert: (message, id) ->
+      copious.flash.message('alert', message, id)
+    info: (message, id) ->
+      copious.flash.message('info', message, id)
+    clear: (id, clearAll = true) ->
+      id = "##{id}" if id?
+      $(id || "[data-role*=flash]").each ->
+        # Check class of alert as it may have changed
+        if clearAll or not copious.flash.isStickyAlert(this)
+          copious.flash.fade(this, => $(this).html(''))
+
+    fade: (el, fn = ->) ->
+      $(el).fadeOut(300, fn)
+    afterFlashDuration: (fn) ->
+      setTimeout(fn, <%= Brooklyn::Application.config.flash.duration %>)
+
+    isStickyAlert: (el) ->
+      $el = $(el)
+      $el.hasClass('alert-error') or $el.hasClass('alert-danger')
+
+  # Functions to set the contents of bootstrap alerts.
+  # http://twitter.github.com/bootstrap/components.html#alerts
+  #
+  # Note that the `flash` functions above assume alerts
+  # contain an element with `data-role=flash-*` where * is
+  # the flash type. Using bootstrapAlert to swap the contents
+  # of alert elements out entirely allows you to violate this assumption
+  # and render the `flash` functions inoperable.
+  #
+  # This is typically used to replace flash elements with results
+  # from the server, where it is easy to generate the appropriate markup.
+  copious.bootstrapAlert =
+    message: (type, message) ->
+      $("[data-role='alert-" + type + "']").html(message).each ->
+        copious.flash.afterFlashDuration =>
+          # Check class of alert as it may have changed
+          unless copious.flash.isStickyAlert(this)
+            copious.flash.fade(this, => $(this).html(''))
+    notice: (message) ->
+      copious.bootstrapAlert.message('notice', message)
+    alert: (message) ->
+      copious.bootstrapAlert.message('alert', message)
+    info: (message) ->
+      copious.bootstrapAlert.message('info', message)
+
+  # At load time, show any flash alerts with text in them.
+  $('[data-role=flash]').each () ->
+    $flash = $(this)
+    if $('div', $flash).text().trim() is ''
+      $flash.hide()
+    else
+      $flash.show()
+
+  copious.flash.afterFlashDuration -> copious.flash.clear(null, false)

@@ -1,0 +1,7 @@
+<%= bootstrap_form_tag feature_for_tags_admin_listing_path(@listing.id), remote: true, horizontal: true,
+      data: {type: :json} do %>
+  <% @listing.tags.map(&:primary).sort {|a, b| a.name.downcase <=> b.name.downcase }.each do |tag| %>
+    <%= bootstrap_check_box_tag 'tag_ids[]', tag.name, tag.id, @listing.featured_for_tag?(tag),
+          id: "listing_featured_tag_ids_#{tag.id}" %>
+  <% end %>
+<% end %>

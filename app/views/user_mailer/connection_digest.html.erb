@@ -1,0 +1,5 @@
+<%= render '/shared_mailer/responsive_header' %>
+
+<%= responsive_content_table(connection_digest_content(@listings, @like_counts, @suggestion_strips)) %>
+
+<%= render '/shared_mailer/responsive_footer', footer_options: {email_settings_link: cdigest_email_settings} %>

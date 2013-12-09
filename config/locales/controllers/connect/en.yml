@@ -1,0 +1,9 @@
+en:
+  controllers:
+    connect:
+      invites:
+        email:
+          invite_error: 'Oops! There was an error inviting your friends. Please try again later.'
+        facebook:
+          invite_error: 'Oops! There was an error inviting your Facebook friends. Please try again later.'
+          error_permissions: "Oops! You need to allow additional Facebook permissions to invite your friends. Try again?"

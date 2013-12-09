@@ -1,0 +1,164 @@
+.photo-list {
+  float: left;
+  @extend .span12;
+  margin: 15px 0px;
+  li.btn-photo,
+  li.btn-photo .btn-upload {
+    display: block;
+    cursor: move;
+    text-align: center;
+  }
+  .btn-photo {
+    position: relative;
+    float: left;
+    clear: none;
+    margin: 0 15px 50px 0;
+    width: 80px;
+    height: 80px;
+    border: 1px solid $border;
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    -ms-transition: none;
+    transition: none;
+    @include transition("border-color");
+    &.upload {
+      background: none; }
+    img.loader {
+        background: white;
+        width: 18px;
+        height: 18px;
+        padding: 0;
+        display: block;
+        margin: 30px;
+        border: 0;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+    }
+    &:hover,
+    &.hover,
+    &:focus,
+    &.focus,
+    &.ui-sortable-helper {
+      border-color: $linkColor;
+      .button.small {
+        opacity: 1;
+      }
+    }
+    // Rotate / Edit Button
+    .button.small {
+      position: absolute;
+      bottom: -31px;
+      left: -2px;
+      min-width: 80px;
+      @include opacity(0.5);
+      padding: 6px 3px;
+      &:hover {
+        opacity: 1;
+      };
+    }
+    // Delete button
+    a.btn-delete {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      display: block;
+      height: 16px;
+      width: 16px;
+      background: transparent image-url("forms/bg-btn-delete.png") no-repeat 0 0;
+      -webkit-transition: none;
+      -moz-transition: none;
+      -o-transition: none;
+      -ms-transition: none;
+      transition: none;
+      opacity: 0.6;
+
+      &:hover,
+      &.hover,
+      &:focus,
+      &.focus {
+        background-position: 0 -16px;
+        opacity: 1} }
+    // Uploaded photos
+    img.listing-photo {
+      display: block;
+      margin: 3px;
+      width: 70px;
+      height: 70px;
+    }
+    // File upload input
+    // Upload button
+    .btn-upload {
+      width: 78px;
+      height: 78px;
+      margin: 0;
+      -webkit-transition: none;
+      -moz-transition: none;
+      -o-transition: none;
+      -ms-transition: none;
+      transition: none;
+      background: transparent image-url("forms/bg-btn-photo.png") no-repeat 0 0;
+      &.uploading {
+        background-position: -1px -83px; } }
+    .file-input-wrapper {
+      width: 80px;
+      height: 80px;
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      left: 0; }
+    input {
+      direction: rtl;
+      font-size: 3em;
+      width: 229px;
+      height: 100%;
+      @include opacity(0);
+      cursor: pointer; }
+    // Primary photo note
+    .cover-photo {
+      position: absolute;
+      top: -21px;
+      left: -2px;
+      display: block;
+      width: 80px;
+      padding: 3px;
+      background: $color-hover-list;
+      @include border-radius(1px);
+      text-align: center;
+      font-weight: normal;
+      color: white;
+      font-size: $xsmallFontSize;
+      line-height: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+  }
+  .sortable {
+    .btn-photo:first-child {
+      border: 2px solid $color-hover-list;
+    }
+  }
+}
+.upload-computer-wrapper {
+  width: 300px;
+  position: relative;
+  display: inline-block;
+  margin: 0px 16px 16px 0px;
+  a.button.large {
+    min-width: 255px;
+  }
+  input.upload-computer {
+    direction: rtl;
+    font-size: 1em;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    @include opacity(0);
+    z-index: $zin-photo-upload-computer;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+}

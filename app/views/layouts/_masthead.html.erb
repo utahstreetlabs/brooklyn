@@ -1,0 +1,39 @@
+<% unless masthead_hidden? %>
+  <div class="masthead">
+    <%= bootstrap_navbar container: {id: 'header-navbar'}, navbar: {data: {source: :global_header}} do %>
+      <%= masthead_hamburger_button %>
+
+      <%= bootstrap_nav_section pull: :left do %>
+        <% if masthead_active? %>
+          <%= masthead_browse_menu %>
+          <%= masthead_search_form :search %>
+        <% end %>
+      <% end %>
+
+      <%= masthead_brand %>
+
+      <%= bootstrap_nav_section pull: :right, id: 'account' do %>
+        <% if masthead_active? %>
+          <% if feature_enabled?(:listings, :external) || feature_enabled?(:collections, :add) %>
+            <div class="pull-right">
+              <%= masthead_add_button current_user %>
+            </div>
+          <% else %>
+            <%= link_to listings_path, method: :POST do %>
+              <%= content_tag(:div, 'SELL', class: 'button sell_button pull-right') %>
+            <% end %>
+          <% end %>
+          <% if logged_in? %>
+            <%= masthead_account_menu current_user %>
+            <%= link_to notifications_path, class: 'pill-container pull-right' do %>
+              <%= content_tag(:span, '', class: 'header-title-activities kill-margin-left') %>
+              <%= masthead_notification_pill current_user %>
+            <% end %>
+          <% elsif show_login_header? %>
+            <%= link_to 'Log in', login_path(secure: true, redirect: :login), class: 'btn pull-right', id: 'masthead-login', data: {action: 'login'} %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

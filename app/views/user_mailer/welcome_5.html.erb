@@ -1,0 +1,25 @@
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  Hi <%= @user.firstname %>,
+<% end %>
+
+<%= mailer_graf do %>
+  Why shop online alone when you can bring your friends along? Invite your friends to Copious. They won't even have to chip in for gas.
+<% end %>
+
+<%= mailer_graf do %>
+  Sharing listings on Facebook and Twitter allows friends to weigh in on your purchase decisions before you've pulled the trigger. Solicit second opinions -- two, three, four times over -- at the click of your mouse.
+<% end %>
+
+<%= mailer_graf do %>
+  And if we see something we think a friend would find fabulous, Copious lets us put them in the know.
+<% end %>
+
+<%= mailer_button 'Invite Friends', dashboard_url(more_invites: 1) %>
+
+<%= mailer_graf(styles: 'margin-bottom: 0px;') do %>
+  Happy shopping,
+<% end %>
+
+<%= render '/shared_mailer/footer' %>

@@ -1,0 +1,8 @@
+<%= content_tag :div, class: 'friend-box', :'data-profile' => profile.id do %>
+  <div class="avatar-container">
+    <%= profile_avatar profile, height: 50, width: 50 %>
+  </div>
+  <span class="fb-name">
+    <%= profile.name %>
+  </span>
+<% end %>

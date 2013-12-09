@@ -1,0 +1,5 @@
+<%= word_wrap(%Q[Hi #{raw @user.firstname},
+
+Your deposit of #{number_to_currency @payment.order.listing.proceeds} for the sale of #{raw @payment.order.listing.title} has been rejected by your bank. This can happen if there is an issue with account data provided. Don't worry. Please contact us at #{Brooklyn::Application.config.email.to.help} and we'll help make it right.]) %>
+
+<%= render '/shared_mailer/footer' %>

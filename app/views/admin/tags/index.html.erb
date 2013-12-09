@@ -1,0 +1,58 @@
+<% title "Admin: Tags" %>
+
+<%= bootstrap_breadcrumb [
+  ['Admin', admin_dashboard_path],
+  'Tags'
+] %>
+
+<p><%= bootstrap_button 'New tag', new_admin_tag_path %></p>
+
+<%= datagrid @tags, url: '#', form: {id: 'tags'}, pagination_theme: :bootstrap do |t| %>
+  <%= hidden_field_tag :id, '' %>
+  <%= t.thead do |thead| %>
+    <%= thead.toggle %>
+    <%= thead.th :name, default: true %>
+    <%= thead.th do %>Sub-tags<% end %>
+    <%= thead.th :internal, title: 'Admin' %>
+    <%= thead.th do %>Listings<% end %>
+    <%= thead.th :created_at, title: 'Created' %>
+    <%= thead.th :updated_at, title: 'Updated' %>
+    <%= thead.th :actions, title: 'Merge / Delete' %>
+  <% end %>
+  <%= t.tbody class: 'tag' do |tbody, tag| %>
+    <%= tbody.toggle tag, :id %>
+    <%= tbody.td class: 'span4' do %>
+      <%= link_to tag.name, admin_tag_path(tag.id), class: 'tag-name' %>
+    <% end %>
+    <%= tbody.td class: 'span1' do %>
+      <%= tag.subtags.map(&:name).join(', ') %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= yes_no tag.internal? %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= ((tag.subtags + [tag]).map { |t| @listing_counts.fetch(t.id, 0) }).sum %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= date tag.created_at %>
+    <% end %>
+    <%= tbody.td do %>
+      <%= date tag.updated_at %>
+    <% end %>
+    <%= tbody.actions do %>
+      <%= bootstrap_button_group pull: :right, data: {tag: tag.id} do %>
+        <%= bootstrap_button nil, merge_admin_tag_path(tag.id), condition: :warning, size: :mini, icon: :tags,
+              inverted_icon: true, data: {method: :post, action: :merge}, rel: :tooltip,
+              title: "Merge selected tags into #{tag.name}" %>
+        <%= bootstrap_button nil, admin_tag_path(tag.id), condition: :danger, size: :mini, icon: :remove, inverted_icon: true,
+              data: {method: :delete, action: :delete, confirm: 'Are you sure you want to delete this tag?'},
+              rel: :tooltip, title: "Delete #{tag.name}" %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<p>
+  <%= bootstrap_button 'Delete all selected tags', destroy_all_admin_tags_path, condition: :danger,
+        data: {method: :delete, action: :delete_all, confirm: 'Are you sure you want to delete the selected tags?'} %>
+</p>

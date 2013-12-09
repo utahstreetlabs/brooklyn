@@ -1,0 +1,51 @@
+<% aviary_js %>
+
+<%= form_for listing.photos.build, url: listing_photos_path(listing), html: {multipart: true} do |f| %>
+  <fieldset>
+    <div class="legend"><%= t '.header' %> </div>
+    <ol>
+      <%= f.field :file do %>
+        <div class="import-section">
+          <%= content_tag :span, nil, id: 'import-buttons', class: 'import-buttons',
+                          data: {:'auth-path' => auth_path(:instagram, callbacks_connected_path)} %>
+          <div class="clearfix">
+            <%= link_to_import_photos_computer(t('.computer.button'), f) %>
+          </div>
+          <div class="clearfix">
+            <%= link_to_import_photos_instagram(t('.instagram.button'), listing) %>
+            <div class="help_text inline">
+              <%= t '.instagram.breakout_box.text_html',
+                    instagram_link: link_to(t('.instagram.breakout_box.instagram_link'),
+                                            Brooklyn::Application.config.urls.instagram,
+                                            target: '_blank', :class => 'external-link') %>
+            </div>
+          </div>
+          <%= bootstrap_modal :instagram, t('.instagram.modal.header'), show_save: false, show_close: false,
+                data: {role: 'modal-remote'}, content_url: listing_instagram_index_path(listing, count: 15),
+                custom_links: link_to(t('.instagram.modal.finished_link'), nilhref, data: {dismiss: 'modal'},
+                                      class: 'button pull-right primary') %>
+        </div>
+        <div class="editable">
+          <div data-role="photo-list-section" class="photo-list-section" style="display: none;">
+            <ul class="photo-list">
+              <div class="sortable photos">
+                <%= render partial: '/listings/photo_list', locals: {photos: photos, listing: listing} %>
+              </div>
+              <% content_for :body_end do %>
+                <div class="photo-update-forms">
+                  <%= render partial: '/listings/photo_update_forms', locals: {photos: photos, listing: listing} %>
+                </div>
+              <% end %>
+              <%= link_to_add_photo_button(f) %>
+            </ul>
+          </div>
+        </div>
+        <div id="injection_site"><%# for aviary %></div>
+        <div data-role="photo-help-text-section" class="help_text clear" style="display: none;">
+          <%= t '.help.text_html' %>
+        </div>
+      <% end %>
+      <li><%= error_messages_on listing, :photos %></li>
+    </ol>
+  </fieldset>
+<% end %>

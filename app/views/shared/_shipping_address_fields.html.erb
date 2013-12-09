@@ -1,0 +1,30 @@
+<%= f.fieldset do %>
+  <%= f.field :name, :class => 'text' do %>
+    <%= f.label :name, 'Name:' %>
+    <%= f.text_field :name %>
+  <% end %>
+  <%= f.field :line1, :class => 'text' do %>
+    <%= f.label :line1, 'Street Address:' %>
+    <%= f.text_field :line1 %>
+  <% end %>
+  <%= f.field :line2, :class => 'text' do %>
+    <%= f.text_field :line2 %>
+  <% end %>
+  <%= f.field :city, :class => 'text' do %>
+    <%= f.label :city, 'City:' %>
+    <%= f.text_field :city %>
+  <% end %>
+  <%= f.field :state do %>
+    <%= f.label :state, 'State:' %>
+    <%= f.subregion_select :state, 'US' %>
+  <% end %>
+  <%= f.field :zip, :class => 'text' do %>
+    <%= f.label :zip, 'Zip Code:' %>
+    <%= f.text_field :zip %>
+  <% end %>
+  <%= f.field :phone, :class => 'text' do %>
+    <%= f.label :phone, 'Phone Number:' %>
+    <%= f.text_field :phone %>
+  <% end %>
+<% end %>
+

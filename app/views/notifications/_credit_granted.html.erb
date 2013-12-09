@@ -1,0 +1,5 @@
+<% if offer %>
+  You earned <%= smart_number_to_currency credit.amount %> in credit <%= offer.descriptor %> to spend until <%= date credit.expires_at %>.
+<% else %>
+  You earned <%= smart_number_to_currency credit.amount %> in credit to spend until <%= date credit.expires_at %>.
+<% end %>

@@ -1,0 +1,16 @@
+<%= word_wrap(%Q[Hi #{@user.firstname},
+
+Congratulations! #{@order.buyer.name} has purchased #{@order.listing.title}. If you'd like to get in touch about this purchase more directly, feel free to e-mail #{@order.buyer.firstname} at #{@order.buyer.email}.
+
+You have agreed to ship the following item within #{count_of_days_in_words @order.listing.handling_duration}:
+]) %>
+
+<%= render 'seller_order_details', order: @order %>
+
+<%= render 'shipping_address', order: @order %>
+<%= render 'shipping_suggestions' %>
+<%= word_wrap(%Q[To ensure that you're paid on time, you must enter a tracking number at #{rewrite_mailer_url listing_url(@order.listing)}. Payment will be released to your Payout Account within 72 hours. If you have yet to create your Payout Account, go to #{rewrite_mailer_url settings_seller_identity_url} to get started.
+
+Ready for another go? List more of your items just as easily on Copious at #{rewrite_mailer_url new_listing_url}.]) %>
+
+<%= render '/shared_mailer/footer' %>

@@ -1,0 +1,40 @@
+<% title t('.title') %>
+<div class="secret-seller-header-bg-container">
+  <div class="secret-seller-header">
+    <h1 class="image-header"><%= t('.header') %></h1>
+    <p><%= t('.body_html') %></p>
+    <div class="secret-seller-doll-1"></div>
+    <div class="secret-seller-doll-2"></div>
+    <div class="secret-seller-doll"></div>
+  </div>
+</div>
+<div id="main-content" class="span16" style="position: absolute; top: 406px;">
+  <h2 class="secret-seller-tagline"><%= t('.tagline') %></h2>
+  <div class="span9 kill-margin-left">
+    <%= bootstrap_form_for @item, as: :item, url: secret_seller_items_path do |f| %>
+      <h3 class="secret-seller-subheader">Tell us about your secret treasure.</h3>
+      <%= f.text_field :title, t('.field.title.label'), maxlength: 80, required: true %>
+      <%= f.text_area :description, t('.field.description.label'), required: true %>
+      <div class="pull-left">
+      <%= f.number_field :price, t('.field.price.label'), maxlength: 18, required: true,
+                         min: SecretSellerItem::MINIMUM_PRICE, step: 'any', prepend: raw('&#36;'),
+                         value: number_to_unitless_currency(f.object.price),
+                         placeholder: number_to_unitless_currency(SecretSellerItem::MINIMUM_PRICE) %>
+      <%= f.select :condition, t('.field.condition.label'), secret_seller_condition_choices_for_select, {},
+                   required: true %>
+      </div>
+      <%= f.file_field :photo, t('.field.photo.label'), required: true %>
+      <%= f.hidden_field :photo_cache %>
+      <%= f.submit t('.button.save.text'), id: 'item_save', disable_with: t('.button.save.disable_html') %>
+    <% end %>
+  </div>
+
+  <div class="span6 offset1">
+    <h3 class="secret-seller-subheader margin-top"><%= t('.help.header') %></h3>
+    <p class="secret-seller-body"><%= t('.help.body_html') %></p>
+    <p class="secret-seller-body margin-top">
+      <%= t('.help.want_more_html', faq_link:
+            link_to(t('.help.faq_link'), Brooklyn::Application.config.urls.secret_seller_faq)) %>
+    </p>
+  </div>
+</div>

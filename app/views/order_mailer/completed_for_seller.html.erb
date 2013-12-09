@@ -1,0 +1,23 @@
+<%= render '/shared_mailer/header' %>
+
+<%= mailer_graf do %>
+  Hi <%= @user.firstname %>,
+<% end %>
+
+<%= mailer_graf do %>
+  Your <%= mailer_link_to @order.listing.title, listing_url(@order.listing) %> sale is now officially complete. Congratulations!
+<% end %>
+
+<%= mailer_graf do %>
+  Take a moment to <% if feature_enabled?(:feedback) %><%= mailer_link_to 'view your new feedback', selling_public_profile_feedback_index_url(@user) %> and <% end %>list another item.
+<% end %>
+
+<%= mailer_graf do %>
+  <%= mailer_button 'List another item', new_listing_url, styles: ' margin-top: 0px !important; margin-bottom: 25px !important;' %>
+<% end %>
+
+<%= mailer_graf(styles: 'margin-bottom: 0px;') do %>
+  Happy selling,
+<% end %>
+
+<%= render '/shared_mailer/footer' %>

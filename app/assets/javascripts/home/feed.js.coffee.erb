@@ -1,0 +1,185 @@
+window.TEST = {}
+_.extend window.TEST, Backbone.Events
+
+jQuery ->
+  INITIAL_LOAD_SIZE = <%= Brooklyn::Application.config.feed.defaults.limit %>
+  # arbitrary limit until we get kaminari-style count
+  REFRESH_LIMIT = 100
+  SCROLL_LOAD_SIZE = 24
+  CACHE_CHARS = ['1','2','3','4','5','6','7','8','9','0','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o']
+
+  class Container
+    queue: []
+    available: 0
+    displayed: []
+    shouldScroll: true
+
+    constructor: (feedSelector, scrollSelector, scrollTopSelector) ->
+      @element = $(feedSelector)
+      @feedUrl = @element.data('feed-url')
+      @refreshTimeUrl = @element.data('refresh-timestamp-url')
+      @startTime = @element.data('start-time')
+      @endTime = @element.data('end-time')
+      @scrollElement = $(scrollSelector)
+      @scrollTopButton = $(scrollTopSelector)
+      _.extend(this, Backbone.Events)
+
+    cacheBuster: -> _.shuffle(CACHE_CHARS).slice(10).join('')
+
+    fetchStories: (params = {}, successHandler = null, errorHandler = null) ->
+      params.nc = this.cacheBuster()
+      realSuccessHandler = (data) -> successHandler?(data.stories, data.start_time, data.end_time, data.new_count)
+      realErrorHandler = (data) -> errorHandler?()
+      $.jsend.get(@feedUrl, params).then(realSuccessHandler, realErrorHandler)
+
+    injectStories: (stories, top = true) ->
+      $elements = ($(s) for s in stories)
+      _.each $elements, ($element) ->
+        $element.find('.tag-container').tagCard()
+      if top
+        @element.prepend($elements...)
+        # if we're inserting at the top, we're going to reduce back to the original # of stories
+        # in case digesting has happened down below
+        @element.children().slice(INITIAL_LOAD_SIZE).remove()
+        @startTime = @element.children().last().data('timestamp')
+      else
+        @element.append($elements...)
+      # ellipsis only works after elements have been added to the dom
+      _.each $elements, ($element) -> $element.find('.ellipsis').dotdotdot()
+
+    load: ->
+      @element.find('.tag-container').each (i, card) -> $(card).tagCard()
+      this.setupInfiniteScroll()
+      this.setupScrollToTop()
+      this.setupPolling()
+<% if feature_enabled?(:infinite_scroll_history) %>
+      this.setupHistory()
+<% end %>
+
+    setupInfiniteScroll: ->
+      @scrollElement.endlessScroll(
+        bottomPixels: 1600
+        fireOnce: false
+        fireDelay: 20
+        callback: =>
+          if @shouldScroll
+            this.trigger('feed:loading:start')
+            @shouldScroll = false
+            this.fetchStories(
+              {before: @startTime, limit: SCROLL_LOAD_SIZE}
+              (stories, startTime, endTime, newCount) =>
+                if stories.length > 0
+                  this.injectStories(stories, false)
+                  @startTime = startTime
+                  # we only set this if we got more stories, that way it won't keep trying if we're at the end
+                  @shouldScroll = true
+                # trigger regardless, because any external component should know we're done the work
+                this.trigger('feed:loading:end')
+              =>
+                copious.flash.alert(
+                  'There was an error loading more of your feed.  Please try refreshing the page.')
+                this.trigger('feed:loading:end')
+            )
+      )
+
+    setupScrollToTop: ->
+      $window = $(window)
+      @scrollTopButton.on 'click', -> $('html, body').animate({scrollTop: 0}, 200)
+      $window.scroll =>
+        # give a few pixels of wiggle room at the top to prevent flicker
+        if $window.scrollTop() < 10 then @scrollTopButton.fadeOut('slow') else @scrollTopButton.fadeIn(1000)
+
+    poll: =>
+      this.fetchStories(
+        {limit: INITIAL_LOAD_SIZE}
+        (stories, startTime, endTime, newCount) =>
+          @endTime = endTime
+          @queue = stories
+          # skip the work if nothing's changed (and don't go back down which confuses the user)
+          if newCount > @available
+            @available = newCount
+            this.trigger 'feed:more', @available
+      )
+
+    setupPolling: -> setInterval (=> this.poll()), 30000
+
+    setupHistory: ->
+      if History.enabled
+        $('body').on 'click', () =>
+          # update the browsing history to save scroll state so that when the user hits the back button to come back
+          # to this page the browser scrolls to the correct place
+          state = History.getState()
+          state.data.currentOffset = $(window).scrollTop()
+#          debug.log "current offset: #{state.data.currentOffset}"
+          History.replaceState(state.data, state.title, state.cleanUrl)
+
+        documentHeight = @element.height()
+        targetOffset = History.getState().data.currentOffset
+#        debug.log "ORIG: doc height: #{documentHeight}, targetOffset: #{targetOffset}"
+        if targetOffset && documentHeight < targetOffset
+          loadMoreCards = () =>
+#            debug.log "loading more cards"
+            this.fetchStories(
+              {before: @startTime, limit: SCROLL_LOAD_SIZE}
+              (stories, startTime, endTime, newCount) =>
+                if stories.length > 0
+                  this.injectStories(stories, false)
+                  @startTime = startTime
+                  documentHeight = @element.height()
+#                  debug.log "NOW: doc height: #{documentHeight}, targetOffset: #{targetOffset}"
+                  if targetOffset && documentHeight < targetOffset
+                    loadMoreCards()
+                  else
+#                    debug.log "scrolling to #{targetOffset}"
+                    $('html, body').scrollTop(targetOffset)
+              =>
+                copious.flash.alert(
+                  'There was an error loading more of your feed. Please try refreshing the page.')
+            )
+          loadMoreCards()
+
+    displayQueued: ->
+      this.injectStories(@queue)
+      # record that the user refreshed so we stop counting those stories as new on the server
+      $.jsend.put(@refreshTimeUrl, timestamp: @endTime)
+      # now that we've refreshed, we've removed extra stories off the bottom that we can reload
+      @shouldScroll = true
+      @queue = []
+      @available = 0
+      this.trigger 'feed:more', @available
+
+
+  ########
+  # MAIN #
+  ########
+  if $('#card-feed-container').exists()
+    $title = $('title')
+    originalTitle = $title.html()
+    $refreshContainer = $('#refresh-container')
+    refreshTemplate = Handlebars.compile($('#refresh-template').html())
+    $loadingContainer = $('#loading-container')
+    $newStoriesCount = $('[data-role=new-stories-count]')
+
+    feed = new Container('#card-feed-container', window, '#scroll-top')
+
+    feed.on 'feed:more', (count) ->
+      if count > 0
+        $refreshContainer.html(refreshTemplate(count: count, plural: count != 1))
+        $refreshContainer.show().css('display', 'inline-block')
+        $title.html('(' + count + ') ' + originalTitle)
+      else
+        $refreshContainer.hide()
+        $title.html(originalTitle)
+
+    # bit of a cheat. the entire contents are a link when present, so just putting the click handler on the container
+    # to not deal with load timing issues.
+    $refreshContainer.on 'click', -> feed.displayQueued()
+
+    feed.on 'feed:loading:start', -> $loadingContainer.show()
+    feed.on 'feed:loading:end', -> $loadingContainer.hide()
+
+    # backdoor for testing without waiting
+    window.TEST.on 'feed:poll', -> feed.poll()
+
+    # best to load this last, so any useful event handlers are already in place
+    feed.load()

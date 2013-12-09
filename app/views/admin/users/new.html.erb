@@ -1,0 +1,17 @@
+<% title "Admin: New user" %>
+
+<%= bootstrap_breadcrumb [
+  ['Admin', admin_dashboard_path],
+  ['Users', admin_users_path],
+  'New user'
+] %>
+
+<%= bootstrap_form_for @user, url: admin_users_path, html: {method: :post} do |f| %>
+  <%= f.text_field :firstname, 'First name', maxlength: 64 %>
+  <%= f.text_field :lastname, 'Last name', maxlength: 64 %>
+  <%= f.email_field :email, 'Email', maxlength: 255 %>
+  <%= f.password_field(:password, 'Password', maxlength: 64) %>
+  <%= f.password_field(:password_confirmation, 'Confirm password', maxlength: 64) %>
+  <%= f.submit %>
+  <%= f.cancel admin_users_path %>
+<% end %>

@@ -1,0 +1,20 @@
+<%= word_wrap %Q[Hi #{raw @user.firstname},
+
+Welcome to Copious. We help you discover things you’ll love, and sell the stuff you don’t.
+
+Here’s what you can do on Copious:
+
+Follow & Discover
+As you follow people and like items, we’ll show you better, more personalized stuff.  Invite your friends to get their picks, too. #{rewrite_mailer_url connect_invites_url}.
+
+Organize into Collections
+Save things you love to collections. Collections can be anything - from Office Art to Halloween Costumes. #{rewrite_mailer_url new_arrivals_for_sale_path}
+
+
+Sell Your Stuff
+Add a photo and a price, and we’ll find you a buyer. It’s free to list, and we take 3.5% of the purchase price. #{rewrite_mailer_url root_url}.
+
+
+Thanks for joining, and enjoy.] %>
+
+<%= render '/shared_mailer/footer', signature: raw("Copious") %>

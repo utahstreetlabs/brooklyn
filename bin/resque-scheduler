@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+# run resque-scheduler
+
+ENV['RAILS_ENV'] ||= 'development'
+STDOUT.sync = true
+
+puts 'loading rails'
+require File.expand_path('../../config/boot',  __FILE__)
+require File.expand_path('../../config/environment',  __FILE__)
+
+puts 'running scheduler'
+Resque::Scheduler.verbose = true
+Resque::Scheduler.run

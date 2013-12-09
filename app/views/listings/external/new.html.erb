@@ -1,0 +1,53 @@
+<%
+title t('.title')
+javascript 'listings_external_create'
+bookmarklet = (params[:source] == 'bookmarklet' || (params[:listing] && params[:listing][:source] == 'bookmarklet'))
+if bookmarklet
+  hide_masthead
+  hide_footer
+  @body_class = "#{body_class}_bookmarklet"
+end
+%>
+
+<div class="span12">
+  <h1 class="page-title"><%= t '.header' %></h1>
+  <%= bootstrap_form_for @listing, as: :listing, url: external_listings_path(@listing.source) do |f| %>
+    <fieldset class="fieldset-border">
+      <% if bookmarklet %>
+        <%= f.hidden_field :source, value: 'bookmarklet' %>
+      <% else %>
+        <h2 class="section-title"><%= t '.section1.header' %></h2>
+      <% end %>
+      <%= f.hidden_field :source_image_id %>
+      <%= external_listing_photo_selector @listing %>
+    </fieldset>
+    <fieldset>
+      <h2 class="section-title"><%= t '.section2.header' %></h2>
+      <%= f.hidden_field :url %>
+      <%= f.text_field :title, t('.section2.field.title.label'), maxlength: 80, required: true, class: 'span7' %>
+      <%= f.select :category_slug, t('.section2.field.category.label'), category_options_for_select,
+                   {include_blank: t('.section2.field.category.prompt_html')}, required: true, class: 'span7' %>
+
+      <% if logged_in? && !bookmarklet && feature_enabled?('listings.save_to_collection') %>
+        <div class="control-group">
+          <%= f.label(:add_to_collection_slugs, t('.section2.field.collection.label')) %>
+          <div class="controls">
+            <%= save_listing_to_collection_multi_selector(@listing, current_user.collections, prompt: true) %>
+          </div>
+        </div>
+      <% end %>
+      <%= f.number_field :price, t('.section2.field.price.label'), maxlength: 18, required: true,
+                         min: ExternalListing::MINIMUM_PRICE, step: 'any', prepend: raw('&#36;'),
+                         value: number_to_unitless_currency(f.object.price),
+                         placeholder: number_to_unitless_currency(ExternalListing::MINIMUM_PRICE) %>
+      <%= f.text_area :description, t('.section2.field.description.label'), required: true, class: 'span6' %>
+    </fieldset>
+    <div style="text-align: center; margin-top: -15px;">
+      <%= f.submit t('.button.save.text'), id: 'listing_save', disable_with: t('.button.save.disable_html'), class: 'primary xlarge margin-right-half btn-block', data: { action: 'submit' } %>
+      <% unless bookmarklet %>
+        <%# XXX This can be removed when we update add-from-web to be in a modal %>
+        <%= f.cancel root_path, data: { action: 'cancel' }, class: 'large' %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,24 @@
+<div class="modal in" data-message="Travis Vachon wants to follow you on Copious!" data-role="follow-friends-modal" id="follow-friends-modal" style="display: block;">
+  <div class="modal-body">
+    <div data-role="modal-content">
+      <div class="scrollable" data-role="multi-friend-selector" id="signup_follow_container" style="overflow: hidden; padding: 0px; width: 100px;">
+        <form accept-charset="UTF-8" action="/signup/buyer/friends/complete" class="invite-friends-list" data-remote="true" data-role="follow-friends-form" id="follow-friends-form" method="post">
+          <div data-role="selectables">
+          </div>
+        </form>
+      </div>
+      <div class="select-all-container modal-checkbox-cta">
+        <form accept-charset="UTF-8" action="/" method="post">
+          <input id="select-all-friends" name="select_all" type="checkbox" value="select_all">
+          <label for="select-all-friends">Select All</label>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn primary large" data-save="modal" name="button" type="button">Save
+    </button>
+    <button class="btn margin-left" data-dismiss="modal" name="button" type="button">Close
+    </button>
+  </div>
+</div>

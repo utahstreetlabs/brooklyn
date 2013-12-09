@@ -1,0 +1,42 @@
+<div>
+  <h2>
+    <%= t('.header.lead') %>
+    <%= t('.header.total', count: feedback_total_successful_transactions(profile_user)) %>
+    <%= raw t('.header.percent', percent: content_tag(:span, feedback_percent_successful_transactions(profile_user),
+          class: 'feedback-rating')) %>
+  </h2>
+</div>
+
+<%= profile_feedback_tabs profile_user %>
+
+<% if feedbacks.any? %>
+  <%= bootstrap_table condensed: true do %>
+    <thead>
+      <tr>
+        <th>Outcome</th>
+        <th><%= type == :selling ? 'Buyer' : 'Seller' %></th>
+        <th>Date</th>
+        <th>Title</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% feedbacks.each do |feedback| %>
+        <%= content_tag :tr, data: {rating: feedback.rating.id, role: :'user-feedback'} do %>
+          <td><%= feedback_outcome feedback, current_user, type %></td>
+          <td><%= feedback_partner feedback, current_user, type %></td>
+          <td><%= feedback_purchase_date feedback, current_user %></td>
+          <td>
+            <%= feedback_photo feedback, current_user %>
+            <%= feedback_listing feedback, current_user %>
+          </td>
+          <td><%= feedback_price feedback, current_user %></td>
+        <% end %>
+      <% end %>
+    </tbody>
+  <% end %>
+
+  <%= paginate feedbacks %>
+<% else %>
+  <%= feedback_zero_message profile_user, current_user, type %>
+<% end %>

@@ -1,0 +1,143 @@
+#shared-connections-container {
+  #your-connections-container, #seller-connections-container {
+    text-align: center;
+    vertical-align: middle;
+    width: 90px;
+    [class^="profiles_"] & {
+      width: 50px;
+    }
+  }
+  #your-connections-container {
+    float: left;
+  }
+  #seller-connections-container {
+    float: right;
+  }
+  #your-connections, #seller-connections {
+    max-width: 73px;
+    text-align: center;
+    vertical-align: baseline;
+    padding-top: 35px;
+    margin: 0px auto;
+    span {
+      font-size: 25px;
+      font-weight: 500;
+      color: $gray;
+      margin: 0px;
+      [class^="profiles_"] & {
+        font-size: 22px;
+      }
+    }
+  }
+  #shared-connections {
+    width: 110px;
+    border: 1px solid #b7b7b7;
+    margin-top: 16px;
+    margin-left: 95px;
+    padding: 4px 10px 10px;
+    [class^="profiles_"] & {
+      margin-left: 58px;
+      margin-top: 10px;
+    }
+  }
+  #total-connections {
+    width: 130px;
+    margin-left: 45px;
+    border: 1px solid #b7b7b7;
+    margin-top: 5px;
+    padding: 4px 10px 10px;
+  }
+  #shared-stats-container {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto; 
+  }
+  #shared-stats {
+    font-size: 35px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    line-height: 37px;
+    color: $grayDark;
+    padding-bottom: 3px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto; 
+  }
+  #shared {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.7px;
+    color: $grayDark;
+    margin-top: 5px;
+    margin-right: 2px; 
+  }
+  #connections {
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: normal;
+    letter-spacing: 0.4px;
+    color: $grayDark;
+    margin-right: 0px; 
+  }
+  #shared-textarea {
+    height: 45px;
+    margin-top: 3px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 5px;
+    border-top: 1px solid $border;
+    text-align: center;
+    img {
+      display: inline-block;
+      width: 24px;
+      height: 13px;
+      vertical-align: baseline; 
+    }
+  }
+  #signal-rule {
+    border-top: 1px solid $border;
+    border-bottom: 1px solid $border-lightest;
+    background: #fafafa;
+    vertical-align: top;
+    position: relative;
+    top: -1px;
+    .arrow-border {
+      width: 0;
+      height: 0;
+      border-width: 10px;
+      border-style: solid;
+      border-color: $border transparent transparent transparent;
+      position: absolute;
+      top: -1px;
+      left: 137px; 
+    }
+    .arrow {
+      display: block;
+      margin: -1px auto 0px;
+      width: 0;
+      height: 0;
+      border-width: 10px;
+      border-style: solid;
+      border-color: white transparent transparent transparent;
+      vertical-align: top;
+      position: absolute;
+      top: -1px;
+      left: 137px; 
+    }
+    [class^="profiles_"] & {
+      margin-bottom: 15px;
+      .arrow-border, .arrow {
+        left: 99px;
+      }
+    }
+    .connect-suggest {
+      font-weight: 500;
+      display: block;
+      margin: 10px 7px 15px;
+      [class^="profiles_"] & {
+        font-size: 14px;
+        margin: 15px 7px 10px;
+      }
+    }
+  } 
+}

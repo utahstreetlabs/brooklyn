@@ -1,0 +1,57 @@
+en:
+  layout:
+    application:
+      search: "Search"
+      search_placeholder_html: "Search"
+  masthead:
+    button:
+      add: '+ Add'
+    account_menu:
+      title: 'PROFILE'
+      loves: 'Loves'
+      follows: 'Follows'
+      profile: 'Profile'
+      followers: 'Followers'
+      marketplace: 'MARKETPLACE'
+      listings: 'Listings'
+      orders: 'Orders'
+      purchases: 'Purchases'
+      collections: 'Collections'
+      settings: 'Account settings'
+      log_out: 'Log out'
+      feedback: 'Feedback'
+      admin: 'Admin'
+  add:
+    modal:
+      add_listing:
+        title: 'Add to Copious'
+        instructions_html: 'Share and sell the things you love on Copious.'
+        from_web: 'From Web'
+        new_listing: 'New Copious Listing'
+        new_collection: 'New Collection'
+      add_listing_from_web:
+        title: 'Add From Web'
+        instructions_html: 'Paste the link to the product.'
+        url:
+          placeholder: 'http://'
+        button:
+          fetch: 'Fetch'
+        disable:
+          fetch_html: 'Fetching&hellip;'
+      add_listing_bookmarklet:
+        instructions_html: 'Get the bookmarklet. Drag this button to your bookmarks bar to make adding to Copious even easier.  '
+        link: '?'
+  hamburger:
+    search:
+      placeholder: 'Search'
+    home: 'Home'
+    notifications: 'Notifications'
+    feed: 'Feed'
+    new_arrivals: 'New Arrivals'
+    browse: 'Browse'
+    account_settings: 'Account Settings'
+    dashboard: 'Dashboard'
+    admin: 'Admin'
+    logout: 'Log Out'
+    footer:
+      company: '© %{year} Utah Street Labs Inc'

@@ -1,0 +1,18 @@
+<div data-role="reserved-time-content" class="reserved-time">
+  <h4>
+    <%= t('controllers.purchase.reserved_time') %>
+  </h4>
+  <div class="reserved-time-cancel">
+    <%= link_to_cancel_purchase(listing) do %>
+      <%= image_tag('icons/close-content-hover.png') %>
+    <% end %>
+  </div>
+  <div class="reserved-time-ticker">
+    <%= purchase_order_reserved_time_ticker(listing.order) %>
+  </div>
+  <div style="display: none;">
+    <%= form_tag listing_purchase_path(listing), method: :DELETE do %>
+      <%= hidden_field_tag "reserved_time_expired", value: '1' %>
+    <% end %>
+  </div>
+</div>

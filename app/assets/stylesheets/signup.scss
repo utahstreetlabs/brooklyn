@@ -1,0 +1,298 @@
+@import "includes";
+
+.signup_buyer_profiles_new, .signup_buyer_profiles_create, .signup_buyer_people_index,
+.signup_buyer_interests_index, .signup_buyer_friends_index {
+  #content-wrapper {
+    position: relative;
+  }
+  .header-home.deactivate-header {
+    left: 50% !important;
+    margin-left: -42px !important;
+  }
+}
+
+.signup_buyer_people_index {
+  .message-container {
+    .button {
+      bottom: 0px !important;
+    }
+  }
+  .xlarge {
+    width: 250px;
+    height: 38px;
+  }
+}
+
+
+// ONBOARDING TOP SECTION
+.message-container {
+  float: left;
+  width: 100%;
+  margin: 0px 0px 24px;
+  h1, h3 {
+    display: inline-block;
+    float: left;
+    margin: 0px;
+    .strong {
+      font-size: inherit;
+      font-family: $styledFontFamily;
+    }
+  }
+  h3 {
+    font-size: 21px;
+    line-height: 25px;
+  }
+  p {
+    display: block;
+    float: left;
+    clear: both;
+    margin: 16px 0 4px;
+  }
+  .button.primary {
+    width: 232px;
+    &.disabled {
+      margin-top: 43px;
+    }
+    margin-top: 6px;
+  }
+  .like-button-container {
+    float: right;
+    position: relative;
+    .likes-counter {
+      position: absolute;
+      display: block;
+      width: 120px;
+      top: 0px;
+      left: 50%;
+      margin-left: -60px;
+      text-align: center;
+      background: $system-color;
+      color: $white;
+      padding: 6px 0px;
+      font-weight: 600;
+      @include border-radius(3px);
+      opacity: 0.9;
+      .likes-arrow {
+        position: absolute;
+        bottom: -15px;
+        left: 47%;
+        width: 0px;
+        height: 0px;
+        border-width: 8px;
+        border-style: solid;
+        border-color: $system-color transparent transparent transparent;
+      }
+      &.done {
+        display: none;
+      }
+      &.selected {
+        .interest-image-container {
+          border: 3px solid $color-hover-list;
+          width: 238px;
+          height: 238px;
+          margin: -3px;
+        }
+        .interest-state {
+          background-image: image-url("layout/icons-sprites2.png");
+          background-position: 84px -850px;
+          background-repeat: no-repeat;
+          position: absolute;
+          pointer-events: none;
+        }
+        .interest-overlay {
+          filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#4cffffff', endColorstr='#4cffffff'); /* IE */
+          background: rgba(255,255,255,0.5);
+          position: absolute;
+          width: 232px;
+          height: 232px;
+          top: 0px;
+          pointer-events: none;
+        }
+      }
+    }
+    .likes-counter-count {
+      font-family: $sansserifFontFamily;
+    }
+    .likes-counter:hover {
+      opacity: 1;
+      @include text-shadow(0 2px 1px transparentize($black, .3));
+    }
+  }
+  .like-button-container:hover {
+    .likes-counter {
+      opacity: 1;
+      .likes-counter-count, .likes-counter-more {
+        @include text-shadow(shadow);
+      }
+    }
+  }
+  .button.left {
+    float: left;
+    margin-top: 11px;
+  }
+}
+
+// INTEREST CARDS
+.interest-card {
+  background: $new-button-bg;
+  height: 180px;
+  @extend .span2;
+  @extend .margin-bottom-double;
+  .interest-image-container {
+    width: 140px;
+    height: 140px;
+    position: relative;
+  }
+  .interest-image {
+    width: 140px;
+    height: 140px;
+  }
+  .interest-name-container {
+    width: 140px;
+    height: 42px;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    position: relative;
+  }
+  .interest-name {
+    font-size: 12px;
+    line-height: 16px;
+    width: 120px;
+    min-height: 20px;
+    margin: 0px auto;
+  }
+  .like-button {
+    background: none;
+    border: none;
+    padding: 0;
+  }
+  .like-button:hover {
+    text-decoration: none !important; /* to prevent from having underline on .interest-card:hover */
+  }
+  &:hover {
+    @include box-shadow();
+  }
+  &.liked {
+    .interest-name {
+      display: none;
+    }
+    .interest-state {
+      position: relative;
+      left: 50%;
+      margin-left: -10px;
+      height: 20px;
+      width: 20px;
+      background-image: image-url("icons/green-check.png");
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+
+// FOLLOW PAGE
+.follow-suggestions {
+  float: left;
+  margin: 0px 0px 20px;
+}
+.user-list-container {
+  @extend .span8;
+  margin-bottom: 24px;
+  float: left;
+  .user-list {
+    float: left;
+  }
+  .user {
+    float: left;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    .avatar-container {
+      float: left;
+      margin-right: 10px;
+      .avatar {
+        border: 1px solid $white;
+      }
+    }
+    .user-container {
+      float: left;
+      width: 349px;
+      margin-top: 8px;
+      margin-bottom: 8px;
+      position: relative;
+      .button {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        min-width: 85px;
+      }
+    }
+    .data-container {
+      float: left;
+      width: 333px;
+      .grid-data {
+        @include grid-data-table;
+        width: 170px;
+        height: 84px;
+        margin-left: 12px;
+        margin-top: 9px;
+        margin-bottom: 0px;
+        td {
+          padding: 3px 8px;
+          .data-number {
+            font-size: 16px;
+            font-weight: 700; }
+          .data-label {
+            font-size: 10px;
+            line-height: 10px;
+            font-weight: 500;
+          }
+        }
+      }
+      .likes-container {
+        float: left;
+        margin-top: 10px;
+        margin-left: 0px;
+        .likes-data {
+          float: left;
+          width: 348px;
+          margin: 0px;
+          li {
+            @extend .thumbnail;
+            float: left;
+            margin-right: 8px;
+            &:hover {
+              border-color: $border;
+            };
+            img {
+              width: 70px;
+              height: 70px;
+            }
+          }
+          li:last-child {
+            margin-right: 0px;
+          }
+        }
+      }
+    }
+  }
+}
+.user-list-container:nth-child(2n) {
+  margin-right: 0px;
+}
+.following-container {
+  width: 976px;
+  margin-bottom: 15px;
+  float: left;
+  .avatar-container {
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  .avatar-container:nth-child(14n) {
+    margin-right: 0px;
+  }
+}
+
+.follow-friends-container a.button {
+  width: 232px;
+}

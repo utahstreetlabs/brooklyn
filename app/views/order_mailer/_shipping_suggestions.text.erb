@@ -1,0 +1,7 @@
+<%= word_wrap(%Q[You can ship the item:
+
+])%>
+<% Brooklyn::Carrier.available.each do |carrier| %>
+<%= word_wrap(%Q[* via #{carrier.name} at #{carrier.url}])%>
+<% end %>
+<%= word_wrap(%Q[* or via your Paypal Multi-order shipping dashboard at https://www.paypal.com/us/cgi-bin/webscr?cmd=_bulk-ship. Just click "File" then "Create new order" and enter the fields above.])%>

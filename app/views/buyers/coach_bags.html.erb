@@ -1,0 +1,159 @@
+<%
+hide_masthead
+%>
+<div class="masthead">
+  <div class="container">
+    <div class="row">
+      <div class="menu-global">
+        <h2><a href="/">Copious</a></h2>
+        <ul class="menu-account">
+          <li><%= link_to 'Sign Up', signup_path %></li>
+          <li><%= link_to 'Log In', login_path %></li>
+        </ul>
+      </div><!-- .menu-global -->
+    </div><!-- .row -->
+  </div><!-- .container -->
+</div><!-- masthead -->
+    <div id="main-content" class="buyers">
+      <div class="full-wrapper">
+        <div class="middle-container">
+          <div class="top-navigation">
+            <h1 class="page-title">Welcome to Copious</h1>
+            <h2>Buy and sell Coach Bags.</h2>
+            <div class="follow-search-results">
+              <a class="button follow-search" href="/for-sale/handbags/coach">See All Coach Bags</a>
+              <div class="point-arrow-border"></div>
+              <div class="point-arrow"></div>
+            </div>
+          </div>
+          <div class="slides-wrapper">
+            <div id="slides" class="slides">
+              <div class="slides_container">
+                <%#     Slide 1     %>
+                <div class="product-slide">
+                  <div class="price">$175.00</div>
+                  <a href="/listings/nwt-authentic-coach-black-leather-tote-f17721">
+                    <img src="/assets/landing/buyer/coachbag2.jpg" class="product-slide-photo">
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="lister">
+              <a href="/profiles/jennifer-beckett-swiger" class="profile">
+                <img class="seller-thumbnail" width="50" height="50" title="Jennifer Beckett Swiger" src="/assets/landing/buyer/profile-swiger.jpg" alt="Jennifer Beckett Swiger">
+              </a>
+              <a href="/listings/nwt-authentic-coach-black-leather-tote-f17721">
+                <h3>Authentic Coach Black Leather Tote</h3>
+              </a>
+            </div>
+          </div>
+
+          <div class="product-card-section-container">
+            <ul class="product-card-section">
+              <li>
+                <a href="/listings/authentic-coach-small-leather-wristlet">
+                  <div class="product-cardBig">
+                    <div class="lead">
+                      <img src="/assets/landing/buyer/coach-wristlet.jpg">
+                      <div class="hover-data">
+                        <div class="clickable">
+                          <div class="price">$60.00</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                <div class="lister">
+                  <a href="/profiles/leah-tinker" class="profile">
+                    <img class="seller-thumbnail" width="35" height="35" title="Leah Tinker" src="/assets/landing/buyer/profile-tinker.jpg" alt="Leah Tinker">
+                  </a>
+                  <a href="/listings/authentic-coach-small-leather-wristlet">
+                    <h3>Authentic COACH Small Leather Wristlet</h3>
+                  </a>
+                </div>
+              </li>
+              <li>
+                <a href="/listings/coach-signature-turn-lock-slim-red-wallet-style-43609-nwt-1">
+                  <div class="product-cardBig">
+                    <div class="lead">
+                      <img src="/assets/landing/buyer/coach-red.jpg">
+                      <div class="hover-data">
+                        <div class="clickable">
+                          <div class="price">$35.00</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                <div class="lister">
+                  <a href="/profiles/malababa-brand" class="profile">
+                    <img class="seller-thumbnail" width="35" height="35" title="Carolyn Beatty" src="/assets/landing/buyer/profile-beatty.jpg" alt="Carolyn Beatty">
+                  </a>
+                  <a href="/listings/coach-signature-turn-lock-slim-red-wallet-style-43609-nwt-1">
+                    <h3>Coach Turn-lock Slim Red Wallet</h3>
+                  </a>
+                </div>
+              </li>
+              <li>
+                <a href="/listings/striped-framed-coin-purse">
+                  <div class="product-cardBig">
+                    <div class="lead">
+                      <img src="/assets/landing/buyer/coach-stripe.jpg">
+                      <div class="hover-data">
+                        <div class="clickable">
+                          <div class="price">$28.00</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                <div class="lister">
+                  <a href="/profiles/e-drop-off" class="profile">
+                    <img class="seller-thumbnail" width="35" height="35" title="eDrop-Off" src="/assets/landing/buyer/profile-edropoff.jpeg" alt="eDrop-Off">
+                  </a>
+                  <a href="/listings/striped-framed-coin-purse">
+                    <h3>Coach Multicolor Satin Coin Purse</h3>
+                  </a>
+                </div>
+              </li>
+              <li>
+                <a href="/listings/coach">
+                  <div class="product-cardBig">
+                    <div class="lead">
+                      <img src="/assets/landing/buyer/coach-jade2.jpg">
+                      <div class="hover-data">
+                        <div class="clickable">
+                          <div class="price">$40.00</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                <div class="lister">
+                  <a href="/profiles/carlye-wisel" class="profile">
+                    <img class="seller-thumbnail" width="35" height="35" title="Carlye Wisel" src="/assets/landing/buyer/profile-wisel.jpg" alt="Carlye Wisel">
+                  </a>
+                  <a href="/listings/coach">
+                    <h3>Coach Jade Leather Crossbody Bag</h3>
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="full-wrapper2">
+        <div class="middle-container">
+          <div class="join-now-cta-container">
+            <h3 class="cta join-now">Sign up and get <span class="dollar-sign">$</span><span class="strong">5</span> off your first purchase.</h3>
+            <div class="connect-container">
+              <%= link_to_facebook_connect %><br>
+              <span class="left-line">&mdash;&mdash;&mdash;&mdash;</span>
+              <%= link_to 'or Connect with Twitter', auth_path(:twitter, buyer_signup: true), class: 'twitter signup'%>
+              <span class="right-line">&mdash;&mdash;&mdash;&mdash;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

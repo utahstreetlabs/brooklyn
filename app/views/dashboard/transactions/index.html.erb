@@ -1,0 +1,35 @@
+<%
+title t('.title')
+%>
+
+<h2><%= t '.header' %></h2>
+<div class="section">
+  <% if @history.any? %>
+    <table>
+      <thead>
+        <tr>
+          <th><%= t '.th.date' %></th>
+          <th><%= t '.th.description' %></th>
+          <th><%= t '.th.account' %></th>
+          <th><%= t '.th.type' %></th>
+          <th><%= t '.th.amount' %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @history.each do |tx| %>
+          <tr>
+            <td class="span2"><%= date tx.created_at %>
+            <td class="span6"><%= content_or_none tx.description, message: t('.tbody.description.none') %></td>
+            <td class="span5"><%= dashboard_tx_account tx, current_user %></td>
+            <td><%= dashboard_tx_type tx %></td>
+            <td><%= number_to_currency tx.amount %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p><%= t '.no_transactions' %></p>
+  <% end %>
+</div>
+
+<%= paginate @pager %>
